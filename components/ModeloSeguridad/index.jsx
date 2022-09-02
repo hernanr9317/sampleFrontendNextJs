@@ -4,7 +4,7 @@ import {Row} from 'react-bootstrap';
 import integridad from '../../public/assets/images/inuevo.png';
 import confidencialidad from '../../public/assets/images/cnuevo.png';
 import disponibilidad from '../../public/assets/images/dnuevo.png';
-import {ModelCol} from './ModelRow';
+import {ModelCol} from './ModelCol';
 
 export const ModeloSeguridad = () => {
   return (

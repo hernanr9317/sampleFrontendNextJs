@@ -4,7 +4,7 @@ import Image from 'next/image';
 export const ModelCol = ({title, src}) => {
   return (
     <>
-      <Col xs={12} sm={6} md={4}>
+      <Col xs={12} md={4} style={{marginBottom: '30px'}}>
         <div
           style={{
             display: 'flex',
