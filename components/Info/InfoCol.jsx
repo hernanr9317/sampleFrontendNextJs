@@ -21,7 +21,7 @@ export const InfoCol = ({title, src, link}) => {
                 Estándares Tecnológicos de la Administración Pública.
               </Card.Text>
               <Link href={link} className="btn btn-primary">
-                Ver más
+                <a className="btn btn-primary">Ver más</a>
               </Link>
             </Card.Body>
           </Card>
