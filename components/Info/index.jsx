@@ -1,8 +1,8 @@
 import {Container, Row} from 'react-bootstrap';
 import {InfoCol} from './InfoCol';
-import etaps from '../../public/assets/images/etaps.png';
-import tips from '../../public/assets/images/tips.jpg';
-import normativa from '../../public/assets/images/normativa.jpg';
+import etaps from '../../public/assets/info/etaps.png';
+import tips from '../../public/assets/info/tips.jpg';
+import normativa from '../../public/assets/info/normativa.jpg';
 
 export const Info = () => {
   return (
