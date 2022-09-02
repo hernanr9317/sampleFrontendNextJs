@@ -9,7 +9,7 @@ export const MainNavbar = () => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
       <Container>
-        <Navbar.Brand>
+        <Navbar.Brand className="navbarImg">
           <Link className="navbar-brand" href="/">
             <a>
               <Image src={logo} width="80" height="50" alt="Logo" />

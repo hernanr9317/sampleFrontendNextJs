@@ -6,7 +6,7 @@ import slider3 from '../../public/assets/carousel/img2.png';
 
 export const MainCarousel = () => {
   return (
-    <Carousel>
+    <Carousel id="crouselBoostrap">
       <Carousel.Item>
         <Image src={slider1} alt="First slide" height="1000px" />
         <Carousel.Caption></Carousel.Caption>

@@ -1,12 +1,18 @@
+.carousel {
+  margin-top: -48px;
+}
 
 .navbar > .container {
     max-width: 100%;
     margin: 0;
     padding: 10;
   }
-  
-.navbar {
+
+  .navbar {
     margin: 0;
     padding: 10;
-}
+  }
   
+  .navbarImg {
+    margin-left: 5px
+  }
