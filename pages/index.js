@@ -1,6 +1,7 @@
 import {MainCarousel} from '../components/MainCarousel';
 import {ModeloSeguridad} from '../components/ModeloSeguridad';
 import {Info} from '../components/Info';
+import {Contacto} from '../components/Contacto';
 
 const HomeScreen = () => {
   return (
@@ -9,6 +10,7 @@ const HomeScreen = () => {
       <div className="container">
         <Info />
         <ModeloSeguridad />
+        <Contacto />
       </div>
     </div>
   );
