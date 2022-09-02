@@ -1,44 +1,32 @@
-import logo from '../../public/assets/images/LOGOBLANCO.png';
+import Link from 'next/link';
+import Image from 'next/image';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import logo from '../../public/assets/navbar/logo.png';
+import Navbar from 'react-bootstrap/Navbar';
 
-export const NavBar = () => {
+export const MainNavbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
-          <img
-            className="d-inline-block align-top m-0 me-2 p-0"
-            src={logo}
-            width="70"
-            height="40"
-            alt="Logo"
-          />
-          e-seguridad
-        </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div className="navbar-nav ms-auto">
-            <Link className="nav-link" to="/">
-              Inicio
-            </Link>
-            <Link className="nav-link" to="/etaps">
-              Etaps
-            </Link>
-            <a className="nav-link" href="#contacto">
-              Contacto
+    <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
+      <Container>
+        <Navbar.Brand>
+          <Link className="navbar-brand" href="/">
+            <a>
+              <Image src={logo} width="80" height="50" alt="Logo" />
             </a>
-          </div>
-        </div>
-      </div>
-    </nav>
+          </Link>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="/">Inicio</Nav.Link>
+            <Nav.Link href="/etaps">Etaps</Nav.Link>
+            <Nav.Link href="/normativas">Normativas</Nav.Link>
+            <Nav.Link href="/tips">Tips de seguridad</Nav.Link>
+            <Nav.Link href="/contacto">Contacto</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };

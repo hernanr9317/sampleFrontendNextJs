@@ -1,1 +1,12 @@
 
+.navbar > .container {
+    max-width: 100%;
+    margin: 0;
+    padding: 10;
+  }
+  
+.navbar {
+    margin: 0;
+    padding: 10;
+}
+  
