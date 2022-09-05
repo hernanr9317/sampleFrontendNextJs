@@ -1,11 +1,8 @@
-import {Container} from 'react-bootstrap';
-import {Row} from 'react-bootstrap';
-import {
-  PinMapFill,
-  TelephoneOutboundFill,
-  EnvelopeCheckFill,
-} from 'react-bootstrap-icons';
+import {Container, Row} from 'react-bootstrap';
 import {ContactoCol} from './ContactoCol';
+import mapa from '../../public/assets/contacto/mapa.png';
+import telefono from '../../public/assets/contacto/telefono.png';
+import email from '../../public/assets/contacto/email.png';
 
 export const Contacto = () => {
   return (
@@ -15,20 +12,21 @@ export const Contacto = () => {
       </center>
       <hr />
       <Container>
-        <Row xs={1} md={2} lg={3}>
+        <Row
+          xs={'auto'}
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            padding: '5px',
+          }}
+        >
+          <ContactoCol icon={mapa} text="Marcelo T. de Alvear 154" />
           <ContactoCol
-            icon={<PinMapFill size="40" />}
-            text="Marcelo T. de Alvear 154"
-          />
-          <ContactoCol
-            icon={<TelephoneOutboundFill size="40" />}
+            icon={telefono}
+            margin="-10px"
             text="362-4448000 | Int. 8211"
           />
-
-          <ContactoCol
-            icon={<EnvelopeCheckFill size="40" />}
-            text="eseguridad@chaco.gov.ar"
-          />
+          <ContactoCol icon={email} text="eseguridad@chaco.gov.ar" />
         </Row>
       </Container>
     </div>
