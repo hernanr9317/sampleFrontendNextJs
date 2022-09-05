@@ -21,11 +21,7 @@ export const Contacto = () => {
           }}
         >
           <ContactoCol icon={mapa} text="Marcelo T. de Alvear 154" />
-          <ContactoCol
-            icon={telefono}
-            margin="-10px"
-            text="362-4448000 | Int. 8211"
-          />
+          <ContactoCol icon={telefono} text="362-4448000 | Int. 8211" />
           <ContactoCol icon={email} text="eseguridad@chaco.gov.ar" />
         </Row>
       </Container>

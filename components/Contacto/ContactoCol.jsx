@@ -1,16 +1,10 @@
 import Image from 'next/image';
 import {Col} from 'react-bootstrap';
 
-export const ContactoCol = ({icon, text, margin}) => {
+export const ContactoCol = ({icon, text}) => {
   return (
     <Col style={{width: '220px', marginBottom: '18px'}}>
-      <Image
-        src={icon}
-        height={50}
-        width={50}
-        fixed
-        style={{marginLeft: margin}}
-      />
+      <Image src={icon} height={50} width={50} />
       <div>
         <h6>{text}</h6>
       </div>

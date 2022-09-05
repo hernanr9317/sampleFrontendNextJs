@@ -24,7 +24,7 @@ export const MainFooter = () => {
                 width={360}
                 height={90}
                 quality={100}
-                fixed
+                fixed="true"
               />
             </Col>
             <Col style={{marginBottom: '16px'}}>
@@ -34,7 +34,7 @@ export const MainFooter = () => {
                 width={185}
                 height={90}
                 quality={100}
-                fixed
+                fixed="true"
               />
             </Col>
           </Row>
