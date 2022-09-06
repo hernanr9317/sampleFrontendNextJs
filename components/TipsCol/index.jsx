@@ -2,42 +2,34 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {Col} from 'react-bootstrap';
 
-export const TipsCol = ({
-  title,
-  src,
-  subtitle,
-  subtitle2,
-  link,
-  link2,
-  link3,
-  link4,
-}) => {
+export const TipsCol = ({data}) => {
+  const {title, src, description, link, link2, link3, link4} = data;
+
   return (
     <Col>
-      <div className="card mb-1" style={{width: 300}}>
+      <div class="card" style={{width: '18rem'}}>
         <Image
+          class="card-img-top"
           src={src}
-          className="card-img-top img-thumbnail"
-          alt="..."
-          style={{width: 300}}
+          alt="Card image cap"
+          fill="responsive"
         />
-        <div className="card-body">
-          <h5 className="card-title mb-4">{title}</h5>
-          <a
-            href={link}
-            className="card-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h6>{subtitle}</h6>
+        <div class="card-body">
+          <h5 class="card-title">{title}</h5>
+          <p class="card-text">{description}</p>
+        </div>
+        <div class="card-body">
+          <a href={link?.href} class="card-link" target="_blank">
+            {link?.name}
           </a>
-          <a
-            href={link2}
-            className="card-link m-0"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h6>{subtitle2}</h6>
+          <a href={link2?.href} class="card-link" target="_blank">
+            {link2?.name}
+          </a>
+          <a href={link3?.href} class="card-link" target="_blank">
+            {link3?.name}
+          </a>
+          <a href={link4?.href} class="card-link" target="_blank">
+            {link4?.name}
           </a>
         </div>
       </div>
