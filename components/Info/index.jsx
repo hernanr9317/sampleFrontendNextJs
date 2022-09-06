@@ -11,9 +11,24 @@ export const Info = () => {
       <hr />
       <Container>
         <Row>
-          <InfoCol title="Etaps" src={etaps} link="/etaps" />
-          <InfoCol title="Tips de seguridad" src={tips} link="/tips" />
-          <InfoCol title="Normativa" src={normativa} link="/normativa" />
+          <InfoCol
+            title="Etaps"
+            text="Estándares Tecnológicos de la Administración Pública"
+            src={etaps}
+            link="/etaps"
+          />
+          <InfoCol
+            title="Tips de seguridad"
+            text="Tips para mantener la seguridad informática"
+            src={tips}
+            link="/tips"
+          />
+          <InfoCol
+            title="Normativa"
+            text="Enterate de las normas, leyes y decretos vigentes"
+            src={normativa}
+            link="/normativa"
+          />
         </Row>
       </Container>
     </div>

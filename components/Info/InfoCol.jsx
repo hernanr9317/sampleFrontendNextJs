@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {Card, Col} from 'react-bootstrap';
 
-export const InfoCol = ({title, src, link}) => {
+export const InfoCol = ({title, text, src, link}) => {
   return (
     <>
       <Col>
@@ -17,9 +17,7 @@ export const InfoCol = ({title, src, link}) => {
             <Image variant="top" src={src} height="220" width="350" />
             <Card.Body>
               <Card.Title>{title}</Card.Title>
-              <Card.Text>
-                Estándares Tecnológicos de la Administración Pública.
-              </Card.Text>
+              <Card.Text>{text}</Card.Text>
               <Link href={link} className="btn btn-primary">
                 <a className="btn btn-primary">Ver más</a>
               </Link>
