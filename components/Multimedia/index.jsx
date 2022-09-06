@@ -6,8 +6,8 @@ export const Multimedia = () => {
   return (
     <Container>
       <Row lg={4}>
-        {data.map((element) => (
-          <TipsCol data={element} />
+        {data.map((element, key) => (
+          <TipsCol key={key} data={element} />
         ))}
       </Row>
     </Container>

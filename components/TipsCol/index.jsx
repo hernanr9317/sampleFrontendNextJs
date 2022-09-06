@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import {Col} from 'react-bootstrap';
 
 export const TipsCol = ({data}) => {
@@ -13,28 +12,28 @@ export const TipsCol = ({data}) => {
           justifyContent: 'center',
         }}
       >
-        <div class="card mb-2" style={{width: '18rem'}}>
+        <div className="card mb-2" style={{width: '18rem'}}>
           <Image
-            class="card-img-top"
+            className="card-img-top"
             src={src}
             alt="Card image cap"
             fill="responsive"
           />
-          <div class="card-body pb-0">
-            <h5 class="card-title">{title}</h5>
-            <p class="card-text">{description}</p>
+          <div className="card-body pb-0">
+            <h5 className="card-title">{title}</h5>
+            <p className="card-text">{description}</p>
           </div>
-          <div class="card-body">
+          <div className="card-body">
             <a href={link?.href} className="card-link" target="_blank">
               {link?.name}
             </a>
-            <a href={link2?.href} class="card-link" target="_blank">
+            <a href={link2?.href} className="card-link" target="_blank">
               {link2?.name}
             </a>
-            <a href={link3?.href} class="card-link" target="_blank">
+            <a href={link3?.href} className="card-link" target="_blank">
               {link3?.name}
             </a>
-            <a href={link4?.href} class="card-link" target="_blank">
+            <a href={link4?.href} className="card-link" target="_blank">
               {link4?.name}
             </a>
           </div>
