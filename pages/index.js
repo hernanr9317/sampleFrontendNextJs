@@ -7,7 +7,7 @@ import {PublicLayout} from '../components/layouts';
 const HomeScreen = () => {
   return (
     <PublicLayout
-      title={'E-seguridad - Home'}
+      title={'e-seguridad - Home'}
       pageDescription={
         'Encuentra los estandares de equipamiento informático y seguridad'
       }
