@@ -20,3 +20,11 @@
 .contacSvg svg{
   margin: 20;
 }
+
+.card-link {
+  display: block;
+  float: left;
+  margin-left: 0 !important;
+  padding: 5px;
+  text-decoration: none;
+}

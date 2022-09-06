@@ -5,7 +5,7 @@ import {data} from './data';
 export const Multimedia = () => {
   return (
     <Container>
-      <Row lg={3}>
+      <Row lg={4}>
         {data.map((element) => (
           <TipsCol data={element} />
         ))}
