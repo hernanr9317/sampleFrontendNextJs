@@ -19,20 +19,22 @@ export const MainFooter = () => {
           <Row xs={'auto'} sm={'auto'}>
             <Col style={{marginBottom: '16px'}}>
               <Image
+                className="footerImg"
                 src={firstLogo}
                 alt="image-alt-text"
-                width={360}
-                height={90}
+                width={368}
+                height={65}
                 quality={100}
                 fixed="true"
               />
             </Col>
             <Col style={{marginBottom: '16px'}}>
               <Image
+                className="footerImg"
                 src={secondtLogo}
                 alt="image-alt-text"
-                width={185}
-                height={90}
+                width={190}
+                height={65}
                 quality={100}
                 fixed="true"
               />

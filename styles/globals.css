@@ -14,8 +14,11 @@
   margin-left: 5px
 }
 
-.mainCarousel {
+.footerImg {
+  filter: opacity(0.3) drop-shadow(0 0 0 white); 
+}
 
+.mainCarousel {
   margin-top: 66px !important;
 }
 
