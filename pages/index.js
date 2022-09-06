@@ -3,6 +3,9 @@ import {ModeloSeguridad} from '../components/ModeloSeguridad';
 import {Info} from '../components/Info';
 import {Contacto} from '../components/Contacto';
 import {PublicLayout} from '../components/layouts';
+import slider1 from '../public/assets/carousel/img3.png';
+import slider2 from '../public/assets/carousel/img1.png';
+import slider3 from '../public/assets/carousel/img2.png';
 
 const HomeScreen = () => {
   return (
@@ -12,8 +15,8 @@ const HomeScreen = () => {
         'Encuentra los estandares de equipamiento informático y seguridad'
       }
     >
-      <div className="bg-light bg-gradient mt-5 animate__animated animate__fadeIn">
-        <MainCarousel />
+      <div className="bg-light bg-gradient container-fluid p-0">
+        <MainCarousel img={slider1} img2={slider2} img3={slider3} />
         <div className="container">
           <Info />
           <ModeloSeguridad />

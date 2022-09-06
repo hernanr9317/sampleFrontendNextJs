@@ -1,24 +1,21 @@
-.carousel {
-  margin-top: -48px;
-}
 
 .navbar > .container {
     max-width: 100%;
     margin: 0;
-    padding: 10;
   }
 
-  .navbar {
-    margin: 0;
-    padding: 10;
-  }
+.navbar {
+  margin: 0;
+  padding: 0;
+}
   
-  .navbarImg {
-    margin-left: 5px
-  }
+.navbarImg {
+  margin-left: 5px
+}
 
-.contacSvg svg{
-  margin: 20;
+.mainCarousel {
+
+  margin-top: 66px !important;
 }
 
 .card-link {

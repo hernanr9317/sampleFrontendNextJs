@@ -7,7 +7,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 export const MainNavbar = () => {
   return (
-    <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
+    <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
       <Container>
         <Navbar.Brand className="navbarImg">
           <Link className="navbar-brand" href="/">
