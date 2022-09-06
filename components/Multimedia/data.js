@@ -20,12 +20,13 @@ export const data = [
     },
   },
   {
-    src: arbol,
-    title: 'Árbol de la Seguridad',
-    description: 'Respondé SI o NO y verás que camino tomar',
+    src: memoria,
+    title: 'Juego de la memoria',
+    description:
+      'Divertite Jugando con los más chicos. Recortá las piezas y cartón del mismo tamaño para mayor durabilidad. Descargá cuantas veces quieras. ¡Regalá!',
     link: {
-      name: 'Comenzar',
-      href: 'https://view.genial.ly/5d3bc45ba1eec80fb958873c/learning-experience-didactic-unit-arboles-de-decisiones',
+      name: 'Ver más',
+      href: 'https://res.cloudinary.com/dyzyc1dxd/image/upload/v1662424085/eseguridad/ocajuego_sketj9.png',
     },
   },
   {
@@ -39,6 +40,37 @@ export const data = [
     },
   },
   {
+    src: acuerdo,
+    title: 'Contratos familiares para el buen uso de dispositivos',
+    description:
+      'Estos contratos te ayudarán a organizar los tiempos en familia. Te proponemos reforzar los valores familiares y uso de los dispositivos de forma resonsable. Descargá todos o el más se acomode a tus necesidades',
+    link: {
+      name: 'Celular',
+      href: 'https://res.cloudinary.com/dyzyc1dxd/image/upload/v1662490454/eseguridad/Celular_qlqf6u.pdf',
+    },
+    link2: {
+      name: 'Tablet',
+      href: 'https://res.cloudinary.com/dyzyc1dxd/image/upload/v1662490454/eseguridad/Tablet_rfz5di.pdf',
+    },
+    link3: {
+      name: 'Videoconsolas',
+      href: 'https://res.cloudinary.com/dyzyc1dxd/image/upload/v1662490454/eseguridad/videoconsolas_culjck.pdf',
+    },
+    link4: {
+      name: 'Dispositivos del hogar',
+      href: 'https://res.cloudinary.com/dyzyc1dxd/image/upload/v1662490454/eseguridad/dispositivos_s8mxvq.pdf',
+    },
+  },
+  {
+    src: arbol,
+    title: 'Árbol de la Seguridad',
+    description: 'Respondé SI o NO y verás que camino tomar',
+    link: {
+      name: 'Ver más',
+      href: 'https://view.genial.ly/5d3bc45ba1eec80fb958873c/learning-experience-didactic-unit-arboles-de-decisiones',
+    },
+  },
+  {
     src: oca,
     title: 'Juego de la oca',
     description:
@@ -46,38 +78,6 @@ export const data = [
     link: {
       name: 'Ver más',
       href: 'https://res.cloudinary.com/dyzyc1dxd/image/upload/v1662424085/eseguridad/ocajuego_sketj9.png',
-    },
-  },
-  {
-    src: memoria,
-    title: 'Juego de la memoria',
-    description:
-      'Divertite Jugando con los más chicos. Recortá las piezas y cartón del mismo tamaño para mayor durabilidad. Descargá cuantas veces quieras. ¡Regalá!',
-    link: {
-      name: 'Ver más',
-      href: 'https://res.cloudinary.com/dyzyc1dxd/image/upload/v1662424085/eseguridad/ocajuego_sketj9.png',
-    },
-  },
-  {
-    src: acuerdo,
-    title: 'Contratos familiares para el buen uso de dispositivos',
-    description:
-      'Estos contratos te ayudarán a organizar los tiempos en familia.Te proponemos reforzar los valores familiares y uso de los dispositivos de forma resonsable. Descargá todos o el más se acomode a tus necesidades',
-    link: {
-      name: 'Contrato Celular',
-      href: 'https://res.cloudinary.com/dyzyc1dxd/image/upload/v1662490454/eseguridad/Celular_qlqf6u.pdf',
-    },
-    link2: {
-      name: 'Contrato Tablet',
-      href: 'https://res.cloudinary.com/dyzyc1dxd/image/upload/v1662490454/eseguridad/Tablet_rfz5di.pdf',
-    },
-    link3: {
-      name: 'Contrato Videoconsolas',
-      href: 'https://res.cloudinary.com/dyzyc1dxd/image/upload/v1662490454/eseguridad/videoconsolas_culjck.pdf',
-    },
-    link4: {
-      name: 'Contrato Dispositivos del hogar',
-      href: 'https://res.cloudinary.com/dyzyc1dxd/image/upload/v1662490454/eseguridad/dispositivos_s8mxvq.pdf',
     },
   },
 ];
