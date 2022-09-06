@@ -23,7 +23,6 @@ export const MainNavbar = () => {
             <Nav.Link href="/etaps">Etaps</Nav.Link>
             <Nav.Link href="/normativas">Normativas</Nav.Link>
             <Nav.Link href="/tips">Tips de seguridad</Nav.Link>
-            <Nav.Link href="/contacto">Contacto</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
