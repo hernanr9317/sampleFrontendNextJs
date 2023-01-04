@@ -7,6 +7,8 @@ import {postDataAxios} from '../../utils/axiosConfig';
 import {useState} from 'react';
 
 const LoginPage = () => {
+  const [showError, setShowError] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -14,12 +16,13 @@ const LoginPage = () => {
     formState: {errors},
   } = useForm();
 
-  const [loginData, setLoginData] = useState([]);
+  const onLoginUser = async (data) => {
+    setShowError(false);
 
-  console.log(loginData);
+    const resp = await postDataAxios('/auth/login/', data);
+    console.log(resp);
 
-  const onLoginUser = (data) => {
-    postDataAxios('/auth/login/', data).then(setLoginData);
+    if (!resp) setShowError(true);
   };
 
   return (
@@ -31,6 +34,13 @@ const LoginPage = () => {
         style={{width: '300px', margin: 'auto', marginTop: '50px'}}
         onSubmit={handleSubmit(onLoginUser)}
       >
+        <div
+          className="alert alert-danger"
+          role="alert"
+          style={{display: showError ? 'flex' : 'none'}}
+        >
+          Correo o contraseña incorrectos
+        </div>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Control
             className={!!errors.email ? 'is-invalid' : ''}
