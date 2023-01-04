@@ -10,3 +10,20 @@ export const getDataAxios = async (url) => {
     console.error(error);
   }
 };
+
+export const postDataAxios = async (url, data) => {
+  try {
+    const response = await axios
+      .post(`${baseUrl}${url}`, {
+        correo: data.email,
+        password: data.password,
+      })
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    return response;
+  } catch (error) {}
+};
