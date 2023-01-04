@@ -15,6 +15,8 @@ export const postDataAxios = async (url, data) => {
   try {
     const response = await axios
       .post(`${baseUrl}${url}`, {
+        rol: data?.rol,
+        nombre: data?.name,
         correo: data.email,
         password: data.password,
       })

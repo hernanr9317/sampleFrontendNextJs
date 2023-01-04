@@ -12,7 +12,6 @@ const LoginPage = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: {errors},
   } = useForm();
 
@@ -20,9 +19,10 @@ const LoginPage = () => {
     setShowError(false);
 
     const resp = await postDataAxios('/auth/login/', data);
-    console.log(resp);
 
     if (!resp) setShowError(true);
+
+    // TODO: navegar a la pantalla de admin
   };
 
   return (
