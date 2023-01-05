@@ -1,12 +1,15 @@
+import {useState, useContext} from 'react';
+import {useRouter} from 'next/router';
 import {AuthLayout} from '../../components/layouts';
+import {AuthContext} from './../../context';
+import {useForm} from 'react-hook-form';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Link from 'next/link';
-import {useForm} from 'react-hook-form';
-import {postDataAxios} from '../../utils/axiosConfig';
-import {useState} from 'react';
 
 const LoginPage = () => {
+  const router = useRouter();
+  const {loginUser} = useContext(AuthContext);
   const [showError, setShowError] = useState(false);
 
   const {
@@ -18,11 +21,13 @@ const LoginPage = () => {
   const onLoginUser = async (data) => {
     setShowError(false);
 
-    const resp = await postDataAxios('/auth/login/', data);
+    const isValidLogin = await loginUser(data);
+    if (!isValidLogin) {
+      setShowError(true);
+      return;
+    }
 
-    if (!resp) setShowError(true);
-
-    // TODO: navegar a la pantalla de admin
+    router.replace('/');
   };
 
   return (

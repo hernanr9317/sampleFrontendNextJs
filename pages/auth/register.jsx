@@ -1,13 +1,18 @@
-import {useState} from 'react';
+import {useContext, useState} from 'react';
+import {useRouter} from 'next/router';
+import {useForm} from 'react-hook-form';
 import Link from 'next/link';
 import {AuthLayout} from '../../components/layouts';
+import {AuthContext} from '../../context';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import {useForm} from 'react-hook-form';
-import {postDataAxios} from '../../utils/axiosConfig';
 
 const RegisterPage = () => {
+  const router = useRouter();
+  const {registerUser} = useContext(AuthContext);
+
   const [showError, setShowError] = useState(false);
+  const [showSucces, setShowSucces] = useState(false);
 
   const {
     register,
@@ -17,16 +22,20 @@ const RegisterPage = () => {
 
   const onRegisterForm = async (data) => {
     setShowError(false);
+    setShowSucces(false);
 
-    if (data.key === process.env.NEXT_PUBLIC_API_KEY) {
-      const dataWithRol = {...data, rol: 'ADMIN_ROLE'};
+    const resp = await registerUser(data);
 
-      const resp = await postDataAxios('/usuarios/', dataWithRol);
-
-      if (!resp) setShowError(true);
-    } else {
+    if (!resp) {
       setShowError(true);
+      return;
     }
+
+    setShowSucces(true);
+
+    setTimeout(() => {
+      router.replace('/auth/login');
+    }, 4000);
   };
 
   return (
@@ -38,6 +47,13 @@ const RegisterPage = () => {
         style={{width: '300px', margin: 'auto', marginTop: '50px'}}
         onSubmit={handleSubmit(onRegisterForm)}
       >
+        <div
+          className="alert alert-success"
+          role="alert"
+          style={{display: showSucces ? 'flex' : 'none'}}
+        >
+          Cuenta creada exitosamente.
+        </div>
         <div
           className="alert alert-danger"
           role="alert"
