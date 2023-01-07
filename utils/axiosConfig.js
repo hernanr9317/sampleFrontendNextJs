@@ -2,9 +2,15 @@ const axios = require('axios');
 
 const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
-export const getDataAxios = async (url) => {
+export const getDataAxios = async (url, token = '') => {
   try {
-    const response = await axios.get(`${baseUrl}${url}`);
+    // const response = await axios.get(`${baseUrl}${url}`);
+    const response = await axios.get(`${baseUrl}${url}`, {
+      headers: {
+        'x-token': token,
+      },
+    });
+
     return response;
   } catch (error) {
     console.error(error);

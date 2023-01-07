@@ -1,6 +1,6 @@
 import React, {useReducer, useEffect} from 'react';
 import {AuthContext, authReducer} from '.';
-import {postDataAxios} from '../../utils/axiosConfig';
+import {postDataAxios, getDataAxios} from '../../utils/axiosConfig';
 import Cookies from 'js-cookie';
 
 const Auth_INITIAL_STATE = {
@@ -11,11 +11,29 @@ const Auth_INITIAL_STATE = {
 export const AuthProvider = ({children}) => {
   const [state, dispatch] = useReducer(authReducer, Auth_INITIAL_STATE);
 
-  // useEffect(() => {
-  //   checkToken();
-  // }, []);
+  useEffect(() => {
+    checkToken();
+  }, []);
 
-  // const checkToken = async () => {};
+  const checkToken = async () => {
+    try {
+      const tokenCookie = Cookies.get('token');
+
+      if (!tokenCookie) return;
+
+      const resp = await getDataAxios('/auth/validate-token/', tokenCookie);
+
+      const {
+        data: {token, user},
+      } = resp || {data: {token: '', user: ''}};
+
+      Cookies.set(token);
+
+      dispatch({type: '[Auth] - Login', payload: user});
+    } catch (error) {
+      Cookies.remove('token');
+    }
+  };
 
   const loginUser = async (data) => {
     try {
