@@ -1,3 +1,4 @@
+import {CategoryFilter} from '../../components/Admin/CategoryFilter';
 import {AdminLayout} from '../../components/layouts';
 import {AddCategory} from './../../components/Admin/AddCaregory';
 
@@ -9,7 +10,8 @@ const AdminScreen = () => {
     >
       <div>Admin</div>
       <div className="mt-5">
-        <AddCategory />
+        {/* <AddCategory /> */}
+        <CategoryFilter />
       </div>
     </AdminLayout>
   );
