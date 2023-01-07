@@ -21,14 +21,18 @@ export const AdminLayout = ({
   };
 
   useEffect(() => {
-    checkTokenAuth().then((resp) => {
-      if (!resp) {
-        router.replace('/');
-        setAuth(false);
-      } else {
-        setAuth(true);
-      }
-    });
+    try {
+      checkTokenAuth().then((resp) => {
+        if (!resp) {
+          router.replace('/');
+          setAuth(false);
+        } else {
+          setAuth(true);
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   if (!auth) return;

@@ -27,7 +27,7 @@ const LoginPage = () => {
       return;
     }
 
-    router.replace('/');
+    router.replace('/admin');
   };
 
   return (
