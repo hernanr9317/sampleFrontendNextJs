@@ -1,23 +1,30 @@
+import {useState, useEffect} from 'react';
 import {useGetData} from '../../hooks/useGetData';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
+import {CategoryTable} from './CategoryTable';
 
 export const CategoryFilter = () => {
   const {data} = useGetData('/categorias/');
+  const productos = useGetData('/productos/');
 
-  //   console.log(data?.categorias);
+  const [categorySelected, setCategorySelected] = useState('');
+
+  const categoriesFilter = productos?.data?.productos.filter(
+    (element) => element.categoria.nombre === categorySelected,
+  );
 
   const onClick = (element) => {
-    console.log(element);
+    setCategorySelected(element.nombre);
   };
 
   return (
     <div>
       <ButtonGroup>
         <Button>+ Agregar categoria</Button>
-        <Button>- Eliminar categoria</Button>
+        {/* <Button>- Eliminar categoria</Button> */}
 
         <DropdownButton
           as={ButtonGroup}
@@ -37,6 +44,8 @@ export const CategoryFilter = () => {
           })}
         </DropdownButton>
       </ButtonGroup>
+
+      <CategoryTable categories={categoriesFilter} title={categorySelected} />
     </div>
   );
 };
