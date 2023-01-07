@@ -1,4 +1,8 @@
+import {useEffect, useState} from 'react';
+import {useRouter} from 'next/router';
 import Head from 'next/head';
+import Cookies from 'js-cookie';
+import {getDataAxios} from './../../utils/axiosConfig';
 import {AdminNavbar} from './../Admin/AdminNavbar';
 
 export const AdminLayout = ({
@@ -7,6 +11,28 @@ export const AdminLayout = ({
   pageDescription,
   imageFullUrl,
 }) => {
+  const router = useRouter();
+  const tokenCookie = Cookies.get('token');
+  const [auth, setAuth] = useState(false);
+
+  const checkTokenAuth = async () => {
+    const resp = await getDataAxios('/auth/validate-token/', tokenCookie);
+    return resp;
+  };
+
+  useEffect(() => {
+    checkTokenAuth().then((resp) => {
+      if (!resp) {
+        router.replace('/');
+        setAuth(false);
+      } else {
+        setAuth(true);
+      }
+    });
+  }, []);
+
+  if (!auth) return;
+
   return (
     <>
       <Head>

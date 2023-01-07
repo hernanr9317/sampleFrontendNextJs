@@ -25,9 +25,9 @@ export const AuthProvider = ({children}) => {
 
       const {
         data: {token, user},
-      } = resp || {data: {token: '', user: ''}};
+      } = resp;
 
-      Cookies.set(token);
+      Cookies.set('token', token);
 
       dispatch({type: '[Auth] - Login', payload: user});
     } catch (error) {
