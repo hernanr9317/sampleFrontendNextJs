@@ -17,9 +17,5 @@
     "react-bootstrap": "^2.5.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.41.4"
-  },
-  "devDependencies": {
-    "eslint": "8.23.0",
-    "eslint-config-next": "12.2.5"
   }
 }

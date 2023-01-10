@@ -7,7 +7,11 @@ import {ViewCategory} from './ViewCategory';
 
 export const Categorias = () => {
   const [categorySelected, setCategorySelected] = useState('');
-  const {data} = useGetData('/categorias/');
+  // const {data} = useGetData('/categorias/');
+  const resp = useGetData('/categorias/');
+
+  const {data} = resp || {data : []};
+
 
   return (
     <div style={{marginTop: '100px'}}>

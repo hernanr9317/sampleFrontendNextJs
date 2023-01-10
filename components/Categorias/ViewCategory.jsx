@@ -3,7 +3,10 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 export const ViewCategory = ({category}) => {
-  const {data} = useGetData('/productos/');
+  // const {data} = useGetData('/productos/');
+  const resp = useGetData('/productos/');
+
+  const {data} = resp || {data : []};
 
   const filterCategory = data?.productos?.filter(
     (element) => element.categoria.nombre === category,
