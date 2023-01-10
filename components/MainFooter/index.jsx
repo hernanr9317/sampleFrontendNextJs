@@ -8,7 +8,7 @@ import secondtLogo from '../../public/assets/footer/logoFooter2.png';
 
 export const MainFooter = () => {
   return (
-    <div className="bg-dark pt-4 pb-4">
+    <div className="bg-dark" style={{paddingTop: '200px', paddingBottom: '200px'}}>
       <Container>
         <div
           style={{
