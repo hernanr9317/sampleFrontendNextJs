@@ -9,8 +9,25 @@ export const ModalElement = ({element, interaction}) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: {errors},
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      nombre: element?.nombre,
+      categoria: element?.categoria?.nombre,
+      orden: element?.precio,
+      descripcion: element?.description,
+    },
+  });
+
+  useEffect(() => {
+    reset({
+      nombre: element?.nombre,
+      categoria: element?.categoria?.nombre,
+      orden: element?.precio,
+      descripcion: element?.description,
+    });
+  }, [reset, element]);
 
   const [show, setShow] = useState(false);
   const [edit, setEdit] = useState(true);
@@ -37,14 +54,11 @@ export const ModalElement = ({element, interaction}) => {
   return (
     <>
       <Modal show={show} onHide={handleClose} backdrop="static" size="lg">
-        <Modal.Header closeButton>
-          <Modal.Title>{element?.nombre}</Modal.Title>
-        </Modal.Header>
-        <Button variant="primary" size="sm" onClick={editInfo}>
-          Editar
-        </Button>
-        <Modal.Body>
-          <Form onSubmit={handleSubmit(onSaveChanges)}>
+        <Form onSubmit={handleSubmit(onSaveChanges)}>
+          <Modal.Header closeButton>
+            <Modal.Title>{element?.nombre}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
             <Form.Group className="mb-3" controlId="nombre">
               <Form.Label>Nombre</Form.Label>
               <Form.Control
@@ -52,24 +66,24 @@ export const ModalElement = ({element, interaction}) => {
                 defaultValue={element?.nombre}
                 autoFocus
                 disabled={edit}
+                {...register('nombre', {required: true})}
               />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Group className="mb-3">
-                <Form.Label>Categoria</Form.Label>
-                <Form.Select
-                  type="categoria"
-                  defaultValue={element?.categoria?.nombre}
-                  disabled={edit}
-                >
-                  {categorias?.data?.categorias?.map((catElement, index) => (
-                    <option key={index} value={catElement?.nombre}>
-                      {catElement?.nombre}
-                    </option>
-                  ))}
-                </Form.Select>
-              </Form.Group>
+              <Form.Label>Categoria</Form.Label>
+              <Form.Select
+                type="categoria"
+                defaultValue={element?.categoria?.nombre}
+                disabled={edit}
+                {...register('categoria', {required: true})}
+              >
+                {categorias?.data?.categorias?.map((catElement, index) => (
+                  <option key={index} value={catElement?.nombre}>
+                    {catElement?.nombre}
+                  </option>
+                ))}
+              </Form.Select>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="order">
@@ -79,6 +93,7 @@ export const ModalElement = ({element, interaction}) => {
                 type="number"
                 min="0"
                 disabled={edit}
+                {...register('orden')}
               />
             </Form.Group>
 
@@ -90,6 +105,7 @@ export const ModalElement = ({element, interaction}) => {
                 as="textarea"
                 rows={5}
                 disabled={edit}
+                {...register('descripcion', {required: true})}
               />
             </Form.Group>
 
@@ -97,16 +113,19 @@ export const ModalElement = ({element, interaction}) => {
               <Form.Label>Subir archivo</Form.Label>
               <Form.Control type="file" disabled={edit} />
             </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cerrar
-          </Button>
-          <Button variant="primary" type="submit">
-            Gaurdar cambios
-          </Button>
-        </Modal.Footer>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Cerrar
+            </Button>
+            <Button variant="primary" onClick={editInfo}>
+              Editar
+            </Button>
+            <Button variant="primary" type="submit">
+              Gaurdar cambios
+            </Button>
+          </Modal.Footer>
+        </Form>
       </Modal>
     </>
   );
