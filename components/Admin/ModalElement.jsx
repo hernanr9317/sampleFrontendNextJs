@@ -54,7 +54,7 @@ export const ModalElement = ({element, interaction}) => {
   return (
     <>
       <Modal show={show} onHide={handleClose} backdrop="static" size="lg">
-        <Form onSubmit={handleSubmit(onSaveChanges)}>
+        <Form onSubmit={handleSubmit(onSaveChanges)} autoComplete="off">
           <Modal.Header closeButton>
             <Modal.Title>{element?.nombre}</Modal.Title>
           </Modal.Header>
@@ -66,8 +66,14 @@ export const ModalElement = ({element, interaction}) => {
                 defaultValue={element?.nombre}
                 autoFocus
                 disabled={edit}
-                {...register('nombre', {required: true})}
+                {...register('nombre', {
+                  required: 'Este campo es requerido',
+                  minLength: {value: 3, message: 'Mínimo 3 caracteres'},
+                })}
               />
+              <div className="invalid-feedback d-block">
+                {errors.nombre?.message}
+              </div>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
@@ -76,7 +82,9 @@ export const ModalElement = ({element, interaction}) => {
                 type="categoria"
                 defaultValue={element?.categoria?.nombre}
                 disabled={edit}
-                {...register('categoria', {required: true})}
+                {...register('categoria', {
+                  required: 'Este campo es requerido',
+                })}
               >
                 {categorias?.data?.categorias?.map((catElement, index) => (
                   <option key={index} value={catElement?.nombre}>
@@ -84,6 +92,9 @@ export const ModalElement = ({element, interaction}) => {
                   </option>
                 ))}
               </Form.Select>
+              <div className="invalid-feedback d-block">
+                {errors.categoria?.message}
+              </div>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="order">
@@ -105,8 +116,13 @@ export const ModalElement = ({element, interaction}) => {
                 as="textarea"
                 rows={5}
                 disabled={edit}
-                {...register('descripcion', {required: true})}
+                {...register('descripcion', {
+                  required: 'Este campo es requerido',
+                })}
               />
+              <div className="invalid-feedback d-block">
+                {errors.descripcion?.message}
+              </div>
             </Form.Group>
 
             <Form.Group controlId="formFile" className="mb-3">
