@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import {useForm} from 'react-hook-form';
+import Cookies from 'js-cookie';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import {useGetData} from '../../hooks/useGetData';
+import {putDataAxios} from '../../utils/axiosConfig';
 
 export const ModalElement = ({element, interaction}) => {
   const {
@@ -14,8 +16,8 @@ export const ModalElement = ({element, interaction}) => {
   } = useForm({
     defaultValues: {
       nombre: element?.nombre,
-      categoria: element?.categoria?.nombre,
-      orden: element?.precio,
+      categoria: element?.categoria?._id,
+      precio: element?.precio,
       descripcion: element?.description,
     },
   });
@@ -23,8 +25,8 @@ export const ModalElement = ({element, interaction}) => {
   useEffect(() => {
     reset({
       nombre: element?.nombre,
-      categoria: element?.categoria?.nombre,
-      orden: element?.precio,
+      categoria: element?.categoria?._id,
+      precio: element?.precio,
       descripcion: element?.description,
     });
   }, [reset, element]);
@@ -47,8 +49,16 @@ export const ModalElement = ({element, interaction}) => {
     setEdit(!edit);
   };
 
-  const onSaveChanges = (data) => {
-    console.log(data);
+  const onSaveChanges = async (data) => {
+    try {
+      const tokenCookie = Cookies.get('token');
+      const resp = await putDataAxios(
+        `/productos/${element._id}`,
+        data,
+        tokenCookie,
+      );
+      console.log(resp);
+    } catch (error) {}
   };
 
   return (
@@ -87,7 +97,11 @@ export const ModalElement = ({element, interaction}) => {
                 })}
               >
                 {categorias?.data?.categorias?.map((catElement, index) => (
-                  <option key={index} value={catElement?.nombre}>
+                  <option
+                    key={index}
+                    value={catElement?._id}
+                    defaultValue={catElement?.nombre}
+                  >
                     {catElement?.nombre}
                   </option>
                 ))}
@@ -104,7 +118,7 @@ export const ModalElement = ({element, interaction}) => {
                 type="number"
                 min="0"
                 disabled={edit}
-                {...register('orden')}
+                {...register('precio')}
               />
             </Form.Group>
 
