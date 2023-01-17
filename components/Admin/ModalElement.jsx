@@ -2,12 +2,15 @@ import React, {useState, useEffect} from 'react';
 import {useForm} from 'react-hook-form';
 import Cookies from 'js-cookie';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import {useGetData} from '../../hooks/useGetData';
 import {putDataAxios, putImageAxios} from '../../utils/axiosConfig';
 
 export const ModalElement = ({element, interaction}) => {
+  const [display, setDisplay] = useState('none');
+
   const {
     register,
     handleSubmit,
@@ -36,6 +39,7 @@ export const ModalElement = ({element, interaction}) => {
   const handleClose = () => {
     setShow(false);
     setEdit(true);
+    setDisplay('none');
   };
   const handleShow = () => setShow(true);
 
@@ -47,17 +51,22 @@ export const ModalElement = ({element, interaction}) => {
 
   const editInfo = () => {
     setEdit(!edit);
+    setDisplay('none');
   };
 
   const onSaveChanges = async (data) => {
     try {
       const tokenCookie = Cookies.get('token');
       await putDataAxios(`/productos/${element._id}`, data, tokenCookie);
-      putImageAxios(
-        `/uploads/productos/${element._id}`,
-        data.img[0],
-        tokenCookie,
-      );
+      if (data.img && data.img.length > 0) {
+        await putImageAxios(
+          `/uploads/productos/${element._id}`,
+          data.img[0],
+          tokenCookie,
+        );
+      }
+      setEdit(true);
+      setDisplay('');
     } catch (error) {}
   };
 
@@ -151,10 +160,13 @@ export const ModalElement = ({element, interaction}) => {
             <Button variant="primary" onClick={editInfo}>
               Editar
             </Button>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" disabled={edit}>
               Gaurdar cambios
             </Button>
           </Modal.Footer>
+          <Alert variant="success" style={{display: display}}>
+            Cambios guardados
+          </Alert>
         </Form>
       </Modal>
     </>
