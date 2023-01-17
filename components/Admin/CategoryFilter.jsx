@@ -7,7 +7,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import {CategoryTable} from './CategoryTable';
 
 export const CategoryFilter = () => {
-  const {data} = useGetData('/categorias/');
+  const {data} = useGetData('/categorias/') || {data: []};
   const productos = useGetData('/productos/');
 
   const [categorySelected, setCategorySelected] = useState('');

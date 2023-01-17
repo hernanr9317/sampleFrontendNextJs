@@ -62,3 +62,20 @@ export const putDataAxios = async (url, data, token = '') => {
     return response;
   } catch (error) {}
 };
+
+export const putImageAxios = async (url, data, token = '') => {
+  await axios
+    .put(
+      `${baseUrl}${url}`,
+      {archivo: data},
+      {
+        headers: {
+          'x-token': token,
+          'Content-Type': 'multipart/form-data',
+        },
+      },
+    )
+    .then(function (response) {
+      console.log(response);
+    });
+};

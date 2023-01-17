@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import {useGetData} from '../../hooks/useGetData';
-import {putDataAxios} from '../../utils/axiosConfig';
+import {putDataAxios, putImageAxios} from '../../utils/axiosConfig';
 
 export const ModalElement = ({element, interaction}) => {
   const {
@@ -57,7 +57,12 @@ export const ModalElement = ({element, interaction}) => {
         data,
         tokenCookie,
       );
-      console.log(resp);
+      putImageAxios(
+        `/uploads/productos/${element._id}`,
+        data.img[0],
+        tokenCookie,
+      );
+      // console.log(resp);
     } catch (error) {}
   };
 
@@ -141,7 +146,7 @@ export const ModalElement = ({element, interaction}) => {
 
             <Form.Group controlId="formFile" className="mb-3">
               <Form.Label>Subir archivo</Form.Label>
-              <Form.Control type="file" disabled={edit} />
+              <Form.Control type="file" disabled={edit} {...register('img')} />
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
