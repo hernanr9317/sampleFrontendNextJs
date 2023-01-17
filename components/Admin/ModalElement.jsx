@@ -52,17 +52,12 @@ export const ModalElement = ({element, interaction}) => {
   const onSaveChanges = async (data) => {
     try {
       const tokenCookie = Cookies.get('token');
-      const resp = await putDataAxios(
-        `/productos/${element._id}`,
-        data,
-        tokenCookie,
-      );
+      await putDataAxios(`/productos/${element._id}`, data, tokenCookie);
       putImageAxios(
         `/uploads/productos/${element._id}`,
         data.img[0],
         tokenCookie,
       );
-      // console.log(resp);
     } catch (error) {}
   };
 

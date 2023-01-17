@@ -4,7 +4,6 @@ const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export const getDataAxios = async (url, token = '') => {
   try {
-    // const response = await axios.get(`${baseUrl}${url}`);
     const response = await axios.get(`${baseUrl}${url}`, {
       headers: {
         'x-token': token,
@@ -79,3 +78,27 @@ export const putImageAxios = async (url, data, token = '') => {
       console.log(response);
     });
 };
+
+export const getFile = async (url, nombre) =>
+  axios({
+    url: `${baseUrl}${url}`,
+    method: 'GET',
+    responseType: 'blob',
+    onDownloadProgress: (progressEvent) => {
+      const percentCompleted = Math.round(
+        (progressEvent.loaded * 100) / progressEvent.total,
+      );
+      console.log(percentCompleted);
+    },
+  }).then((response) => {
+    const url = window.URL.createObjectURL(
+      new Blob([response.data], {type: 'application/pdf'}),
+    );
+    const link = document.createElement('a');
+    link.href = url;
+    link.target = '_blank';
+    // link.download = `${nombre}.pdf`;
+    // link.setAttribute('download', `${nombre}.pdf`);
+    document.body.appendChild(link);
+    link.click();
+  });
