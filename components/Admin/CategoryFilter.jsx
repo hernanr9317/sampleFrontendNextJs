@@ -4,6 +4,7 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
+import Alert from 'react-bootstrap/Alert';
 import {CategoryTable} from './CategoryTable';
 
 export const CategoryFilter = () => {
@@ -11,6 +12,7 @@ export const CategoryFilter = () => {
   const productos = useGetData('/productos/');
 
   const [categorySelected, setCategorySelected] = useState('');
+  const [descrription, setDescrription] = useState('');
 
   const categoriesFilter = productos?.data?.productos.filter(
     (element) => element.categoria.nombre === categorySelected,
@@ -18,13 +20,13 @@ export const CategoryFilter = () => {
 
   const onClick = (element) => {
     setCategorySelected(element.nombre);
+    setDescrription(element.description);
   };
 
   return (
     <div>
-      <ButtonGroup>
+      <ButtonGroup className="mt-4">
         <Button>+ Agregar categoria</Button>
-        {/* <Button>- Eliminar categoria</Button> */}
 
         <DropdownButton
           as={ButtonGroup}
@@ -45,7 +47,17 @@ export const CategoryFilter = () => {
         </DropdownButton>
       </ButtonGroup>
 
-      <CategoryTable categories={categoriesFilter} title={categorySelected} />
+      {categorySelected === '' && (
+        <Alert variant="primary" className="mt-3">
+          Seleccione una categoría
+        </Alert>
+      )}
+
+      <CategoryTable
+        categories={categoriesFilter}
+        title={categorySelected}
+        description={descrription}
+      />
     </div>
   );
 };

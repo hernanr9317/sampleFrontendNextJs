@@ -9,7 +9,7 @@ const AdminScreen = () => {
       pageDescription={'Admin dashboard'}
     >
       <div>Admin</div>
-      <div className="mt-5">
+      <div className="mt-5 container">
         {/* <AddCategory /> */}
         <CategoryFilter />
       </div>
