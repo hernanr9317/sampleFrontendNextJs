@@ -11,6 +11,7 @@ import {FaTrashAlt} from 'react-icons/fa';
 
 export const CategoryTable = ({categories, title, id, description}) => {
   const [display, setDisplay] = useState('none');
+  const [messageAlert, setMessageAlert] = useState('');
 
   const {
     register,
@@ -19,14 +20,14 @@ export const CategoryTable = ({categories, title, id, description}) => {
     formState: {errors},
   } = useForm({
     defaultValues: {
-      nombre: title,
+      nombre: title || '',
       descripcion: description || '',
     },
   });
 
   useEffect(() => {
     reset({
-      nombre: title,
+      nombre: title || '',
       descripcion: description || '',
     });
   }, [reset, categories]);
@@ -42,7 +43,6 @@ export const CategoryTable = ({categories, title, id, description}) => {
   };
 
   useEffect(() => {
-    console.log(id);
     if (id) setEditButton(false);
   }, [categories]);
 
@@ -56,6 +56,7 @@ export const CategoryTable = ({categories, title, id, description}) => {
     try {
       const tokenCookie = Cookies.get('token');
       await putDataAxios(`/categorias/${id}`, data, tokenCookie);
+      setMessageAlert('Cambios guardados');
       setDisplay('');
 
       setTimeout(() => {
@@ -65,9 +66,17 @@ export const CategoryTable = ({categories, title, id, description}) => {
   };
 
   const handleDelete = async () => {
-    console.log(id);
-    const tokenCookie = Cookies.get('token');
-    await deleteDataAxios(`/categorias/${id}`, tokenCookie);
+    try {
+      const tokenCookie = Cookies.get('token');
+      await deleteDataAxios(`/categorias/${id}`, tokenCookie);
+      setEditForm(true);
+      setMessageAlert('Categoria eliminada exitosamente');
+      setDisplay('');
+
+      setTimeout(() => {
+        setDisplay('none');
+      }, 3500);
+    } catch (error) {}
   };
 
   return (
@@ -132,7 +141,7 @@ export const CategoryTable = ({categories, title, id, description}) => {
             </Button>
           </Card.Body>
           <Alert variant="success" style={{display: display, margin: '5px'}}>
-            Cambios guardados
+            {messageAlert}
           </Alert>
         </Form>
       </Card>
