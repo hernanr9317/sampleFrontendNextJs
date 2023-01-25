@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {postDataAxios} from '../../utils/axiosConfig';
+import {FcAddDatabase} from 'react-icons/fc';
 
 export const AddCategory = () => {
   const {
@@ -41,7 +42,14 @@ export const AddCategory = () => {
 
   return (
     <>
-      <Button onClick={handleShow}>+ Agregar categoria</Button>
+      <Button
+        variant={'success'}
+        onClick={handleShow}
+        style={{marginRight: '3px'}}
+      >
+        Agregar categoria{' '}
+        <FcAddDatabase size={'25px'} style={{marginLeft: '3px'}} />
+      </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Form onSubmit={handleSubmit(onSaveChanges)} autoComplete="off">

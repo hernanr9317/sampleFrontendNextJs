@@ -161,7 +161,7 @@ export const ModalElement = ({element, interaction}) => {
               Editar
             </Button>
             <Button variant="primary" type="submit" disabled={edit}>
-              Gaurdar cambios
+              Gaurdar
             </Button>
           </Modal.Footer>
           <Alert variant="success" style={{display: display}}>
