@@ -6,7 +6,8 @@ import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import {ModalElement} from './ModalElement';
-import {putDataAxios} from '../../utils/axiosConfig';
+import {deleteDataAxios, putDataAxios} from '../../utils/axiosConfig';
+import {FaTrashAlt} from 'react-icons/fa';
 
 export const CategoryTable = ({categories, title, id, description}) => {
   const [display, setDisplay] = useState('none');
@@ -41,7 +42,8 @@ export const CategoryTable = ({categories, title, id, description}) => {
   };
 
   useEffect(() => {
-    if (categories?.length > 0) setEditButton(false);
+    console.log(id);
+    if (id) setEditButton(false);
   }, [categories]);
 
   const handleEdit = () => {
@@ -60,6 +62,12 @@ export const CategoryTable = ({categories, title, id, description}) => {
         setDisplay('none');
       }, 3500);
     } catch (error) {}
+  };
+
+  const handleDelete = async () => {
+    console.log(id);
+    const tokenCookie = Cookies.get('token');
+    await deleteDataAxios(`/categorias/${id}`, tokenCookie);
   };
 
   return (
@@ -113,6 +121,14 @@ export const CategoryTable = ({categories, title, id, description}) => {
               style={{marginLeft: '5px'}}
             >
               Guardar
+            </Button>
+            <Button
+              variant="danger"
+              onClick={handleDelete}
+              disabled={editForm}
+              style={{float: 'right'}}
+            >
+              <FaTrashAlt color="white" size="25px" />
             </Button>
           </Card.Body>
           <Alert variant="success" style={{display: display, margin: '5px'}}>

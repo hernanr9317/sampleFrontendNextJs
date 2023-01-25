@@ -87,6 +87,24 @@ export const putImageAxios = async (url, data, token = '') => {
     });
 };
 
+export const deleteDataAxios = async (url, token = '') => {
+  try {
+    const response = await axios
+      .delete(`${baseUrl}${url}`, {
+        headers: {
+          'x-token': token,
+        },
+      })
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    return response;
+  } catch (error) {}
+};
+
 export const getFile = async (url, nombre) =>
   axios({
     url: `${baseUrl}${url}`,
