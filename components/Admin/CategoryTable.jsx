@@ -137,7 +137,7 @@ export const CategoryTable = ({categories, title, id, description}) => {
               disabled={editForm}
               style={{float: 'right'}}
             >
-              <FaTrashAlt color="white" size="25px" />
+              <FaTrashAlt color="white" size="22px" />
             </Button>
           </Card.Body>
           <Alert variant="success" style={{display: display, margin: '5px'}}>

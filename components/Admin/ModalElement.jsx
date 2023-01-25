@@ -5,11 +5,17 @@ import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+import {FaTrashAlt, FaSave, FaEdit} from 'react-icons/fa';
 import {useGetData} from '../../hooks/useGetData';
-import {putDataAxios, putImageAxios} from '../../utils/axiosConfig';
+import {
+  deleteDataAxios,
+  putDataAxios,
+  putImageAxios,
+} from '../../utils/axiosConfig';
 
 export const ModalElement = ({element, interaction}) => {
   const [display, setDisplay] = useState('none');
+  const [alertMessage, setAlertMessage] = useState('');
 
   const {
     register,
@@ -65,6 +71,17 @@ export const ModalElement = ({element, interaction}) => {
           tokenCookie,
         );
       }
+      setAlertMessage('Cambios guardados');
+      setEdit(true);
+      setDisplay('');
+    } catch (error) {}
+  };
+
+  const handleDelete = async () => {
+    try {
+      const tokenCookie = Cookies.get('token');
+      await deleteDataAxios(`/productos/${element._id}`, tokenCookie);
+      setAlertMessage('Eliminado exitosamente');
       setEdit(true);
       setDisplay('');
     } catch (error) {}
@@ -154,18 +171,32 @@ export const ModalElement = ({element, interaction}) => {
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Cerrar
+            <Button
+              variant="primary"
+              style={{display: 'flex'}}
+              onClick={editInfo}
+            >
+              Editar <FaEdit size="20px" style={{marginLeft: '3px'}} />
             </Button>
-            <Button variant="primary" onClick={editInfo}>
-              Editar
+            <Button
+              variant="primary"
+              type="submit"
+              style={{display: 'flex'}}
+              disabled={edit}
+            >
+              Gaurdar <FaSave size="20px" style={{marginLeft: '3px'}} />
             </Button>
-            <Button variant="primary" type="submit" disabled={edit}>
-              Gaurdar
+            <Button
+              variant="danger"
+              style={{display: 'flex'}}
+              disabled={edit}
+              onClick={handleDelete}
+            >
+              Eliminar <FaTrashAlt size="20px" style={{marginLeft: '3px'}} />
             </Button>
           </Modal.Footer>
           <Alert variant="success" style={{display: display}}>
-            Cambios guardados
+            {alertMessage}
           </Alert>
         </Form>
       </Modal>
