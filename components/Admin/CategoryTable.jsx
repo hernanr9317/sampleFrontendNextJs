@@ -19,14 +19,14 @@ export const CategoryTable = ({categories, title, id, description}) => {
   } = useForm({
     defaultValues: {
       nombre: title,
-      descripcion: description,
+      descripcion: description || '',
     },
   });
 
   useEffect(() => {
     reset({
       nombre: title,
-      descripcion: description,
+      descripcion: description || '',
     });
   }, [reset, categories]);
 
