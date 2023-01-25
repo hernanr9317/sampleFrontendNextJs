@@ -13,6 +13,7 @@ export const CategoryFilter = () => {
 
   const [categorySelected, setCategorySelected] = useState('');
   const [descrription, setDescrription] = useState('');
+  const [id, setId] = useState('');
 
   const categoriesFilter = productos?.data?.productos.filter(
     (element) => element.categoria.nombre === categorySelected,
@@ -21,6 +22,7 @@ export const CategoryFilter = () => {
   const onClick = (element) => {
     setCategorySelected(element.nombre);
     setDescrription(element.description);
+    setId(element._id);
   };
 
   return (
@@ -56,6 +58,7 @@ export const CategoryFilter = () => {
       <CategoryTable
         categories={categoriesFilter}
         title={categorySelected}
+        id={id}
         description={descrription}
       />
     </div>
