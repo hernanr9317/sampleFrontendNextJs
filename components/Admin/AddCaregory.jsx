@@ -1,33 +1,77 @@
-import {useState} from 'react';
-import Button from 'react-bootstrap/Button';
+import React, {useState} from 'react';
+import Cookies from 'js-cookie';
+import {useForm} from 'react-hook-form';
 import Form from 'react-bootstrap/Form';
-import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import {postDataAxios} from '../../utils/axiosConfig';
 
 export const AddCategory = () => {
-  const [category, setCategory] = useState('');
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: {errors},
+  } = useForm();
 
-  const handleCategory = (e) => {
-    e.preventDefault();
-    console.log(category);
+  const [disabled, setDisabled] = useState(false);
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => {
+    setShow(false);
+    reset();
+  };
+  const handleShow = () => setShow(true);
+
+  const onSaveChanges = async (data) => {
+    console.log(data);
+
+    try {
+      const tokenCookie = Cookies.get('token');
+      await postDataAxios('/categorias/', data, tokenCookie);
+
+      setDisabled(true);
+
+      setTimeout(() => {
+        setDisabled(false);
+      }, 2000);
+    } catch (error) {}
   };
 
   return (
-    <Container style={{width: '350px'}}>
-      <Form onSubmit={handleCategory}>
-        <Form.Group className="mb-3" controlId="addCategory">
-          <Form.Label>Agregar categoría</Form.Label>
-          <Form.Control
-            type="category"
-            placeholder="Ingrese el nombre de la categoría"
-            required
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Confirmar
-        </Button>
-      </Form>
-    </Container>
+    <>
+      <Button onClick={handleShow}>+ Agregar categoria</Button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Form onSubmit={handleSubmit(onSaveChanges)} autoComplete="off">
+          <Modal.Header closeButton>
+            <Modal.Title>Agregar nueva categoria</Modal.Title>
+          </Modal.Header>
+          <Form.Group className="m-3" controlId="exampleForm.ControlInput1">
+            <Form.Control
+              type="name"
+              placeholder="Nombre de la categoria"
+              autoFocus
+              {...register('name', {
+                required: 'Este campo es requerido',
+                minLength: {value: 3, message: 'Mínimo 3 caracteres'},
+              })}
+            />
+            <div className="invalid-feedback d-block">
+              {errors.name?.message}
+            </div>
+          </Form.Group>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Cerrar
+            </Button>
+            <Button variant="primary" type="submit" disabled={disabled}>
+              Guardar
+            </Button>
+          </Modal.Footer>
+        </Form>
+      </Modal>
+    </>
   );
 };

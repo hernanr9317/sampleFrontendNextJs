@@ -16,15 +16,23 @@ export const getDataAxios = async (url, token = '') => {
   }
 };
 
-export const postDataAxios = async (url, data) => {
+export const postDataAxios = async (url, data, token = '') => {
   try {
     const response = await axios
-      .post(`${baseUrl}${url}`, {
-        rol: data?.rol,
-        nombre: data?.name,
-        correo: data?.email,
-        password: data?.password,
-      })
+      .post(
+        `${baseUrl}${url}`,
+        {
+          rol: data?.rol,
+          nombre: data?.name,
+          correo: data?.email,
+          password: data?.password,
+        },
+        {
+          headers: {
+            'x-token': token,
+          },
+        },
+      )
       .then((response) => {
         return response;
       })

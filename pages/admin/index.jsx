@@ -10,7 +10,6 @@ const AdminScreen = () => {
     >
       <div>Admin</div>
       <div className="mt-5 container">
-        {/* <AddCategory /> */}
         <CategoryFilter />
       </div>
     </AdminLayout>

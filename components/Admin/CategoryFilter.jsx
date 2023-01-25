@@ -6,6 +6,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Alert from 'react-bootstrap/Alert';
 import {CategoryTable} from './CategoryTable';
+import {AddCategory} from './AddCaregory';
 
 export const CategoryFilter = () => {
   const {data} = useGetData('/categorias/') || {data: []};
@@ -28,7 +29,7 @@ export const CategoryFilter = () => {
   return (
     <div>
       <ButtonGroup className="mt-4">
-        <Button>+ Agregar categoria</Button>
+        <AddCategory />
 
         <DropdownButton
           as={ButtonGroup}
