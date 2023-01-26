@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import {ModalElement} from './ModalElement';
 import {deleteDataAxios, putDataAxios} from '../../utils/axiosConfig';
-import {FaTrashAlt, FaSave, FaEdit} from 'react-icons/fa';
+import {FaTrashAlt, FaSave, FaEdit, FaFolderPlus} from 'react-icons/fa';
 import {AiOutlineFieldNumber} from 'react-icons/ai';
 
 export const CategoryTable = ({categories, title, id, description}) => {
@@ -40,6 +40,12 @@ export const CategoryTable = ({categories, title, id, description}) => {
 
   const selectItem = (element) => {
     setElement(element);
+    setInteraction(!interaction);
+  };
+
+  //TODO: HACER FUNCIONAR EL BOTON DE AGREGAR ELEMENTO
+  const addElement = () => {
+    setElement('Nuevo elemento');
     setInteraction(!interaction);
   };
 
@@ -152,6 +158,16 @@ export const CategoryTable = ({categories, title, id, description}) => {
           </Alert>
         </Form>
       </Card>
+
+      <Button
+        variant="success"
+        onClick={() => addElement('')}
+        style={{display: 'flex', marginTop: '50px'}}
+      >
+        Agregar elemento
+        <FaFolderPlus size={'22px'} style={{marginLeft: '4px'}} />
+      </Button>
+
       <table className="table table-hover mt-3">
         <thead
           style={{
