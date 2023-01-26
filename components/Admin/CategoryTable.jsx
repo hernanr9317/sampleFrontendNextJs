@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import {ModalElement} from './ModalElement';
 import {deleteDataAxios, putDataAxios} from '../../utils/axiosConfig';
-import {FaTrashAlt} from 'react-icons/fa';
+import {FaTrashAlt, FaSave, FaEdit} from 'react-icons/fa';
 
 export const CategoryTable = ({categories, title, id, description}) => {
   const [display, setDisplay] = useState('none');
@@ -120,24 +120,34 @@ export const CategoryTable = ({categories, title, id, description}) => {
               variant="primary"
               onClick={handleEdit}
               disabled={editButton}
+              style={{display: 'inline-flex'}}
             >
               Editar
+              <FaEdit color="white" size="20px" style={{marginLeft: '3px'}} />
             </Button>
+
             <Button
               variant="primary"
               type="submit"
               disabled={editForm}
-              style={{marginLeft: '5px'}}
+              style={{marginLeft: '5px', display: 'inline-flex'}}
             >
               Guardar
+              <FaSave color="white" size="20px" style={{marginLeft: '3px'}} />
             </Button>
+
             <Button
               variant="danger"
               onClick={handleDelete}
               disabled={editForm}
-              style={{float: 'right'}}
+              style={{float: 'right', display: 'flex'}}
             >
-              <FaTrashAlt color="white" size="22px" />
+              Eliminar
+              <FaTrashAlt
+                color="white"
+                size="20px"
+                style={{marginLeft: '3px'}}
+              />
             </Button>
           </Card.Body>
           <Alert variant="success" style={{display: display, margin: '5px'}}>
