@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {postDataAxios} from '../../utils/axiosConfig';
 import {FcAddDatabase} from 'react-icons/fc';
+import {FaSave} from 'react-icons/fa';
 
 export const AddCategory = () => {
   const {
@@ -54,7 +55,7 @@ export const AddCategory = () => {
       <Modal show={show} onHide={handleClose}>
         <Form onSubmit={handleSubmit(onSaveChanges)} autoComplete="off">
           <Modal.Header closeButton>
-            <Modal.Title>Agregar nueva categoria</Modal.Title>
+            <Modal.Title>Agregar categoría</Modal.Title>
           </Modal.Header>
           <Form.Group className="m-3" controlId="exampleForm.ControlInput1">
             <Form.Control
@@ -74,8 +75,13 @@ export const AddCategory = () => {
             <Button variant="secondary" onClick={handleClose}>
               Cerrar
             </Button>
-            <Button variant="primary" type="submit" disabled={disabled}>
-              Guardar
+            <Button
+              variant="primary"
+              type="submit"
+              disabled={disabled}
+              style={{display: 'flex'}}
+            >
+              Guardar <FaSave size={'20px'} style={{marginLeft: '3px'}} />
             </Button>
           </Modal.Footer>
         </Form>

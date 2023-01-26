@@ -8,6 +8,7 @@ import Card from 'react-bootstrap/Card';
 import {ModalElement} from './ModalElement';
 import {deleteDataAxios, putDataAxios} from '../../utils/axiosConfig';
 import {FaTrashAlt, FaSave, FaEdit} from 'react-icons/fa';
+import {AiOutlineFieldNumber} from 'react-icons/ai';
 
 export const CategoryTable = ({categories, title, id, description}) => {
   const [display, setDisplay] = useState('none');
@@ -143,11 +144,7 @@ export const CategoryTable = ({categories, title, id, description}) => {
               style={{float: 'right', display: 'flex'}}
             >
               Eliminar
-              <FaTrashAlt
-                color="white"
-                size="20px"
-                style={{marginLeft: '3px'}}
-              />
+              <FaTrashAlt size="20px" style={{marginLeft: '3px'}} />
             </Button>
           </Card.Body>
           <Alert variant="success" style={{display: display, margin: '5px'}}>
@@ -156,9 +153,17 @@ export const CategoryTable = ({categories, title, id, description}) => {
         </Form>
       </Card>
       <table className="table table-hover mt-3">
-        <thead>
+        <thead
+          style={{
+            background:
+              'linear-gradient(90deg, rgba(44,80,99,1) 0%, rgba(1,1,1,1) 100%)',
+            color: 'white',
+          }}
+        >
           <tr>
-            <th scope="col">#</th>
+            <th scope="col">
+              <AiOutlineFieldNumber size={'24px'} />
+            </th>
             <th scope="col">Nombre</th>
             <th scope="col">Orden</th>
           </tr>
