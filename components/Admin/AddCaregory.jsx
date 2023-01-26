@@ -4,6 +4,7 @@ import {useForm} from 'react-hook-form';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Alert from 'react-bootstrap/Alert';
 import {postDataAxios} from '../../utils/axiosConfig';
 import {FcAddDatabase} from 'react-icons/fc';
 import {FaSave} from 'react-icons/fa';
@@ -20,6 +21,9 @@ export const AddCategory = () => {
 
   const [show, setShow] = useState(false);
 
+  const [display, setDisplay] = useState('none');
+  const [alertMessage, setAlertMessage] = useState('');
+
   const handleClose = () => {
     setShow(false);
     reset();
@@ -27,17 +31,29 @@ export const AddCategory = () => {
   const handleShow = () => setShow(true);
 
   const onSaveChanges = async (data) => {
-    console.log(data);
-
     try {
       const tokenCookie = Cookies.get('token');
-      await postDataAxios('/categorias/', data, tokenCookie);
+      const resp = await postDataAxios('/categorias/', data, tokenCookie);
 
-      setDisabled(true);
+      if (resp !== undefined) {
+        setDisabled(true);
+        setDisplay('');
+        setAlertMessage('Categoría añadida exitosamente');
 
-      setTimeout(() => {
-        setDisabled(false);
-      }, 2000);
+        setTimeout(() => {
+          setDisabled(false);
+          setDisplay('none');
+        }, 2500);
+      } else {
+        setDisabled(true);
+        setDisplay('');
+        setAlertMessage('Error al crear la nueva categoría');
+
+        setTimeout(() => {
+          setDisabled(false);
+          setDisplay('none');
+        }, 2500);
+      }
     } catch (error) {}
   };
 
@@ -52,7 +68,7 @@ export const AddCategory = () => {
         <FcAddDatabase size={'25px'} style={{marginLeft: '3px'}} />
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal backdrop="static" show={show} onHide={handleClose}>
         <Form onSubmit={handleSubmit(onSaveChanges)} autoComplete="off">
           <Modal.Header closeButton>
             <Modal.Title>Agregar categoría</Modal.Title>
@@ -84,6 +100,9 @@ export const AddCategory = () => {
               Guardar <FaSave size={'20px'} style={{marginLeft: '3px'}} />
             </Button>
           </Modal.Footer>
+          <Alert variant="success" style={{display: display}}>
+            {alertMessage}
+          </Alert>
         </Form>
       </Modal>
     </>
