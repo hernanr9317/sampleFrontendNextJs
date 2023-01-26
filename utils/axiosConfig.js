@@ -43,6 +43,33 @@ export const postDataAxios = async (url, data, token = '') => {
   } catch (error) {}
 };
 
+export const postDataAxiosElement = async (url, data, token = '') => {
+  try {
+    const response = await axios
+      .post(
+        `${baseUrl}${url}`,
+        {
+          nombre: data?.nombre,
+          categoria: data?.categoria,
+          precio: data?.precio,
+          description: data?.descripcion,
+        },
+        {
+          headers: {
+            'x-token': token,
+          },
+        },
+      )
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    return response;
+  } catch (error) {}
+};
+
 export const putDataAxios = async (url, data, token = '') => {
   try {
     const response = await axios

@@ -9,11 +9,12 @@ import {FaTrashAlt, FaSave, FaEdit} from 'react-icons/fa';
 import {useGetData} from '../../hooks/useGetData';
 import {
   deleteDataAxios,
+  postDataAxiosElement,
   putDataAxios,
   putImageAxios,
 } from '../../utils/axiosConfig';
 
-export const ModalElement = ({element, interaction}) => {
+export const ModalElement = ({element, interaction, type}) => {
   const [display, setDisplay] = useState('none');
   const [alertMessage, setAlertMessage] = useState('');
 
@@ -63,7 +64,14 @@ export const ModalElement = ({element, interaction}) => {
   const onSaveChanges = async (data) => {
     try {
       const tokenCookie = Cookies.get('token');
-      await putDataAxios(`/productos/${element._id}`, data, tokenCookie);
+      if (type === 'editElement') {
+        await putDataAxios(`/productos/${element._id}`, data, tokenCookie);
+      }
+
+      if (type === 'addElement') {
+        await postDataAxiosElement('/productos/', data, tokenCookie);
+      }
+      //TODO: FALATA HACER FUNCIONAR ESTA PARTE CUANDO SE AGREGA UN NUEVO ELEMENTO
       if (data.img && data.img.length > 0) {
         await putImageAxios(
           `/uploads/productos/${element._id}`,

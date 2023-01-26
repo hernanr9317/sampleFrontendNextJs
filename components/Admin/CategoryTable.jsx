@@ -13,6 +13,7 @@ import {AiOutlineFieldNumber} from 'react-icons/ai';
 export const CategoryTable = ({categories, title, id, description}) => {
   const [display, setDisplay] = useState('none');
   const [messageAlert, setMessageAlert] = useState('');
+  const [type, setType] = useState('');
 
   const {
     register,
@@ -39,13 +40,20 @@ export const CategoryTable = ({categories, title, id, description}) => {
   const [editForm, setEditForm] = useState(true);
 
   const selectItem = (element) => {
+    setType('editElement');
     setElement(element);
     setInteraction(!interaction);
   };
 
   //TODO: HACER FUNCIONAR EL BOTON DE AGREGAR ELEMENTO
   const addElement = () => {
-    setElement('Nuevo elemento');
+    setType('addElement');
+    setElement({
+      categoria: {
+        _id: id,
+        nombre: title,
+      },
+    });
     setInteraction(!interaction);
   };
 
@@ -198,7 +206,7 @@ export const CategoryTable = ({categories, title, id, description}) => {
           ))}
         </tbody>
       </table>
-      <ModalElement element={element} interaction={interaction} />
+      <ModalElement element={element} interaction={interaction} type={type} />
     </div>
   );
 };
