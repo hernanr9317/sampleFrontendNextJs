@@ -7,15 +7,20 @@
 
     .nav.nav-tabs.nav-fill {
         margin: auto;
-        max-width: 200px;
+        max-width: 95%;
+        display: block;
+       
     
         @include desktop(){
             max-width: 100%;
+            display: flex;
         }
     }
     
     .nav-fill .nav-item .nav-link, .nav-justified .nav-item .nav-link {
+        padding: 6px;
         color: black; 
+        border-bottom:  1px solid #F9F9F9;
     }
 }
 
