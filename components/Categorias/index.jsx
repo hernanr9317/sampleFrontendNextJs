@@ -18,12 +18,6 @@ export const Categorias = () => {
       dataElement.nombre !== 'NORMATIVAS' && dataElement.nombre !== 'NORMATIVA',
   );
 
-  const isMobile = useIsmobile();
-
-  useEffect(() => {
-    setStyles(isMobile ? {maxWidth: '200px', margin: 'auto'} : {});
-  }, [isMobile]);
-
   return (
     <div style={{marginTop: '100px'}}>
       <h1 className="text-center" style={{marginBottom: '30px'}}>
@@ -36,7 +30,6 @@ export const Categorias = () => {
         className="mb-3"
         fill
         onSelect={(element) => setCategorySelected(element)}
-        style={styles}
       >
         {filteredData?.map((element, index) => (
           <Tab key={index} eventKey={element.nombre} title={element.nombre}>
