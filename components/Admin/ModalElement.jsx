@@ -69,9 +69,16 @@ export const ModalElement = ({element, interaction, type}) => {
       }
 
       if (type === 'addElement') {
-        await postDataAxiosElement('/productos/', data, tokenCookie);
+        const respAddElement = await postDataAxiosElement(
+          '/productos/',
+          data,
+          tokenCookie,
+        );
+
+        setIdNewElement(respAddElement.data._id);
       }
-      //TODO: FALATA HACER FUNCIONAR ESTA PARTE CUANDO SE AGREGA UN NUEVO ELEMENTO
+      //TODO: EL ELEMENTO NO FUNCIONO BIEN TODAVIA, PROBAR DE TODAS LAS FORMAS QUE NO TENGA BUGS
+
       if (data.img && data.img.length > 0) {
         await putImageAxios(
           `/uploads/productos/${element._id}`,
@@ -173,10 +180,16 @@ export const ModalElement = ({element, interaction, type}) => {
               </div>
             </Form.Group>
 
-            <Form.Group controlId="formFile" className="mb-3">
-              <Form.Label>Subir archivo</Form.Label>
-              <Form.Control type="file" disabled={edit} {...register('img')} />
-            </Form.Group>
+            {type === 'editElement' && (
+              <Form.Group controlId="formFile" className="mb-3">
+                <Form.Label>Subir archivo</Form.Label>
+                <Form.Control
+                  type="file"
+                  disabled={edit}
+                  {...register('img')}
+                />
+              </Form.Group>
+            )}
           </Modal.Body>
           <Modal.Footer>
             <Button
