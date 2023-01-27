@@ -19,7 +19,7 @@ export const Categorias = () => {
 
   const isMobile = useIsmobile();
 
-  console.log(isMobile);
+  const styles = isMobile ? {maxWidth: '200px', margin: 'auto'} : {};
 
   return (
     <div style={{marginTop: '100px'}}>
@@ -33,7 +33,7 @@ export const Categorias = () => {
         className="mb-3"
         fill
         onSelect={(element) => setCategorySelected(element)}
-        style={{backgroundColor: 'black'}}
+        style={styles}
       >
         {filteredData?.map((element, index) => (
           <Tab key={index} eventKey={element.nombre} title={element.nombre}>
