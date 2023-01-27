@@ -12,13 +12,18 @@ export const Categorias = () => {
 
   const {data} = resp || {data: []};
 
+  const filteredData = data?.categorias?.filter(
+    (dataElement) =>
+      dataElement.nombre !== 'NORMATIVAS' && dataElement.nombre !== 'NORMATIVA',
+  );
+
   return (
     <div style={{marginTop: '100px'}}>
       <h1 className="text-center" style={{marginBottom: '30px'}}>
         Estándares tecnológicos de la Administración Pública (ETAPS)
       </h1>
       <CardGroup style={{marginBottom: '50px'}}>
-        {data?.categorias?.map((element, index) => (
+        {filteredData?.map((element, index) => (
           <Card style={{width: '18rem'}} key={index}>
             <Card.Img variant="top" />
             <Card.Body>
