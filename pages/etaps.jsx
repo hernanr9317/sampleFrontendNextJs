@@ -4,7 +4,7 @@ import {Categorias} from '../components/Categorias/index';
 const Etaps = () => {
   return (
     <PublicLayout
-      title={'e-seguridad - Normativas'}
+      title={'e-seguridad - Etaps'}
       pageDescription={'Normativas de seguridad informática'}
     >
       <Categorias />

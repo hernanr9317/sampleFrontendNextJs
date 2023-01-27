@@ -3,6 +3,8 @@ import {useGetData} from '../../hooks/useGetData';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 import {ViewCategory} from './ViewCategory';
 
 export const Categorias = () => {
@@ -22,25 +24,20 @@ export const Categorias = () => {
       <h1 className="text-center" style={{marginBottom: '30px'}}>
         Estándares tecnológicos de la Administración Pública (ETAPS)
       </h1>
-      <CardGroup style={{marginBottom: '50px'}}>
+
+      <Tabs
+        defaultActiveKey="profile"
+        id="fill-tab-example"
+        className="mb-3"
+        fill
+        onSelect={(element) => setCategorySelected(element)}
+      >
         {filteredData?.map((element, index) => (
-          <Card style={{width: '18rem'}} key={index}>
-            <Card.Img variant="top" />
-            <Card.Body>
-              <Card.Title>{element.nombre}</Card.Title>
-              <Button
-                variant="Light"
-                size="sm"
-                onClick={() => setCategorySelected(element.nombre)}
-                className="stretched-link"
-              >
-                Ver estándares
-              </Button>
-            </Card.Body>
-          </Card>
+          <Tab key={index} eventKey={element.nombre} title={element.nombre}>
+            <ViewCategory category={categorySelected} />
+          </Tab>
         ))}
-      </CardGroup>
-      <ViewCategory category={categorySelected} />
+      </Tabs>
     </div>
   );
 };
