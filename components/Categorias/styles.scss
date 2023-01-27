@@ -1,6 +1,15 @@
 
+.nav.nav-tabs.nav-fill {
+    max-width: 200px;
+
+    @include desktop(){
+        max-width: 100%;
+    }
+}
 
 .nav-fill .nav-item .nav-link, .nav-justified .nav-item .nav-link {
-    color: black;
+    color: black; 
 }
+
+
 
