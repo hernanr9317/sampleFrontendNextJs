@@ -34,7 +34,10 @@ export const Categorias = () => {
       >
         {filteredData?.map((element, index) => (
           <Tab key={index} eventKey={element.nombre} title={element.nombre}>
-            <ViewCategory category={categorySelected} />
+            <ViewCategory
+              category={categorySelected}
+              description={element.description}
+            />
           </Tab>
         ))}
       </Tabs>

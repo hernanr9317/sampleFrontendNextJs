@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import {getFile} from '../../utils/axiosConfig';
 
-export const ViewCategory = ({category}) => {
+export const ViewCategory = ({category, description}) => {
   const resp = useGetData('/productos/');
 
   const {data} = resp || {data: []};
@@ -19,6 +19,7 @@ export const ViewCategory = ({category}) => {
   return (
     <div style={{marginBottom: '50px'}}>
       <h2 className="text-center">{category}</h2>
+      <h5 className="text-center">{description}</h5>
       {filterCategory?.map((element, index) => (
         <Card key={index}>
           <Card.Header></Card.Header>
