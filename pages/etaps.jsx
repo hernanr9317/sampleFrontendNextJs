@@ -7,7 +7,9 @@ const Etaps = () => {
       title={'e-seguridad - Etaps'}
       pageDescription={'Normativas de seguridad informática'}
     >
-      <Categorias />
+      <div style={{maxWidth: '1400px', margin: 'auto'}}>
+        <Categorias />
+      </div>
     </PublicLayout>
   );
 };

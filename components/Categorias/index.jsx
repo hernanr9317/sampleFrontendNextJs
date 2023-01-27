@@ -1,11 +1,9 @@
 import {useState} from 'react';
 import {useGetData} from '../../hooks/useGetData';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import CardGroup from 'react-bootstrap/CardGroup';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import {ViewCategory} from './ViewCategory';
+import {useIsmobile} from './../../hooks/useIsMobile';
 
 export const Categorias = () => {
   const [categorySelected, setCategorySelected] = useState('');
@@ -19,6 +17,10 @@ export const Categorias = () => {
       dataElement.nombre !== 'NORMATIVAS' && dataElement.nombre !== 'NORMATIVA',
   );
 
+  const isMobile = useIsmobile();
+
+  console.log(isMobile);
+
   return (
     <div style={{marginTop: '100px'}}>
       <h1 className="text-center" style={{marginBottom: '30px'}}>
@@ -26,11 +28,12 @@ export const Categorias = () => {
       </h1>
 
       <Tabs
-        defaultActiveKey="profile"
-        id="fill-tab-example"
+        defaultActiveKey="etapTab"
+        id="etapTab"
         className="mb-3"
         fill
         onSelect={(element) => setCategorySelected(element)}
+        style={{backgroundColor: 'black'}}
       >
         {filteredData?.map((element, index) => (
           <Tab key={index} eventKey={element.nombre} title={element.nombre}>
