@@ -1,16 +1,24 @@
 
-.nav.nav-tabs.nav-fill {
-    margin: auto;
-    max-width: 200px;
+.etapsNav {
 
-    @include desktop(){
-        max-width: 100%;
+    .TabEtap{
+        background-color: #EDEDED;
+    }
+
+    .nav.nav-tabs.nav-fill {
+        margin: auto;
+        max-width: 200px;
+    
+        @include desktop(){
+            max-width: 100%;
+        }
+    }
+    
+    .nav-fill .nav-item .nav-link, .nav-justified .nav-item .nav-link {
+        color: black; 
     }
 }
 
-.nav-fill .nav-item .nav-link, .nav-justified .nav-item .nav-link {
-    color: black; 
-}
 
 
 

@@ -19,7 +19,7 @@ export const Categorias = () => {
   );
 
   return (
-    <div style={{marginTop: '100px'}}>
+    <div style={{marginTop: '100px'}} className="etapsNav">
       <h1 className="text-center" style={{marginBottom: '30px'}}>
         Estándares tecnológicos de la Administración Pública (ETAPS)
       </h1>
@@ -27,7 +27,7 @@ export const Categorias = () => {
       <Tabs
         defaultActiveKey="etapTab"
         id="etapTab"
-        className="mb-3"
+        className="mb-3 TabEtap"
         fill
         onSelect={(element) => setCategorySelected(element)}
       >
