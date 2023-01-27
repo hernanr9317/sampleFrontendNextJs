@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {useGetData} from '../../hooks/useGetData';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
@@ -7,6 +7,7 @@ import {useIsmobile} from './../../hooks/useIsMobile';
 
 export const Categorias = () => {
   const [categorySelected, setCategorySelected] = useState('');
+  const [styles, setStyles] = useState({});
 
   const resp = useGetData('/categorias/');
 
@@ -19,7 +20,9 @@ export const Categorias = () => {
 
   const isMobile = useIsmobile();
 
-  const styles = isMobile ? {maxWidth: '200px', margin: 'auto'} : {};
+  useEffect(() => {
+    setStyles(isMobile ? {maxWidth: '200px', margin: 'auto'} : {});
+  }, [isMobile]);
 
   return (
     <div style={{marginTop: '100px'}}>

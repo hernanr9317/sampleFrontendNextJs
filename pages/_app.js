@@ -1,6 +1,7 @@
 import {useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import '../styles/globals.css';
+// import '../styles/globals.css';
+import '../styles/globals.scss';
 import {AuthProvider} from '../context';
 
 function MyApp({Component, pageProps}) {
