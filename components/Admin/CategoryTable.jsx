@@ -169,6 +169,7 @@ export const CategoryTable = ({categories, title, id, description}) => {
 
       <Button
         variant="success"
+        disabled={title === '' ? true : false}
         onClick={() => addElement('')}
         style={{display: 'flex', marginTop: '50px'}}
       >

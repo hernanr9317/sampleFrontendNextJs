@@ -69,13 +69,7 @@ export const ModalElement = ({element, interaction, type}) => {
       }
 
       if (type === 'addElement') {
-        const respAddElement = await postDataAxiosElement(
-          '/productos/',
-          data,
-          tokenCookie,
-        );
-
-        setIdNewElement(respAddElement.data._id);
+        await postDataAxiosElement('/productos/', data, tokenCookie);
       }
       //TODO: EL ELEMENTO NO FUNCIONO BIEN TODAVIA, PROBAR DE TODAS LAS FORMAS QUE NO TENGA BUGS
 
