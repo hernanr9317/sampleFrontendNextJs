@@ -18,8 +18,9 @@ export const ViewCategory = ({category, description}) => {
 
   return (
     <div style={{marginBottom: '50px'}}>
-      <h2 className="text-center">{category}</h2>
-      <h5 className="text-center">{description}</h5>
+      <h1 className="text-center title">{category}</h1>
+      <hr className="divider" />
+      <h2 className="description">{description}</h2>
       {filterCategory?.map((element, index) => (
         <Card key={index}>
           <Card.Header></Card.Header>

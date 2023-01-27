@@ -1,13 +1,12 @@
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import {useGetData} from '../../hooks/useGetData';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import {ViewCategory} from './ViewCategory';
-import {useIsmobile} from './../../hooks/useIsMobile';
+import {FcInspection} from 'react-icons/fc';
 
 export const Categorias = () => {
   const [categorySelected, setCategorySelected] = useState('');
-  const [styles, setStyles] = useState({});
 
   const resp = useGetData('/categorias/');
 
@@ -22,6 +21,7 @@ export const Categorias = () => {
     <div style={{marginTop: '100px'}} className="etapsNav">
       <h1 className="text-center" style={{marginBottom: '30px'}}>
         Estándares tecnológicos de la Administración Pública (ETAPS)
+        <FcInspection />
       </h1>
 
       <Tabs
