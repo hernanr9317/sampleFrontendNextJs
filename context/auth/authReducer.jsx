@@ -1,7 +1,3 @@
-// import {AuthState} from './';
-
-// type AuthActionType = {type: '[Auth] - Login'};
-
 export const authReducer = (state, action) => {
   switch (action.type) {
     case '[Auth] - Login':

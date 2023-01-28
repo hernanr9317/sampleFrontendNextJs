@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Container from 'react-bootstrap/Container';
+import {useState, useEffect} from 'react';
 import Nav from 'react-bootstrap/Nav';
 import logo from '../../public/assets/navbar/logo.png';
 import Navbar from 'react-bootstrap/Navbar';

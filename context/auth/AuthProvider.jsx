@@ -39,7 +39,13 @@ export const AuthProvider = ({children}) => {
     try {
       const resp = await postDataAxios('/auth/login/', data);
       Cookies.set('token', resp.data.token);
-      dispatch({type: '[Auth] - Login', payload: resp.data.usuario.correo});
+      dispatch({
+        type: '[Auth] - Login',
+        payload: {
+          correo: resp.data.usuario.correo,
+          nombre: resp.data.usuario.nombre,
+        },
+      });
       return true;
     } catch (error) {
       return false;
