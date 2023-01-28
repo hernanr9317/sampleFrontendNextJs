@@ -4,12 +4,25 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import logo from '../../public/assets/navbar/logo.png';
 import Navbar from 'react-bootstrap/Navbar';
+import Dropdown from 'react-bootstrap/Dropdown';
+import {useContext} from 'react';
+import {AuthContext} from './../../context/auth/AuthContext';
+import {FaUserAlt} from 'react-icons/fa';
+import {useRouter} from 'next/router';
 
 export const AdminNavbar = () => {
+  const router = useRouter();
+  const {user, logOut} = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logOut();
+    router.replace('/auth/login');
+  };
+
   return (
     <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
       <Container>
-        <Navbar.Brand className="navbarImg">
+        <Navbar.Brand>
           <Link className="navbar-brand" href="/">
             <a>
               <Image src={logo} width="80" height="50" alt="Logo" />
@@ -18,11 +31,21 @@ export const AdminNavbar = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="/">Inicio</Nav.Link>
-            <Nav.Link href="/Seccion1">Subir archivo</Nav.Link>
-            <Nav.Link href="/Seccion2">Seccion2</Nav.Link>
-            <Nav.Link href="/Seccion3">Seccion3</Nav.Link>
+          <Nav className="userNav">
+            <Dropdown align="end" className="dropDownUser">
+              <Dropdown.Toggle className="userToggle" variant="dark">
+                <FaUserAlt size={'20px'} className="userImg" /> {user?.nombre}
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu variant="dark" className="userMenuBox">
+                <Dropdown.Item
+                  className="userMenuItem"
+                  onClick={() => handleLogout()}
+                >
+                  Salir
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </Nav>
         </Navbar.Collapse>
       </Container>

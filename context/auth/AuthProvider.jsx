@@ -46,6 +46,15 @@ export const AuthProvider = ({children}) => {
     }
   };
 
+  const logOut = async () => {
+    try {
+      dispatch({type: '[Auth] - Logout'});
+      Cookies.remove('token');
+    } catch (error) {
+      return false;
+    }
+  };
+
   const registerUser = async (data) => {
     try {
       if (data.key === process.env.NEXT_PUBLIC_API_KEY) {
@@ -65,6 +74,7 @@ export const AuthProvider = ({children}) => {
       value={{
         ...state,
         loginUser,
+        logOut,
         registerUser,
       }}
     >

@@ -77,6 +77,7 @@ const LoginPage = () => {
           </Button>
         </Link>
       </Form>
+      )
     </AuthLayout>
   );
 };

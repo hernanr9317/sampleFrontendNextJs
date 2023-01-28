@@ -1,6 +1,5 @@
 import {CategoryFilter} from '../../components/Admin/CategoryFilter';
 import {AdminLayout} from '../../components/layouts';
-import {AddCategory} from './../../components/Admin/AddCaregory';
 
 const AdminScreen = () => {
   return (
