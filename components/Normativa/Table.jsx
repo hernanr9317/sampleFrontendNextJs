@@ -2,7 +2,8 @@ import Table from 'react-bootstrap/Table';
 import {useGetData} from './../../hooks/useGetData';
 import Button from 'react-bootstrap/Button';
 import {getFile} from '../../utils/axiosConfig';
-import {FaCloudDownloadAlt} from 'react-icons/fa';
+import {FaFileDownload} from 'react-icons/fa';
+import {FcDocument} from 'react-icons/fc';
 
 export const NormsTable = () => {
   const resp = useGetData('/productos/');
@@ -19,7 +20,9 @@ export const NormsTable = () => {
 
   return (
     <div className="Normativa">
-      <h1 style={{textAlign: 'center', marginBottom: '25px'}}>Normativas</h1>
+      <h1 style={{textAlign: 'center', marginBottom: '25px'}}>
+        Normativas <FcDocument />
+      </h1>
       <Table striped bordered hover variant="dark" className="NormTable">
         <thead>
           <tr>
@@ -32,14 +35,14 @@ export const NormsTable = () => {
           {filterCategory?.map((element, index) => (
             <tr key={index}>
               <td>{element.nombre}</td>
-              <td>{element.description}</td>
+              <td className="NormTr description">{element.description}</td>
               <td className="NormTr download">
                 <Button
                   variant="primary"
                   size="sm"
                   onClick={() => viewFile(element._id, element.nombre)}
                 >
-                  <FaCloudDownloadAlt size={'20px'} />
+                  <FaFileDownload size={'20px'} />
                 </Button>
               </td>
             </tr>
