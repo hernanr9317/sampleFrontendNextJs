@@ -38,7 +38,7 @@ export const ViewCategory = ({category, description}) => {
             >
               Descargar <FaFileDownload size={'22px'} />
             </Button>
-            <Card.Footer className="text-muted">
+            <Card.Footer className="text-muted cardFooter">
               Ùltima actualización{' '}
               {dayjs(element.updatedAt).format('DD/MM/YYYY')}
             </Card.Footer>
