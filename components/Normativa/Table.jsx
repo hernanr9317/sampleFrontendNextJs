@@ -3,6 +3,7 @@ import {useGetData} from './../../hooks/useGetData';
 import Button from 'react-bootstrap/Button';
 import {getFile} from '../../utils/axiosConfig';
 import {FcDocument, FcDownload} from 'react-icons/fc';
+import {ascendingOrder} from './../helpers/helpers';
 
 export const NormsTable = () => {
   const resp = useGetData('/productos/');
@@ -12,6 +13,8 @@ export const NormsTable = () => {
   const filterCategory = data?.productos?.filter(
     (element) => element.categoria.nombre === 'NORMATIVAS',
   );
+
+  const orderItems = ascendingOrder(filterCategory);
 
   const viewFile = async (id, nombre) => {
     await getFile(`/uploads/productos/${id}`, nombre);
@@ -31,7 +34,7 @@ export const NormsTable = () => {
           </tr>
         </thead>
         <tbody>
-          {filterCategory?.map((element, index) => (
+          {orderItems?.map((element, index) => (
             <tr key={index}>
               <td>{element.nombre}</td>
               <td className="NormTr description">{element.description}</td>

@@ -15,11 +15,11 @@ export const ViewCategory = ({category, description}) => {
     (element) => element.categoria.nombre === category,
   );
 
+  const orderItems = ascendingOrder(filterCategory);
+
   const viewFile = async (id, nombre) => {
     await getFile(`/uploads/productos/${id}`, nombre);
   };
-
-  const orderItems = ascendingOrder(filterCategory);
 
   return (
     <div style={{marginBottom: '50px'}}>
