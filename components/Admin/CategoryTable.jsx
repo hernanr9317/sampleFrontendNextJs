@@ -45,7 +45,6 @@ export const CategoryTable = ({categories, title, id, description}) => {
     setInteraction(!interaction);
   };
 
-  //TODO: HACER FUNCIONAR EL BOTON DE AGREGAR ELEMENTO
   const addElement = () => {
     setType('addElement');
     setElement({

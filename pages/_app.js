@@ -2,7 +2,7 @@ import {useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 // import '../styles/globals.css';
 import '../styles/globals.scss';
-import {AuthProvider} from '../context';
+import {AuthProvider, ChangeDataProvider} from '../context';
 
 function MyApp({Component, pageProps}) {
   useEffect(() => {
@@ -11,7 +11,9 @@ function MyApp({Component, pageProps}) {
 
   return (
     <AuthProvider>
-      <Component {...pageProps} />
+      <ChangeDataProvider>
+        <Component {...pageProps} />
+      </ChangeDataProvider>
     </AuthProvider>
   );
 }

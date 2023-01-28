@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import Cookies from 'js-cookie';
 import {useForm} from 'react-hook-form';
 import Form from 'react-bootstrap/Form';
@@ -8,6 +8,7 @@ import Alert from 'react-bootstrap/Alert';
 import {postDataAxios} from '../../utils/axiosConfig';
 import {FcAddDatabase} from 'react-icons/fc';
 import {FaSave} from 'react-icons/fa';
+import {ChangeDataContext} from './../../context/changeData/ChangeDataContext';
 
 export const AddCategory = () => {
   const {
@@ -57,8 +58,16 @@ export const AddCategory = () => {
     } catch (error) {}
   };
 
+  const {isNewData, needUpload} = useContext(ChangeDataContext);
+
+  const newDatabutton = () => {
+    isNewData();
+    console.log(needUpload);
+  };
+
   return (
     <>
+      <Button onClick={() => newDatabutton()}>nueeva info</Button>
       <Button
         variant={'success'}
         onClick={handleShow}
