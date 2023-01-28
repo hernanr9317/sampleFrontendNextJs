@@ -3,7 +3,9 @@ import {useGetData} from './../../hooks/useGetData';
 import Button from 'react-bootstrap/Button';
 import {getFile} from '../../utils/axiosConfig';
 import {FaFileDownload} from 'react-icons/fa';
-import {FcDocument} from 'react-icons/fc';
+import {FcDocument, FcDownload} from 'react-icons/fc';
+
+// AiOutlineDownload;
 
 export const NormsTable = () => {
   const resp = useGetData('/productos/');
@@ -23,7 +25,7 @@ export const NormsTable = () => {
       <h1 style={{textAlign: 'center', marginBottom: '25px'}}>
         Normativas <FcDocument />
       </h1>
-      <Table striped bordered hover variant="dark" className="NormTable">
+      <Table hover className="NormTable">
         <thead>
           <tr>
             <th className="NormTh">Normativa</th>
@@ -38,11 +40,11 @@ export const NormsTable = () => {
               <td className="NormTr description">{element.description}</td>
               <td className="NormTr download">
                 <Button
-                  variant="primary"
+                  variant="light"
                   size="sm"
                   onClick={() => viewFile(element._id, element.nombre)}
                 >
-                  <FaFileDownload size={'20px'} />
+                  <FcDownload size={'20px'} />
                 </Button>
               </td>
             </tr>
