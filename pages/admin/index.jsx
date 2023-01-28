@@ -1,5 +1,6 @@
 import {CategoryFilter} from '../../components/Admin/CategoryFilter';
 import {AdminLayout} from '../../components/layouts';
+import {AdminHeader} from './../../components/Admin/AdminHeader';
 
 const AdminScreen = () => {
   return (
@@ -9,6 +10,7 @@ const AdminScreen = () => {
     >
       <div>Admin</div>
       <div className="mt-5 container">
+        <AdminHeader />
         <CategoryFilter />
       </div>
     </AdminLayout>
