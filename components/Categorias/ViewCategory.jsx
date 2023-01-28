@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import {getFile} from '../../utils/axiosConfig';
 import {FaFileDownload} from 'react-icons/fa';
+import {ascendingOrder} from './../helpers/helpers';
 import dayjs from 'dayjs';
 
 export const ViewCategory = ({category, description}) => {
@@ -18,22 +19,14 @@ export const ViewCategory = ({category, description}) => {
     await getFile(`/uploads/productos/${id}`, nombre);
   };
 
-  filterCategory?.sort((a, b) => {
-    if (a.precio > b.precio) {
-      return 1;
-    }
-    if (a.precio < b.precio) {
-      return -1;
-    }
-    return 0;
-  });
+  const orderItems = ascendingOrder(filterCategory);
 
   return (
     <div style={{marginBottom: '50px'}}>
       <h1 className="text-center title">{category}</h1>
       <hr className="divider" />
       <h2 className="description">{description}</h2>
-      {filterCategory?.map((element, index) => (
+      {orderItems?.map((element, index) => (
         <Card key={index}>
           <Card.Header></Card.Header>
           <Card.Body>
