@@ -18,14 +18,14 @@ export const NormsTable = () => {
   };
 
   return (
-    <>
+    <div className="Normativa">
       <h1 style={{textAlign: 'center', marginBottom: '25px'}}>Normativas</h1>
-      <Table striped bordered hover variant="dark">
+      <Table striped bordered hover variant="dark" className="NormTable">
         <thead>
           <tr>
-            <th>Normativa</th>
-            <th>Descripción</th>
-            <th style={{textAlign: 'center'}}>Descarga</th>
+            <th className="NormTh">Normativa</th>
+            <th className="NormTh">Descripción</th>
+            <th className="NormTh download">Descarga</th>
           </tr>
         </thead>
         <tbody>
@@ -33,7 +33,7 @@ export const NormsTable = () => {
             <tr key={index}>
               <td>{element.nombre}</td>
               <td>{element.description}</td>
-              <td style={{textAlign: 'center'}}>
+              <td className="NormTr download">
                 <Button
                   variant="primary"
                   size="sm"
@@ -46,6 +46,6 @@ export const NormsTable = () => {
           ))}
         </tbody>
       </Table>
-    </>
+    </div>
   );
 };

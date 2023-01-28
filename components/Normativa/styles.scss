@@ -1,0 +1,22 @@
+
+.Normativa {
+
+
+    .NormTh {
+        background: linear-gradient(90deg, rgba(2,68,102,1) 0%, rgba(8,54,77,1) 100%);
+
+        &.download{
+            text-align: center;
+        }
+    }
+
+    //TODO: FALTA ALINEAR BIEN EL BOTON DESCARGAR EN MOBILE
+    .NormTr {
+        background: linear-gradient(90deg, rgba(2,68,102,1) 0%, rgba(8,54,77,1) 100%);
+
+        &.download{
+            
+            text-align: center;
+        }
+    }
+}
