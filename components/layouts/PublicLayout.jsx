@@ -28,6 +28,7 @@ export const PublicLayout = ({
       <main
         style={{
           margin: 'auto',
+          marginTop: '20px',
           maxWidth: '2048px',
           minHeight: '400px',
           padding: '0px 5px',

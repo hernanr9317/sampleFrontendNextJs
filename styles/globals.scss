@@ -1,21 +1,8 @@
 @import 'mixins';
 @import '/components/Categorias/styles.scss';
 @import '/components/Normativa/styles.scss';
+@import '/components/MainNavbar/styles.scss';
 
-.navbar > .container {
-    max-width: 100%;
-    margin: 0;
-  }
-
-.navbar {
-  margin: 0;
-  padding: 0;
-  padding-top: 5px;
-}
-  
-.navbarImg {
-  margin-left: 5px
-}
 
 .footerImg {
   filter: opacity(0.3) drop-shadow(0 0 0 white); 
