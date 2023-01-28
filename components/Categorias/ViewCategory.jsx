@@ -27,8 +27,8 @@ export const ViewCategory = ({category, description}) => {
         <Card key={index}>
           <Card.Header></Card.Header>
           <Card.Body>
-            <Card.Title>{element.nombre}</Card.Title>
-            <Card.Text>{element.description}</Card.Text>
+            <Card.Title>{element?.nombre}</Card.Title>
+            <Card.Text>{element?.description}</Card.Text>
             <Button
               className="buttonDownload"
               variant="primary"
@@ -40,7 +40,7 @@ export const ViewCategory = ({category, description}) => {
             </Button>
             <Card.Footer className="text-muted cardFooter">
               Ùltima actualización{' '}
-              {dayjs(element.updatedAt).format('DD/MM/YYYY')}
+              {dayjs(element?.updatedAt).format('DD/MM/YYYY')}
             </Card.Footer>
           </Card.Body>
         </Card>
