@@ -18,6 +18,16 @@ export const ViewCategory = ({category, description}) => {
     await getFile(`/uploads/productos/${id}`, nombre);
   };
 
+  filterCategory?.sort((a, b) => {
+    if (a.precio > b.precio) {
+      return 1;
+    }
+    if (a.precio < b.precio) {
+      return -1;
+    }
+    return 0;
+  });
+
   return (
     <div style={{marginBottom: '50px'}}>
       <h1 className="text-center title">{category}</h1>

@@ -2,10 +2,7 @@ import Table from 'react-bootstrap/Table';
 import {useGetData} from './../../hooks/useGetData';
 import Button from 'react-bootstrap/Button';
 import {getFile} from '../../utils/axiosConfig';
-import {FaFileDownload} from 'react-icons/fa';
 import {FcDocument, FcDownload} from 'react-icons/fc';
-
-// AiOutlineDownload;
 
 export const NormsTable = () => {
   const resp = useGetData('/productos/');
