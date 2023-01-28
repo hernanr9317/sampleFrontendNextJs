@@ -19,10 +19,18 @@ export const MainNavbar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/">Inicio</Nav.Link>
-            <Nav.Link href="/etaps">Etaps</Nav.Link>
-            <Nav.Link href="/normativas">Normativas</Nav.Link>
-            <Nav.Link href="/tips">Tips de seguridad</Nav.Link>
+            <Link href="/">
+              <a className="nav-link">Inicio</a>
+            </Link>
+            <Link href="/etaps">
+              <a className="nav-link">Etaps</a>
+            </Link>
+            <Link href="/normativas">
+              <a className="nav-link">Normativas</a>
+            </Link>
+            <Link href="/tips">
+              <a className="nav-link">Tips de seguridad</a>
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
