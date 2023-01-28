@@ -2,6 +2,8 @@ import {useGetData} from './../../hooks/useGetData';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import {getFile} from '../../utils/axiosConfig';
+import {FaFileDownload} from 'react-icons/fa';
+import dayjs from 'dayjs';
 
 export const ViewCategory = ({category, description}) => {
   const resp = useGetData('/productos/');
@@ -28,12 +30,18 @@ export const ViewCategory = ({category, description}) => {
             <Card.Title>{element.nombre}</Card.Title>
             <Card.Text>{element.description}</Card.Text>
             <Button
+              className="buttonDownload"
               variant="primary"
               size="sm"
               onClick={() => viewFile(element._id, element.nombre)}
+              style={{float: 'right'}}
             >
-              Descargar estándar
+              Descargar <FaFileDownload size={'22px'} />
             </Button>
+            <Card.Footer className="text-muted">
+              Ùltima actualización{' '}
+              {dayjs(element.updatedAt).format('DD/MM/YYYY')}
+            </Card.Footer>
           </Card.Body>
         </Card>
       ))}
