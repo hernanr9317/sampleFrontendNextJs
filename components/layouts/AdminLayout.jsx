@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Cookies from 'js-cookie';
 import {getDataAxios} from './../../utils/axiosConfig';
 import {AdminNavbar} from './../Admin/AdminNavbar';
+import {MainFooter} from './../MainFooter/index';
 
 export const AdminLayout = ({
   children,
@@ -63,6 +64,7 @@ export const AdminLayout = ({
       >
         {children}
       </main>
+      <MainFooter />
     </>
   );
 };

@@ -86,7 +86,7 @@ export const CategoryTable = ({categories, title, id, description}) => {
   };
 
   return (
-    <div>
+    <div className="mb-5">
       <Card className="mt-1">
         <Form onSubmit={handleSubmit(handleSave)} autoComplete="off">
           <Card.Header className="colorHeaderTh">
