@@ -5,9 +5,9 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Alert from 'react-bootstrap/Alert';
-import {CategoryTable} from './CategoryTable';
 import {AddCategory} from './AddCaregory';
 import {getDataAxios} from './../../utils/axiosConfig';
+import {CategoryTable} from './CategoryTable/index';
 
 export const CategoryFilter = () => {
   const {needUpload} = useContext(ChangeDataContext);

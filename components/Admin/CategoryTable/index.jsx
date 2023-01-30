@@ -3,17 +3,16 @@ import Cookies from 'js-cookie';
 import {useForm} from 'react-hook-form';
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
-import {useContext} from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import {ModalElement} from './ModalElement';
-import {deleteDataAxios, putDataAxios} from '../../utils/axiosConfig';
-import {FaTrashAlt, FaSave, FaEdit, FaFolderPlus} from 'react-icons/fa';
 import {AiOutlineFieldNumber} from 'react-icons/ai';
-import {ChangeDataContext} from '../../context/changeData/ChangeDataContext';
+import {FaFolderPlus} from 'react-icons/fa';
+import {deleteDataAxios, putDataAxios} from '../../../utils/axiosConfig';
+import {ModalElement} from './../ModalElement';
+import {ButtonsTable} from './ButtonsTable';
+import {InputsTable} from './InputsTable';
 
 export const CategoryTable = ({categories, title, id, description}) => {
-  const {needUpload} = useContext(ChangeDataContext);
   const [display, setDisplay] = useState('none');
   const [messageAlert, setMessageAlert] = useState('');
   const [type, setType] = useState('');
@@ -102,66 +101,20 @@ export const CategoryTable = ({categories, title, id, description}) => {
         <Form onSubmit={handleSubmit(onSaveChanges)} autoComplete="off">
           <Card.Header>Informe de la categoria</Card.Header>
           <Card.Body>
-            <div className="mb-3">
-              <input
-                className="form-control"
-                id="exampleFormControlInput1"
-                defaultValue={title}
-                disabled={editForm}
-                {...register('nombre', {
-                  required: 'Este campo es requerido',
-                  minLength: {value: 3, message: 'Mínimo 3 caracteres'},
-                })}
-              />
-              <div className="invalid-feedback d-block">
-                {errors.nombre?.message}
-              </div>
-            </div>
-            <div className="mb-3">
-              <textarea
-                className="form-control"
-                id="exampleFormControlTextarea1"
-                rows="5"
-                defaultValue={description}
-                disabled={editForm}
-                {...register('descripcion', {
-                  required: 'Este campo es requerido',
-                  minLength: {value: 3, message: 'Mínimo 3 caracteres'},
-                })}
-              ></textarea>
-              <div className="invalid-feedback d-block">
-                {errors.descripcion?.message}
-              </div>
-            </div>
-            <Button
-              variant="primary"
-              onClick={handleEdit}
-              disabled={editButton}
-              style={{display: 'inline-flex'}}
-            >
-              Editar
-              <FaEdit color="white" size="20px" style={{marginLeft: '3px'}} />
-            </Button>
+            <InputsTable
+              title={title}
+              editForm={editForm}
+              errors={errors}
+              description={description}
+              register={register}
+            />
 
-            <Button
-              variant="primary"
-              type="submit"
-              disabled={editForm}
-              style={{marginLeft: '5px', display: 'inline-flex'}}
-            >
-              Guardar
-              <FaSave color="white" size="20px" style={{marginLeft: '3px'}} />
-            </Button>
-
-            <Button
-              variant="danger"
-              onClick={handleDelete}
-              disabled={editForm}
-              style={{float: 'right', display: 'flex'}}
-            >
-              Eliminar
-              <FaTrashAlt size="20px" style={{marginLeft: '3px'}} />
-            </Button>
+            <ButtonsTable
+              handleEdit={handleEdit}
+              handleDelete={handleDelete}
+              editButton={editButton}
+              editForm={editForm}
+            />
           </Card.Body>
           <Alert variant="success" style={{display: display, margin: '5px'}}>
             {messageAlert}
