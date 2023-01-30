@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useContext} from 'react';
 import {useForm} from 'react-hook-form';
 import {Alert, Button, Card, Form} from 'react-bootstrap';
 import {FaFolderPlus} from 'react-icons/fa';
@@ -7,8 +7,10 @@ import {ButtonsTable} from './ButtonsTable';
 import {InputsTable} from './InputsTable';
 import {MainTable} from './MainTable';
 import {deleteItem, editItem, saveItem} from './tableHelpers';
+import {ChangeDataContext} from '../../../context/changeData/ChangeDataContext';
 
 export const CategoryTable = ({categories, title, id, description}) => {
+  const {isNewData} = useContext(ChangeDataContext);
   const [display, setDisplay] = useState('none');
   const [messageAlert, setMessageAlert] = useState('');
   const [type, setType] = useState('');
@@ -57,11 +59,19 @@ export const CategoryTable = ({categories, title, id, description}) => {
   };
 
   const handleSave = (data) => {
-    saveItem(data, setEditForm, editForm, setMessageAlert, setDisplay, id);
+    saveItem(
+      data,
+      setEditForm,
+      editForm,
+      setMessageAlert,
+      setDisplay,
+      id,
+      isNewData,
+    );
   };
 
   const handleDelete = () => {
-    deleteItem(setEditForm, setMessageAlert, setDisplay, id);
+    deleteItem(setEditForm, setMessageAlert, setDisplay, id, isNewData);
   };
 
   const handleEdit = () => {

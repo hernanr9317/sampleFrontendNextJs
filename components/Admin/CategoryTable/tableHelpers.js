@@ -12,12 +12,14 @@ export const saveItem = async (
   setMessageAlert,
   setDisplay,
   id,
+  isNewData,
 ) => {
   setEditForm(!editForm);
 
   try {
     const tokenCookie = Cookies.get('token');
     await putDataAxios(`/categorias/${id}`, data, tokenCookie);
+    isNewData();
     setMessageAlert('Cambios guardados');
     setDisplay('');
 
@@ -32,10 +34,12 @@ export const deleteItem = async (
   setMessageAlert,
   setDisplay,
   id,
+  isNewData,
 ) => {
   try {
     const tokenCookie = Cookies.get('token');
     await deleteDataAxios(`/categorias/${id}`, tokenCookie);
+    isNewData();
     setEditForm(true);
     setMessageAlert('Categoria eliminada exitosamente');
     setDisplay('');

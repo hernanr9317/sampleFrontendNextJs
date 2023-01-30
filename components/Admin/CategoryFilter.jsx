@@ -1,5 +1,4 @@
 import {useContext, useState, useEffect} from 'react';
-import {useGetData} from '../../hooks/useGetData';
 import {ChangeDataContext} from './../../context/changeData/ChangeDataContext';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import DropdownButton from 'react-bootstrap/DropdownButton';
@@ -12,26 +11,32 @@ import {CategoryTable} from './CategoryTable/index';
 export const CategoryFilter = () => {
   const {needUpload} = useContext(ChangeDataContext);
   const [productos, setProductos] = useState([]);
+  const [categorias, setCategorias] = useState([]);
 
-  const {data} = useGetData('/categorias/') || {data: []};
+  const [categorySelected, setCategorySelected] = useState('');
+  const [descrription, setDescrription] = useState('');
+  const [id, setId] = useState('');
+
+  useEffect(() => {
+    getCategorias();
+    getProductos();
+  }, [needUpload]);
+
+  const categoriesFilter = productos?.data?.productos?.filter(
+    (element) => element?.categoria?.nombre === categorySelected,
+  );
+
+  const getCategorias = async () => {
+    getDataAxios('/categorias/').then((resp) => {
+      setCategorias(resp?.data?.categorias);
+    });
+  };
 
   const getProductos = async () => {
     getDataAxios('/productos/').then((resp) => {
       setProductos(resp);
     });
   };
-
-  useEffect(() => {
-    getProductos();
-  }, [needUpload]);
-
-  const [categorySelected, setCategorySelected] = useState('');
-  const [descrription, setDescrription] = useState('');
-  const [id, setId] = useState('');
-
-  const categoriesFilter = productos?.data?.productos?.filter(
-    (element) => element?.categoria?.nombre === categorySelected,
-  );
 
   const onClick = (element) => {
     setCategorySelected(element.nombre);
@@ -49,7 +54,7 @@ export const CategoryFilter = () => {
           title="Categorias"
           id="bg-nested-dropdown"
         >
-          {data?.categorias.map((element, index) => {
+          {categorias?.map((element, index) => {
             return (
               <Dropdown.Item
                 key={index}
