@@ -5,6 +5,7 @@ export const AdminHeader = () => {
     <div style={{marginTop: '90px'}}>
       <h1>
         Panel de administración <FcSettings style={{marginBottom: '8px'}} />{' '}
+        <hr />
       </h1>
     </div>
   );

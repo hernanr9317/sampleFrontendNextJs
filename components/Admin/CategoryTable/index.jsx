@@ -87,7 +87,7 @@ export const CategoryTable = ({categories, title, id, description}) => {
 
   return (
     <div>
-      <Card className="mt-5">
+      <Card className="mt-1">
         <Form onSubmit={handleSubmit(handleSave)} autoComplete="off">
           <Card.Header className="colorHeaderTh">
             Informe de la categoria
@@ -115,7 +115,6 @@ export const CategoryTable = ({categories, title, id, description}) => {
       </Card>
 
       <HeaderTable title={title} addElement={addElement} />
-
       <MainTable categories={categories} selectItem={selectItem} />
 
       <ModalElement element={element} interaction={interaction} type={type} />
