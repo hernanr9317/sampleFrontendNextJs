@@ -8,6 +8,7 @@ export const InputsTable = ({
   return (
     <>
       <div className="mb-3">
+        <label>Título</label>
         <input
           className="form-control"
           id="exampleFormControlInput1"
@@ -21,6 +22,7 @@ export const InputsTable = ({
         <div className="invalid-feedback d-block">{errors.nombre?.message}</div>
       </div>
       <div className="mb-3">
+        <label>Descripción</label>
         <textarea
           className="form-control"
           id="exampleFormControlTextarea1"
