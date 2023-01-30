@@ -8,6 +8,7 @@ import {InputsTable} from './InputsTable';
 import {MainTable} from './MainTable';
 import {deleteItem, editItem, saveItem} from './tableHelpers';
 import {ChangeDataContext} from '../../../context/changeData/ChangeDataContext';
+import {ascendingOrder} from '../../helpers/helpers';
 
 export const CategoryTable = ({categories, title, id, description}) => {
   const {isNewData} = useContext(ChangeDataContext);
@@ -42,6 +43,8 @@ export const CategoryTable = ({categories, title, id, description}) => {
 
     if (id) setEditButton(false);
   }, [reset, categories]);
+
+  ascendingOrder(categories);
 
   const selectItem = (element) => {
     setType('editElement');
