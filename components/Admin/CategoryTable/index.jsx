@@ -1,5 +1,4 @@
 import {useState, useEffect} from 'react';
-import Cookies from 'js-cookie';
 import {useForm} from 'react-hook-form';
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
@@ -7,15 +6,20 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import {AiOutlineFieldNumber} from 'react-icons/ai';
 import {FaFolderPlus} from 'react-icons/fa';
-import {deleteDataAxios, putDataAxios} from '../../../utils/axiosConfig';
 import {ModalElement} from './../ModalElement';
 import {ButtonsTable} from './ButtonsTable';
 import {InputsTable} from './InputsTable';
+import {deleteItem, editItem, saveItem} from './tableHelpers';
 
 export const CategoryTable = ({categories, title, id, description}) => {
   const [display, setDisplay] = useState('none');
   const [messageAlert, setMessageAlert] = useState('');
   const [type, setType] = useState('');
+
+  const [element, setElement] = useState('');
+  const [interaction, setInteraction] = useState(false);
+  const [editButton, setEditButton] = useState(true);
+  const [editForm, setEditForm] = useState(true);
 
   const {
     register,
@@ -34,12 +38,9 @@ export const CategoryTable = ({categories, title, id, description}) => {
       nombre: title || '',
       descripcion: description || '',
     });
-  }, [reset, categories]);
 
-  const [element, setElement] = useState('');
-  const [interaction, setInteraction] = useState(false);
-  const [editButton, setEditButton] = useState(true);
-  const [editForm, setEditForm] = useState(true);
+    if (id) setEditButton(false);
+  }, [reset, categories]);
 
   const selectItem = (element) => {
     setType('editElement');
@@ -58,47 +59,22 @@ export const CategoryTable = ({categories, title, id, description}) => {
     setInteraction(!interaction);
   };
 
-  useEffect(() => {
-    if (id) setEditButton(false);
-  }, [categories]);
+  const handleSave = (data) => {
+    saveItem(data, setEditForm, editForm, setMessageAlert, setDisplay, id);
+  };
+
+  const handleDelete = () => {
+    deleteItem(setEditForm, setMessageAlert, setDisplay, id);
+  };
 
   const handleEdit = () => {
-    setEditForm(!editForm);
-  };
-
-  const onSaveChanges = async (data) => {
-    setEditForm(!editForm);
-
-    try {
-      const tokenCookie = Cookies.get('token');
-      await putDataAxios(`/categorias/${id}`, data, tokenCookie);
-      setMessageAlert('Cambios guardados');
-      setDisplay('');
-
-      setTimeout(() => {
-        setDisplay('none');
-      }, 3500);
-    } catch (error) {}
-  };
-
-  const handleDelete = async () => {
-    try {
-      const tokenCookie = Cookies.get('token');
-      await deleteDataAxios(`/categorias/${id}`, tokenCookie);
-      setEditForm(true);
-      setMessageAlert('Categoria eliminada exitosamente');
-      setDisplay('');
-
-      setTimeout(() => {
-        setDisplay('none');
-      }, 3500);
-    } catch (error) {}
+    editItem(setEditForm, editForm);
   };
 
   return (
     <div>
       <Card className="mt-5">
-        <Form onSubmit={handleSubmit(onSaveChanges)} autoComplete="off">
+        <Form onSubmit={handleSubmit(handleSave)} autoComplete="off">
           <Card.Header>Informe de la categoria</Card.Header>
           <Card.Body>
             <InputsTable
