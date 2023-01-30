@@ -69,7 +69,7 @@ export const CategoryFilter = () => {
       </ButtonGroup>
 
       {categorySelected === '' && (
-        <Alert variant="primary" className="mt-3">
+        <Alert variant="warning" className="mt-3">
           Seleccione una categoría
         </Alert>
       )}
