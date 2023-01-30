@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import {useForm} from 'react-hook-form';
 import {Alert, Button, Card, Form} from 'react-bootstrap';
 import {FaFolderPlus} from 'react-icons/fa';
-import {ModalElement} from './../ModalElement';
+import {ModalElement} from './../ModalElement/index';
 import {ButtonsTable} from './ButtonsTable';
 import {InputsTable} from './InputsTable';
 import {MainTable} from './MainTable';
