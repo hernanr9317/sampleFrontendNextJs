@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {useForm} from 'react-hook-form';
 import Cookies from 'js-cookie';
 import Button from 'react-bootstrap/Button';
@@ -7,6 +7,7 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import {FaTrashAlt, FaSave, FaEdit} from 'react-icons/fa';
 import {useGetData} from '../../hooks/useGetData';
+import {ChangeDataContext} from '../../context/changeData/ChangeDataContext';
 import {
   deleteDataAxios,
   postDataAxiosElement,
@@ -15,6 +16,8 @@ import {
 } from '../../utils/axiosConfig';
 
 export const ModalElement = ({element, interaction, type}) => {
+  const {isNewData} = useContext(ChangeDataContext);
+
   const [display, setDisplay] = useState('none');
   const [alertMessage, setAlertMessage] = useState('');
 
@@ -71,7 +74,6 @@ export const ModalElement = ({element, interaction, type}) => {
       if (type === 'addElement') {
         await postDataAxiosElement('/productos/', data, tokenCookie);
       }
-      //TODO: EL ELEMENTO NO FUNCIONO BIEN TODAVIA, PROBAR DE TODAS LAS FORMAS QUE NO TENGA BUGS
 
       if (data.img && data.img.length > 0) {
         await putImageAxios(
@@ -80,6 +82,7 @@ export const ModalElement = ({element, interaction, type}) => {
           tokenCookie,
         );
       }
+      isNewData();
       setAlertMessage('Cambios guardados');
       setEdit(true);
       setDisplay('');
@@ -90,6 +93,7 @@ export const ModalElement = ({element, interaction, type}) => {
     try {
       const tokenCookie = Cookies.get('token');
       await deleteDataAxios(`/productos/${element._id}`, tokenCookie);
+      isNewData();
       setAlertMessage('Eliminado exitosamente');
       setEdit(true);
       setDisplay('');

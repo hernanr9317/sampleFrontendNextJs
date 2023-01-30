@@ -11,6 +11,8 @@ import {FaSave} from 'react-icons/fa';
 import {ChangeDataContext} from './../../context/changeData/ChangeDataContext';
 
 export const AddCategory = () => {
+  const {isNewData} = useContext(ChangeDataContext);
+
   const {
     register,
     handleSubmit,
@@ -35,6 +37,7 @@ export const AddCategory = () => {
     try {
       const tokenCookie = Cookies.get('token');
       const resp = await postDataAxios('/categorias/', data, tokenCookie);
+      isNewData();
 
       if (resp !== undefined) {
         setDisabled(true);
@@ -58,16 +61,8 @@ export const AddCategory = () => {
     } catch (error) {}
   };
 
-  const {isNewData, needUpload} = useContext(ChangeDataContext);
-
-  const newDatabutton = () => {
-    isNewData();
-    console.log(needUpload);
-  };
-
   return (
     <>
-      <Button onClick={() => newDatabutton()}>nueeva info</Button>
       <Button
         variant={'success'}
         onClick={handleShow}

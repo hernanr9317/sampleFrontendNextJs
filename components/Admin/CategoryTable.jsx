@@ -3,14 +3,17 @@ import Cookies from 'js-cookie';
 import {useForm} from 'react-hook-form';
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
+import {useContext} from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import {ModalElement} from './ModalElement';
 import {deleteDataAxios, putDataAxios} from '../../utils/axiosConfig';
 import {FaTrashAlt, FaSave, FaEdit, FaFolderPlus} from 'react-icons/fa';
 import {AiOutlineFieldNumber} from 'react-icons/ai';
+import {ChangeDataContext} from '../../context/changeData/ChangeDataContext';
 
 export const CategoryTable = ({categories, title, id, description}) => {
+  const {needUpload} = useContext(ChangeDataContext);
   const [display, setDisplay] = useState('none');
   const [messageAlert, setMessageAlert] = useState('');
   const [type, setType] = useState('');
