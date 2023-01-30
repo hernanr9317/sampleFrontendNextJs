@@ -14,6 +14,8 @@ export const CategoryTable = ({categories, title, id, description}) => {
   const [display, setDisplay] = useState('none');
   const [messageAlert, setMessageAlert] = useState('');
   const [type, setType] = useState('');
+  const [newTitle, setNewTitle] = useState(undefined);
+  const [newDescription, setNewDescription] = useState(undefined);
 
   const [element, setElement] = useState('');
   const [interaction, setInteraction] = useState(false);
@@ -27,15 +29,15 @@ export const CategoryTable = ({categories, title, id, description}) => {
     formState: {errors},
   } = useForm({
     defaultValues: {
-      nombre: title || '',
-      descripcion: description || '',
+      nombre: newTitle || title || '',
+      descripcion: newDescription || description || '',
     },
   });
 
   useEffect(() => {
     reset({
-      nombre: title || '',
-      descripcion: description || '',
+      nombre: newTitle || title || '',
+      descripcion: newDescription || description || '',
     });
 
     if (id) setEditButton(false);
@@ -67,6 +69,8 @@ export const CategoryTable = ({categories, title, id, description}) => {
       setDisplay,
       id,
       isNewData,
+      setNewTitle,
+      setNewDescription,
     );
   };
 

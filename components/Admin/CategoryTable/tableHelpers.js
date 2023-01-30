@@ -13,6 +13,8 @@ export const saveItem = async (
   setDisplay,
   id,
   isNewData,
+  setNewTitle,
+  setNewDescription,
 ) => {
   setEditForm(!editForm);
 
@@ -22,6 +24,8 @@ export const saveItem = async (
     isNewData();
     setMessageAlert('Cambios guardados');
     setDisplay('');
+    setNewTitle(data.nombre);
+    setNewDescription(data.descripcion);
 
     setTimeout(() => {
       setDisplay('none');
