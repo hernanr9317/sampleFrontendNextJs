@@ -1,7 +1,6 @@
 import {useState, useEffect, useContext} from 'react';
 import {useForm} from 'react-hook-form';
-import {Alert, Button, Card, Form} from 'react-bootstrap';
-import {FaFolderPlus} from 'react-icons/fa';
+import {Alert, Card, Form} from 'react-bootstrap';
 import {ModalElement} from './../ModalElement/index';
 import {ButtonsTable} from './ButtonsTable';
 import {InputsTable} from './InputsTable';
@@ -9,6 +8,7 @@ import {MainTable} from './MainTable';
 import {deleteItem, editItem, saveItem} from './tableHelpers';
 import {ChangeDataContext} from '../../../context/changeData/ChangeDataContext';
 import {ascendingOrder} from '../../helpers/helpers';
+import {HeaderTable} from './HeaderTable';
 
 export const CategoryTable = ({categories, title, id, description}) => {
   const {isNewData} = useContext(ChangeDataContext);
@@ -114,15 +114,7 @@ export const CategoryTable = ({categories, title, id, description}) => {
         </Form>
       </Card>
 
-      <Button
-        variant="success"
-        disabled={title === '' ? true : false}
-        onClick={() => addElement('')}
-        style={{display: 'flex', marginTop: '50px'}}
-      >
-        Agregar elemento
-        <FaFolderPlus size={'22px'} style={{marginLeft: '4px'}} />
-      </Button>
+      <HeaderTable title={title} addElement={addElement} />
 
       <MainTable categories={categories} selectItem={selectItem} />
 
