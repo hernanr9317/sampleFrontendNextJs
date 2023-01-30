@@ -1,14 +1,11 @@
 import {useState, useEffect} from 'react';
 import {useForm} from 'react-hook-form';
-import Form from 'react-bootstrap/Form';
-import Alert from 'react-bootstrap/Alert';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import {AiOutlineFieldNumber} from 'react-icons/ai';
+import {Alert, Button, Card, Form} from 'react-bootstrap';
 import {FaFolderPlus} from 'react-icons/fa';
 import {ModalElement} from './../ModalElement';
 import {ButtonsTable} from './ButtonsTable';
 import {InputsTable} from './InputsTable';
+import {MainTable} from './MainTable';
 import {deleteItem, editItem, saveItem} from './tableHelpers';
 
 export const CategoryTable = ({categories, title, id, description}) => {
@@ -108,36 +105,8 @@ export const CategoryTable = ({categories, title, id, description}) => {
         <FaFolderPlus size={'22px'} style={{marginLeft: '4px'}} />
       </Button>
 
-      <table className="table table-hover mt-3">
-        <thead
-          style={{
-            background:
-              'linear-gradient(90deg, rgba(44,80,99,1) 0%, rgba(1,1,1,1) 100%)',
-            color: 'white',
-          }}
-        >
-          <tr>
-            <th scope="col">
-              <AiOutlineFieldNumber size={'24px'} />
-            </th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Orden</th>
-          </tr>
-        </thead>
-        <tbody>
-          {categories?.map((element, index) => (
-            <tr
-              key={index}
-              style={{cursor: 'pointer'}}
-              onClick={() => selectItem(element)}
-            >
-              <th scope="row">{index + 1}</th>
-              <td>{element.nombre}</td>
-              <td>{element.precio}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <MainTable categories={categories} selectItem={selectItem} />
+
       <ModalElement element={element} interaction={interaction} type={type} />
     </div>
   );
