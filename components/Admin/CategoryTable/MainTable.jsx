@@ -3,13 +3,7 @@ import {AiOutlineFieldNumber} from 'react-icons/ai';
 export const MainTable = ({categories, selectItem}) => {
   return (
     <table className="table table-hover mt-3">
-      <thead
-        style={{
-          background:
-            'linear-gradient(90deg, rgba(44,80,99,1) 0%, rgba(1,1,1,1) 100%)',
-          color: 'white',
-        }}
-      >
+      <thead className="colorHeaderTh">
         <tr>
           <th scope="col">
             <AiOutlineFieldNumber size={'24px'} />
