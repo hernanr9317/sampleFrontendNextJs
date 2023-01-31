@@ -1,5 +1,5 @@
 import {Button} from 'react-bootstrap';
-import {FaFolderPlus} from 'react-icons/fa';
+import {AiFillFileAdd} from 'react-icons/ai';
 
 export const HeaderTable = ({title, addElement}) => {
   return (
@@ -11,8 +11,8 @@ export const HeaderTable = ({title, addElement}) => {
         disabled={title === '' ? true : false}
         onClick={() => addElement('')}
       >
-        Agregar elemento
-        <FaFolderPlus size={'22px'} style={{marginLeft: '4px'}} />
+        Nuevo
+        <AiFillFileAdd size={'22px'} style={{marginLeft: '4px'}} />
       </Button>
     </div>
   );

@@ -68,7 +68,7 @@ export const AddCategory = () => {
         onClick={handleShow}
         style={{marginRight: '3px'}}
       >
-        Agregar categoria{' '}
+        Agregar categoría{' '}
         <FcAddDatabase size={'25px'} style={{marginLeft: '3px'}} />
       </Button>
 

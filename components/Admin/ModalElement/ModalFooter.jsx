@@ -11,7 +11,7 @@ export const ModalFooter = ({editInfo, edit, handleDelete}) => {
             style={{display: 'flex'}}
             onClick={editInfo}
           >
-            Editar <FaEdit size="20px" style={{marginLeft: '3px'}} />
+            <FaEdit size="20px" style={{marginLeft: '3px'}} />
           </Button>
         </span>
       </OverlayTrigger>
@@ -23,7 +23,7 @@ export const ModalFooter = ({editInfo, edit, handleDelete}) => {
             style={{display: 'flex'}}
             disabled={edit}
           >
-            Gaurdar <FaSave size="20px" style={{marginLeft: '3px'}} />
+            <FaSave size="20px" style={{marginLeft: '3px'}} />
           </Button>
         </span>
       </OverlayTrigger>
@@ -35,7 +35,7 @@ export const ModalFooter = ({editInfo, edit, handleDelete}) => {
             disabled={edit}
             onClick={handleDelete}
           >
-            Eliminar <FaTrashAlt size="20px" style={{marginLeft: '3px'}} />
+            <FaTrashAlt size="20px" style={{marginLeft: '3px'}} />
           </Button>
         </span>
       </OverlayTrigger>

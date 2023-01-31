@@ -26,7 +26,7 @@ export const ModalBody = ({
         <div className="invalid-feedback d-block">{errors.nombre?.message}</div>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Label>Categoria</Form.Label>
+        <Form.Label>Categoría</Form.Label>
         <Form.Select
           type="categoria"
           defaultValue={element?.categoria?.nombre}
