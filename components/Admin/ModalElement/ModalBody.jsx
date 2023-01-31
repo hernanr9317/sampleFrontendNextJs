@@ -1,4 +1,5 @@
 import {Form, Modal} from 'react-bootstrap';
+import dayjs from 'dayjs';
 
 export const ModalBody = ({
   element,
@@ -83,6 +84,22 @@ export const ModalBody = ({
           <Form.Control type="file" disabled={edit} {...register('img')} />
         </Form.Group>
       )}
+
+      <div className="mt-4 modalDate">
+        {element?.updatedAt && (
+          <>
+            Actualizado el{' '}
+            <span className="date">
+              {dayjs(element?.updatedAt).format('DD/MM/YYYY')}
+            </span>{' '}
+          </>
+        )}
+        {element?.usuario?.nombre && (
+          <>
+            por <span className="author">{element?.usuario?.nombre}</span>{' '}
+          </>
+        )}
+      </div>
     </Modal.Body>
   );
 };
