@@ -1,9 +1,11 @@
 import {useState} from 'react';
+import Image from 'next/image';
 import {useGetData} from '../../hooks/useGetData';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import {ViewCategory} from './ViewCategory';
 import {FcInspection} from 'react-icons/fc';
+import initialImg from '../../public/assets/etaps/nube.jpg';
 
 export const Categorias = () => {
   const [categorySelected, setCategorySelected] = useState('');
@@ -23,7 +25,6 @@ export const Categorias = () => {
         Estándares tecnológicos de la Administración Pública (ETAPS)
         <FcInspection />
       </h1>
-
       <Tabs
         defaultActiveKey="etapTab"
         id="etapTab"
@@ -40,6 +41,16 @@ export const Categorias = () => {
           </Tab>
         ))}
       </Tabs>
+
+      {categorySelected === '' && (
+        <div className="initialImgContainer">
+          <Image
+            src={initialImg}
+            className="img-fluid"
+            alt="Responsive image"
+          />
+        </div>
+      )}
     </div>
   );
 };

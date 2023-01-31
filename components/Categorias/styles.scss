@@ -82,5 +82,10 @@
 }
 
 
-
+.initialImgContainer {
+    margin-left: calc(50% - var(--vw, 1vw) * 50);
+    height: 100%;
+    left: 0;
+    width: calc(var(--vw, 1vw) * 99.5);
+}
 
