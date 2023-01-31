@@ -74,10 +74,19 @@ export const ModalElement = ({element, interaction, type}) => {
 
   return (
     <>
-      <Modal show={show} onHide={handleClose} backdrop="static" size="lg">
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        size="lg"
+        className="modalElement"
+      >
         <Form onSubmit={handleSubmit(handleSave)} autoComplete="off">
-          <Modal.Header closeButton>
-            <Modal.Title>{element?.nombre}</Modal.Title>
+          <Modal.Header closeButton className="colorHeaderTh">
+            <Modal.Title>
+              {element?.nombre ||
+                `NUEVO ELEMENTO DE ${element?.categoria?.nombre}`}
+            </Modal.Title>
           </Modal.Header>
 
           <ModalBody

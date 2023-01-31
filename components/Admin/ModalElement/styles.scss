@@ -1,0 +1,21 @@
+.modalElement {
+
+    .colorHeaderTh {
+        background: linear-gradient(90deg, rgba(44,80,99,1) 0%, rgb(1, 1, 1) 100%);
+        color: white,
+    }
+
+    .modal-header .btn-close {
+        background-color: white;
+    }
+    
+}
+
+.modal-open .container-fluid,
+.modal-open .container {
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px);
+}
