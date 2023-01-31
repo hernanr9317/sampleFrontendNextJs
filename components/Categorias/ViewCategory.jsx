@@ -22,13 +22,13 @@ export const ViewCategory = ({category, description}) => {
   };
 
   return (
-    <div style={{marginBottom: '50px'}}>
+    <div className="etapsInfo">
       <h1 className="text-center title">{category}</h1>
       <hr className="divider" />
       <h2 className="description">{description}</h2>
       {orderItems?.map((element, index) => (
         <Card key={index}>
-          <Card.Header></Card.Header>
+          {/* <Card.Header></Card.Header> */}
           <Card.Body>
             <Card.Title>{element?.nombre}</Card.Title>
             <Card.Text>{element?.description}</Card.Text>
