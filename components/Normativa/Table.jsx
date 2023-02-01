@@ -8,6 +8,7 @@ import {ascendingOrder} from './../helpers/helpers';
 
 export const NormsTable = () => {
   const resp = useGetData('/productos/');
+  const categorias = useGetData('/categorias/');
 
   const {data} = resp || {data: []};
 
@@ -15,17 +16,21 @@ export const NormsTable = () => {
     (element) => element.categoria.nombre === 'NORMATIVAS',
   );
 
+  const infoCategory = categorias?.data?.categorias?.find(
+    (element) => element?.nombre === 'NORMATIVAS',
+  );
+
   const orderItems = ascendingOrder(filterCategory);
 
   const viewFile = async (id, nombre) => {
     await getFile(`/uploads/productos/${id}`, nombre);
   };
-
   return (
     <div className="Normativa">
       <h1 style={{textAlign: 'center', marginBottom: '25px'}}>
         Normativas <FcDocument />
       </h1>
+      <h5 className="mb-4">{infoCategory?.description}</h5>
       <Table hover className="NormTable">
         <thead>
           <tr className="NormTh">
