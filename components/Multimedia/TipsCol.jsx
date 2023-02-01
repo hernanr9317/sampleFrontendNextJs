@@ -1,15 +1,12 @@
 import Image from 'next/image';
 import {Col} from 'react-bootstrap';
-import LinesEllipsis from 'react-lines-ellipsis';
 
 export const TipsCol = ({data}) => {
   const {title, src, description, link, link2, link3, link4} = data;
 
-  const handleReflow = (rleState) => {
-    const {clamped, text} = rleState;
-    // console.log(clamped, text)
-  };
+  const links = [link, link2, link3, link4];
 
+  //TODO: AGREGAR BOTON DROPDOWNS DE LINKS EN LAS CARDS
   return (
     <Col>
       <div
@@ -28,28 +25,12 @@ export const TipsCol = ({data}) => {
           />
           <div className="card-body">
             <h5 className="card-title">{title}</h5>
-            {/* <p className="card-text">{description}</p> */}
-            <LinesEllipsis
-              className="card-text pb-3"
-              text={description}
-              maxLine="2"
-              ellipsis=" ..."
-              trimRight
-              basedOn="letters"
-              onReflow={(e) => handleReflow(e)}
-            />
-            <a href={link?.href} className="card-link" target="_blank">
-              {link?.name}
-            </a>
-            <a href={link2?.href} className="card-link" target="_blank">
-              {link2?.name}
-            </a>
-            <a href={link3?.href} className="card-link" target="_blank">
-              {link3?.name}
-            </a>
-            <a href={link4?.href} className="card-link" target="_blank">
-              {link4?.name}
-            </a>
+            <p className="card-text">{description}</p>
+            {links.map((link) => (
+              <a href={link?.href} className="card-link" target="_blank">
+                {link?.name}
+              </a>
+            ))}
           </div>
         </div>
       </div>
