@@ -2,7 +2,8 @@ import Table from 'react-bootstrap/Table';
 import {useGetData} from './../../hooks/useGetData';
 import Button from 'react-bootstrap/Button';
 import {getFile} from '../../utils/axiosConfig';
-import {FcDocument, FcDownload} from 'react-icons/fc';
+import {FcDocument} from 'react-icons/fc';
+import {ImArrowDown} from 'react-icons/im';
 import {ascendingOrder} from './../helpers/helpers';
 
 export const NormsTable = () => {
@@ -40,11 +41,12 @@ export const NormsTable = () => {
               <td className="NormTr description">{element.description}</td>
               <td className="NormTr download">
                 <Button
+                  className="downloadButton"
                   variant="light"
                   size="sm"
                   onClick={() => viewFile(element._id, element.nombre)}
                 >
-                  <FcDownload size={'20px'} />
+                  <ImArrowDown className="downloadIcon" size={'15px'} />
                 </Button>
               </td>
             </tr>
