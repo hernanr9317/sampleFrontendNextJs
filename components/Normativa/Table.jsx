@@ -27,10 +27,10 @@ export const NormsTable = () => {
       </h1>
       <Table hover className="NormTable">
         <thead>
-          <tr>
-            <th className="NormTh">Normativa</th>
-            <th className="NormTh">Descripción</th>
-            <th className="NormTh download">Descarga</th>
+          <tr className="NormTh">
+            <th>Normativa</th>
+            <th>Descripción</th>
+            <th className="download">Descarga</th>
           </tr>
         </thead>
         <tbody>

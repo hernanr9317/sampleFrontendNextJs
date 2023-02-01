@@ -18,16 +18,16 @@ export const Info = () => {
             link="/etaps"
           />
           <InfoCol
+            title="Normativas"
+            text="Enterate de las normas, leyes y decretos vigentes"
+            src={normativa}
+            link="/normativas"
+          />
+          <InfoCol
             title="Tips de seguridad"
             text="Tips para mantener la seguridad informática"
             src={tips}
             link="/tips"
-          />
-          <InfoCol
-            title="Normativa"
-            text="Enterate de las normas, leyes y decretos vigentes"
-            src={normativa}
-            link="/normativa"
           />
         </Row>
       </Container>
