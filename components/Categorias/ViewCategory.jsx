@@ -28,7 +28,6 @@ export const ViewCategory = ({category, description}) => {
       <h2 className="description">{description}</h2>
       {orderItems?.map((element, index) => (
         <Card key={index}>
-          {/* <Card.Header></Card.Header> */}
           <Card.Body>
             <Card.Title>{element?.nombre}</Card.Title>
             <Card.Text>{element?.description}</Card.Text>

@@ -141,7 +141,7 @@ export const getFile = async (url, nombre) =>
       const percentCompleted = Math.round(
         (progressEvent.loaded * 100) / progressEvent.total,
       );
-      console.log(percentCompleted);
+      // console.log(percentCompleted);
     },
   }).then((response) => {
     const url = window.URL.createObjectURL(
