@@ -1,0 +1,32 @@
+
+.tipsCard {
+    width: 100%;
+    flex-direction: column;
+
+    @include desktop() {
+        flex-direction: row;
+    }
+
+    .linksContainer {
+
+
+        @include desktop() {
+            position: absolute;
+            bottom: 0;
+            padding-bottom: 16px;
+        }
+
+        .card-link {
+            background: linear-gradient(90deg, rgba(44,80,99,1) 0%, rgba(1,1,1,1) 100%);
+            color:white;
+            padding:5px 5px;
+            margin-bottom: 3px;
+            margin-left: 0px;
+            margin-right: 8px;
+            border-radius:5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+    }
+}
+

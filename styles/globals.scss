@@ -1,6 +1,7 @@
 @import 'mixins';
 @import '/components/Categorias/styles.scss';
 @import '/components/Normativa/styles.scss';
+@import '/components/Multimedia/styles.scss';
 @import '/components/MainNavbar/styles.scss';
 @import '/components/Admin/styles.scss';
 @import '/components/Admin/CategoryTable/styles.scss';
@@ -15,15 +16,15 @@
   margin-top: 66px !important;
 }
 
-.card-link {
-  display: block;
-  float: left;
-  margin-left: 0 !important;
-  /* padding: 5px; */
-  padding-right: 5px;
-  font-size: 14.5px;
-  /* text-decoration: none; */
-}
+// .card-link {
+//   display: block;
+//   float: left;
+//   margin-left: 0 !important;
+//   /* padding: 5px; */
+//   padding-right: 5px;
+//   font-size: 14.5px;
+//   /* text-decoration: none; */
+// }
 
 .normContainer{
   margin-top: 100px !important;
