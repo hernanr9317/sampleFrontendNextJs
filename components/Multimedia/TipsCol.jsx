@@ -1,15 +1,23 @@
 import Image from 'next/image';
+import {useIsmobile} from './../../hooks/useIsMobile';
 
 export const TipsCol = ({data}) => {
   const {title, src, description, links} = data;
-  //TODO: FALTAN ESTILOS MOBILE
+
+  const isMobile = useIsmobile();
+
+  console.log(isMobile);
+
+  const widthImg = isMobile ? '300px' : '200px';
+  const heighImg = isMobile ? '220px' : '200px';
+
   return (
     <div className="card tipsCard">
       <div className="imgTip">
         <Image
-          className="card-img-left"
-          width="200px"
-          height="200px"
+          className="card-img-next"
+          width={widthImg}
+          height={heighImg}
           layout="fixed"
           src={src}
         />

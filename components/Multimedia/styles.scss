@@ -1,11 +1,20 @@
 
 .tipsCard {
-    width: 100%;
+    width: 300px;
+    margin: auto;
+    margin-bottom: 5px;
     flex-direction: column;
 
     @include desktop() {
+        width: 100%;
+        margin-bottom: 0px;
         flex-direction: row;
     }
+
+    .imgTip {
+        margin: auto;
+    }
+
 
     .linksContainer {
 
