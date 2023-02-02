@@ -1,13 +1,14 @@
 import Image from 'next/image';
-import {Col} from 'react-bootstrap';
 
 export const ContactoCol = ({icon, text}) => {
   return (
-    <Col style={{width: '220px', marginBottom: '18px'}}>
-      <Image src={icon} height={50} width={50} />
-      <div>
+    <div className="contact-element">
+      <div className="contacto-img">
+        <Image src={icon} height={50} width={50} />
+      </div>
+      <div className="contacto-text">
         <h6>{text}</h6>
       </div>
-    </Col>
+    </div>
   );
 };

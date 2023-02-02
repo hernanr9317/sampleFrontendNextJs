@@ -11,19 +11,10 @@ export const Contacto = () => {
         <h1>Contáctese con nosotros</h1>
       </center>
       <hr />
-      <Container>
-        <Row
-          xs={'auto'}
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            padding: '5px',
-          }}
-        >
-          <ContactoCol icon={mapa} text="Marcelo T. de Alvear 154" />
-          <ContactoCol icon={telefono} text="362-4448000 | Int. 8211" />
-          <ContactoCol icon={email} text="eseguridad@chaco.gov.ar" />
-        </Row>
+      <Container className="contacto-contianer">
+        <ContactoCol icon={mapa} text="Marcelo T. de Alvear 154" />
+        <ContactoCol icon={telefono} text="362-4448000 | Int. 8211" />
+        <ContactoCol icon={email} text="eseguridad@chaco.gov.ar" />
       </Container>
     </div>
   );

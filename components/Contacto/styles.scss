@@ -1,0 +1,27 @@
+.contacto-contianer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include desktop(){
+        flex-direction: row;
+    }
+
+    .contact-element {
+        padding: 10px;
+
+        @include desktop(){
+            padding: 15px;
+        }
+    }
+
+    .contacto-img{
+        display: flex !important;
+        justify-content: center !important;
+    }
+
+    .contacto-text{
+        text-align: center;
+        margin-top: 8px;
+    }
+}
