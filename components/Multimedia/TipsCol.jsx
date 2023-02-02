@@ -6,9 +6,7 @@ export const TipsCol = ({data}) => {
 
   const isMobile = useIsmobile();
 
-  console.log(isMobile);
-
-  const widthImg = isMobile ? '300px' : '200px';
+  const widthImg = isMobile ? '300px' : '270px';
   const heighImg = isMobile ? '220px' : '200px';
 
   return (
