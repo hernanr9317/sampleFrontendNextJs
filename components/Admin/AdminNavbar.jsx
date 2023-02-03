@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Container from 'react-bootstrap/Container';
-import {useState, useEffect} from 'react';
 import Nav from 'react-bootstrap/Nav';
 import logo from '../../public/assets/navbar/logo.png';
 import Navbar from 'react-bootstrap/Navbar';
@@ -32,6 +31,11 @@ export const AdminNavbar = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Link href="/admin">
+              <a className="nav-link">Panel de administración</a>
+            </Link>
+          </Nav>
           <Nav className="userNav">
             <Dropdown align="end" className="dropDownUser">
               <Dropdown.Toggle className="userToggle" variant="dark">
@@ -39,7 +43,9 @@ export const AdminNavbar = () => {
               </Dropdown.Toggle>
 
               <Dropdown.Menu variant="dark" className="userMenuBox">
-                <Dropdown.Item className="userMenuItem">Perfil</Dropdown.Item>
+                <Dropdown.Item className="userMenuItem" href="/admin/profile">
+                  Perfil
+                </Dropdown.Item>
                 <Dropdown.Divider color="white"></Dropdown.Divider>
                 <Dropdown.Item
                   className="userMenuItem"
