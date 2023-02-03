@@ -1,6 +1,5 @@
 import {useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-// import '../styles/globals.css';
 import '../styles/globals.scss';
 import {AuthProvider, ChangeDataProvider} from '../context';
 
