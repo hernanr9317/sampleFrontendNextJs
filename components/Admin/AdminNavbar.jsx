@@ -19,7 +19,7 @@ export const AdminNavbar = () => {
     logOut();
     router.replace('/auth/login');
   };
-
+  //TODO: HACER FUNCIONAR BOTON PERFIL DEL MENU DESPLEGABLE
   return (
     <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
       <Container>
@@ -39,6 +39,8 @@ export const AdminNavbar = () => {
               </Dropdown.Toggle>
 
               <Dropdown.Menu variant="dark" className="userMenuBox">
+                <Dropdown.Item className="userMenuItem">Perfil</Dropdown.Item>
+                <Dropdown.Divider color="white"></Dropdown.Divider>
                 <Dropdown.Item
                   className="userMenuItem"
                   onClick={() => handleLogout()}
