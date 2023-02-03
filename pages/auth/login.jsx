@@ -1,5 +1,4 @@
 import {useState, useContext} from 'react';
-import {useRouter} from 'next/router';
 import {AuthLayout} from '../../components/layouts';
 import {AuthContext} from './../../context';
 import {useForm} from 'react-hook-form';
@@ -8,7 +7,6 @@ import Form from 'react-bootstrap/Form';
 import Link from 'next/link';
 
 const LoginPage = () => {
-  const router = useRouter();
   const {loginUser} = useContext(AuthContext);
   const [showError, setShowError] = useState(false);
 
@@ -26,8 +24,6 @@ const LoginPage = () => {
       setShowError(true);
       return;
     }
-
-    router.replace('/admin');
   };
 
   return (

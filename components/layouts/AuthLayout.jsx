@@ -4,16 +4,14 @@ import {AuthContext} from '../../context';
 import {useRouter} from 'next/router';
 
 export const AuthLayout = ({children, title}) => {
-  const router = useRouter();
   const {isLoggedIn} = useContext(AuthContext);
+  const router = useRouter();
   const [calledReplace, setCalledReplace] = useState(false);
 
   useEffect(() => {
     try {
-      if (calledReplace) {
-        return;
-      }
       if (isLoggedIn) {
+        if (calledReplace) return;
         router.replace('/admin');
         setCalledReplace(true);
       }
@@ -25,17 +23,16 @@ export const AuthLayout = ({children, title}) => {
       <Head>
         <title>{title}</title>
       </Head>
-      {!isLoggedIn && (
-        <main
-          style={{
-            margin: 'auto',
-            maxWidth: '2048px',
-            padding: '0px 5px',
-          }}
-        >
-          {children}
-        </main>
-      )}
+
+      <main
+        style={{
+          margin: 'auto',
+          maxWidth: '2048px',
+          padding: '0px 5px',
+        }}
+      >
+        {children}
+      </main>
     </>
   );
 };
