@@ -12,14 +12,14 @@ export const DataBox = () => {
             <div className="col-sm-3">
               <h6 className="mb-0">Nombre completo</h6>
             </div>
-            <div className="col-sm-9 text-secondary">{data.user.nombre}</div>
+            <div className="col-sm-9 text-secondary">{data?.user?.nombre}</div>
           </div>
           <hr />
           <div className="row">
             <div className="col-sm-3">
               <h6 className="mb-0">Email</h6>
             </div>
-            <div className="col-sm-9 text-secondary">{data.user.correo}</div>
+            <div className="col-sm-9 text-secondary">{data?.user?.correo}</div>
           </div>
           <hr />
           <div className="row">

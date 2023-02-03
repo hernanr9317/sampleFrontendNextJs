@@ -1,5 +1,7 @@
 import {useContext} from 'react';
+import Image from 'next/image';
 import {AuthContext} from './../../../context/auth/AuthContext';
+import defaultUser from '../../../public/assets/profile/defaultUser.png';
 
 export const ImageBox = () => {
   const data = useContext(AuthContext);
@@ -8,14 +10,9 @@ export const ImageBox = () => {
     <div className="card">
       <div className="card-body">
         <div className="d-flex flex-column align-items-center text-center">
-          <button className="rounded-circle">
-            <img
-              src="https://bootdey.com/img/Content/avatar/avatar7.png"
-              alt="Admin"
-              className="rounded-circle"
-              width="150"
-            />
-          </button>
+          <div className="avatar-container">
+            <Image src={defaultUser} alt="Admin" />
+          </div>
           <div className="mt-3">
             <h4>{data?.user?.nombre}</h4>
           </div>

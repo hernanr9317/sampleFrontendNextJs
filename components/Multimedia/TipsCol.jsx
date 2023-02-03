@@ -16,7 +16,7 @@ export const TipsCol = ({data}) => {
           className="card-img-next"
           width={widthImg}
           height={heighImg}
-          layout="fixed"
+          layout="responsive"
           src={src}
         />
       </div>
