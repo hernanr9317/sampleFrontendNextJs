@@ -16,8 +16,16 @@
 
     .imgTip {
         margin: auto;
-    }
 
+        img {
+            max-width: 280px !important;
+            
+            @include desktop() {
+                max-width: 350px !important;
+                height: 250px !important;
+            }
+        }
+    }
 
     .linksContainer {
 
