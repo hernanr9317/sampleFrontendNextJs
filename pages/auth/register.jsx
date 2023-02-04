@@ -40,13 +40,11 @@ const RegisterPage = () => {
 
   return (
     <AuthLayout title="Registro">
-      <h1 className="text-center" style={{marginTop: '100px'}}>
-        Crear cuenta
-      </h1>
       <Form
-        style={{width: '300px', margin: 'auto', marginTop: '50px'}}
+        className="form-login-register"
         onSubmit={handleSubmit(onRegisterForm)}
       >
+        <h1 className="text-center title">Crear cuenta</h1>
         <div
           className="alert alert-success"
           role="alert"
