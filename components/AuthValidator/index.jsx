@@ -1,6 +1,6 @@
 import {useContext} from 'react';
 import {AuthContext} from '../../context';
-import HomeScreen from './../../pages/index';
+import LoginPage from '../../pages/auth/login';
 
 const withAuth = (Component) => {
   const Auth = (props) => {
@@ -8,7 +8,7 @@ const withAuth = (Component) => {
 
     // If user is not logged in, return login component
     if (isLoggedIn === false) {
-      return <HomeScreen />;
+      return <LoginPage />;
     }
 
     // If user is logged in, return original component
