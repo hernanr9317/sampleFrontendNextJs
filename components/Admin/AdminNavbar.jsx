@@ -36,26 +36,28 @@ export const AdminNavbar = () => {
               <a className="nav-link">Panel de administración</a>
             </Link>
           </Nav>
-          <Nav className="userNav">
-            <Dropdown align="end" className="dropDownUser">
-              <Dropdown.Toggle className="userToggle" variant="dark">
-                <FaUserAlt size={'20px'} className="userImg" /> {user?.nombre}
-              </Dropdown.Toggle>
+          <Dropdown align="end" className="dropDownUser">
+            <Dropdown.Toggle
+              id="toggleDropdown"
+              className="userToggle"
+              variant="dark"
+            >
+              <FaUserAlt size={'20px'} className="userImg" /> {user?.nombre}
+            </Dropdown.Toggle>
 
-              <Dropdown.Menu variant="dark" className="userMenuBox">
-                <Dropdown.Item className="userMenuItem" href="/admin/profile">
-                  Perfil
-                </Dropdown.Item>
-                <Dropdown.Divider color="white"></Dropdown.Divider>
-                <Dropdown.Item
-                  className="userMenuItem"
-                  onClick={() => handleLogout()}
-                >
-                  Salir
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </Nav>
+            <Dropdown.Menu variant="dark" className="userMenuBox">
+              <Dropdown.Item className="userMenuItem" href="/admin/profile">
+                Perfil
+              </Dropdown.Item>
+              <Dropdown.Divider color="white"></Dropdown.Divider>
+              <Dropdown.Item
+                className="userMenuItem"
+                onClick={() => handleLogout()}
+              >
+                Salir
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </Navbar.Collapse>
       </Container>
     </Navbar>

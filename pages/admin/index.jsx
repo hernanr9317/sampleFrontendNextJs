@@ -1,4 +1,5 @@
 import {CategoryFilter} from '../../components/Admin/CategoryFilter';
+import withAuth from '../../components/AuthValidator';
 import {AdminLayout} from '../../components/layouts';
 import {AdminHeader} from './../../components/Admin/AdminHeader';
 
@@ -17,4 +18,4 @@ const AdminScreen = () => {
   );
 };
 
-export default AdminScreen;
+export default withAuth(AdminScreen);
