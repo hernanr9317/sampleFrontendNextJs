@@ -1,13 +1,16 @@
 import {useContext} from 'react';
 import {AuthContext} from '../../context';
 import LoginPage from '../../pages/auth/login';
+import {useRouter} from 'next/router';
 
 const withAuth = (Component) => {
   const Auth = (props) => {
     const {isLoggedIn} = useContext(AuthContext);
+    const router = useRouter();
 
     // If user is not logged in, return login component
     if (isLoggedIn === false) {
+      router.replace('/auth/login');
       return <LoginPage />;
     }
 
