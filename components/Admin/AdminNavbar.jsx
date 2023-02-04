@@ -46,9 +46,12 @@ export const AdminNavbar = () => {
             </Dropdown.Toggle>
 
             <Dropdown.Menu variant="dark" className="userMenuBox">
-              <Dropdown.Item className="userMenuItem" href="/admin/profile">
-                Perfil
-              </Dropdown.Item>
+              <Link href="/admin/profile">
+                <Dropdown.Item as="a" className="userMenuItem">
+                  Perfil
+                </Dropdown.Item>
+              </Link>
+
               <Dropdown.Divider color="white"></Dropdown.Divider>
               <Dropdown.Item
                 className="userMenuItem"
