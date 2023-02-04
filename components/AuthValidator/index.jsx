@@ -1,4 +1,3 @@
-import {useState} from 'react';
 import {useContext} from 'react';
 import {AuthContext} from '../../context';
 import HomeScreen from './../../pages/index';

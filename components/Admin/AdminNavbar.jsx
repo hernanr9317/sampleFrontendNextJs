@@ -18,7 +18,7 @@ export const AdminNavbar = () => {
     logOut();
     router.replace('/auth/login');
   };
-  //TODO: HACER FUNCIONAR BOTON PERFIL DEL MENU DESPLEGABLE
+
   return (
     <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
       <Container>

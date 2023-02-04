@@ -1,5 +1,6 @@
 import {AdminLayout} from './../../components/layouts/AdminLayout';
 import {MainProfile} from '../../components/Admin/MainProfile/index';
+import withAuth from '../../components/AuthValidator';
 
 const Profile = () => {
   return (
@@ -15,4 +16,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default withAuth(Profile);
