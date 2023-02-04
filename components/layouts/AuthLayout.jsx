@@ -7,6 +7,7 @@ export const AuthLayout = ({children, title}) => {
   const {isLoggedIn} = useContext(AuthContext);
   const router = useRouter();
   const [calledReplace, setCalledReplace] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     try {
@@ -14,9 +15,28 @@ export const AuthLayout = ({children, title}) => {
         if (calledReplace) return;
         router.replace('/admin');
         setCalledReplace(true);
+      } else {
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 750);
       }
     } catch (error) {}
   }, [isLoggedIn]);
+
+  if (isLoading)
+    return (
+      <div
+        className="d-flex justify-content-center"
+        style={{marginTop: '350px'}}
+      >
+        <strong style={{marginRight: '10px'}}>Cargando...</strong>
+        <div
+          className="spinner-border ml-auto"
+          role="status"
+          aria-hidden="true"
+        ></div>
+      </div>
+    );
 
   return (
     <>
