@@ -5,7 +5,7 @@ export const DataBox = () => {
   const data = useContext(AuthContext);
 
   return (
-    <div className="col-md-8">
+    <div className="col-md-8 data-box">
       <div className="card mb-3">
         <div className="card-body">
           <div className="row">

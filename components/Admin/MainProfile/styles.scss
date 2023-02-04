@@ -5,8 +5,12 @@
     margin-bottom: 100px;
     display: flex;
     flex-direction: row;
-    height: 241px;
 
+    .data-box {
+        .card {
+            height: 100%;
+        }
+    }
 
     .avatar-container {
         width: 150px;

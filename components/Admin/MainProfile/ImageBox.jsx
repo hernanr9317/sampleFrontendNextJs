@@ -7,7 +7,7 @@ export const ImageBox = () => {
   const data = useContext(AuthContext);
 
   return (
-    <div className="card">
+    <div className="card image-box">
       <div className="card-body">
         <div className="d-flex flex-column align-items-center text-center">
           <div className="avatar-container">
