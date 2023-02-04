@@ -4,7 +4,7 @@ import {postDataAxios, getDataAxios} from '../../utils/axiosConfig';
 import Cookies from 'js-cookie';
 
 const Auth_INITIAL_STATE = {
-  isLoggedIn: false,
+  isLoggedIn: undefined,
   user: undefined,
 };
 
@@ -19,7 +19,12 @@ export const AuthProvider = ({children}) => {
     try {
       const tokenCookie = Cookies.get('token');
 
-      if (!tokenCookie) return;
+      // if (!tokenCookie) return;
+
+      if (!tokenCookie) {
+        dispatch({type: '[Auth] - Logout'});
+        return;
+      }
 
       const resp = await getDataAxios('/auth/validate-token/', tokenCookie);
 

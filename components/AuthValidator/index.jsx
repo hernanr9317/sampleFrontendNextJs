@@ -7,12 +7,14 @@ const withAuth = (Component) => {
     const {isLoggedIn} = useContext(AuthContext);
 
     // If user is not logged in, return login component
-    if (!isLoggedIn) {
+    if (isLoggedIn === false) {
       return <HomeScreen />;
     }
 
     // If user is logged in, return original component
-    return <Component {...props} />;
+    if (isLoggedIn === true) {
+      return <Component {...props} />;
+    }
   };
 
   // Copy getInitial props so it will run as well
