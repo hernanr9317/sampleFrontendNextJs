@@ -20,7 +20,13 @@ export const AdminNavbar = () => {
   };
 
   return (
-    <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
+    <Navbar
+      bg="dark"
+      variant="dark"
+      expand="lg"
+      fixed="top"
+      className="userNav"
+    >
       <Container>
         <Navbar.Brand>
           <Link className="navbar-brand" href="/">
