@@ -6,6 +6,24 @@ export const changeDataReducer = (state, action) => {
         needUpload: action.payload,
       };
 
+    case '[dataChange] - Categories':
+      return {
+        ...state,
+        categories: action.payload,
+      };
+
+    case '[dataChange] - Products':
+      return {
+        ...state,
+        products: action.payload,
+      };
+
+    case '[dataChange] - Users':
+      return {
+        ...state,
+        users: action.payload,
+      };
+
     default:
       return state;
   }

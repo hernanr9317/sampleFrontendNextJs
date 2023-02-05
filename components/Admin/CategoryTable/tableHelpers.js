@@ -24,8 +24,8 @@ export const saveItem = async (
     isNewData();
     setMessageAlert('Cambios guardados');
     setDisplay('');
-    setNewTitle(data.nombre);
-    setNewDescription(data.descripcion);
+    // setNewTitle(data.nombre);
+    // setNewDescription(data.descripcion);
 
     setTimeout(() => {
       setDisplay('none');

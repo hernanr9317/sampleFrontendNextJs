@@ -29,10 +29,7 @@ export const InputsTable = ({
           rows="5"
           defaultValue={description}
           disabled={editForm}
-          {...register('descripcion', {
-            required: 'Este campo es requerido',
-            minLength: {value: 3, message: 'Mínimo 3 caracteres'},
-          })}
+          {...register('descripcion')}
         ></textarea>
         <div className="invalid-feedback d-block">
           {errors.descripcion?.message}

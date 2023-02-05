@@ -26,6 +26,16 @@ export const CategoryFilter = () => {
     (element) => element?.categoria?.nombre === categorySelected,
   );
 
+  //TODO: NO ANDA AL GUARDAR EL TITULO
+  useEffect(() => {
+    const filter = categorias?.find(
+      (element) => element?.nombre === categorySelected,
+    );
+    setCategorySelected(filter?.nombre);
+    setDescrription(filter?.description);
+    setId(filter?._id);
+  }, [needUpload, categorias]);
+
   const getCategorias = async () => {
     getDataAxios('/categorias/').then((resp) => {
       setCategorias(resp?.data?.categorias);
