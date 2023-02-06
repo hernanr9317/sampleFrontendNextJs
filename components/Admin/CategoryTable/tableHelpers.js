@@ -13,19 +13,17 @@ export const saveItem = async (
   setDisplay,
   id,
   isNewData,
-  setNewTitle,
-  setNewDescription,
+  setElementSelected,
 ) => {
   setEditForm(!editForm);
 
   try {
     const tokenCookie = Cookies.get('token');
-    await putDataAxios(`/categorias/${id}`, data, tokenCookie);
+    const resp = await putDataAxios(`/categorias/${id}`, data, tokenCookie);
+    setElementSelected(resp.data);
     isNewData();
     setMessageAlert('Cambios guardados');
     setDisplay('');
-    // setNewTitle(data.nombre);
-    // setNewDescription(data.descripcion);
 
     setTimeout(() => {
       setDisplay('none');
@@ -39,10 +37,12 @@ export const deleteItem = async (
   setDisplay,
   id,
   isNewData,
+  setElementSelected,
 ) => {
   try {
     const tokenCookie = Cookies.get('token');
     await deleteDataAxios(`/categorias/${id}`, tokenCookie);
+    setElementSelected([]);
     isNewData();
     setEditForm(true);
     setMessageAlert('Categoria eliminada exitosamente');

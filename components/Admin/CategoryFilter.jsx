@@ -1,57 +1,25 @@
-import {useContext, useState, useEffect} from 'react';
+import {useContext, useState} from 'react';
 import {ChangeDataContext} from './../../context/changeData/ChangeDataContext';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Alert from 'react-bootstrap/Alert';
 import {AddCategory} from './AddCaregory';
-import {getDataAxios} from './../../utils/axiosConfig';
 import {CategoryTable} from './CategoryTable/index';
 
 export const CategoryFilter = () => {
-  const {needUpload} = useContext(ChangeDataContext);
-  const [productos, setProductos] = useState([]);
-  const [categorias, setCategorias] = useState([]);
+  const {categories, products} = useContext(ChangeDataContext);
 
-  const [categorySelected, setCategorySelected] = useState('');
-  const [descrription, setDescrription] = useState('');
-  const [id, setId] = useState('');
+  const [elementSelected, setElementSelected] = useState([]);
 
-  useEffect(() => {
-    getCategorias();
-    getProductos();
-  }, [needUpload]);
-
-  const categoriesFilter = productos?.data?.productos?.filter(
-    (element) => element?.categoria?.nombre === categorySelected,
+  const categoriesFilter = products?.productos?.filter(
+    (element) => element?.categoria?.nombre === elementSelected.nombre,
   );
 
-  //TODO: NO ANDA AL GUARDAR EL TITULO
-  useEffect(() => {
-    const filter = categorias?.find(
-      (element) => element?.nombre === categorySelected,
-    );
-    setCategorySelected(filter?.nombre);
-    setDescrription(filter?.description);
-    setId(filter?._id);
-  }, [needUpload, categorias]);
-
-  const getCategorias = async () => {
-    getDataAxios('/categorias/').then((resp) => {
-      setCategorias(resp?.data?.categorias);
-    });
-  };
-
-  const getProductos = async () => {
-    getDataAxios('/productos/').then((resp) => {
-      setProductos(resp);
-    });
-  };
+  //TODO: NO HACE REFRESH AL GUARDAR
 
   const onClick = (element) => {
-    setCategorySelected(element.nombre);
-    setDescrription(element.description);
-    setId(element._id);
+    setElementSelected(element);
   };
 
   return (
@@ -64,7 +32,7 @@ export const CategoryFilter = () => {
           title="Categorias"
           id="bg-nested-dropdown"
         >
-          {categorias?.map((element, index) => {
+          {categories?.categorias?.map((element, index) => {
             return (
               <Dropdown.Item
                 key={index}
@@ -77,18 +45,15 @@ export const CategoryFilter = () => {
           })}
         </DropdownButton>
       </ButtonGroup>
-
-      {categorySelected === '' && (
+      {!elementSelected.nombre && (
         <Alert variant="warning" className="mt-3">
           Seleccione una categoría
         </Alert>
       )}
-
       <CategoryTable
+        setElementSelected={setElementSelected}
         categories={categoriesFilter}
-        title={categorySelected}
-        id={id}
-        description={descrription}
+        elementSelected={elementSelected}
       />
     </div>
   );

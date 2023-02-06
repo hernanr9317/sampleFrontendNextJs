@@ -10,13 +10,16 @@ import {ChangeDataContext} from '../../../context/changeData/ChangeDataContext';
 import {ascendingOrder} from '../../helpers/helpers';
 import {HeaderTable} from './HeaderTable';
 
-export const CategoryTable = ({categories, title, id, description}) => {
+// export const CategoryTable = ({categories, title, id, description}) => {
+export const CategoryTable = ({
+  categories,
+  elementSelected,
+  setElementSelected,
+}) => {
   const {isNewData} = useContext(ChangeDataContext);
   const [display, setDisplay] = useState('none');
   const [messageAlert, setMessageAlert] = useState('');
   const [type, setType] = useState('');
-  const [newTitle, setNewTitle] = useState(undefined);
-  const [newDescription, setNewDescription] = useState(undefined);
 
   const [element, setElement] = useState('');
   const [interaction, setInteraction] = useState(false);
@@ -30,18 +33,18 @@ export const CategoryTable = ({categories, title, id, description}) => {
     formState: {errors},
   } = useForm({
     defaultValues: {
-      nombre: newTitle || title || '',
-      descripcion: newDescription || description || '',
+      nombre: elementSelected.nombre || '',
+      descripcion: elementSelected.description || '',
     },
   });
 
   useEffect(() => {
     reset({
-      nombre: newTitle || title || '',
-      descripcion: newDescription || description || '',
+      nombre: elementSelected.nombre || '',
+      descripcion: elementSelected.description || '',
     });
 
-    if (id) setEditButton(false);
+    if (elementSelected._id) setEditButton(false);
   }, [reset, categories]);
 
   ascendingOrder(categories);
@@ -70,15 +73,21 @@ export const CategoryTable = ({categories, title, id, description}) => {
       editForm,
       setMessageAlert,
       setDisplay,
-      id,
+      elementSelected._id,
       isNewData,
-      setNewTitle,
-      setNewDescription,
+      setElementSelected,
     );
   };
 
   const handleDelete = () => {
-    deleteItem(setEditForm, setMessageAlert, setDisplay, id, isNewData);
+    deleteItem(
+      setEditForm,
+      setMessageAlert,
+      setDisplay,
+      elementSelected._id,
+      isNewData,
+      setElementSelected,
+    );
   };
 
   const handleEdit = () => {
@@ -94,10 +103,10 @@ export const CategoryTable = ({categories, title, id, description}) => {
           </Card.Header>
           <Card.Body>
             <InputsTable
-              title={title}
+              title={elementSelected.nombre}
               editForm={editForm}
               errors={errors}
-              description={description}
+              description={elementSelected.description}
               register={register}
             />
 
@@ -114,7 +123,7 @@ export const CategoryTable = ({categories, title, id, description}) => {
         </Form>
       </Card>
 
-      <HeaderTable title={title} addElement={addElement} />
+      <HeaderTable title={elementSelected.nombre} addElement={addElement} />
       <MainTable categories={categories} selectItem={selectItem} />
 
       <ModalElement element={element} interaction={interaction} type={type} />
