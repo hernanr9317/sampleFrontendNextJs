@@ -35,7 +35,7 @@ export const ModalBody = ({
             required: 'Este campo es requerido',
           })}
         >
-          {categorias?.data?.categorias?.map((catElement, index) => (
+          {categorias?.categorias?.map((catElement, index) => (
             <option
               key={index}
               value={catElement?._id}

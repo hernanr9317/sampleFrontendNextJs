@@ -2,18 +2,15 @@ import React, {useState, useEffect, useContext} from 'react';
 import {useForm} from 'react-hook-form';
 import {Alert, Form, Modal} from 'react-bootstrap';
 import {ChangeDataContext} from './../../../context/changeData/ChangeDataContext';
-import {useGetData} from './../../../hooks/useGetData';
 import {ModalFooter} from './ModalFooter';
 import {ModalBody} from './ModalBody';
 import {deleteItemModal, saveItemModal} from './modalHelpers';
 
 export const ModalElement = ({element, interaction, type}) => {
-  const {isNewData} = useContext(ChangeDataContext);
+  const {isNewData, categories} = useContext(ChangeDataContext);
 
   const [display, setDisplay] = useState('none');
   const [alertMessage, setAlertMessage] = useState('');
-
-  const categorias = useGetData('/categorias/');
 
   const {
     register,
@@ -69,7 +66,14 @@ export const ModalElement = ({element, interaction, type}) => {
   };
 
   const handleDelete = () => {
-    deleteItemModal(element, isNewData, setAlertMessage, setEdit, setDisplay);
+    deleteItemModal(
+      setShow,
+      element,
+      isNewData,
+      setAlertMessage,
+      setEdit,
+      setDisplay,
+    );
   };
 
   return (
@@ -94,7 +98,7 @@ export const ModalElement = ({element, interaction, type}) => {
             edit={edit}
             register={register}
             errors={errors}
-            categorias={categorias}
+            categorias={categories}
             type={type}
           />
 

@@ -98,8 +98,8 @@ export const putDataAxios = async (url, data, token = '') => {
 };
 
 export const putImageAxios = async (url, data, token = '') => {
-  await axios
-    .put(
+  try {
+    await axios.put(
       `${baseUrl}${url}`,
       {archivo: data},
       {
@@ -108,10 +108,8 @@ export const putImageAxios = async (url, data, token = '') => {
           'Content-Type': 'multipart/form-data',
         },
       },
-    )
-    .then(function (response) {
-      console.log(response);
-    });
+    );
+  } catch (error) {}
 };
 
 export const deleteDataAxios = async (url, token = '') => {

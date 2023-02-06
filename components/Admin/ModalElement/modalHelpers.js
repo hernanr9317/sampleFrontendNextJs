@@ -40,6 +40,7 @@ export const saveItemModal = async (
 };
 
 export const deleteItemModal = async (
+  setShow,
   element,
   isNewData,
   setAlertMessage,
@@ -53,5 +54,6 @@ export const deleteItemModal = async (
     setAlertMessage('Eliminado exitosamente');
     setEdit(true);
     setDisplay('');
+    setShow(false);
   } catch (error) {}
 };

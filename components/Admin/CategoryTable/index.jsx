@@ -59,8 +59,8 @@ export const CategoryTable = ({
     setType('addElement');
     setElement({
       categoria: {
-        _id: id,
-        nombre: title,
+        _id: elementSelected._id,
+        nombre: elementSelected.nombre,
       },
     });
     setInteraction(!interaction);
