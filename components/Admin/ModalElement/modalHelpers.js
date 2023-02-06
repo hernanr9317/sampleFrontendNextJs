@@ -1,10 +1,12 @@
 import Cookies from 'js-cookie';
+import Swal from 'sweetalert2';
 import {
   postDataAxiosElement,
   putDataAxios,
   putImageAxios,
   deleteDataAxios,
 } from '../../../utils/axiosConfig';
+import {sweetDelete, sweetError} from '../../sweetAlert';
 
 export const saveItemModal = async (
   data,
@@ -39,21 +41,31 @@ export const saveItemModal = async (
   } catch (error) {}
 };
 
-export const deleteItemModal = async (
+export const deleteItemModal = (
   setShow,
   element,
   isNewData,
   setAlertMessage,
   setEdit,
-  setDisplay,
 ) => {
-  try {
-    const tokenCookie = Cookies.get('token');
-    await deleteDataAxios(`/productos/${element._id}`, tokenCookie);
-    isNewData();
-    setAlertMessage('Eliminado exitosamente');
-    setEdit(true);
-    setDisplay('');
-    setShow(false);
-  } catch (error) {}
+  Swal.fire(sweetDelete).then(async (result) => {
+    if (result.isConfirmed) {
+      try {
+        const tokenCookie = Cookies.get('token');
+        await deleteDataAxios(`/productos/${element._id}`, tokenCookie);
+        isNewData();
+        setAlertMessage('Eliminado exitosamente');
+        setEdit(true);
+        setShow(false);
+
+        Swal.fire(
+          'Elemento eliminado',
+          'El elemento ah sido eliminada correctamente.',
+          'success',
+        );
+      } catch (error) {
+        Swal.fire(sweetError);
+      }
+    }
+  });
 };

@@ -66,14 +66,7 @@ export const ModalElement = ({element, interaction, type}) => {
   };
 
   const handleDelete = () => {
-    deleteItemModal(
-      setShow,
-      element,
-      isNewData,
-      setAlertMessage,
-      setEdit,
-      setDisplay,
-    );
+    deleteItemModal(setShow, element, isNewData, setAlertMessage, setEdit);
   };
 
   return (
@@ -106,6 +99,7 @@ export const ModalElement = ({element, interaction, type}) => {
             editInfo={editInfo}
             edit={edit}
             handleDelete={handleDelete}
+            type={type}
           />
 
           <Alert variant="success" style={{display: display}}>

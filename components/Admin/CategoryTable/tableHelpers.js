@@ -1,5 +1,7 @@
 import {deleteDataAxios, putDataAxios} from '../../../utils/axiosConfig';
 import Cookies from 'js-cookie';
+import Swal from 'sweetalert2';
+import {sweetDelete, sweetError} from '../../sweetAlert';
 
 export const editItem = (setEditForm, editForm) => {
   setEditForm(!editForm);
@@ -31,25 +33,24 @@ export const saveItem = async (
   } catch (error) {}
 };
 
-export const deleteItem = async (
-  setEditForm,
-  setMessageAlert,
-  setDisplay,
-  id,
-  isNewData,
-  setElementSelected,
-) => {
-  try {
-    const tokenCookie = Cookies.get('token');
-    await deleteDataAxios(`/categorias/${id}`, tokenCookie);
-    setElementSelected([]);
-    isNewData();
-    setEditForm(true);
-    setMessageAlert('Categoria eliminada exitosamente');
-    setDisplay('');
+export const deleteItem = (setEditForm, id, isNewData, setElementSelected) => {
+  Swal.fire(sweetDelete).then(async (result) => {
+    if (result.isConfirmed) {
+      try {
+        const tokenCookie = Cookies.get('token');
+        await deleteDataAxios(`/categorias/${id}`, tokenCookie);
+        setElementSelected([]);
+        isNewData();
+        setEditForm(true);
 
-    setTimeout(() => {
-      setDisplay('none');
-    }, 3500);
-  } catch (error) {}
+        Swal.fire(
+          'Categoría eliminada',
+          'La categoría ah sido eliminada correctamente.',
+          'success',
+        );
+      } catch (error) {
+        Swal.fire(sweetError);
+      }
+    }
+  });
 };

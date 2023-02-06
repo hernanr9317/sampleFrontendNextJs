@@ -80,14 +80,7 @@ export const CategoryTable = ({
   };
 
   const handleDelete = () => {
-    deleteItem(
-      setEditForm,
-      setMessageAlert,
-      setDisplay,
-      elementSelected._id,
-      isNewData,
-      setElementSelected,
-    );
+    deleteItem(setEditForm, elementSelected._id, isNewData, setElementSelected);
   };
 
   const handleEdit = () => {
