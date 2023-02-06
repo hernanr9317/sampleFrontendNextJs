@@ -8,7 +8,7 @@ export const HeaderTable = ({title, addElement}) => {
       <Button
         className="addElementButton"
         variant="success"
-        disabled={title === '' ? true : false}
+        disabled={title === undefined ? true : false}
         onClick={() => addElement('')}
       >
         Nuevo
