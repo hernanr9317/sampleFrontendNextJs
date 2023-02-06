@@ -89,7 +89,7 @@ export const ModalBody = ({
             Archivo
           </div>
           <Form.Group controlId="formFile" className="mb-3">
-            <Form.Label>Actualizar archivo</Form.Label>
+            <Form.Label>Actualizar archivo pdf</Form.Label>
             <Form.Control type="file" disabled={edit} {...register('img')} />
           </Form.Group>
         </>
