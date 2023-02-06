@@ -1,5 +1,6 @@
 import {Form, Modal} from 'react-bootstrap';
 import dayjs from 'dayjs';
+import {getFile} from '../../../utils/axiosConfig';
 
 export const ModalBody = ({
   element,
@@ -9,6 +10,10 @@ export const ModalBody = ({
   categorias,
   type,
 }) => {
+  const viewFile = async () => {
+    await getFile(`/uploads/productos/${element._id}`, element.nombre);
+  };
+
   return (
     <Modal.Body>
       <Form.Group className="mb-3" controlId="nombre">
@@ -79,10 +84,15 @@ export const ModalBody = ({
       </Form.Group>
 
       {type === 'editElement' && (
-        <Form.Group controlId="formFile" className="mb-3">
-          <Form.Label>Subir archivo</Form.Label>
-          <Form.Control type="file" disabled={edit} {...register('img')} />
-        </Form.Group>
+        <>
+          <div className="fileLabel" onClick={viewFile}>
+            Archivo
+          </div>
+          <Form.Group controlId="formFile" className="mb-3">
+            <Form.Label>Actualizar archivo</Form.Label>
+            <Form.Control type="file" disabled={edit} {...register('img')} />
+          </Form.Group>
+        </>
       )}
 
       <div className="mt-4 modalDate">

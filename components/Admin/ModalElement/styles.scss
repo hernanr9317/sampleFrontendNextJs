@@ -17,6 +17,12 @@
             text-transform: capitalize;
         }
     }
+
+    .fileLabel {
+        cursor: pointer;
+        text-decoration: underline;
+        padding: 5px 0 8px 0;
+    }
     
 }
 
