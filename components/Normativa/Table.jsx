@@ -1,5 +1,6 @@
+import {useContext} from 'react';
 import Table from 'react-bootstrap/Table';
-import {useGetData} from './../../hooks/useGetData';
+import {ChangeDataContext} from './../../context/changeData/ChangeDataContext';
 import Button from 'react-bootstrap/Button';
 import {getFile} from '../../utils/axiosConfig';
 import {FcDocument} from 'react-icons/fc';
@@ -7,16 +8,13 @@ import {ImArrowDown} from 'react-icons/im';
 import {ascendingOrder} from './../helpers/helpers';
 
 export const NormsTable = () => {
-  const resp = useGetData('/productos/');
-  const categorias = useGetData('/categorias/');
+  const {categories, products} = useContext(ChangeDataContext);
 
-  const {data} = resp || {data: []};
-
-  const filterCategory = data?.productos?.filter(
+  const filterCategory = products?.productos?.filter(
     (element) => element.categoria.nombre === 'NORMATIVAS',
   );
 
-  const infoCategory = categorias?.data?.categorias?.find(
+  const infoCategory = categories?.categorias?.find(
     (element) => element?.nombre === 'NORMATIVAS',
   );
 

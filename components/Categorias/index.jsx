@@ -1,6 +1,6 @@
-import {useState} from 'react';
+import {useState, useContext} from 'react';
 import Image from 'next/image';
-import {useGetData} from '../../hooks/useGetData';
+import {ChangeDataContext} from '../../context/changeData/ChangeDataContext';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import {ViewCategory} from './ViewCategory';
@@ -10,11 +10,9 @@ import initialImg from '../../public/assets/etaps/nube.jpg';
 export const Categorias = () => {
   const [categorySelected, setCategorySelected] = useState('');
 
-  const resp = useGetData('/categorias/');
+  const {categories} = useContext(ChangeDataContext);
 
-  const {data} = resp || {data: []};
-
-  const filteredData = data?.categorias?.filter(
+  const filteredData = categories?.categorias?.filter(
     (dataElement) =>
       dataElement.nombre !== 'NORMATIVAS' && dataElement.nombre !== 'NORMATIVA',
   );

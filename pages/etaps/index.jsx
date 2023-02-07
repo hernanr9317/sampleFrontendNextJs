@@ -1,5 +1,5 @@
-import {PublicLayout} from '../components/layouts';
-import {Categorias} from '../components/Categorias/index';
+import {Categorias} from '../../components/Categorias';
+import {PublicLayout} from '../../components/layouts';
 
 const Etaps = () => {
   return (

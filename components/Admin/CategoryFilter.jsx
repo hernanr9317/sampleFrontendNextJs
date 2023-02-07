@@ -16,8 +16,6 @@ export const CategoryFilter = () => {
     (element) => element?.categoria?.nombre === elementSelected.nombre,
   );
 
-  //TODO: NO HACE REFRESH AL GUARDAR
-
   const onClick = (element) => {
     setElementSelected(element);
   };
