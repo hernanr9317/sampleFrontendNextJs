@@ -1,6 +1,5 @@
 import {useContext, useState} from 'react';
 import {useForm} from 'react-hook-form';
-import {FaSave} from 'react-icons/fa';
 import {AuthContext} from './../../../context/auth/AuthContext';
 
 export const DataBox = () => {
@@ -15,7 +14,12 @@ export const DataBox = () => {
     handleSubmit,
     reset,
     formState: {errors},
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      nombre: data?.user?.nombre,
+      correo: data?.user?.correo,
+    },
+  });
 
   const onSaveChanges = (data) => {
     console.log(data);
@@ -85,7 +89,11 @@ export const DataBox = () => {
             <hr />
             <div className="row">
               <div className="col-sm-12 button-group">
-                <button className="btn btn-primary" onClick={editInfo}>
+                <button
+                  className="btn btn-primary"
+                  type="button"
+                  onClick={editInfo}
+                >
                   Editar
                 </button>
                 <button
@@ -94,7 +102,7 @@ export const DataBox = () => {
                   disabled={edit}
                   style={{display: 'flex'}}
                 >
-                  Guardar <FaSave size={'20px'} style={{marginLeft: '3px'}} />
+                  Guardar
                 </button>
               </div>
             </div>
