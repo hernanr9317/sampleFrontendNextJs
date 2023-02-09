@@ -23,7 +23,7 @@ export const DataBox = () => {
       correo: user?.correo,
     },
   });
-
+  //TODO: TERMINAR DE HACER FUNCIONAR LA ACTUALIZACION DE CONTRASEÑA
   const onSaveChanges = async (data) => {
     const tokenCookie = Cookies.get('token');
     await putDataAxios(`/usuarios/${user.id}`, data, tokenCookie);
@@ -111,14 +111,16 @@ export const DataBox = () => {
           <hr />
           <div className="row">
             <div className="col-sm-3">
-              <h6 className="mb-0">Contraseña</h6>
+              <h6 className="mb-0">Cambiar contraseña</h6>
             </div>
             <input
               disabled={edit}
               type="password"
               className="col-sm-9 text-secondary"
               defaultValue={'contraseña'}
-              {...register('contraseñaForm')}
+              {...register('contraseñaForm', {
+                minLength: {value: 6, message: 'Mínimo 6 caracteres'},
+              })}
             />
             <div className="invalid-feedback d-block">
               {errors.contraseñaForm?.message}
