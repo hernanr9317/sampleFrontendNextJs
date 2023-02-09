@@ -37,6 +37,17 @@ export const ChangeDataProvider = ({children}) => {
     getProducts();
   }, [state.needUpload]);
 
+  useEffect(() => {
+    const getUsers = async () => {
+      const {data} = await getDataAxios('/usuarios/');
+      dispatch({
+        type: '[dataChange] - Users',
+        payload: data,
+      });
+    };
+    getUsers();
+  }, [state.needUpload]);
+
   const isNewData = () => {
     dispatch({
       type: '[dataChange] - Need upload',
