@@ -76,7 +76,9 @@ export const putDataAxios = async (url, data, token = '') => {
       .put(
         `${baseUrl}${url}`,
         {
+          rol: 'ADMIN_ROLE',
           nombre: data?.nombre,
+          correo: data?.correo,
           categoria: data?.categoria,
           precio: data?.precio,
           description: data?.descripcion,

@@ -19,8 +19,6 @@ export const AuthProvider = ({children}) => {
     try {
       const tokenCookie = Cookies.get('token');
 
-      // if (!tokenCookie) return;
-
       if (!tokenCookie) {
         dispatch({type: '[Auth] - Logout'});
         return;
@@ -47,6 +45,7 @@ export const AuthProvider = ({children}) => {
       dispatch({
         type: '[Auth] - Login',
         payload: {
+          id: resp.data.usuario.uid,
           correo: resp.data.usuario.correo,
           nombre: resp.data.usuario.nombre,
         },
