@@ -10,6 +10,19 @@
         .card {
             height: 100%;
         }
+
+        .text-secondary {
+            background-color: #fff;
+            border: 0;
+        }
+
+        .button-group {
+            display: flex;
+
+            button {
+                margin-right: 5px;
+            }
+        }
     }
 
     .avatar-container {
