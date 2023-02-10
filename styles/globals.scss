@@ -10,7 +10,9 @@
 @import '/components/Admin/MainProfile/styles.scss';
 @import '../pages/auth/styles.scss';
 
-
+body {
+  font-family: 'Poppins', sans-serif;
+}
 
 .footerImg {
   filter: opacity(0.3) drop-shadow(0 0 0 white); 

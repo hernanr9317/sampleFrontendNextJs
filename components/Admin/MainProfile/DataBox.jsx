@@ -23,7 +23,7 @@ export const DataBox = () => {
       correo: user?.correo,
     },
   });
-  //TODO: DAR FEEDBACK SI SALIO BIEN O NO
+
   const onSaveChanges = async (data) => {
     const completeData =
       data.contraseñaForm?.length > 5
