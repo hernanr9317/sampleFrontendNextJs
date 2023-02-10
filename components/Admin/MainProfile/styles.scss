@@ -7,6 +7,10 @@
     flex-direction: row;
 
     .data-box {
+        .row {
+            padding: 0 16px;
+        }
+
         .card {
             height: 100%;
         }
@@ -14,6 +18,11 @@
         .text-secondary {
             background-color: #fff;
             border: 0;
+
+            &.editActive {
+                border: 1px solid rgb(23, 23, 23);
+                border-radius: 5px;
+            }
         }
 
         .button-group {
@@ -26,11 +35,13 @@
     }
 
     .avatar-container {
-        width: 150px;
+
+        @include desktop(){
+            width: 150px;
+        }
         
         img {
             border-radius: 50%;
-            width: 150px;
             border: 1px solid #000;
             margin-left: auto;
             margin-right: auto;

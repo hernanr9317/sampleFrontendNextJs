@@ -96,7 +96,7 @@ export const DataBox = () => {
             </div>
             <input
               disabled={edit}
-              className="col-sm-9 text-secondary"
+              className={`col-sm-9 text-secondary ${!edit ? 'editActive' : ''}`}
               defaultValue={user?.nombre}
               {...register('nombre', {
                 required: 'Este campo es requerido',
@@ -115,7 +115,7 @@ export const DataBox = () => {
             <input
               disabled={edit}
               type="email"
-              className="col-sm-9 text-secondary"
+              className={`col-sm-9 text-secondary ${!edit ? 'editActive' : ''}`}
               defaultValue={user?.correo}
               {...register('correo', {
                 required: 'Este campo es requerido',
