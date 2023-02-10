@@ -25,8 +25,18 @@ export const DataBox = () => {
   });
   //TODO: TERMINAR DE HACER FUNCIONAR LA ACTUALIZACION DE CONTRASEÑA
   const onSaveChanges = async (data) => {
+    const completeData =
+      data.contraseñaForm?.length > 5
+        ? {
+            nombre: data.nombre,
+            correo: data.correo,
+            password: data.contraseñaForm,
+          }
+        : {nombre: data.nombre, correo: data.correo};
+
+    console.log(completeData);
     const tokenCookie = Cookies.get('token');
-    await putDataAxios(`/usuarios/${user.id}`, data, tokenCookie);
+    await putDataAxios(`/usuarios/${user.id}`, completeData, tokenCookie);
   };
 
   const editInfo = async () => {
@@ -117,7 +127,6 @@ export const DataBox = () => {
               disabled={edit}
               type="password"
               className="col-sm-9 text-secondary"
-              defaultValue={'contraseña'}
               {...register('contraseñaForm', {
                 minLength: {value: 6, message: 'Mínimo 6 caracteres'},
               })}

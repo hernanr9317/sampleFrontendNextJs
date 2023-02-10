@@ -79,6 +79,7 @@ export const putDataAxios = async (url, data, token = '') => {
           rol: 'ADMIN_ROLE',
           nombre: data?.nombre,
           correo: data?.correo,
+          password: data?.password,
           categoria: data?.categoria,
           precio: data?.precio,
           description: data?.descripcion,
