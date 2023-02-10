@@ -1,0 +1,29 @@
+
+.mainCarousel{
+
+    margin-top: 78px !important;
+
+    margin-left: calc(50% - var(--vw, 1vw) * 50);
+    left: 0;
+    width: calc(var(--vw, 1vw) * 99.5);
+
+    img {
+        height: 200px !important;
+    }
+
+    span {
+        display: none
+    }
+
+    @include desktop(){
+        margin-top: 84px !important;
+
+        img {
+            height: 100% !important;
+        }
+        
+        span {
+            display: flex
+        }
+    }
+}

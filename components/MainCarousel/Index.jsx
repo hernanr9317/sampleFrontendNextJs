@@ -3,7 +3,7 @@ import {Carousel} from 'react-bootstrap';
 
 export const MainCarousel = ({img, img2, img3}) => {
   return (
-    <Carousel variant="dark" className="mainCarousel">
+    <Carousel className="mainCarousel">
       <Carousel.Item>
         <Image src={img} alt="First slide" />
         <Carousel.Caption></Carousel.Caption>
