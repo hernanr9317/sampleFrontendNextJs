@@ -1,5 +1,6 @@
 import {useContext, useState} from 'react';
 import {useForm} from 'react-hook-form';
+import Alert from 'react-bootstrap/Alert';
 import Swal from 'sweetalert2';
 import {putDataAxios} from '../../../utils/axiosConfig';
 import {AuthContext} from './../../../context/auth/AuthContext';
@@ -15,7 +16,6 @@ export const DataBox = () => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: {errors},
   } = useForm({
     defaultValues: {
@@ -23,7 +23,7 @@ export const DataBox = () => {
       correo: user?.correo,
     },
   });
-  //TODO: TERMINAR DE HACER FUNCIONAR LA ACTUALIZACION DE CONTRASEÑA
+  //TODO: DAR FEEDBACK SI SALIO BIEN O NO
   const onSaveChanges = async (data) => {
     const completeData =
       data.contraseñaForm?.length > 5
@@ -34,9 +34,16 @@ export const DataBox = () => {
           }
         : {nombre: data.nombre, correo: data.correo};
 
-    console.log(completeData);
-    const tokenCookie = Cookies.get('token');
-    await putDataAxios(`/usuarios/${user.id}`, completeData, tokenCookie);
+    try {
+      const tokenCookie = Cookies.get('token');
+      await putDataAxios(`/usuarios/${user.id}`, completeData, tokenCookie);
+      setEdit(!edit);
+      setDisplay('');
+      setAlertMessage('Cambios guardados exitosamente');
+    } catch (error) {
+      setDisplay('');
+      setAlertMessage('Error al guardar cambios');
+    }
   };
 
   const editInfo = async () => {
@@ -156,6 +163,9 @@ export const DataBox = () => {
             </div>
           </div>
         </div>
+        <Alert variant="success" style={{display: display}}>
+          {alertMessage}
+        </Alert>
       </div>
     </form>
   );
