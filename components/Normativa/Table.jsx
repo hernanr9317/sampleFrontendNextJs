@@ -11,7 +11,7 @@ export const NormsTable = () => {
   const {categories, products} = useContext(ChangeDataContext);
 
   const filterCategory = products?.productos?.filter(
-    (element) => element.categoria.nombre === 'NORMATIVAS',
+    (element) => element?.categoria?.nombre === 'NORMATIVAS',
   );
 
   const infoCategory = categories?.categorias?.find(
