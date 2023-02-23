@@ -70,6 +70,11 @@ const LoginPage = () => {
             ¿No tienes cuenta?
           </Button>
         </Link>
+        <Link href="/auth/recover-password">
+          <Button variant="light" style={{float: 'right', marginTop: '3px'}}>
+            Olvidé mi contraseña
+          </Button>
+        </Link>
       </Form>
     </AuthLayout>
   );

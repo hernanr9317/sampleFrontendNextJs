@@ -70,6 +70,22 @@ export const postDataAxiosElement = async (url, data, token = '') => {
   } catch (error) {}
 };
 
+export const sendEmailCode = async (data) => {
+  try {
+    const response = await axios
+      .post(`${baseUrl}/auth/forgot-password`, {
+        correo: data?.email,
+      })
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    return response;
+  } catch (error) {}
+};
+
 export const putDataAxios = async (url, data, token = '') => {
   try {
     const response = await axios
