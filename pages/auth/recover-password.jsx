@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {useRouter} from 'next/router';
 import {Form, Button} from 'react-bootstrap';
 import {useForm} from 'react-hook-form';
 import {AuthLayout} from '../../components/layouts';
@@ -6,6 +7,7 @@ import {sendEmailCode} from '../../utils/axiosConfig';
 
 const RecoverPassword = () => {
   const [showStatus, setShowStatus] = useState({visible: false, text: ''});
+  const router = useRouter();
 
   const {
     register,
@@ -15,11 +17,14 @@ const RecoverPassword = () => {
 
   const sendEmailData = async (data) => {
     try {
-      sendEmailCode(data);
+      await sendEmailCode(data);
       setShowStatus({
         visible: true,
         text: 'Código enviado, verifique su correo',
       });
+      setTimeout(() => {
+        router.push('/auth/confirm-password');
+      }, 3000);
     } catch (error) {
       setShowStatus({
         visible: true,

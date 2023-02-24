@@ -86,6 +86,24 @@ export const sendEmailCode = async (data) => {
   } catch (error) {}
 };
 
+export const changePasswordWithCode = async (data) => {
+  try {
+    const response = await axios
+      .put(`${baseUrl}/auth/confirm-password`, {
+        correo: data?.email,
+        password: data?.password,
+        code: data?.codigo,
+      })
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    return response;
+  } catch (error) {}
+};
+
 export const putDataAxios = async (url, data, token = '') => {
   try {
     const response = await axios

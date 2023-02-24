@@ -16,25 +16,29 @@ export const ChangeDataProvider = ({children}) => {
   );
 
   useEffect(() => {
-    const getCategories = async () => {
-      const {data} = await getDataAxios('/categorias/');
-      dispatch({
-        type: '[dataChange] - Categories',
-        payload: data,
-      });
-    };
-    getCategories();
+    try {
+      const getCategories = async () => {
+        const {data} = await getDataAxios('/categorias/');
+        dispatch({
+          type: '[dataChange] - Categories',
+          payload: data,
+        });
+      };
+      getCategories();
+    } catch (error) {}
   }, [state.needUpload]);
 
   useEffect(() => {
-    const getProducts = async () => {
-      const {data} = await getDataAxios('/productos/');
-      dispatch({
-        type: '[dataChange] - Products',
-        payload: data,
-      });
-    };
-    getProducts();
+    try {
+      const getProducts = async () => {
+        const {data} = await getDataAxios('/productos/');
+        dispatch({
+          type: '[dataChange] - Products',
+          payload: data,
+        });
+      };
+      getProducts();
+    } catch (error) {}
   }, [state.needUpload]);
 
   const isNewData = () => {
