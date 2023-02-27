@@ -24,7 +24,6 @@ export const NormsTable = () => {
   let objConvert = undefined;
 
   if (jsonText) objConvert = JSON.parse(jsonText);
-  console.log(objConvert?.map((e) => e));
 
   const orderItems = ascendingOrder(filterCategory);
 
