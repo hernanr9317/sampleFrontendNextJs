@@ -27,3 +27,14 @@
 .orderItemTable{
     text-align: center;
 }
+
+.disableDiv {
+    border-radius: 3px;
+    padding: 16px 20px;
+    background-color: #e9ecef;
+    pointer-events: none;
+}
+
+.activeDiv {
+    padding: 16px 20px;
+}

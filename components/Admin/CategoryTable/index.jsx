@@ -9,6 +9,7 @@ import {deleteItem, editItem, saveItem} from './tableHelpers';
 import {ChangeDataContext} from '../../../context/changeData/ChangeDataContext';
 import {ascendingOrder} from '../../helpers/helpers';
 import {HeaderTable} from './HeaderTable';
+import {deserialize, serialize} from '../../Slate/serializersHelpers';
 
 // export const CategoryTable = ({categories, title, id, description}) => {
 export const CategoryTable = ({
@@ -67,6 +68,12 @@ export const CategoryTable = ({
   };
 
   const handleSave = (data) => {
+    // const textBody = deserialize(localStorage.getItem('content')) || '';
+    const textBody = localStorage.getItem('content') || '';
+
+    // data = {...data, descripcion: textBody[0]?.children[0]?.text};
+    data = {...data, descripcion: textBody};
+
     saveItem(
       data,
       setEditForm,

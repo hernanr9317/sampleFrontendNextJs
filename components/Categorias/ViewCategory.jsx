@@ -1,3 +1,4 @@
+import React, {useEffect, useState} from 'react';
 import {useGetData} from './../../hooks/useGetData';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -5,6 +6,7 @@ import {getFile} from '../../utils/axiosConfig';
 import {FaFileDownload} from 'react-icons/fa';
 import {ascendingOrder} from './../helpers/helpers';
 import dayjs from 'dayjs';
+import ReadOnlyText from './TextRead';
 
 export const ViewCategory = ({category, description}) => {
   const resp = useGetData('/productos/');
@@ -21,11 +23,26 @@ export const ViewCategory = ({category, description}) => {
     await getFile(`/uploads/productos/${id}`, nombre);
   };
 
+  const [obj, setObj] = useState();
+
+  useEffect(() => {
+    const jsonText = description;
+
+    const objConvert = JSON.parse(jsonText);
+
+    setObj(objConvert);
+  }, [category]);
+
   return (
     <div className="etapsInfo">
       <h1 className="text-center title">{category}</h1>
       <hr className="divider" />
-      <h2 className="description">{description}</h2>
+      <div className="textContainer">
+        {obj &&
+          obj.map((element, index) => (
+            <ReadOnlyText {...element} key={index} />
+          ))}
+      </div>
       {orderItems?.map((element, index) => (
         <Card key={index}>
           <Card.Body>

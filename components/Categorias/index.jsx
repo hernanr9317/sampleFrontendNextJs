@@ -19,7 +19,7 @@ export const Categorias = () => {
 
   return (
     <div style={{marginTop: '100px'}} className="etapsNav">
-      <h1 className="text-center" style={{marginBottom: '30px'}}>
+      <h1 className="text-center main-title" style={{marginBottom: '30px'}}>
         Estándares tecnológicos de la Administración Pública (ETAPS)
         <FcInspection />
       </h1>

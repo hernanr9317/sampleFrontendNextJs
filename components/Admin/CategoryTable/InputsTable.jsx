@@ -1,3 +1,5 @@
+import RichText from './../../Slate/RichText';
+
 export const InputsTable = ({
   title,
   editForm,
@@ -23,14 +25,10 @@ export const InputsTable = ({
       </div>
       <div className="mb-3">
         <label>Descripción</label>
-        <textarea
-          className="form-control"
-          id="exampleFormControlTextarea1"
-          rows="5"
-          defaultValue={description}
-          disabled={editForm}
-          {...register('descripcion')}
-        ></textarea>
+        <div className={editForm ? 'disableDiv' : 'activeDiv'}>
+          <RichText newData={description} />
+        </div>
+
         <div className="invalid-feedback d-block">
           {errors.descripcion?.message}
         </div>

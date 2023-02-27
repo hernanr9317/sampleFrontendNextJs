@@ -1,6 +1,8 @@
 
 .etapsNav {
 
+    padding-top: 20px;
+
     .TabEtap{
         background: linear-gradient(90deg, rgba(44,80,99,1) 0%, rgb(1, 1, 1) 100%);
         border-radius: 25px;
@@ -40,7 +42,7 @@
     .title {
         font-size: 22px;
         margin: 0;
-        padding: 10px; 
+        padding: 10px;
     }
 
     .divider {
@@ -95,7 +97,6 @@
     }
 }
 
-
 .initialImgContainer {
     margin-left: calc(50% - var(--vw, 1vw) * 50);
     height: 100%;
@@ -103,3 +104,6 @@
     width: calc(var(--vw, 1vw) * 99.5);
 }
 
+.textContainer {
+    padding: 20px
+}

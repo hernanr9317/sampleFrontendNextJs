@@ -18,7 +18,7 @@ export const ChangeDataProvider = ({children}) => {
   useEffect(() => {
     try {
       const getCategories = async () => {
-        const {data} = await getDataAxios('/categorias/');
+        const {data} = (await getDataAxios('/categorias/')) || {data: []};
         dispatch({
           type: '[dataChange] - Categories',
           payload: data,
@@ -31,7 +31,7 @@ export const ChangeDataProvider = ({children}) => {
   useEffect(() => {
     try {
       const getProducts = async () => {
-        const {data} = await getDataAxios('/productos/');
+        const {data} = (await getDataAxios('/productos/')) || {data: []};
         dispatch({
           type: '[dataChange] - Products',
           payload: data,

@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 @import 'mixins';
 @import '/components/MainCarousel/styles.scss';
 @import '/components/Categorias/styles.scss';
@@ -10,6 +11,7 @@
 @import '/components/Admin/ModalElement/styles.scss';
 @import '/components/Admin/MainProfile/styles.scss';
 @import '../pages/auth/styles.scss';
+@import '/components/Slate/styles.scss';
 
 body {
   font-family: 'Poppins', sans-serif;

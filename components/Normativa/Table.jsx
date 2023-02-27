@@ -6,6 +6,7 @@ import {getFile} from '../../utils/axiosConfig';
 import {FcDocument} from 'react-icons/fc';
 import {ImArrowDown} from 'react-icons/im';
 import {ascendingOrder} from './../helpers/helpers';
+import ReadOnlyText from '../Categorias/TextRead';
 
 export const NormsTable = () => {
   const {categories, products} = useContext(ChangeDataContext);
@@ -18,6 +19,13 @@ export const NormsTable = () => {
     (element) => element?.nombre === 'NORMATIVAS',
   );
 
+  const jsonText = infoCategory?.description;
+
+  let objConvert = undefined;
+
+  if (jsonText) objConvert = JSON.parse(jsonText);
+  console.log(objConvert?.map((e) => e));
+
   const orderItems = ascendingOrder(filterCategory);
 
   const viewFile = async (id, nombre) => {
@@ -28,7 +36,8 @@ export const NormsTable = () => {
       <h1 style={{textAlign: 'center', marginBottom: '25px'}}>
         Normativas <FcDocument />
       </h1>
-      <h5 className="mb-4">{infoCategory?.description}</h5>
+      {objConvert &&
+        objConvert.map((e, index) => <ReadOnlyText {...e} key={index} />)}
       <Table hover className="NormTable">
         <thead>
           <tr className="NormTh">
