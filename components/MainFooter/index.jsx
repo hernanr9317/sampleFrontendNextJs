@@ -3,12 +3,15 @@ import {Container} from 'react-bootstrap';
 import {Row} from 'react-bootstrap';
 import {Col} from 'react-bootstrap';
 
-import firstLogo from '../../public/assets/footer/logoFooter1.png';
-import secondtLogo from '../../public/assets/footer/logoFooter2.png';
+import firstLogo from '../../public/assets/footer/logoFooter1.webp';
+import secondtLogo from '../../public/assets/footer/logoFooter2.webp';
 
 export const MainFooter = () => {
   return (
-    <div className="bg-dark" style={{paddingTop: '200px', paddingBottom: '200px'}}>
+    <div
+      className="bg-dark"
+      style={{paddingTop: '200px', paddingBottom: '200px'}}
+    >
       <Container>
         <div
           style={{
@@ -21,7 +24,7 @@ export const MainFooter = () => {
               <Image
                 className="footerImg"
                 src={firstLogo}
-                alt="image-alt-text"
+                alt="image-alt-footer"
                 width={368}
                 height={65}
                 quality={100}

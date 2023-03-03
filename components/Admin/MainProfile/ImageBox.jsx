@@ -1,7 +1,7 @@
 import {useContext} from 'react';
 import Image from 'next/image';
 import {AuthContext} from './../../../context/auth/AuthContext';
-import defaultUser from '../../../public/assets/profile/defaultUser.png';
+import defaultUser from '../../../public/assets/profile/defaultUser.webp';
 
 export const ImageBox = () => {
   const data = useContext(AuthContext);

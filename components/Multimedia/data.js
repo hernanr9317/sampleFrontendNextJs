@@ -1,9 +1,9 @@
-import test from '../../public/assets/multimedia/test.jpg';
-import arbol from '../../public/assets/multimedia/arbol.png';
-import conect from '../../public/assets/multimedia/conect.png';
-import oca from '../../public/assets/multimedia/oca.png';
-import memoria from '../../public/assets/multimedia/memoria.png';
-import acuerdo from '../../public/assets/multimedia/acuerdo.jpg';
+import test from '../../public/assets/multimedia/test.webp';
+import arbol from '../../public/assets/multimedia/arbol.webp';
+import conect from '../../public/assets/multimedia/conect.webp';
+import oca from '../../public/assets/multimedia/oca.webp';
+import memoria from '../../public/assets/multimedia/memoria.webp';
+import acuerdo from '../../public/assets/multimedia/acuerdo.webp';
 
 export const data = [
   {
