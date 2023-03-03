@@ -31,7 +31,7 @@ export const PublicLayout = ({
           marginTop: '20px',
           maxWidth: '2048px',
           minHeight: '400px',
-          padding: '0px 5px',
+          padding: '0px 0px',
         }}
       >
         {children}
