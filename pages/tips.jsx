@@ -1,9 +1,9 @@
 import {PublicLayout} from '../components/layouts';
 import {Multimedia} from '../components/Multimedia';
 import {MainCarousel} from '../components/MainCarousel/index';
-import slider1 from '../public/assets/carousel/contraseña.png';
-import slider2 from '../public/assets/carousel/escritorio.png';
-import slider3 from '../public/assets/carousel/navegacion.png';
+import slider1 from '../public/assets/carousel/contraseña.webp';
+import slider2 from '../public/assets/carousel/escritorio.webp';
+import slider3 from '../public/assets/carousel/navegacion.webp';
 
 const Tips = () => {
   return (

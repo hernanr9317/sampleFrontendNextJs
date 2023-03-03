@@ -3,9 +3,9 @@ import {ModeloSeguridad} from '../components/ModeloSeguridad';
 import {Info} from '../components/Info';
 import {Contacto} from '../components/Contacto';
 import {PublicLayout} from '../components/layouts';
-import slider1 from '../public/assets/carousel/img3.png';
-import slider2 from '../public/assets/carousel/img1.png';
-import slider3 from '../public/assets/carousel/img2.png';
+import slider1 from '../public/assets/carousel/img3.webp';
+import slider2 from '../public/assets/carousel/img1.webp';
+import slider3 from '../public/assets/carousel/img2.webp';
 
 const HomeScreen = () => {
   return (
