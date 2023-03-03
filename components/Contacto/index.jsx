@@ -1,7 +1,8 @@
-import {Container, Row} from 'react-bootstrap';
+import {Container} from 'react-bootstrap';
 import {ContactoCol} from './ContactoCol';
 import mapa from '../../public/assets/contacto/mapa.webp';
 import telefono from '../../public/assets/contacto/telefono.webp';
+import MapLocation from './MapLocation';
 
 export const Contacto = () => {
   return (
@@ -14,6 +15,7 @@ export const Contacto = () => {
         <ContactoCol icon={mapa} text="Marcelo T. de Alvear 154" />
         <ContactoCol icon={telefono} text="362-4448000 | Int. 8211" />
       </Container>
+      <MapLocation />
     </div>
   );
 };
