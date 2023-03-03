@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
-import logo from '../../public/assets/navbar/logo.png';
+import logo from '../../public/assets/navbar/logo.webp';
 import Navbar from 'react-bootstrap/Navbar';
 
 export const MainNavbar = () => {

@@ -11,7 +11,7 @@ export const ModelCol = ({title, src}) => {
             justifyContent: 'center',
           }}
         >
-          <Image src={src} width="150" height="180" alt="" />
+          <Image src={src} width="150" height="180" alt={title} />
         </div>
         <h5 className="text-center" style={{marginTop: '16px'}}>
           <strong>{title}</strong>

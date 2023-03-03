@@ -1,8 +1,8 @@
 import {Container} from 'react-bootstrap';
 import {Row} from 'react-bootstrap';
-import integridad from '../../public/assets/modelo/integridad.png';
-import confidencialidad from '../../public/assets/modelo/confiden.png';
-import disponibilidad from '../../public/assets/modelo/dispo.png';
+import integridad from '../../public/assets/modelo/integridad.webp';
+import confidencialidad from '../../public/assets/modelo/confiden.webp';
+import disponibilidad from '../../public/assets/modelo/dispo.webp';
 import {ModelCol} from './ModelCol';
 
 export const ModeloSeguridad = () => {
