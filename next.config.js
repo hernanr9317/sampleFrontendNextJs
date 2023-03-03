@@ -5,7 +5,10 @@ const nextConfig = {
   images: {
     loader: 'akamai',
     path: '/',
-    // unoptimized: true,
+  },
+  i18n: {
+    locales: ['esp'],
+    defaultLocale: 'esp',
   },
 };
 
