@@ -26,5 +26,8 @@
     "slate-history": "^0.86.0",
     "slate-react": "^0.91.4",
     "sweetalert2": "^11.7.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.35.0"
   }
 }
