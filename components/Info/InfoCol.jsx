@@ -14,7 +14,13 @@ export const InfoCol = ({title, text, src, link}) => {
           }}
         >
           <Card style={{width: '18rem'}}>
-            <Image variant="top" src={src} height="220" width="350" />
+            <Image
+              variant="top"
+              src={src}
+              height="220"
+              width="350"
+              alt={title}
+            />
             <Card.Body>
               <Card.Title>{title}</Card.Title>
               <Card.Text>{text}</Card.Text>
