@@ -4,7 +4,7 @@ import {Map, Marker, ZoomControl} from 'pigeon-maps';
 const MapLocation = () => {
   return (
     <Map
-      height={400}
+      height={500}
       defaultCenter={[-27.449391, -58.987009]}
       defaultZoom={18}
       animate={true}
