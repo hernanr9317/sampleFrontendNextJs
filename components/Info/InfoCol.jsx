@@ -17,7 +17,6 @@ export const InfoCol = ({title, text, src, link}) => {
             <Image
               variant="top"
               src={src}
-              // height="280"
               alt={title}
               style={{aspectRatio: '16 / 9'}}
             />

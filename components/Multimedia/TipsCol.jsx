@@ -6,7 +6,7 @@ export const TipsCol = ({data}) => {
   return (
     <div className="card tipsCard">
       <div className="imgTip">
-        <Image className="card-img-next" src={src} />
+        <Image className="card-img-next" src={src} alt={src} />
       </div>
       <div className="card-body">
         <h4 className="card-title h5 h4-sm">{title}</h4>
