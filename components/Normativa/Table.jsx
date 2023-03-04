@@ -7,6 +7,7 @@ import {FcDocument} from 'react-icons/fc';
 import {ImArrowDown} from 'react-icons/im';
 import {ascendingOrder} from './../helpers/helpers';
 import ReadOnlyText from '../Categorias/TextRead';
+import {useIsmobile} from './../../hooks/useIsMobile';
 
 export const NormsTable = () => {
   const {categories, products} = useContext(ChangeDataContext);
@@ -27,9 +28,14 @@ export const NormsTable = () => {
 
   const orderItems = ascendingOrder(filterCategory);
 
-  const viewFile = async (id, nombre) => {
-    await getFile(`/uploads/productos/${id}`, nombre);
+  const isMoblie = useIsmobile();
+
+  const viewFile = async (id, isMoblie, nombre) => {
+    try {
+      await getFile(`/uploads/productos/${id}`, isMoblie, nombre);
+    } catch (error) {}
   };
+
   return (
     <div className="Normativa">
       <h1 style={{textAlign: 'center', marginBottom: '25px'}}>
@@ -55,7 +61,9 @@ export const NormsTable = () => {
                   className="downloadButton"
                   variant="light"
                   size="sm"
-                  onClick={() => viewFile(element._id, element.nombre)}
+                  onClick={() =>
+                    viewFile(element._id, isMoblie, element.nombre)
+                  }
                 >
                   <ImArrowDown className="downloadIcon" size={'15px'} />
                 </Button>

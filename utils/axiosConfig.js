@@ -167,26 +167,24 @@ export const deleteDataAxios = async (url, token = '') => {
   } catch (error) {}
 };
 
-export const getFile = async (url, nombre) =>
+export const getFile = async (url, isMobile, nombre) =>
   axios({
     url: `${baseUrl}${url}`,
     method: 'GET',
     responseType: 'blob',
-    onDownloadProgress: (progressEvent) => {
-      const percentCompleted = Math.round(
-        (progressEvent.loaded * 100) / progressEvent.total,
-      );
-      // console.log(percentCompleted);
-    },
   }).then((response) => {
     const url = window.URL.createObjectURL(
       new Blob([response.data], {type: 'application/pdf'}),
     );
     const link = document.createElement('a');
-    link.href = url;
-    link.target = '_blank';
-    // link.download = `${nombre}.pdf`;
-    // link.setAttribute('download', `${nombre}.pdf`);
+    if (isMobile) {
+      link.href = url;
+      link.download = `${nombre}.pdf`;
+      link.setAttribute('download', `${nombre}.pdf`);
+    } else {
+      link.href = url;
+      link.target = '_blank';
+    }
     document.body.appendChild(link);
     link.click();
   });

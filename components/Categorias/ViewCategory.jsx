@@ -7,6 +7,7 @@ import {FaFileDownload} from 'react-icons/fa';
 import {ascendingOrder} from './../helpers/helpers';
 import dayjs from 'dayjs';
 import ReadOnlyText from './TextRead';
+import {useIsmobile} from './../../hooks/useIsMobile';
 
 export const ViewCategory = ({category, description}) => {
   const resp = useGetData('/productos/');
@@ -19,8 +20,12 @@ export const ViewCategory = ({category, description}) => {
 
   const orderItems = ascendingOrder(filterCategory);
 
-  const viewFile = async (id, nombre) => {
-    await getFile(`/uploads/productos/${id}`, nombre);
+  const isMoblie = useIsmobile();
+
+  const viewFile = async (id, isMoblie, nombre) => {
+    try {
+      await getFile(`/uploads/productos/${id}`, isMoblie, nombre);
+    } catch (error) {}
   };
 
   const [obj, setObj] = useState();
@@ -52,7 +57,7 @@ export const ViewCategory = ({category, description}) => {
               className="buttonDownload"
               variant="primary"
               size="sm"
-              onClick={() => viewFile(element._id, element.nombre)}
+              onClick={() => viewFile(element._id, isMoblie, element.nombre)}
               style={{float: 'right'}}
             >
               Descargar <FaFileDownload size={'22px'} />
