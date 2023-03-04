@@ -1,8 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import {useRouter} from 'next/router';
 import {Card, Col} from 'react-bootstrap';
 
 export const InfoCol = ({title, text, src, link}) => {
+  const router = useRouter();
   return (
     <>
       <Col>
@@ -11,7 +13,9 @@ export const InfoCol = ({title, text, src, link}) => {
             display: 'flex',
             justifyContent: 'center',
             marginBottom: '10px',
+            cursor: 'pointer',
           }}
+          onClick={() => router.push(link)}
         >
           <Card style={{width: '18rem'}}>
             <Image
