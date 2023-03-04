@@ -17,9 +17,9 @@ export const InfoCol = ({title, text, src, link}) => {
             <Image
               variant="top"
               src={src}
-              height="220"
-              width="350"
+              height="280"
               alt={title}
+              style={{aspectRatio: '16 / 9'}}
             />
             <Card.Body>
               <Card.Title>{title}</Card.Title>
