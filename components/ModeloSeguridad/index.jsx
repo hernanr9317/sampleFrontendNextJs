@@ -22,7 +22,7 @@ export const ModeloSeguridad = () => {
           <a
             className="btn btn-primary btn-lg rounded-pill"
             href="../assets/images/ModeloSeguridad.pdf"
-            target="_blank"
+            download
             rel="noreferrer"
             role="button"
           >
