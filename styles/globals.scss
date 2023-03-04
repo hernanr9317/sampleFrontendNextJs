@@ -16,6 +16,18 @@
 body {
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
+
+  h6 {
+    font-weight: bold;
+  }
+
+  .h5, .h4{
+    font-weight: bold;
+  }
+
+ p {
+  font-weight: normal;
+ }
 }
 
 .footerImg {
