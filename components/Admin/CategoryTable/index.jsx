@@ -9,9 +9,7 @@ import {deleteItem, editItem, saveItem} from './tableHelpers';
 import {ChangeDataContext} from '../../../context/changeData/ChangeDataContext';
 import {ascendingOrder} from '../../helpers/helpers';
 import {HeaderTable} from './HeaderTable';
-import {deserialize, serialize} from '../../Slate/serializersHelpers';
 
-// export const CategoryTable = ({categories, title, id, description}) => {
 export const CategoryTable = ({
   categories,
   elementSelected,

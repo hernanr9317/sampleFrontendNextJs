@@ -29,6 +29,11 @@ export const MainTable = ({categories, selectItem}) => {
             <td className="orderItemTable">{element.precio}</td>
           </tr>
         ))}
+        {categories.length === 0 && (
+          <>
+            <h5 style={{marginTop: '10px'}}>Sin elementos</h5>
+          </>
+        )}
       </tbody>
     </table>
   );
