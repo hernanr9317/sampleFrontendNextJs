@@ -15,7 +15,9 @@ export const Contacto = () => {
         <ContactoCol icon={mapa} text="Marcelo T. de Alvear 154" />
         <ContactoCol icon={telefono} text="362-4448000 | Int. 8211" />
       </Container>
-      <MapLocation />
+      <div className="Map">
+        <MapLocation />
+      </div>
     </div>
   );
 };
