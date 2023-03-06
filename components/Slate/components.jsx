@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {cx, css} from '@emotion/css';
+import 'material-icons/iconfont/material-icons.css';
 
 export const Button = React.forwardRef(
   ({className, active, reversed, ...props}, ref) => (
