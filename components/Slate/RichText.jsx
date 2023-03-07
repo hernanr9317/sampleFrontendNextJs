@@ -29,7 +29,7 @@ const RichText = ({newData}) => {
   const objConvert = jsonText ? JSON.parse(jsonText) : undefined;
 
   useEffect(() => {
-    if (editor?.children.length > 0) {
+    if (editor?.children?.length > 0) {
       // Delete all entries leaving 1 empty node
       Transforms.delete(editor, {
         at: {
