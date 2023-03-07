@@ -33,7 +33,7 @@ export const ViewCategory = ({category, description}) => {
   useEffect(() => {
     const jsonText = description;
 
-    const objConvert = JSON.parse(jsonText);
+    const objConvert = jsonText ? JSON.parse(jsonText) : false;
 
     setObj(objConvert);
   }, [category]);
