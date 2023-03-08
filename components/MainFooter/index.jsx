@@ -8,43 +8,48 @@ import secondtLogo from '../../public/assets/footer/logoFooter2.webp';
 
 export const MainFooter = () => {
   return (
-    <div
-      className="bg-dark"
-      style={{paddingTop: '200px', paddingBottom: '200px'}}
-    >
-      <Container>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-          }}
-        >
-          <Row xs={'auto'} sm={'auto'}>
-            <Col style={{marginBottom: '16px'}}>
-              <Image
-                className="footerImg"
-                src={firstLogo}
-                alt="image-alt-footer"
-                width={368}
-                height={65}
-                quality={100}
-                fixed="true"
-              />
-            </Col>
-            <Col style={{marginBottom: '16px'}}>
-              <Image
-                className="footerImg"
-                src={secondtLogo}
-                alt="image-alt-text"
-                width={190}
-                height={65}
-                quality={100}
-                fixed="true"
-              />
-            </Col>
-          </Row>
-        </div>
-      </Container>
+    <div  className="bg-dark">
+      <div
+        className="main-footer"
+      >
+        <Container>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
+            <Row xs={'auto'} sm={'auto'}>
+              <Col style={{marginBottom: '16px'}}>
+                <Image
+                  className="footerImg"
+                  src={firstLogo}
+                  alt="image-alt-footer"
+                  width={368}
+                  height={65}
+                  quality={100}
+                  fixed="true"
+                />
+              </Col>
+              <Col style={{marginBottom: '16px'}}>
+                <Image
+                  className="footerImg"
+                  src={secondtLogo}
+                  alt="image-alt-text"
+                  width={190}
+                  height={65}
+                  quality={100}
+                  fixed="true"
+                />
+              </Col>
+            </Row>
+          </div>
+        </Container>
+      </div>
+      <div className="subfooter container">
+      <hr></hr>
+        <p className='text-center'>Creado por <strong>Hernan Rascon</strong></p>
+      </div>
     </div>
   );
 };

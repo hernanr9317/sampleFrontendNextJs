@@ -8,6 +8,7 @@
 @import '/components/Info/styles.scss';
 @import '/components/ModeloSeguridad/styles.scss';
 @import '/components/MainNavbar/styles.scss';
+@import '/components/MainFooter/styles.scss';
 @import '/components/Admin/styles.scss';
 @import '/components/Admin/CategoryTable/styles.scss';
 @import '/components/Admin/ModalElement/styles.scss';
@@ -32,10 +33,10 @@ body {
  }
 }
 
-.footerImg {
-  filter: opacity(0.3) drop-shadow(0 0 0 white); 
-}
+// .footerImg {
+//   filter: opacity(0.3) drop-shadow(0 0 0 white); 
+// }
 
-.normContainer{
-  margin-top: 100px !important;
-}
+// .normContainer{
+//   margin-top: 100px !important;
+// }
