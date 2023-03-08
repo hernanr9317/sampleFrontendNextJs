@@ -18,9 +18,9 @@ export const Categorias = () => {
   );
 
   return (
-    <div style={{marginTop: '100px'}} className="etapsNav">
+    <div style={{marginTop: '100px'}} className="etapsNav container">
       <h1 className="text-center main-title" style={{marginBottom: '30px'}}>
-        Estándares tecnológicos de la Administración Pública (ETAPS)
+        Estándares tecnológicos de la Administración Pública <br></br> (ETAPS)
         <FcInspection />
       </h1>
       <Tabs

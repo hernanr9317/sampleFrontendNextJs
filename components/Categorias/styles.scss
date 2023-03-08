@@ -11,12 +11,11 @@
 
     .nav.nav-tabs.nav-fill {
         margin: auto;
-        max-width: 95%;
+        max-width: 100%;
         display: block;
        
     
         @include desktop(){
-            max-width: 100%;
             display: flex;
         }
     }
