@@ -28,7 +28,7 @@ export const InfoCol = ({title, text, src, link}) => {
               <Card.Title>{title}</Card.Title>
               <Card.Text>{text}</Card.Text>
               <Link href={link} className="btn btn-primary">
-                <a className="btn btn-primary">Ver más</a>
+                <a className="btn btn-primary">Más información</a>
               </Link>
             </Card.Body>
           </Card>
