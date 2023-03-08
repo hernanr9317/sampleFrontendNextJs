@@ -46,7 +46,7 @@ export const MainFooter = () => {
           </div>
         </Container>
       </div>
-      <div className="subfooter container">
+      <div className="subfooter">
       <hr></hr>
         <p className='text-center'>Creado por <strong>Hernan Rascon</strong></p>
       </div>
