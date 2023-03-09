@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {useGetData} from './../../hooks/useGetData';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -8,13 +8,12 @@ import {ascendingOrder} from './../helpers/helpers';
 import dayjs from 'dayjs';
 import ReadOnlyText from './TextRead';
 import {useIsmobile} from './../../hooks/useIsMobile';
+import {ChangeDataContext} from '../../context/changeData/ChangeDataContext';
 
 export const ViewCategory = ({category, description}) => {
-  const resp = useGetData('/productos/');
+  const {products} = useContext(ChangeDataContext) || {products: []};
 
-  const {data} = resp || {data: []};
-
-  const filterCategory = data?.productos?.filter(
+  const filterCategory = products?.productos?.filter(
     (element) => element.categoria.nombre === category,
   );
 
@@ -29,6 +28,7 @@ export const ViewCategory = ({category, description}) => {
   };
 
   const [obj, setObj] = useState();
+  const [displayDescription, setDisplayDescription] = useState();
 
   useEffect(() => {
     const jsonText = description;
@@ -36,18 +36,22 @@ export const ViewCategory = ({category, description}) => {
     const objConvert = jsonText ? JSON.parse(jsonText) : false;
 
     setObj(objConvert);
+    if (obj && obj[0]?.children[0]?.text !== '') {
+      setDisplayDescription(true);
+    }
   }, [category]);
 
   return (
     <div className="etapsInfo">
       <h1 className="text-center title">{category}</h1>
       <hr className="divider" />
-      <div className="textContainer">
-        {obj &&
-          obj.map((element, index) => (
+      {obj && displayDescription && (
+        <div className="textContainer">
+          {obj?.map((element, index) => (
             <ReadOnlyText {...element} key={index} />
           ))}
-      </div>
+        </div>
+      )}
       {orderItems?.map((element, index) => (
         <Card key={index}>
           <Card.Body>
