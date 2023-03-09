@@ -43,13 +43,15 @@ export const ViewCategory = ({category, description}) => {
   return (
     <div className="etapsInfo">
       <h1 className="text-center title">{category}</h1>
-      <hr className="divider" />
       {obj && displayDescription && (
-        <div className="textContainer">
-          {obj?.map((element, index) => (
-            <ReadOnlyText {...element} key={index} />
-          ))}
-        </div>
+        <>
+          <hr className="divider" />
+          <div className="textContainer">
+            {obj?.map((element, index) => (
+              <ReadOnlyText {...element} key={index} />
+            ))}
+          </div>
+        </>
       )}
       {orderItems?.map((element, index) => (
         <Card key={index}>
