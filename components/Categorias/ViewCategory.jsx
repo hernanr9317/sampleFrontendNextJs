@@ -58,18 +58,20 @@ export const ViewCategory = ({category, description}) => {
           <Card.Body>
             <Card.Title>{element?.nombre}</Card.Title>
             <Card.Text>{element?.description}</Card.Text>
-            <Button
-              className="buttonDownload"
-              variant="primary"
-              size="sm"
-              onClick={() => viewFile(element._id, isMoblie, element.nombre)}
-              style={{float: 'right'}}
-            >
-              Descargar <FaFileDownload size={'22px'} />
-            </Button>
             <Card.Footer className="text-muted cardFooter">
-              Ùltima actualización{' '}
-              {dayjs(element?.updatedAt).format('DD/MM/YYYY')}
+              <p>
+                Ùltima actualización{' '}
+                {dayjs(element?.updatedAt).format('DD/MM/YYYY')}
+              </p>
+              <Button
+                className="buttonDownload"
+                variant="primary"
+                size="sm"
+                onClick={() => viewFile(element._id, isMoblie, element.nombre)}
+                style={{float: 'right'}}
+              >
+                Descargar <FaFileDownload size={'22px'} />
+              </Button>
             </Card.Footer>
           </Card.Body>
         </Card>

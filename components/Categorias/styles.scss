@@ -66,19 +66,38 @@
 
     .cardFooter {
 
+        display: grid;
+
+        p {
+            font-size: 14px;
+            margin: 0 0 8px 0;
+            text-align: center;
+            
+            @include desktop(){
+                font-size: 15px;
+                margin-bottom: auto;
+                margin-top: auto;
+
+            }
+        }
+
         @include desktop(){
+            display: flex;
             padding-top: 12px;
             padding-bottom: 12px;
         }
     }
 
     .buttonDownload {
-        margin-left: 2px;
-        margin-top: 16px;
+        border-radius: 0px;
+        margin: auto;
+        width: 100%;
 
         @include desktop(){
-            margin-left: 0px;
-            margin-top: 7px;
+            margin: 0;
+            margin-left: auto;
+            float: right;
+            width: 15%;
         }
     }
 
