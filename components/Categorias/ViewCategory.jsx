@@ -1,5 +1,4 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {useGetData} from './../../hooks/useGetData';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import {getFile} from '../../utils/axiosConfig';
