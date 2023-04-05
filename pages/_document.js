@@ -5,10 +5,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="es">
-        <Head>
-        {/* <meta http-equiv="Content-Security-Policy"
-            content="default-src https://e-seguridad.chaco.gob.ar/;" /> */}
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />
