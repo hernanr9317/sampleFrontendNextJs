@@ -30,9 +30,9 @@ export const MainTable = ({categories, selectItem}) => {
           </tr>
         ))}
         {categories.length === 0 && (
-          <>
-            <h5 style={{marginTop: '10px'}}>Sin elementos</h5>
-          </>
+          <tr>
+            <td><h5 style={{marginTop: '10px'}}>Sin elementos</h5></td>
+          </tr>
         )}
       </tbody>
     </table>
