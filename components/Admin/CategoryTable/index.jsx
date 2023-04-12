@@ -97,7 +97,7 @@ export const CategoryTable = ({
       <Card className="mt-1">
         <Form onSubmit={handleSubmit(handleSave)} autoComplete="off">
           <Card.Header className="colorHeaderTh">
-            Informe de la categoria
+            Informe de la categoría
           </Card.Header>
           <Card.Body>
             <InputsTable

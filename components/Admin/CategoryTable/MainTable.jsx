@@ -10,7 +10,7 @@ export const MainTable = ({categories, selectItem}) => {
             <AiOutlineFieldNumber size={'24px'} />
           </th>
           <th scope="col">Nombre</th>
-          <th scope="col">Actulización</th>
+          <th scope="col">Actualización</th>
           <th scope="col" className="orderItemTable">
             Orden
           </th>

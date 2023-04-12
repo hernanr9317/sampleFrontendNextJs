@@ -27,7 +27,7 @@ export const CategoryFilter = () => {
 
         <DropdownButton
           as={ButtonGroup}
-          title="Categorias"
+          title="Categorías"
           id="bg-nested-dropdown"
         >
           {categories?.categorias?.map((element, index) => {

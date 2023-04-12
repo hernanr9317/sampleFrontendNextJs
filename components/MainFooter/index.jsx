@@ -48,7 +48,11 @@ export const MainFooter = () => {
       </div>
       <div className="subfooter">
       <hr></hr>
-        <p className='text-center'>Creado por <strong>Hernan Rascon</strong></p>
+      <p className='text-center'>
+        <a href="https://www.linkedin.com/in/hernanrascon/" target="_blank">
+          Creado por <strong>Hernan Rascon</strong>
+        </a>
+      </p>
       </div>
     </div>
   );
