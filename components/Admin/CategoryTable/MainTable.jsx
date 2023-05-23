@@ -31,7 +31,9 @@ export const MainTable = ({categories, selectItem}) => {
         ))}
         {categories.length === 0 && (
           <tr>
-            <td><h5 style={{marginTop: '10px'}}>Sin elementos</h5></td>
+            <td>
+              <h5 style={{marginTop: '10px'}}>Sin elementos</h5>
+            </td>
           </tr>
         )}
       </tbody>

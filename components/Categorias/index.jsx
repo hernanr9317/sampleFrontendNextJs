@@ -12,9 +12,12 @@ export const Categorias = () => {
 
   const {categories} = useContext(ChangeDataContext);
 
+  const excludCategories = ['NORMATIVA', 'NORMATIVAS', 'NOTA', 'NOTAS'];
+
   const filteredData = categories?.categorias?.filter(
     (dataElement) =>
-      dataElement.nombre !== 'NORMATIVAS' && dataElement.nombre !== 'NORMATIVA',
+      // dataElement.nombre !== 'NORMATIVAS' && dataElement.nombre !== 'NORMATIVA',
+      !excludCategories.includes(dataElement.nombre),
   );
 
   return (

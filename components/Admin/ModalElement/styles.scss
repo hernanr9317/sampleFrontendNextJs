@@ -27,6 +27,11 @@
     
 }
 
+.modal-90w {
+    max-width: none !important;
+    width: 90%;
+}
+
 .modal-open .container-fluid,
 .modal-open .container {
   -webkit-filter: blur(2px);

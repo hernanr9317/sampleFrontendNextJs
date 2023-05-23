@@ -1,14 +1,29 @@
 import React, {useCallback, useMemo} from 'react';
-import {Editable, withReact, Slate} from 'slate-react';
+import {
+  Editable,
+  withReact,
+  useSlate,
+  useSelected,
+  useSlateStatic,
+  useFocused,
+  ReactEditor,
+  Slate,
+} from 'slate-react';
 import {createEditor} from 'slate';
 import {withHistory} from 'slate-history';
+import {css} from '@emotion/css';
+import {Button, Icon} from '../Slate/components';
 
 const ReadOnlyText = (props) => {
   let initialValue = [props];
 
   const renderElement = useCallback((props) => <Element {...props} />, []);
   const renderLeaf = useCallback((props) => <Leaf {...props} />, []);
-  const editor = useMemo(() => withHistory(withReact(createEditor())), []);
+  // const editor = useMemo(() => withHistory(withReact(createEditor())), []);
+  const editor = useMemo(
+    () => withImages(withHistory(withReact(createEditor()))),
+    [],
+  );
 
   return (
     <div className="RichText">
@@ -23,9 +38,89 @@ const ReadOnlyText = (props) => {
   );
 };
 
+const withImages = (editor) => {
+  const {insertData, isVoid} = editor;
+
+  editor.isVoid = (element) => {
+    return element.type === 'image' ? true : isVoid(element);
+  };
+
+  editor.insertData = (data) => {
+    const text = data.getData('text/plain');
+    const {files} = data;
+
+    if (files && files.length > 0) {
+      for (const file of files) {
+        const reader = new FileReader();
+        const [mime] = file.type.split('/');
+
+        if (mime === 'image') {
+          reader.addEventListener('load', () => {
+            const url = reader.result;
+            insertImage(editor, url);
+          });
+
+          reader.readAsDataURL(file);
+        }
+      }
+    } else if (isImageUrl(text)) {
+      insertImage(editor, text);
+    } else {
+      insertData(data);
+    }
+  };
+
+  return editor;
+};
+
+const Image = ({attributes, children, element}) => {
+  const editor = useSlateStatic();
+  const path = ReactEditor.findPath(editor, element);
+
+  const selected = useSelected();
+  const focused = useFocused();
+  return (
+    <div {...attributes}>
+      {children}
+      <div
+        contentEditable={false}
+        className={css`
+          position: relative;
+        `}
+      >
+        <img
+          src={element.url}
+          className={css`
+            display: block;
+            max-width: 100%;
+            max-height: 20em;
+            box-shadow: ${selected && focused ? '0 0 0 3px #B4D5FF' : 'none'};
+          `}
+        />
+        <Button
+          active
+          onClick={() => Transforms.removeNodes(editor, {at: path})}
+          className={css`
+            display: ${selected && focused ? 'inline' : 'none'};
+            position: absolute;
+            top: 0.5em;
+            left: 0.5em;
+            background-color: white;
+          `}
+        >
+          <Icon>delete</Icon>
+        </Button>
+      </div>
+    </div>
+  );
+};
+
 const Element = ({attributes, children, element}) => {
   let style = {textAlign: element.align};
+  const props = {attributes, children, element};
   switch (element.type) {
+    case 'image':
+      return <Image {...props} />;
     case 'block-quote':
       return (
         <blockquote style={style} {...attributes}>

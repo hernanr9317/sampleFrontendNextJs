@@ -31,6 +31,9 @@ export const MainNavbar = () => {
             <Link href="/tips">
               <a className="nav-link">Tips de seguridad</a>
             </Link>
+            <Link href="/blog">
+              <a className="nav-link">Blog</a>
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

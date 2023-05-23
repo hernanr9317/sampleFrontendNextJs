@@ -1,6 +1,7 @@
 import {Form, Modal} from 'react-bootstrap';
 import dayjs from 'dayjs';
 import {getFile} from '../../../utils/axiosConfig';
+import RichText from './../../Slate/RichText';
 
 export const ModalBody = ({
   element,
@@ -14,10 +15,12 @@ export const ModalBody = ({
     await getFile(`/uploads/productos/${element._id}`, element.nombre);
   };
 
+  const isNota = element.categoria.nombre === 'NOTA' ? true : false;
+
   return (
     <Modal.Body>
       <Form.Group className="mb-3" controlId="nombre">
-        <Form.Label>Nombre</Form.Label>
+        <Form.Label>Título</Form.Label>
         <Form.Control
           type="nombre"
           defaultValue={element?.nombre}
@@ -30,60 +33,77 @@ export const ModalBody = ({
         />
         <div className="invalid-feedback d-block">{errors.nombre?.message}</div>
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Label>Categoría</Form.Label>
-        <Form.Select
-          type="categoria"
-          defaultValue={element?.categoria?.nombre}
-          disabled={type === 'addElement' ? true : edit}
-          {...register('categoria', {
-            required: 'Este campo es requerido',
-          })}
-        >
-          {categorias?.categorias?.map((catElement, index) => (
-            <option
-              key={index}
-              value={catElement?._id}
-              defaultValue={catElement?.nombre}
-            >
-              {catElement?.nombre}
-            </option>
-          ))}
-        </Form.Select>
-        <div className="invalid-feedback d-block">
-          {errors.categoria?.message}
+
+      {!isNota && (
+        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+          <Form.Label>Categoría</Form.Label>
+          <Form.Select
+            type="categoria"
+            defaultValue={element?.categoria?.nombre}
+            disabled={type === 'addElement' ? true : edit}
+            {...register('categoria', {
+              required: 'Este campo es requerido',
+            })}
+          >
+            {categorias?.categorias?.map((catElement, index) => (
+              <option
+                key={index}
+                value={catElement?._id}
+                defaultValue={catElement?.nombre}
+              >
+                {catElement?.nombre}
+              </option>
+            ))}
+          </Form.Select>
+          <div className="invalid-feedback d-block">
+            {errors.categoria?.message}
+          </div>
+        </Form.Group>
+      )}
+
+      {!isNota && (
+        <Form.Group className="mb-3" controlId="order">
+          <Form.Label>Orden</Form.Label>
+          <Form.Control
+            defaultValue={element?.precio}
+            type="number"
+            min="0"
+            disabled={edit}
+            {...register('precio')}
+          />
+        </Form.Group>
+      )}
+
+      {!isNota && (
+        <Form.Group className="mb-3" controlId="descrripcion">
+          <Form.Label>Descripción</Form.Label>
+          <Form.Control
+            type="descripcion"
+            defaultValue={element?.description}
+            as="textarea"
+            rows={5}
+            disabled={edit}
+            {...register('descripcion', {
+              required: 'Este campo es requerido',
+            })}
+          />
+          <div className="invalid-feedback d-block">
+            {errors.descripcion?.message}
+          </div>
+        </Form.Group>
+      )}
+
+      {/* TODO: SI ES DE TIPO NOTA TIENE QUE APARECE ESTE EN VEZ DE EL DE ARRIBA  */}
+      {isNota && (
+        <div className="mb-3">
+          <label>Redactar</label>
+          <div className={edit ? 'disableDiv' : 'activeDiv'}>
+            <RichText newData={element?.description} isNota={isNota} />
+          </div>
         </div>
-      </Form.Group>
+      )}
 
-      <Form.Group className="mb-3" controlId="order">
-        <Form.Label>Orden</Form.Label>
-        <Form.Control
-          defaultValue={element?.precio}
-          type="number"
-          min="0"
-          disabled={edit}
-          {...register('precio')}
-        />
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="descrripcion">
-        <Form.Label>Descripción</Form.Label>
-        <Form.Control
-          type="descripcion"
-          defaultValue={element?.description}
-          as="textarea"
-          rows={5}
-          disabled={edit}
-          {...register('descripcion', {
-            required: 'Este campo es requerido',
-          })}
-        />
-        <div className="invalid-feedback d-block">
-          {errors.descripcion?.message}
-        </div>
-      </Form.Group>
-
-      {type === 'editElement' && (
+      {!isNota && type === 'editElement' && (
         <>
           <div className="fileLabel" onClick={viewFile}>
             Archivo

@@ -54,6 +54,11 @@ export const ModalElement = ({element, interaction, type}) => {
   };
 
   const handleSave = (data) => {
+    //TODO: COMPROBAR QUE NO HAYA BUGS ADEMAS HAY QUE DESACTIVAR Y ACTIVAR EL MODULO
+    const textBody = localStorage.getItem('content') || data;
+
+    data = {...data, descripcion: textBody};
+
     saveItemModal(
       data,
       type,
@@ -75,8 +80,8 @@ export const ModalElement = ({element, interaction, type}) => {
         show={show}
         onHide={handleClose}
         backdrop="static"
-        size="lg"
         className="modalElement"
+        dialogClassName="modal-90w"
       >
         <Form onSubmit={handleSubmit(handleSave)} autoComplete="off">
           <Modal.Header closeButton className="colorHeaderTh">

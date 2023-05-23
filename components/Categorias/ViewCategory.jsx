@@ -60,7 +60,7 @@ export const ViewCategory = ({category, description}) => {
             <Card.Text>{element?.description}</Card.Text>
             <Card.Footer className="text-muted cardFooter">
               <p>
-                Ùltima actualización{' '}
+                Última actualización{' '}
                 {dayjs(element?.updatedAt).format('DD/MM/YYYY')}
               </p>
               <Button

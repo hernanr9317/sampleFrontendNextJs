@@ -1,3 +1,5 @@
+import {generatePath} from '../components/helpers/helpers';
+
 const axios = require('axios');
 
 const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -18,6 +20,7 @@ export const getDataAxios = async (url, token = '') => {
 
 export const postDataAxios = async (url, data, token = '') => {
   try {
+    const pathname = data?.name ? generatePath(data?.name) : undefined;
     const response = await axios
       .post(
         `${baseUrl}${url}`,
@@ -26,6 +29,7 @@ export const postDataAxios = async (url, data, token = '') => {
           nombre: data?.name,
           correo: data?.email,
           password: data?.password,
+          pathname: pathname,
         },
         {
           headers: {
@@ -40,11 +44,14 @@ export const postDataAxios = async (url, data, token = '') => {
         console.log(error);
       });
     return response;
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const postDataAxiosElement = async (url, data, token = '') => {
   try {
+    const pathname = data?.name ? generatePath(data?.nombre) : undefined;
     const response = await axios
       .post(
         `${baseUrl}${url}`,
@@ -53,6 +60,7 @@ export const postDataAxiosElement = async (url, data, token = '') => {
           categoria: data?.categoria,
           precio: data?.precio,
           description: data?.descripcion,
+          pathname: pathname,
         },
         {
           headers: {
@@ -106,6 +114,7 @@ export const changePasswordWithCode = async (data) => {
 
 export const putDataAxios = async (url, data, token = '') => {
   try {
+    const pathname = generatePath(data?.nombre);
     const response = await axios
       .put(
         `${baseUrl}${url}`,
@@ -117,6 +126,7 @@ export const putDataAxios = async (url, data, token = '') => {
           categoria: data?.categoria,
           precio: data?.precio,
           description: data?.descripcion,
+          pathname: pathname,
         },
         {
           headers: {
