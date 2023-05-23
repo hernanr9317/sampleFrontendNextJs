@@ -5,7 +5,7 @@ import {getFile} from '../../utils/axiosConfig';
 import {FaFileDownload} from 'react-icons/fa';
 import {ascendingOrder} from './../helpers/helpers';
 import dayjs from 'dayjs';
-import ReadOnlyText from './TextRead';
+import ReadOnlyText from '../Slate/TextRead';
 import {useIsmobile} from './../../hooks/useIsMobile';
 import {ChangeDataContext} from '../../context/changeData/ChangeDataContext';
 

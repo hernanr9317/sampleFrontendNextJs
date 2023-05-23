@@ -1,8 +1,8 @@
-import {useContext, useState, useEffect} from 'react';
+import {useContext} from 'react';
 import {useRouter} from 'next/router';
 import {PublicLayout} from './../../components/layouts/PublicLayout';
 import {ChangeDataContext} from './../../context/changeData/ChangeDataContext';
-import ReadOnlyText from './../../components/Categorias/TextRead';
+import ReadOnlyText from '../../components/Slate/TextRead';
 
 const Article = () => {
   const router = useRouter();

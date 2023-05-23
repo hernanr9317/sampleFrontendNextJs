@@ -2,7 +2,6 @@ import React, {useCallback, useMemo} from 'react';
 import {
   Editable,
   withReact,
-  useSlate,
   useSelected,
   useSlateStatic,
   useFocused,
@@ -12,14 +11,14 @@ import {
 import {createEditor} from 'slate';
 import {withHistory} from 'slate-history';
 import {css} from '@emotion/css';
-import {Button, Icon} from '../Slate/components';
+import {Button, Icon} from './components';
 
 const ReadOnlyText = (props) => {
   let initialValue = [props];
 
   const renderElement = useCallback((props) => <Element {...props} />, []);
   const renderLeaf = useCallback((props) => <Leaf {...props} />, []);
-  // const editor = useMemo(() => withHistory(withReact(createEditor())), []);
+
   const editor = useMemo(
     () => withImages(withHistory(withReact(createEditor()))),
     [],
