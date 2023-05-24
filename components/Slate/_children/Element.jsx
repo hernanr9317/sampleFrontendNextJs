@@ -4,6 +4,7 @@ import {
   useSelected,
   useSlateStatic,
 } from 'slate-react';
+import {Transforms} from 'slate';
 import {css} from '@emotion/css';
 import {Button, Icon} from '../components';
 
@@ -14,7 +15,7 @@ const Image = ({attributes, children, element}) => {
   const selected = useSelected();
   const focused = useFocused();
   return (
-    <div {...attributes}>
+    <div {...attributes} style={{marginBottom: '10px'}}>
       {children}
       <div
         contentEditable={false}
@@ -49,12 +50,43 @@ const Image = ({attributes, children, element}) => {
   );
 };
 
+const VideoElement = ({attributes, children, element}) => {
+  let {url} = element;
+  const regex = /\/watch\?v=/;
+  url = url.replace(regex, '/embed/');
+
+  return (
+    <div {...attributes}>
+      <div contentEditable={false}>
+        <div
+          style={{
+            maxWidth: '560px',
+          }}
+        >
+          <iframe
+            width="560"
+            height="315"
+            src={url}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </div>
+      {children}
+    </div>
+  );
+};
+
 export const Element = ({attributes, children, element}) => {
   let style = {textAlign: element.align};
   const props = {attributes, children, element};
   switch (element.type) {
     case 'image':
       return <Image {...props} />;
+    case 'embed':
+      return <VideoElement {...props} />;
     case 'block-quote':
       return (
         <blockquote style={style} {...attributes}>

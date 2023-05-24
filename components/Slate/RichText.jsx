@@ -7,6 +7,7 @@ import {Toolbar} from './components';
 import {Element, Leaf} from './_children/Element';
 import {BlockButton, MarkButton} from './_children/Buttons';
 import {InsertImageButton, withImages} from './_children/WithImages';
+import {InsertEmbedButton, withEmbeds} from './_children/WithEmbeds';
 
 const HOTKEYS = {
   'mod+b': 'bold',
@@ -53,7 +54,7 @@ const RichText = ({newData, isNota}) => {
   const renderLeaf = useCallback((props) => <Leaf {...props} />, []);
 
   const editor = useMemo(
-    () => withImages(withHistory(withReact(createEditor()))),
+    () => withEmbeds(withImages(withHistory(withReact(createEditor())))),
     [],
   );
 
@@ -88,6 +89,7 @@ const RichText = ({newData, isNota}) => {
           <BlockButton format="right" icon="format_align_right" />
           <BlockButton format="justify" icon="format_align_justify" />
           <InsertImageButton />
+          <InsertEmbedButton />
         </Toolbar>
         <Editable
           renderElement={renderElement}

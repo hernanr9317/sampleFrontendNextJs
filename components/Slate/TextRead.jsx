@@ -4,6 +4,7 @@ import {createEditor} from 'slate';
 import {withHistory} from 'slate-history';
 import {Element, Leaf} from './_children/Element';
 import {withImages} from './_children/WithImages';
+import {withEmbeds} from './_children/WithEmbeds';
 
 const ReadOnlyText = (props) => {
   let initialValue = [props];
@@ -12,7 +13,7 @@ const ReadOnlyText = (props) => {
   const renderLeaf = useCallback((props) => <Leaf {...props} />, []);
 
   const editor = useMemo(
-    () => withImages(withHistory(withReact(createEditor()))),
+    () => withEmbeds(withImages(withHistory(withReact(createEditor())))),
     [],
   );
 

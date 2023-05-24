@@ -36,7 +36,6 @@ const Article = () => {
             <ReadOnlyText {...element} key={index} />
           ))}
       </div>
-      ;
     </PublicLayout>
   );
 };
