@@ -14,6 +14,12 @@ const insertEmbed = (editor, url) => {
   const text = {text: ''};
   const embed = {type: 'embed', url, children: [text]};
   Transforms.insertNodes(editor, embed);
+  Transforms.insertNodes(editor, [
+    {
+      type: 'paragraph',
+      children: [{text: ''}],
+    },
+  ]);
 };
 
 export const InsertEmbedButton = () => {
