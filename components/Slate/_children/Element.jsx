@@ -15,7 +15,7 @@ const Image = ({attributes, children, element}) => {
   const selected = useSelected();
   const focused = useFocused();
   return (
-    <div {...attributes} style={{marginBottom: '10px'}}>
+    <div {...attributes}>
       {children}
       <div
         contentEditable={false}

@@ -21,20 +21,19 @@ const Article = () => {
     findArticle?.nombre.charAt(0).toUpperCase() +
     findArticle?.nombre.slice(1).toLowerCase();
 
-  //TODO: FALTA IMPLEMENTAR PARA AGREGAR LINKS DE IMAGENES
   return (
     <PublicLayout
       title={`e-seguridad - ${titleLayout}`}
       pageDescription={'Artículos de interés sobre seguridad informática'}
     >
-      <div style={{maxWidth: '1400px', margin: 'auto', marginTop: '100px'}}>
-        {findArticle?.nombre}
-      </div>
-      <div className="textContainer">
-        {bodyDescription &&
-          bodyDescription.map((element, index) => (
-            <ReadOnlyText {...element} key={index} />
-          ))}
+      <div className="articleContainer">
+        <div className="textContainer">
+          <div className="title">{findArticle?.nombre}</div>
+          {bodyDescription &&
+            bodyDescription.map((element, index) => (
+              <ReadOnlyText {...element} key={index} />
+            ))}
+        </div>
       </div>
     </PublicLayout>
   );
