@@ -1,19 +1,6 @@
-import {
-  ReactEditor,
-  useFocused,
-  useSelected,
-  useSlateStatic,
-} from 'slate-react';
-import {Transforms} from 'slate';
 import {css} from '@emotion/css';
-import {Button, Icon} from '../components';
 
 const Image = ({attributes, children, element}) => {
-  const editor = useSlateStatic();
-  const path = ReactEditor.findPath(editor, element);
-
-  const selected = useSelected();
-  const focused = useFocused();
   return (
     <div {...attributes}>
       {children}
@@ -22,8 +9,12 @@ const Image = ({attributes, children, element}) => {
         className={css`
           aspect-ratio: 16 / 9;
           display: flex;
-          max-width: 800px !important;
+          max-width: 930px !important;
           max-height: 100% !important;
+          margin-left: auto !important;
+          margin-right: auto !important;
+          margin-bottom: 20px !important;
+          margin-top: 20px !important;
         `}
       >
         <img
@@ -31,22 +22,8 @@ const Image = ({attributes, children, element}) => {
           className={css`
             width: 100% !important;
             max-height: 100% !important;
-            box-shadow: ${selected && focused ? '0 0 0 3px #B4D5FF' : 'none'};
           `}
         />
-        <Button
-          active
-          onClick={() => Transforms.removeNodes(editor, {at: path})}
-          className={css`
-            display: ${selected && focused ? 'inline' : 'none'};
-            position: absolute;
-            top: 0.5em;
-            left: 0.5em;
-            background-color: white;
-          `}
-        >
-          <Icon>delete</Icon>
-        </Button>
       </div>
     </div>
   );
@@ -66,8 +43,12 @@ const VideoElement = ({attributes, children, element}) => {
           className={css`
             aspect-ratio: 16 / 9;
             display: flex;
-            max-width: 800px !important;
+            max-width: 930px !important;
             max-height: 100% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            margin-bottom: 20px !important;
+            margin-top: 20px !important;
           `}
         >
           <iframe
