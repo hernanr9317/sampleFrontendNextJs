@@ -11,9 +11,9 @@ export const withEmbeds = (editor) => {
 };
 
 const insertEmbed = (editor, url) => {
+  if (!url) return null;
   const text = {text: ''};
   const embed = {type: 'embed', url, children: [text]};
-  if (!url) return null;
   Transforms.insertNodes(editor, embed);
   Transforms.insertNodes(editor, [
     {
