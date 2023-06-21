@@ -7,14 +7,12 @@ const Image = ({attributes, children, element}) => {
       <div
         contentEditable={false}
         className={css`
-          aspect-ratio: 16 / 9;
           display: flex;
           max-width: 930px !important;
           max-height: 100% !important;
           margin-left: auto !important;
           margin-right: auto !important;
           margin-bottom: 20px !important;
-          margin-top: 20px !important;
         `}
       >
         <img

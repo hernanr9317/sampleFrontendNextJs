@@ -105,7 +105,14 @@ const RichText = ({newData, isNota}) => {
               }
             }
           }}
-          style={isNota && {height: '400px', overflow: 'auto'}}
+          style={
+            isNota && {
+              height: '410px',
+              maxWidth: '930px',
+              overflow: 'auto',
+              padding: '0 16px 0 0',
+            }
+          }
         />
       </Slate>
     </div>
