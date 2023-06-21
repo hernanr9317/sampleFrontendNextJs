@@ -20,15 +20,17 @@ const Image = ({attributes, children, element}) => {
       <div
         contentEditable={false}
         className={css`
-          position: relative;
+          aspect-ratio: 16 / 9;
+          display: flex;
+          max-width: 800px !important;
+          max-height: 100% !important;
         `}
       >
         <img
           src={element.url}
           className={css`
-            display: block;
-            max-width: 100%;
-            max-height: 20em;
+            width: 100% !important;
+            max-height: 100% !important;
             box-shadow: ${selected && focused ? '0 0 0 3px #B4D5FF' : 'none'};
           `}
         />
@@ -53,19 +55,22 @@ const Image = ({attributes, children, element}) => {
 const VideoElement = ({attributes, children, element}) => {
   let {url} = element;
   const regex = /\/watch\?v=/;
-  url = url.replace(regex, '/embed/');
+  url = url?.replace(regex, '/embed/');
+
+  if (!url) return null;
 
   return (
     <div {...attributes}>
       <div contentEditable={false}>
         <div
-          style={{
-            maxWidth: '560px',
-          }}
+          className={css`
+            aspect-ratio: 16 / 9;
+            display: flex;
+            max-width: 800px !important;
+            max-height: 100% !important;
+          `}
         >
           <iframe
-            width="560"
-            height="315"
             src={url}
             title="YouTube video player"
             frameBorder="0"
