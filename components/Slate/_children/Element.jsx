@@ -10,9 +10,7 @@ const Image = ({attributes, children, element}) => {
           display: flex;
           max-width: 930px !important;
           max-height: 100% !important;
-          margin-left: auto !important;
-          margin-right: auto !important;
-          margin-bottom: 20px !important;
+          margin: 0 auto 16px auto !important;
         `}
       >
         <img
@@ -43,10 +41,7 @@ const VideoElement = ({attributes, children, element}) => {
             display: flex;
             max-width: 930px !important;
             max-height: 100% !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-            margin-bottom: 20px !important;
-            margin-top: 20px !important;
+            margin: 0 auto 16px auto !important;
           `}
         >
           <iframe

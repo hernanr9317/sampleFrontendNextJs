@@ -23,7 +23,7 @@ const Article = () => {
 
   return (
     <PublicLayout
-      title={`e-seguridad - ${titleLayout}`}
+      title={`e-seguridad - ${titleLayout || ''}`}
       pageDescription={'Artículos de interés sobre seguridad informática'}
     >
       <div className="articleContainer">
