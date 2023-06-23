@@ -13,7 +13,7 @@ export const ArticleList = () => {
   return (
     <div className="articleList">
       <header>
-        <h1>Cool Articles</h1>
+        <h1>Últimas publicaciones</h1>
       </header>
       <div className="band">
         {filterCategory?.map((article, index) => (
