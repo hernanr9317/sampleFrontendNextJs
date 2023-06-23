@@ -3,17 +3,19 @@
 
     padding: 20px 0;
 
-    html {
-      background: #f5f7f8;
-      font-family: system-ui;
-      -webkit-font-smoothing: antialiased;
-      padding: 20px 0;
-    }
-
     header {
       width: 90%;
       max-width: 1240px;
       margin: 0 auto;
+    }
+
+    a {
+      color: black;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
     .band {
