@@ -57,6 +57,8 @@ export const postDataAxiosElement = async (url, data, token = '') => {
         `${baseUrl}${url}`,
         {
           nombre: data?.nombre,
+          subtitle: data?.subtitulo,
+          otherImgs: [...data?.preview],
           categoria: data?.categoria,
           precio: data?.precio,
           description: data?.descripcion,
@@ -121,6 +123,8 @@ export const putDataAxios = async (url, data, token = '') => {
         {
           rol: 'ADMIN_ROLE',
           nombre: data?.nombre,
+          subtitle: data?.subtitulo,
+          otherImgs: [data?.preview],
           correo: data?.correo,
           password: data?.password,
           categoria: data?.categoria,

@@ -17,13 +17,9 @@ const Article = () => {
     ? JSON.parse(findArticle?.description)
     : false;
 
-  const titleLayout =
-    findArticle?.nombre.charAt(0).toUpperCase() +
-    findArticle?.nombre.slice(1).toLowerCase();
-
   return (
     <PublicLayout
-      title={`e-seguridad - ${titleLayout || ''}`}
+      title={findArticle?.nombre || ''}
       pageDescription={'Artículos de interés sobre seguridad informática'}
     >
       <div className="articleContainer">

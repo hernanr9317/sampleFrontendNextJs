@@ -20,6 +20,8 @@ export const ModalElement = ({element, interaction, type}) => {
   } = useForm({
     defaultValues: {
       nombre: element?.nombre,
+      subtitulo: element?.subtitle,
+      preview: element?.otherImgs,
       categoria: element?.categoria?._id,
       precio: element?.precio,
       descripcion: element?.description,
@@ -38,6 +40,8 @@ export const ModalElement = ({element, interaction, type}) => {
   useEffect(() => {
     reset({
       nombre: element?.nombre,
+      subtitulo: element?.subtitle,
+      preview: element?.otherImgs,
       categoria: element?.categoria?._id,
       precio: element?.precio,
       descripcion: element?.description,
@@ -54,11 +58,8 @@ export const ModalElement = ({element, interaction, type}) => {
   };
 
   const handleSave = (data) => {
-    //TODO: COMPROBAR QUE NO HAYA BUGS ADEMAS HAY QUE DESACTIVAR Y ACTIVAR EL MODULO
     const textBody = localStorage.getItem('content') || data;
-
     data = {...data, descripcion: textBody};
-
     saveItemModal(
       data,
       type,

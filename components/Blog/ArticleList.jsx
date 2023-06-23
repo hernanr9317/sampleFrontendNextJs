@@ -31,17 +31,15 @@ export const ArticleList = () => {
               <div
                 className="thumb"
                 style={{
-                  backgroundImage:
-                    'url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/flex-1.jpg)',
+                  backgroundImage: `url(${
+                    article.otherImgs[0] ||
+                    'https://images.pexels.com/photos/2312369/pexels-photo-2312369.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+                  })`,
                 }}
               ></div>
               <article>
                 <h1>{article.nombre}</h1>
-                {/* TODO: HAY QUE AGREGAR EL SUBTITULO EN LOS MODELS DEL BACKEND*/}
-                <p>
-                  Welcome to our monthly feature of fantastic tutorial results
-                  created by you, the Envato Tuts+ community!{' '}
-                </p>
+                {article?.subtitle !== '' && <p>{article.subtitle}</p>}
                 <span>{dayjs(article.createdAt).format('DD/MM/YYYY')}</span>
               </article>
             </div>

@@ -93,16 +93,6 @@ export const ModalBody = ({
         </Form.Group>
       )}
 
-      {/* TODO: SI ES DE TIPO NOTA TIENE QUE APARECE ESTE EN VEZ DE EL DE ARRIBA  */}
-      {isNota && (
-        <div className="mb-3">
-          <label>Redactar</label>
-          <div className={edit ? 'disableDiv' : 'activeDiv'}>
-            <RichText newData={element?.description} isNota={isNota} />
-          </div>
-        </div>
-      )}
-
       {!isNota && type === 'editElement' && (
         <>
           <div className="fileLabel" onClick={viewFile}>
@@ -112,6 +102,38 @@ export const ModalBody = ({
             <Form.Label>Actualizar archivo pdf</Form.Label>
             <Form.Control type="file" disabled={edit} {...register('img')} />
           </Form.Group>
+        </>
+      )}
+
+      {/* TODO: SI ES DE TIPO NOTA TIENE QUE APARECE ESTE EN VEZ DE EL DE ARRIBA  */}
+      {isNota && (
+        <>
+          <Form.Group className="mb-3" controlId="subtitulo">
+            <Form.Label>Bajada</Form.Label>
+            <Form.Control
+              type="subtitulo"
+              defaultValue={element?.subtitulo}
+              autoFocus
+              disabled={edit}
+              {...register('subtitulo')}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="preview">
+            <Form.Label>Vista previa</Form.Label>
+            <Form.Control
+              type="preview"
+              defaultValue={element?.otherImgs[0] || ''}
+              autoFocus
+              disabled={edit}
+              {...register('preview')}
+            />
+          </Form.Group>
+          <div className="mb-3">
+            <label>Redactar</label>
+            <div className={edit ? 'disableDiv' : 'activeDiv'}>
+              <RichText newData={element?.description} isNota={isNota} />
+            </div>
+          </div>
         </>
       )}
 
