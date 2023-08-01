@@ -75,13 +75,16 @@ export const ModalElement = ({element, interaction, type}) => {
     deleteItemModal(setShow, element, isNewData, setAlertMessage, setEdit);
   };
 
+  const isFullScreen = element?.categoria?.nombre === 'NOTA' ? true : false;
+
   return (
     <>
       <Modal
         show={show}
         onHide={handleClose}
         backdrop="static"
-        className="modalElement"
+        fullscreen={isFullScreen}
+        className={isFullScreen ? 'modalElement fullscreen' : 'modalElement'}
         dialogClassName="modal-90w"
       >
         <Form onSubmit={handleSubmit(handleSave)} autoComplete="off">
