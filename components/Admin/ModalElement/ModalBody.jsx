@@ -122,7 +122,7 @@ export const ModalBody = ({
             <Form.Label>Vista previa</Form.Label>
             <Form.Control
               type="preview"
-              defaultValue={element?.otherImgs[0] || ''}
+              defaultValue={element?.otherImgs ? element?.otherImgs[0] : ''}
               autoFocus
               disabled={edit}
               {...register('preview')}
