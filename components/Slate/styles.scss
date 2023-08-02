@@ -14,7 +14,9 @@ pre {
 }
 
 img {
-  max-width: 100%;
+  // max-width: 100%;
+  max-width: fit-content;
+  margin: auto;
 }
 
 blockquote {
