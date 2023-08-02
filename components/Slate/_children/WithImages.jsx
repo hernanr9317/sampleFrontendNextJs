@@ -46,7 +46,7 @@ const insertImage = (editor, url) => {
   Transforms.insertNodes(editor, [
     {
       type: 'paragraph',
-      children: [{text: ''}],
+      children: [text],
     },
   ]);
 };
@@ -57,9 +57,9 @@ export const InsertImageButton = () => {
     <Button
       onMouseDown={(event) => {
         event.preventDefault();
-        const url = window.prompt('Enter the URL of the image:');
+        const url = window.prompt('Ingresar URL de la imagen:');
         if (url && !isImageUrl(url)) {
-          alert('URL is not an image');
+          alert('La URL es incorrecta');
           return;
         }
         url && insertImage(editor, url);

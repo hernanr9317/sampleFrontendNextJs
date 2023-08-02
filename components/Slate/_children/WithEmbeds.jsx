@@ -18,7 +18,7 @@ const insertEmbed = (editor, url) => {
   Transforms.insertNodes(editor, [
     {
       type: 'paragraph',
-      children: [{text: ''}],
+      children: [text],
     },
   ]);
 };
@@ -29,7 +29,7 @@ export const InsertEmbedButton = () => {
     <Button
       onMouseDown={(event) => {
         event.preventDefault();
-        const url = window.prompt('Enter the URL of the video:');
+        const url = window.prompt('Ingresar URL del video:');
         insertEmbed(editor, url);
       }}
     >

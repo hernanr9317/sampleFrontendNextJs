@@ -8,7 +8,7 @@ import {Element, Leaf} from './_children/Element';
 import {BlockButton, MarkButton} from './_children/Buttons';
 import {InsertImageButton, withImages} from './_children/WithImages';
 import {InsertEmbedButton, withEmbeds} from './_children/WithEmbeds';
-
+//TODO: INVESTIGAR EL ERROR AL COLOCAR Y ARRASTRAR IMAGENES EN EL EDITOR
 const HOTKEYS = {
   'mod+b': 'bold',
   'mod+i': 'italic',
@@ -94,7 +94,7 @@ const RichText = ({newData, isNota}) => {
         <Editable
           renderElement={renderElement}
           renderLeaf={renderLeaf}
-          placeholder="Ingrese algun texto"
+          placeholder="Ingrese algún texto"
           spellCheck
           onKeyDown={(event) => {
             for (const hotkey in HOTKEYS) {
