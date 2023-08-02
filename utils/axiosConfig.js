@@ -20,7 +20,7 @@ export const getDataAxios = async (url, token = '') => {
 
 export const postDataAxios = async (url, data, token = '') => {
   try {
-    const pathname = data?.name ? generatePath(data?.name) : undefined;
+    const pathname = data?.nombre ? generatePath(data?.name) : undefined;
     const response = await axios
       .post(
         `${baseUrl}${url}`,
@@ -51,7 +51,7 @@ export const postDataAxios = async (url, data, token = '') => {
 
 export const postDataAxiosElement = async (url, data, token = '') => {
   try {
-    const pathname = data?.name ? generatePath(data?.nombre) : undefined;
+    const pathname = data?.nombre ? generatePath(data?.nombre) : undefined;
     const response = await axios
       .post(
         `${baseUrl}${url}`,

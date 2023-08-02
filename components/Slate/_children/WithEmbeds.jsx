@@ -15,6 +15,9 @@ const insertEmbed = (editor, url) => {
   const text = {text: ''};
   const embed = {type: 'embed', url, children: [text]};
   Transforms.insertNodes(editor, embed);
+  Transforms.removeNodes(editor, {
+    at: [editor?.selection.anchor.path[0] - 1],
+  });
   Transforms.insertNodes(editor, [
     {
       type: 'paragraph',

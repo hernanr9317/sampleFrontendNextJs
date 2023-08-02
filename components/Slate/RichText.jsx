@@ -8,7 +8,7 @@ import {Element, Leaf} from './_children/Element';
 import {BlockButton, MarkButton} from './_children/Buttons';
 import {InsertImageButton, withImages} from './_children/WithImages';
 import {InsertEmbedButton, withEmbeds} from './_children/WithEmbeds';
-//TODO: INVESTIGAR EL ERROR AL COLOCAR Y ARRASTRAR IMAGENES EN EL EDITOR
+
 const HOTKEYS = {
   'mod+b': 'bold',
   'mod+i': 'italic',
