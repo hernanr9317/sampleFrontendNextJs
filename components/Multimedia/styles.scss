@@ -13,16 +13,29 @@
         flex-direction: row;
     }
 
+    .card-body {
+        padding: 8px 14px 14px 14px;
+
+        @include desktop() {
+            padding: 16px;
+        }
+    }
 
     .imgTip {
         margin: auto;
 
+        @include desktop() {
+            height: 200px;
+        }
+
         img {
-            max-width: 280px !important;
+            padding-top: 14px !important;
+            border-radius: 50%;
+            max-width: 190px !important;
             
             @include desktop() {
-                max-width: 350px !important;
-                height: 250px !important;
+                padding: 5px !important;
+                max-width: 200px !important;
             }
         }
     }
@@ -51,6 +64,7 @@
             }
         }
     }
+    
 }
 
 .info-txt {
