@@ -28,6 +28,8 @@
     .modal-header .btn-close {
         background-color: white;
         margin-right: 0;
+        margin-bottom: auto;
+        margin-top: 0px;
     }
 
     .modalDate {
@@ -71,7 +73,7 @@
             background-color: white;
             border-radius: 10px 0 0 10px !important;
             border: 0;
-            max-width: 171px;
+            width: fit-content;
             padding: 0;
             position: sticky;
             bottom: 0;
@@ -81,7 +83,7 @@
         }
     }
 }
-//TODO: FALTA HACER STYICKY EL MENU DEL RICH TEXT EN LAS NOTAS
+
 .fade.modalElement.fullscreen.modal.show {
     padding: 0 !important;
 }
