@@ -7,7 +7,7 @@ import {
   deleteDataAxios,
 } from '../../../utils/axiosConfig';
 import {sweetDelete, sweetError} from '../../sweetAlert';
-
+//TODO: HACER QUE EL MODAL SE CIERRE AL GUARDAR UN ITEM NUEVO DESPUES DE GUARDAR EXITOSAMENTE EN LA DATA BASE
 export const saveItemModal = async (
   data,
   type,
@@ -16,15 +16,24 @@ export const saveItemModal = async (
   setAlertMessage,
   setEdit,
   setDisplay,
+  setType,
 ) => {
   try {
     const tokenCookie = Cookies.get('token');
+    const newId = Cookies.get('newId') || undefined;
     if (type === 'editElement') {
-      await putDataAxios(`/productos/${element._id}`, data, tokenCookie);
+      await putDataAxios(
+        `/productos/${element._id || newId}`,
+        data,
+        tokenCookie,
+      );
     }
 
     if (type === 'addElement') {
-      await postDataAxiosElement('/productos/', data, tokenCookie);
+      await postDataAxiosElement('/productos/', data, tokenCookie).then(
+        (resp) => Cookies.set('newId', resp.data._id),
+      );
+      setType('editElement');
     }
 
     if (data.img && data.img.length > 0) {

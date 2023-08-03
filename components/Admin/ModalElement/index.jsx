@@ -6,7 +6,7 @@ import {ModalFooter} from './ModalFooter';
 import {ModalBody} from './ModalBody';
 import {deleteItemModal, saveItemModal} from './modalHelpers';
 
-export const ModalElement = ({element, interaction, type}) => {
+export const ModalElement = ({element, interaction, type, setType}) => {
   const {isNewData, categories} = useContext(ChangeDataContext);
 
   const [display, setDisplay] = useState('none');
@@ -68,6 +68,7 @@ export const ModalElement = ({element, interaction, type}) => {
       setAlertMessage,
       setEdit,
       setDisplay,
+      setType,
     );
   };
 

@@ -124,7 +124,12 @@ export const CategoryTable = ({
       <HeaderTable title={elementSelected.nombre} addElement={addElement} />
       <MainTable categories={categories} selectItem={selectItem} />
 
-      <ModalElement element={element} interaction={interaction} type={type} />
+      <ModalElement
+        element={element}
+        interaction={interaction}
+        type={type}
+        setType={setType}
+      />
     </div>
   );
 };
