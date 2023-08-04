@@ -29,12 +29,11 @@
         }
 
         img {
-            padding-top: 14px !important;
+            padding: 5px !important;
             border-radius: 50%;
-            max-width: 190px !important;
+            box-shadow: 0 10px 50px rgb(205, 205, 205);
             
             @include desktop() {
-                padding: 5px !important;
                 max-width: 200px !important;
             }
         }
