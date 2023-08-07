@@ -1,4 +1,4 @@
-import {Container, Row} from 'react-bootstrap';
+import {Container} from 'react-bootstrap';
 import {InfoCol} from './InfoCol';
 import etaps from '../../public/assets/info/etaps.webp';
 import tips from '../../public/assets/info/tips.webp';
