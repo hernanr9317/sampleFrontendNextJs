@@ -6,7 +6,6 @@ $hexagon-margin: 25px;
 $hexagon-title-color: #fff;
 $hexagon-border-color: rgb(201, 201, 201);
 $hexagon-border-color--hover: linear-gradient(90deg, rgb(222, 222, 222) 0%, rgb(153, 149, 149) 100%);
-// $hexagon-image-color: linear-gradient(90deg, rgb(150, 150, 150) 0%, rgb(190, 190, 190) 100%);
 $hexagon-image-color: linear-gradient(90deg, rgb(95, 95, 95) 0%, rgb(255, 255, 255) 100%);
 $honeycomb-max-width: 1200px;
 $viewport-thereshold: $hexagon-width + $hexagon-margin;
@@ -95,8 +94,8 @@ $viewport-thereshold: $hexagon-width + $hexagon-margin;
       z-index: -1;
       width: 100%;
       height: 100%;
-      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-      background: rgba(0, 0, 0, 0.3);
+      // clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      background: rgba(0, 0, 0, 0);
       transition: opacity 350ms;
     }
 
