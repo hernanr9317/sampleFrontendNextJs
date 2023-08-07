@@ -64,7 +64,7 @@ export const ViewCategory = ({category, description}) => {
                 {dayjs(element?.updatedAt).format('DD/MM/YYYY')}
               </p>
               <Button
-                className="buttonDownload"
+                className="card__button"
                 variant="primary"
                 size="sm"
                 onClick={() => viewFile(element._id, isMoblie, element.nombre)}
