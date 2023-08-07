@@ -37,7 +37,7 @@ export const ModeloSeguridad = () => {
         </ul>
         <div className="col text-center mt-3 mb-5">
           <button
-            className="btn btn-primary btn-lg"
+            className="card__button btn-lg"
             onClick={() =>
               getModelo(
                 '../assets/images/ModeloSeguridad.pdf',
