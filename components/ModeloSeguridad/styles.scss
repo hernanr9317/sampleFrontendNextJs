@@ -5,8 +5,8 @@ $hexagon-height: $hexagon-width*.55;
 $hexagon-margin: 25px;
 $hexagon-title-color: #fff;
 $hexagon-border-color: rgb(201, 201, 201);
-$hexagon-border-color--hover: linear-gradient(90deg, rgba(44,80,99,1) 0%, rgb(153, 149, 149) 100%);
-$hexagon-image-color: linear-gradient(90deg, rgba(44,80,99,1) 0%, rgb(190, 190, 190) 100%);
+$hexagon-border-color--hover: linear-gradient(90deg, rgb(222, 222, 222) 0%, rgb(153, 149, 149) 100%);
+$hexagon-image-color: linear-gradient(90deg, rgb(150, 150, 150) 0%, rgb(190, 190, 190) 100%);
 $honeycomb-max-width: 1200px;
 $viewport-thereshold: $hexagon-width + $hexagon-margin;
 
@@ -87,7 +87,6 @@ $viewport-thereshold: $hexagon-width + $hexagon-margin;
     }
 
     &::before {
-      background: $hexagon-border-color;
       transform: scale(1.055);
     }
 
@@ -95,6 +94,7 @@ $viewport-thereshold: $hexagon-width + $hexagon-margin;
       background: $hexagon-image-color;
       opacity: 0.5;
       transition: opacity 350ms;
+
     }
 
     &:hover {
