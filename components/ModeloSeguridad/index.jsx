@@ -30,11 +30,11 @@ export const ModeloSeguridad = () => {
           Modelo de Políticas de Seguridad de la Información
         </h1>
         <hr />
-        <Row>
+        <ul className="honeycomb">
           <ModelCol title={'Integridad'} src={integridad} />
           <ModelCol title={'Confidencialidad'} src={confidencialidad} />
           <ModelCol title={'Disponibilidad'} src={disponibilidad} />
-        </Row>
+        </ul>
         <div className="col text-center mt-3 mb-5">
           <button
             className="btn btn-primary btn-lg"
