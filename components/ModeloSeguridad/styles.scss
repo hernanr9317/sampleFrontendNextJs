@@ -66,10 +66,8 @@ $viewport-thereshold: $hexagon-width + $hexagon-margin;
     margin: $hexagon-height/2.1 $hexagon-margin/2 $hexagon-margin;
     position: relative;
     padding: 0.5em;
-
     text-align: center;
     z-index: 1;
-
 
     &__title {
       height: 100%;
@@ -120,7 +118,6 @@ $viewport-thereshold: $hexagon-width + $hexagon-margin;
       background: $hexagon-image-color;
       opacity: 0.5;
       transition: opacity 350ms;
-
     }
 
     &:hover {
