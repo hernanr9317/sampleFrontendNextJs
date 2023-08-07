@@ -6,11 +6,11 @@ import normativa from '../../public/assets/info/normativa.webp';
 
 export const Info = () => {
   return (
-    <div id="info" className="container-fluid mt-3 mb-5 infoContainer">
+    <div id="info" className="container-fluid mt-5 mb-5 infoContainer">
       <h1 className="text-center title">Informáte</h1>
       <hr />
       <Container>
-        <Row>
+        <div className="col-container">
           <InfoCol
             title="Etaps"
             text="Estándares Tecnológicos de la Administración Pública"
@@ -29,7 +29,7 @@ export const Info = () => {
             src={tips}
             link="/tips"
           />
-        </Row>
+        </div>
       </Container>
     </div>
   );
