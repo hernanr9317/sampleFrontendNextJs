@@ -19,6 +19,7 @@
     "js-cookie": "^3.0.1",
     "material-icons": "^1.13.2",
     "next": "12.2.5",
+    "next-secure-headers": "^2.2.0",
     "pigeon-maps": "^0.21.3",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",

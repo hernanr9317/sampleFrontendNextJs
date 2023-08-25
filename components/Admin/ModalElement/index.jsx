@@ -58,7 +58,9 @@ export const ModalElement = ({element, interaction, type, setType}) => {
   };
 
   const handleSave = (data) => {
-    const textBody = localStorage.getItem('content') || data;
+    //TODO: VER PORQUE AL GUARDAR SE VE MAL
+    const isNota = element.categoria.nombre === 'NOTA';
+    const textBody = isNota ? localStorage.getItem('content') || data : data;
     data = {...data, descripcion: textBody};
     saveItemModal(
       data,
