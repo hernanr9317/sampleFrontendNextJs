@@ -8,7 +8,8 @@ import {AddCategory} from './AddCaregory';
 import {CategoryTable} from './CategoryTable/index';
 
 export const CategoryFilter = () => {
-  const {categories, products} = useContext(ChangeDataContext);
+  const {categories, deletedCategories, products} =
+    useContext(ChangeDataContext);
 
   const [elementSelected, setElementSelected] = useState([]);
 
@@ -31,6 +32,23 @@ export const CategoryFilter = () => {
           id="bg-nested-dropdown"
         >
           {categories?.categorias?.map((element, index) => {
+            return (
+              <Dropdown.Item
+                key={index}
+                eventKey={index}
+                onClick={() => onClick(element)}
+              >
+                {element.nombre}
+              </Dropdown.Item>
+            );
+          })}
+        </DropdownButton>
+        <DropdownButton
+          as={ButtonGroup}
+          title="Restaurar categoría"
+          id="bg-nested2-dropdown"
+        >
+          {deletedCategories?.categorias?.map((element, index) => {
             return (
               <Dropdown.Item
                 key={index}

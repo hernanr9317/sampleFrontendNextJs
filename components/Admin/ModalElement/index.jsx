@@ -8,7 +8,6 @@ import {deleteItemModal, saveItemModal} from './modalHelpers';
 
 export const ModalElement = ({element, interaction, type, setType}) => {
   const {isNewData, categories} = useContext(ChangeDataContext);
-
   const [display, setDisplay] = useState('none');
   const [alertMessage, setAlertMessage] = useState('');
 

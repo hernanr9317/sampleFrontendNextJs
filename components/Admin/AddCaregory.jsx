@@ -105,6 +105,8 @@ export const AddCategory = () => {
             </Button>
           </Modal.Footer>
           <Alert variant="success" style={{display: display}}>
+            {/* TODO: FALTA AGREGAR EL MENSAJE QUE EL NOMBRE YA ESTA CREADO
+             */}
             {alertMessage}
           </Alert>
         </Form>

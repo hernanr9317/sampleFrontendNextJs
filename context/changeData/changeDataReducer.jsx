@@ -12,6 +12,12 @@ export const changeDataReducer = (state, action) => {
         categories: action.payload,
       };
 
+    case '[dataChange] - Deleted categories':
+      return {
+        ...state,
+        deletedCategories: action.payload,
+      };
+
     case '[dataChange] - Products':
       return {
         ...state,
