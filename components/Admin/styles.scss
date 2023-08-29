@@ -7,8 +7,10 @@
 
         .userToggle {
             border: 0;
+            box-shadow: none;
             background-color: #212529;
             text-transform: capitalize;
+
             &:hover {
                 border: 0;
                 background-color: #212529;
@@ -34,3 +36,6 @@
     }
 }
 
+.category-dropdown-button {
+    margin-right: 3px;
+}

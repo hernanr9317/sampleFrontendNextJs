@@ -27,7 +27,9 @@ export const CategoryFilter = () => {
         <AddCategory />
 
         <DropdownButton
+          variant="dark"
           as={ButtonGroup}
+          className="category-dropdown-button"
           title="Categorías"
           id="bg-nested-dropdown"
         >
@@ -44,7 +46,9 @@ export const CategoryFilter = () => {
           })}
         </DropdownButton>
         <DropdownButton
+          variant="dark"
           as={ButtonGroup}
+          className="category-dropdown-button"
           title="Restaurar categoría"
           id="bg-nested2-dropdown"
         >
