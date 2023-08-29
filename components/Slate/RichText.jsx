@@ -23,8 +23,7 @@ const RichText = ({newData, isNota}) => {
       children: [{text: ''}],
     },
   ];
-  // TODO: VER PORQUE NO FUNCIONA EN ALGUNOS CASOS AL MOSTRAR LA INFORMACION,
-  //ESPECIFICAMENTE CUANDO NO ES UNA NOTA LA DESCRIPCION APARECE MAL
+
   const jsonText = newData;
 
   const objConvert = jsonText ? JSON.parse(jsonText) : undefined;

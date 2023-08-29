@@ -43,7 +43,6 @@ const insertImage = (editor, url) => {
   const text = {text: ''};
   const image = {type: 'image', url, children: [text]};
   Transforms.insertNodes(editor, image);
-  //TODO: PROBAR BIEN ESTA LINEA AL PARECER FUNCIONA BIEN Y LUEGO PROBAR EN LA DE VIDEO
   Transforms.removeNodes(editor, {
     at: [editor?.selection.anchor.path[0] - 1],
   });

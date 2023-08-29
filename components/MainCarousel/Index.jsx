@@ -8,7 +8,7 @@ export const MainCarousel = ({img, img2, img3}) => {
     <Carousel className="mainCarousel">
       {slides?.map((slide, index) => (
         <Carousel.Item key={index}>
-          <Image src={slide} alt={`Slide ${index + 1}`} />
+          <Image priority src={slide} alt={`Slide ${index + 1}`} />
           <Carousel.Caption></Carousel.Caption>
         </Carousel.Item>
       ))}

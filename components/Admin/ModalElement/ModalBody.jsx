@@ -105,7 +105,6 @@ export const ModalBody = ({
         </>
       )}
 
-      {/* TODO: SI ES DE TIPO NOTA TIENE QUE APARECE ESTE EN VEZ DE EL DE ARRIBA  */}
       {isNota && (
         <>
           <Form.Group className="mb-3" controlId="subtitulo">

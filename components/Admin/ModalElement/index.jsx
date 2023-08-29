@@ -58,7 +58,6 @@ export const ModalElement = ({element, interaction, type, setType}) => {
   };
 
   const handleSave = (data) => {
-    //TODO: VER PORQUE AL GUARDAR SE VE MAL, AHORA NO GUARDA CORRECTAMENTE
     const isNota = element.categoria.nombre === 'NOTA';
     const textBody = isNota
       ? localStorage.getItem('content') || data
