@@ -39,7 +39,7 @@ export const saveItemModal = async (
 
     if (data.img && data.img.length > 0) {
       await putImageAxios(
-        `/uploads/productos/${element._id}`,
+        `/uploads/productos/${element._id || newId}`,
         data.img[0],
         tokenCookie,
       );
