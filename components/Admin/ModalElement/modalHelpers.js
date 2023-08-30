@@ -8,7 +8,6 @@ import {
 } from '../../../utils/axiosConfig';
 import {sweetDelete, sweetError} from '../../sweetAlert';
 //TODO: MOSTRAR MENSAJE DE ERROR CUANDO EL TITULO YA ESTA CREADO
-//TODO: VER LA POSIBILIDAD DE BORRAR UN ITEM DE LA BASE DE DATOS NO SOLO OCULTARLO O INHABILITARLO DESDE EL BACKEND
 export const saveItemModal = async (
   data,
   type,
@@ -62,7 +61,20 @@ export const deleteItemModal = (
     if (result.isConfirmed) {
       try {
         const tokenCookie = Cookies.get('token');
-        await deleteDataAxios(`/productos/${element._id}`, tokenCookie);
+        const newId = Cookies.get('newId') || undefined;
+
+        if (element?.img?.length > 0) {
+          await deleteDataAxios(
+            `/uploads/productos/${element._id || newId}`,
+            tokenCookie,
+          );
+        }
+
+        await deleteDataAxios(
+          `/productos/${element._id || newId}`,
+          tokenCookie,
+        );
+
         isNewData();
         setAlertMessage('Eliminado exitosamente');
         setEdit(true);

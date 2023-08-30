@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
+import Cookies from 'js-cookie';
 import {useForm} from 'react-hook-form';
 import {Alert, Form, Modal} from 'react-bootstrap';
 import {ChangeDataContext} from './../../../context/changeData/ChangeDataContext';
@@ -16,6 +17,7 @@ export const ModalElement = ({element, interaction, type, setType}) => {
     handleSubmit,
     reset,
     formState: {errors},
+    getValues,
   } = useForm({
     defaultValues: {
       nombre: element?.nombre,
@@ -24,12 +26,14 @@ export const ModalElement = ({element, interaction, type, setType}) => {
       categoria: element?.categoria?._id,
       precio: element?.precio,
       descripcion: element?.description,
+      img: element?.img,
     },
   });
 
   const [show, setShow] = useState(false);
   const [edit, setEdit] = useState(true);
   const handleClose = () => {
+    Cookies.remove('newId', {path: '/'});
     setShow(false);
     setEdit(true);
     setDisplay('none');
@@ -44,6 +48,7 @@ export const ModalElement = ({element, interaction, type, setType}) => {
       categoria: element?.categoria?._id,
       precio: element?.precio,
       descripcion: element?.description,
+      img: element?.img,
     });
   }, [reset, element]);
 
@@ -93,12 +98,13 @@ export const ModalElement = ({element, interaction, type, setType}) => {
         <Form onSubmit={handleSubmit(handleSave)} autoComplete="off">
           <Modal.Header closeButton className="colorHeaderTh">
             <Modal.Title>
-              {element?.nombre ||
+              {getValues()?.nombre ||
                 `NUEVO ELEMENTO DE ${element?.categoria?.nombre}`}
             </Modal.Title>
           </Modal.Header>
 
           <ModalBody
+            getValues={getValues}
             element={element}
             edit={edit}
             register={register}

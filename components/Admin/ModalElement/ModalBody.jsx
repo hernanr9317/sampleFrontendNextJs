@@ -1,9 +1,11 @@
 import {Form, Modal} from 'react-bootstrap';
+import Cookies from 'js-cookie';
 import dayjs from 'dayjs';
 import {getFile} from '../../../utils/axiosConfig';
 import RichText from './../../Slate/RichText';
 
 export const ModalBody = ({
+  getValues,
   element,
   edit,
   register,
@@ -12,7 +14,14 @@ export const ModalBody = ({
   type,
 }) => {
   const viewFile = async () => {
-    await getFile(`/uploads/productos/${element._id}`, element.nombre);
+    if (getValues().img) {
+      const newId = Cookies.get('newId') || undefined;
+      await getFile(
+        `/uploads/productos/${element._id || newId}`,
+        false,
+        element.nombre,
+      );
+    }
   };
 
   const isNota = element.categoria.nombre === 'NOTA' ? true : false;
