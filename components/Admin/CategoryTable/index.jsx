@@ -17,7 +17,10 @@ export const CategoryTable = ({
 }) => {
   const {isNewData} = useContext(ChangeDataContext);
   const [display, setDisplay] = useState('none');
-  const [messageAlert, setMessageAlert] = useState('');
+  const [messageAlert, setMessageAlert] = useState({
+    msg: '',
+    variant: '',
+  });
   const [type, setType] = useState('');
 
   const [element, setElement] = useState('');
@@ -32,18 +35,18 @@ export const CategoryTable = ({
     formState: {errors},
   } = useForm({
     defaultValues: {
-      nombre: elementSelected.nombre || '',
-      descripcion: elementSelected.description || '',
+      nombre: elementSelected?.nombre || '',
+      descripcion: elementSelected?.description || '',
     },
   });
 
   useEffect(() => {
     reset({
-      nombre: elementSelected.nombre || '',
-      descripcion: elementSelected.description || '',
+      nombre: elementSelected?.nombre || '',
+      descripcion: elementSelected?.description || '',
     });
 
-    if (elementSelected._id) setEditButton(false);
+    if (elementSelected?._id) setEditButton(false);
   }, [reset, categories]);
 
   ascendingOrder(categories);
@@ -58,8 +61,8 @@ export const CategoryTable = ({
     setType('addElement');
     setElement({
       categoria: {
-        _id: elementSelected._id,
-        nombre: elementSelected.nombre,
+        _id: elementSelected?._id,
+        nombre: elementSelected?.nombre,
       },
     });
     setInteraction(!interaction);
@@ -78,14 +81,19 @@ export const CategoryTable = ({
       editForm,
       setMessageAlert,
       setDisplay,
-      elementSelected._id,
+      elementSelected?._id,
       isNewData,
       setElementSelected,
     );
   };
 
   const handleDelete = () => {
-    deleteItem(setEditForm, elementSelected._id, isNewData, setElementSelected);
+    deleteItem(
+      setEditForm,
+      elementSelected?._id,
+      isNewData,
+      setElementSelected,
+    );
   };
 
   const handleEdit = () => {
@@ -101,10 +109,10 @@ export const CategoryTable = ({
           </Card.Header>
           <Card.Body>
             <InputsTable
-              title={elementSelected.nombre}
+              title={elementSelected?.nombre}
               editForm={editForm}
               errors={errors}
-              description={elementSelected.description}
+              description={elementSelected?.description}
               register={register}
             />
 
@@ -115,13 +123,16 @@ export const CategoryTable = ({
               editForm={editForm}
             />
           </Card.Body>
-          <Alert variant="success" style={{display: display, margin: '5px'}}>
-            {messageAlert}
+          <Alert
+            variant={messageAlert.variant}
+            style={{display: display, margin: '5px'}}
+          >
+            {messageAlert.msg}
           </Alert>
         </Form>
       </Card>
 
-      <HeaderTable title={elementSelected.nombre} addElement={addElement} />
+      <HeaderTable title={elementSelected?.nombre} addElement={addElement} />
       <MainTable categories={categories} selectItem={selectItem} />
 
       <ModalElement

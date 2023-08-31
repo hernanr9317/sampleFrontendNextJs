@@ -14,7 +14,7 @@ export const getDataAxios = async (url, token = '') => {
 
     return response;
   } catch (error) {
-    console.error(error);
+    return error;
   }
 };
 
@@ -41,11 +41,11 @@ export const postDataAxios = async (url, data, token = '') => {
         return response;
       })
       .catch((error) => {
-        console.log(error);
+        return error;
       });
     return response;
   } catch (error) {
-    console.log(error);
+    return error;
   }
 };
 
@@ -74,7 +74,7 @@ export const postDataAxiosElement = async (url, data, token = '') => {
         return response;
       })
       .catch((error) => {
-        console.log(error);
+        return error;
       });
     return response;
   } catch (error) {}
@@ -90,7 +90,7 @@ export const sendEmailCode = async (data) => {
         return response;
       })
       .catch((error) => {
-        console.log(error);
+        return error;
       });
     return response;
   } catch (error) {}
@@ -108,44 +108,44 @@ export const changePasswordWithCode = async (data) => {
         return response;
       })
       .catch((error) => {
-        console.log(error);
+        return error;
       });
     return response;
   } catch (error) {}
 };
 
 export const putDataAxios = async (url, data, token = '') => {
-  try {
-    const pathname = generatePath(data?.nombre);
-    const response = await axios
-      .put(
-        `${baseUrl}${url}`,
-        {
-          rol: 'ADMIN_ROLE',
-          nombre: data?.nombre,
-          subtitle: data?.subtitulo,
-          otherImgs: data?.preview,
-          correo: data?.correo,
-          password: data?.password,
-          categoria: data?.categoria,
-          precio: data?.precio,
-          description: data?.descripcion,
-          pathname: pathname,
+  // try {
+  const pathname = generatePath(data?.nombre);
+  const response = await axios
+    .put(
+      `${baseUrl}${url}`,
+      {
+        rol: 'ADMIN_ROLE',
+        nombre: data?.nombre,
+        subtitle: data?.subtitulo,
+        otherImgs: data?.preview,
+        correo: data?.correo,
+        password: data?.password,
+        categoria: data?.categoria,
+        precio: data?.precio,
+        description: data?.descripcion,
+        pathname: pathname,
+      },
+      {
+        headers: {
+          'x-token': token,
         },
-        {
-          headers: {
-            'x-token': token,
-          },
-        },
-      )
-      .then((response) => {
-        return response;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    return response;
-  } catch (error) {}
+      },
+    )
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      return error;
+    });
+  return response;
+  // } catch (error) {}
 };
 
 export const putImageAxios = async (url, data, token = '') => {
@@ -175,7 +175,7 @@ export const deleteDataAxios = async (url, token = '') => {
         return response;
       })
       .catch((error) => {
-        console.log(error);
+        return error;
       });
     return response;
   } catch (error) {}

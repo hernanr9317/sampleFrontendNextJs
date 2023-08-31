@@ -22,9 +22,24 @@ export const saveItem = async (
   try {
     const tokenCookie = Cookies.get('token');
     const resp = await putDataAxios(`/categorias/${id}`, data, tokenCookie);
-    setElementSelected(resp.data);
+    if (resp.status === 200) {
+      setElementSelected(resp.data);
+      setMessageAlert({
+        msg: 'Cambios guardados',
+        variant: 'success',
+      });
+    } else {
+      const formatMsg = resp.response.data.msg.replace(
+        /\bproducto\b/g,
+        'elemento',
+      );
+      setMessageAlert({
+        msg: formatMsg || 'Error al crear la nueva categoría',
+        variant: 'danger',
+      });
+    }
+
     isNewData();
-    setMessageAlert('Cambios guardados');
     setDisplay('');
 
     setTimeout(() => {

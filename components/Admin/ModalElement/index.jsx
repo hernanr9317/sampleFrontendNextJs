@@ -10,7 +10,7 @@ import {deleteItemModal, saveItemModal} from './modalHelpers';
 export const ModalElement = ({element, interaction, type, setType}) => {
   const {isNewData, categories} = useContext(ChangeDataContext);
   const [display, setDisplay] = useState('none');
-  const [alertMessage, setAlertMessage] = useState('');
+  const [alertMessage, setAlertMessage] = useState({msg: '', variant: ''});
 
   const {
     register,
@@ -120,8 +120,8 @@ export const ModalElement = ({element, interaction, type, setType}) => {
             type={type}
           />
 
-          <Alert variant="success" style={{display: display}}>
-            {alertMessage}
+          <Alert variant={alertMessage.variant} style={{display: display}}>
+            {alertMessage.msg}
           </Alert>
         </Form>
       </Modal>

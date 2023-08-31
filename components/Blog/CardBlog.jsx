@@ -5,12 +5,6 @@ import CardPlaceholder from '../../public/assets/CardPlaceholder.webp';
 import CardBlur from '../../public/assets/CardPlaceholder.webp';
 
 export const CardBlog = ({filterCategory}) => {
-  //   const defaultImg =
-  //     'https://images.pexels.com/photos/2312369/pexels-photo-2312369.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
-
-  //   const blurImg =
-  //   'https://images.pond5.com/super-soft-blurred-background-footage-068745073_iconl.jpeg';
-
   const defaultImg = CardPlaceholder.src;
 
   const blurImg = CardBlur.src;

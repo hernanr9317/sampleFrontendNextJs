@@ -25,7 +25,7 @@ export const AddCategory = () => {
   const [show, setShow] = useState(false);
 
   const [display, setDisplay] = useState('none');
-  const [alertMessage, setAlertMessage] = useState('');
+  const [alertMessage, setAlertMessage] = useState({msg: '', variant: ''});
 
   const handleClose = () => {
     setShow(false);
@@ -39,24 +39,30 @@ export const AddCategory = () => {
       const resp = await postDataAxios('/categorias/', data, tokenCookie);
       isNewData();
 
-      if (resp !== undefined) {
+      if (resp.status === 201) {
         setDisabled(true);
         setDisplay('');
-        setAlertMessage('Categoría añadida exitosamente');
+        setAlertMessage({
+          msg: 'Categoría creada exitosamente',
+          variant: 'success',
+        });
 
         setTimeout(() => {
           setDisabled(false);
           setDisplay('none');
-        }, 2500);
+        }, 3500);
       } else {
         setDisabled(true);
         setDisplay('');
-        setAlertMessage('Error al crear la nueva categoría');
+        setAlertMessage({
+          msg: resp.response.data.msg || 'Error al crear la nueva categoría',
+          variant: 'danger',
+        });
 
         setTimeout(() => {
           setDisabled(false);
           setDisplay('none');
-        }, 2500);
+        }, 3500);
       }
     } catch (error) {}
   };
@@ -104,10 +110,8 @@ export const AddCategory = () => {
               Guardar <FaSave size={'20px'} style={{marginLeft: '3px'}} />
             </Button>
           </Modal.Footer>
-          <Alert variant="success" style={{display: display}}>
-            {/* TODO: FALTA AGREGAR EL MENSAJE QUE EL NOMBRE YA ESTA CREADO
-             */}
-            {alertMessage}
+          <Alert variant={alertMessage.variant} style={{display: display}}>
+            {alertMessage.msg}
           </Alert>
         </Form>
       </Modal>

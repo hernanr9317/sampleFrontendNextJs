@@ -14,7 +14,7 @@ export const CategoryFilter = () => {
   const [elementSelected, setElementSelected] = useState([]);
 
   const categoriesFilter = products?.productos?.filter(
-    (element) => element?.categoria?.nombre === elementSelected.nombre,
+    (element) => element?.categoria?.nombre === elementSelected?.nombre,
   );
 
   const onClick = (element) => {
@@ -65,7 +65,7 @@ export const CategoryFilter = () => {
           })}
         </DropdownButton>
       </ButtonGroup>
-      {!elementSelected.nombre && (
+      {!elementSelected?.nombre && (
         <Alert variant="warning" className="mt-3">
           Seleccione una categoría
         </Alert>

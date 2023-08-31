@@ -7,7 +7,7 @@ import {
   deleteDataAxios,
 } from '../../../utils/axiosConfig';
 import {sweetDelete, sweetError} from '../../sweetAlert';
-//TODO: MOSTRAR MENSAJE DE ERROR CUANDO EL TITULO YA ESTA CREADO
+
 export const saveItemModal = async (
   data,
   type,
@@ -26,14 +26,47 @@ export const saveItemModal = async (
         `/productos/${element._id || newId}`,
         data,
         tokenCookie,
-      );
+      ).then((resp) => {
+        if (resp.status === 200) {
+          setAlertMessage({
+            msg: 'Cambios guardados',
+            variant: 'success',
+          });
+        } else {
+          const formatMsg = resp.response.data.msg.replace(
+            /\bproducto\b/g,
+            'elemento',
+          );
+          setAlertMessage({
+            msg: formatMsg || 'Error al crear la nueva categoría',
+            variant: 'danger',
+          });
+        }
+      });
     }
 
     if (type === 'addElement') {
       await postDataAxiosElement('/productos/', data, tokenCookie).then(
-        (resp) => Cookies.set('newId', resp.data._id),
+        (resp) => {
+          if (resp.status === 201) {
+            Cookies.set('newId', resp.data._id);
+            setAlertMessage({
+              msg: 'Cambios guardados',
+              variant: 'success',
+            });
+            setType('editElement');
+          } else {
+            const formatMsg = resp.response.data.msg.replace(
+              /\bproducto\b/g,
+              'elemento',
+            );
+            setAlertMessage({
+              msg: formatMsg || 'Error al crear la nueva categoría',
+              variant: 'danger',
+            });
+          }
+        },
       );
-      setType('editElement');
     }
 
     if (data.img && data.img.length > 0) {
@@ -44,10 +77,11 @@ export const saveItemModal = async (
       );
     }
     isNewData();
-    setAlertMessage('Cambios guardados');
     setEdit(true);
     setDisplay('');
-  } catch (error) {}
+  } catch (error) {
+    return error;
+  }
 };
 
 export const deleteItemModal = (
