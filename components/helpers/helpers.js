@@ -17,7 +17,8 @@ export const generatePath = (str) => {
     .replace(/[\u0300-\u036f]/g, '') // Eliminar las marcas diacríticas
     .toLowerCase() // Convertir todo a minúsculas
     .replace(/ /g, '-') // Cambiar los espacios por guiones
-    .replace(/[^a-zA-Z0-9\-]/g, '');
+    .replace(/[^a-zA-Z0-9\-]/g, '')
+    .replace(/--+/g, '-'); // Eliminar guiones repetidos
 
   return path;
 };
