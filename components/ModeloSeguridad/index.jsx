@@ -26,10 +26,13 @@ export const ModeloSeguridad = () => {
   return (
     <div id="modelo" className="container-fluid modeloContainer">
       <Container>
-        <h1 className="text-center">
+        <h1 className="heading-1">
           Modelo de Políticas de Seguridad de la Información
         </h1>
-        <hr />
+        <div className="divider-1">
+          {' '}
+          <span></span>
+        </div>
         <ul className="honeycomb">
           <ModelCol title={'Integridad'} src={integridad} />
           <ModelCol title={'Confidencialidad'} src={confidencialidad} />

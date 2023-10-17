@@ -20,7 +20,7 @@
 
 
 body {
-  background-color: rgb(245, 245, 245);
+  background-color: rgb(234, 234, 234);
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
 
@@ -46,5 +46,31 @@ body {
     -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
     }
+  }
+
+  .heading-1 {
+		font-size: 30px;
+		letter-spacing: 0.08em;
+		font-weight: 600;
+		text-shadow: 0 1px 1px #FFFFFF;
+
+    @include desktop(){
+      font-size: 36px;
+    }
+  }
+
+  .divider-1 {
+		border-bottom: 1px solid #adb5bd;
+		height: 1px;
+		margin: 0.5em 0px 1.5em;
+  }
+
+  .divider-1 span {
+		display: block;
+		background-color: #F60;
+    margin-top: -1px;
+		width: 180px;
+		height: 3px;
+    position: absolute;
   }
 }
