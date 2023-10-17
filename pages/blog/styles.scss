@@ -21,4 +21,13 @@
             font-size: 42px;
         }
     }
+
+    .link {
+        color: #2c5b8b;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
