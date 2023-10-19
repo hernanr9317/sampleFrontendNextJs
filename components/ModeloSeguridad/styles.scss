@@ -79,6 +79,7 @@ $viewport-thereshold: $hexagon-width + $hexagon-margin;
       transition: opacity 350ms;
       text-shadow: rgb(15, 15, 15) 1px 0 10px;
       -webkit-text-stroke: 0.5px black;
+      transition: margin-top 0.500s ease-out;
       
       > small {
         font-weight: 300;
