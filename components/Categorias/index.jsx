@@ -7,7 +7,6 @@ import {ViewCategory} from './ViewCategory';
 import {FcInspection} from 'react-icons/fc';
 import initialImg from '../../public/assets/etaps/nube.webp';
 import {useRouter} from 'next/router';
-import {generatePath} from '../helpers/helpers';
 
 export const Categorias = () => {
   const router = useRouter();
@@ -21,25 +20,24 @@ export const Categorias = () => {
     (dataElement) => !excludCategories.includes(dataElement.nombre),
   );
 
-  useEffect(() => {
-    if (queryString) {
-      const queryElementFilter = categories?.categorias?.find(
-        (e) => e.pathname === queryString,
-      );
+  const queryElementFilter = categories?.categorias?.find(
+    (e) => e.pathname === queryString,
+  );
 
-      if (queryElementFilter) {
-        setCategorySelected(queryElementFilter.nombre?.toUpperCase());
-        router.push(`?type=${queryElementFilter.pathname}`), {scroll: false};
-      }
+  //Codigo que trabaja con queryStrings de la url
+  useEffect(() => {
+    if (router.isReady && queryString) {
+      if (queryElementFilter) setCategorySelected(queryElementFilter.nombre);
     }
-  }, [queryString]);
+  }, [queryString, queryElementFilter]);
 
   useEffect(() => {
     if (categorySelected !== '') {
       const queryElementFilter = categories?.categorias?.find(
         (e) => e.nombre === categorySelected,
       );
-      router.push(`?type=${queryElementFilter?.pathname}`), {scroll: false};
+      if (queryElementFilter)
+        router.push(`?type=${queryElementFilter.pathname}`), {scroll: false};
     }
   }, [categorySelected]);
 
@@ -62,7 +60,6 @@ export const Categorias = () => {
               category={categorySelected}
               description={element.description}
             />
-            {/* {console.log(element)} */}
           </Tab>
         ))}
       </Tabs>
