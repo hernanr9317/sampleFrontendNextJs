@@ -2,6 +2,7 @@
 @import 'mixins';
 @import '/components/MainCarousel/styles.scss';
 @import '/components/Categorias/styles.scss';
+@import '/components/Blog/styles.scss';
 @import '/components/Normativa/styles.scss';
 @import '/components/Multimedia/styles.scss';
 @import '/components/Contacto/styles.scss';
@@ -13,10 +14,13 @@
 @import '/components/Admin/CategoryTable/styles.scss';
 @import '/components/Admin/ModalElement/styles.scss';
 @import '/components/Admin/MainProfile/styles.scss';
-@import '../pages/auth/styles.scss';
 @import '/components/Slate/styles.scss';
+@import '../pages/auth/styles.scss';
+@import '../pages/blog/styles.scss';
+
 
 body {
+  background-color: rgb(234, 234, 234);
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
 
@@ -31,4 +35,42 @@ body {
  p {
   font-weight: normal;
  }
+
+ .btn {
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+
+  &:focus {
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+    }
+  }
+
+  .heading-1 {
+		font-size: 30px;
+		letter-spacing: 0.08em;
+		font-weight: 600;
+		text-shadow: 0 1px 1px #FFFFFF;
+
+    @include desktop(){
+      font-size: 36px;
+    }
+  }
+
+  .divider-1 {
+		border-bottom: 1px solid #adb5bd;
+		height: 1px;
+		margin: 0.5em 0px 1.5em;
+  }
+
+  .divider-1 span {
+		display: block;
+		background-color: #F60;
+    margin-top: -1px;
+		width: 180px;
+		height: 3px;
+    position: absolute;
+  }
 }

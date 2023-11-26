@@ -6,7 +6,7 @@ import {getFile} from '../../utils/axiosConfig';
 import {FcDocument} from 'react-icons/fc';
 import {ImArrowDown} from 'react-icons/im';
 import {ascendingOrder} from './../helpers/helpers';
-import ReadOnlyText from '../Categorias/TextRead';
+import ReadOnlyText from './../Slate/TextRead';
 import {useIsmobile} from './../../hooks/useIsMobile';
 
 export const NormsTable = () => {

@@ -6,6 +6,8 @@ import {AuthLayout} from '../../components/layouts';
 import {AuthContext} from '../../context';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import showEye from '../../public/show.png';
+import hideEye from '../../public/hide.png';
 
 const RegisterPage = () => {
   const router = useRouter();
@@ -13,6 +15,13 @@ const RegisterPage = () => {
 
   const [showError, setShowError] = useState(false);
   const [showSucces, setShowSucces] = useState(false);
+  const [hideToggle, setHideToggle] = useState(true);
+
+  const eyeImg = hideToggle ? hideEye : showEye;
+
+  const changeEye = () => {
+    setHideToggle(!hideToggle);
+  };
 
   const {
     register,
@@ -85,13 +94,14 @@ const RegisterPage = () => {
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Control
             className={!!errors.password ? 'is-invalid' : ''}
-            type="password"
+            type={hideToggle ? 'password' : 'text'}
             placeholder="Contraseña"
             {...register('password', {
               required: 'Este campo es requerido',
               minLength: {value: 6, message: 'Mínimo 6 caracteres'},
             })}
           />
+          <img className="eye" src={eyeImg?.src} onClick={changeEye}></img>
           <div className="invalid-feedback">{errors.password?.message}</div>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicKey">

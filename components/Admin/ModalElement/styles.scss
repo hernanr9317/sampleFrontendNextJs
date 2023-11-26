@@ -1,5 +1,25 @@
 .modalElement {
 
+    &::-webkit-scrollbar {
+        width: 8px;               /* width of the entire scrollbar */
+      }
+      
+      &::-webkit-scrollbar-track {
+        background: #f1f1f1;        /* color of the tracking area */
+      }
+      
+      &::-webkit-scrollbar-thumb {
+        background: #888;    /* color of the scroll thumb */
+      }
+
+    .form-label {
+        margin-bottom: 4px;
+    }
+
+    .form-control, .form-select {
+        padding: 4px 16px
+    }
+
     .colorHeaderTh {
         background: linear-gradient(90deg, rgba(44,80,99,1) 0%, rgb(1, 1, 1) 100%);
         color: white,
@@ -7,10 +27,15 @@
 
     .modal-header .btn-close {
         background-color: white;
+        margin-right: 0;
+        margin-bottom: auto;
+        margin-top: 0px;
     }
 
     .modalDate {
 
+        max-Width: 50%;
+        height: 22.5px;
         font-size: 15px;
         
         .author {
@@ -25,6 +50,50 @@
         max-width: 60px;
     }
     
+}
+
+.modal-90w {
+    max-width: 990px !important;
+
+    &.modal-fullscreen {
+        max-width: none !important;
+
+        
+        div[role=textbox] {
+            margin: auto;
+            min-height: 300px !important;
+            height: 100% !important;
+        }
+
+        .modal-body {
+            background-color: white;
+        }
+
+        .modal-footer {
+            background-color: white;
+            border-radius: 10px 0 0 10px !important;
+            border: 0;
+            width: fit-content;
+            padding: 0;
+            position: sticky;
+            bottom: 0;
+            margin-left: auto;
+            margin-right: 16px;
+            margin-top: -55px;
+        }
+    }
+}
+
+.fade.modalElement.fullscreen.modal.show {
+    padding: 0 !important;
+}
+
+.modal-fullscreen .modal-content {
+    height: auto;
+}
+
+.fade.modalElement.fullscreen.modal.show {
+    background: white;
 }
 
 .modal-open .container-fluid,

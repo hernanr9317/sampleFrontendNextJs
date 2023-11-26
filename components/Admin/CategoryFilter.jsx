@@ -8,12 +8,13 @@ import {AddCategory} from './AddCaregory';
 import {CategoryTable} from './CategoryTable/index';
 
 export const CategoryFilter = () => {
-  const {categories, products} = useContext(ChangeDataContext);
+  const {categories, deletedCategories, products} =
+    useContext(ChangeDataContext);
 
   const [elementSelected, setElementSelected] = useState([]);
 
   const categoriesFilter = products?.productos?.filter(
-    (element) => element?.categoria?.nombre === elementSelected.nombre,
+    (element) => element?.categoria?.nombre === elementSelected?.nombre,
   );
 
   const onClick = (element) => {
@@ -26,7 +27,9 @@ export const CategoryFilter = () => {
         <AddCategory />
 
         <DropdownButton
+          variant="dark"
           as={ButtonGroup}
+          className="category-dropdown-button"
           title="Categorías"
           id="bg-nested-dropdown"
         >
@@ -42,8 +45,27 @@ export const CategoryFilter = () => {
             );
           })}
         </DropdownButton>
+        <DropdownButton
+          variant="dark"
+          as={ButtonGroup}
+          className="category-dropdown-button"
+          title="Restaurar categoría"
+          id="bg-nested2-dropdown"
+        >
+          {deletedCategories?.categorias?.map((element, index) => {
+            return (
+              <Dropdown.Item
+                key={index}
+                eventKey={index}
+                onClick={() => onClick(element)}
+              >
+                {element.nombre}
+              </Dropdown.Item>
+            );
+          })}
+        </DropdownButton>
       </ButtonGroup>
-      {!elementSelected.nombre && (
+      {!elementSelected?.nombre && (
         <Alert variant="warning" className="mt-3">
           Seleccione una categoría
         </Alert>

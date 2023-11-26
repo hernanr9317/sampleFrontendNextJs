@@ -26,18 +26,21 @@ export const ModeloSeguridad = () => {
   return (
     <div id="modelo" className="container-fluid modeloContainer">
       <Container>
-        <h1 className="text-center">
+        <h1 className="heading-1">
           Modelo de Políticas de Seguridad de la Información
         </h1>
-        <hr />
-        <Row>
+        <div className="divider-1">
+          {' '}
+          <span></span>
+        </div>
+        <ul className="honeycomb">
           <ModelCol title={'Integridad'} src={integridad} />
           <ModelCol title={'Confidencialidad'} src={confidencialidad} />
           <ModelCol title={'Disponibilidad'} src={disponibilidad} />
-        </Row>
+        </ul>
         <div className="col text-center mt-3 mb-5">
           <button
-            className="btn btn-primary btn-lg"
+            className="card__button btn-lg"
             onClick={() =>
               getModelo(
                 '../assets/images/ModeloSeguridad.pdf',

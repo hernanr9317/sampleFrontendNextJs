@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
+import Cookies from 'js-cookie';
 import {useForm} from 'react-hook-form';
 import {Alert, Form, Modal} from 'react-bootstrap';
 import {ChangeDataContext} from './../../../context/changeData/ChangeDataContext';
@@ -6,29 +7,33 @@ import {ModalFooter} from './ModalFooter';
 import {ModalBody} from './ModalBody';
 import {deleteItemModal, saveItemModal} from './modalHelpers';
 
-export const ModalElement = ({element, interaction, type}) => {
+export const ModalElement = ({element, interaction, type, setType}) => {
   const {isNewData, categories} = useContext(ChangeDataContext);
-
   const [display, setDisplay] = useState('none');
-  const [alertMessage, setAlertMessage] = useState('');
+  const [alertMessage, setAlertMessage] = useState({msg: '', variant: ''});
 
   const {
     register,
     handleSubmit,
     reset,
     formState: {errors},
+    getValues,
   } = useForm({
     defaultValues: {
       nombre: element?.nombre,
+      subtitulo: element?.subtitle,
+      preview: element?.otherImgs,
       categoria: element?.categoria?._id,
       precio: element?.precio,
       descripcion: element?.description,
+      img: element?.img,
     },
   });
 
   const [show, setShow] = useState(false);
   const [edit, setEdit] = useState(true);
   const handleClose = () => {
+    Cookies.remove('newId', {path: '/'});
     setShow(false);
     setEdit(true);
     setDisplay('none');
@@ -38,9 +43,12 @@ export const ModalElement = ({element, interaction, type}) => {
   useEffect(() => {
     reset({
       nombre: element?.nombre,
+      subtitulo: element?.subtitle,
+      preview: element?.otherImgs,
       categoria: element?.categoria?._id,
       precio: element?.precio,
       descripcion: element?.description,
+      img: element?.img,
     });
   }, [reset, element]);
 
@@ -54,6 +62,11 @@ export const ModalElement = ({element, interaction, type}) => {
   };
 
   const handleSave = (data) => {
+    const isNota = element.categoria.nombre === 'NOTA';
+    const textBody = isNota
+      ? localStorage.getItem('content') || data
+      : data.descripcion;
+    data = {...data, descripcion: textBody};
     saveItemModal(
       data,
       type,
@@ -62,6 +75,7 @@ export const ModalElement = ({element, interaction, type}) => {
       setAlertMessage,
       setEdit,
       setDisplay,
+      setType,
     );
   };
 
@@ -69,24 +83,28 @@ export const ModalElement = ({element, interaction, type}) => {
     deleteItemModal(setShow, element, isNewData, setAlertMessage, setEdit);
   };
 
+  const isFullScreen = element?.categoria?.nombre === 'NOTA' ? true : false;
+
   return (
     <>
       <Modal
         show={show}
         onHide={handleClose}
         backdrop="static"
-        size="lg"
-        className="modalElement"
+        fullscreen={isFullScreen}
+        className={isFullScreen ? 'modalElement fullscreen' : 'modalElement'}
+        dialogClassName="modal-90w"
       >
         <Form onSubmit={handleSubmit(handleSave)} autoComplete="off">
           <Modal.Header closeButton className="colorHeaderTh">
             <Modal.Title>
-              {element?.nombre ||
+              {getValues()?.nombre ||
                 `NUEVO ELEMENTO DE ${element?.categoria?.nombre}`}
             </Modal.Title>
           </Modal.Header>
 
           <ModalBody
+            getValues={getValues}
             element={element}
             edit={edit}
             register={register}
@@ -102,8 +120,8 @@ export const ModalElement = ({element, interaction, type}) => {
             type={type}
           />
 
-          <Alert variant="success" style={{display: display}}>
-            {alertMessage}
+          <Alert variant={alertMessage.variant} style={{display: display}}>
+            {alertMessage.msg}
           </Alert>
         </Form>
       </Modal>

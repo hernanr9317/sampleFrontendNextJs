@@ -1,3 +1,5 @@
+import {generatePath} from '../components/helpers/helpers';
+
 const axios = require('axios');
 
 const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -12,12 +14,13 @@ export const getDataAxios = async (url, token = '') => {
 
     return response;
   } catch (error) {
-    console.error(error);
+    return error;
   }
 };
 
 export const postDataAxios = async (url, data, token = '') => {
   try {
+    const pathname = data?.nombre ? generatePath(data?.name) : undefined;
     const response = await axios
       .post(
         `${baseUrl}${url}`,
@@ -26,6 +29,7 @@ export const postDataAxios = async (url, data, token = '') => {
           nombre: data?.name,
           correo: data?.email,
           password: data?.password,
+          pathname: pathname,
         },
         {
           headers: {
@@ -37,22 +41,28 @@ export const postDataAxios = async (url, data, token = '') => {
         return response;
       })
       .catch((error) => {
-        console.log(error);
+        return error;
       });
     return response;
-  } catch (error) {}
+  } catch (error) {
+    return error;
+  }
 };
 
 export const postDataAxiosElement = async (url, data, token = '') => {
   try {
+    const pathname = data?.nombre ? generatePath(data?.nombre) : undefined;
     const response = await axios
       .post(
         `${baseUrl}${url}`,
         {
           nombre: data?.nombre,
+          subtitle: data?.subtitulo,
+          otherImgs: data?.preview,
           categoria: data?.categoria,
           precio: data?.precio,
           description: data?.descripcion,
+          pathname: pathname,
         },
         {
           headers: {
@@ -64,7 +74,7 @@ export const postDataAxiosElement = async (url, data, token = '') => {
         return response;
       })
       .catch((error) => {
-        console.log(error);
+        return error;
       });
     return response;
   } catch (error) {}
@@ -80,7 +90,7 @@ export const sendEmailCode = async (data) => {
         return response;
       })
       .catch((error) => {
-        console.log(error);
+        return error;
       });
     return response;
   } catch (error) {}
@@ -98,40 +108,44 @@ export const changePasswordWithCode = async (data) => {
         return response;
       })
       .catch((error) => {
-        console.log(error);
+        return error;
       });
     return response;
   } catch (error) {}
 };
 
 export const putDataAxios = async (url, data, token = '') => {
-  try {
-    const response = await axios
-      .put(
-        `${baseUrl}${url}`,
-        {
-          rol: 'ADMIN_ROLE',
-          nombre: data?.nombre,
-          correo: data?.correo,
-          password: data?.password,
-          categoria: data?.categoria,
-          precio: data?.precio,
-          description: data?.descripcion,
+  // try {
+  const pathname = generatePath(data?.nombre);
+  const response = await axios
+    .put(
+      `${baseUrl}${url}`,
+      {
+        rol: 'ADMIN_ROLE',
+        nombre: data?.nombre,
+        subtitle: data?.subtitulo,
+        otherImgs: data?.preview,
+        correo: data?.correo,
+        password: data?.password,
+        categoria: data?.categoria,
+        precio: data?.precio,
+        description: data?.descripcion,
+        pathname: pathname,
+      },
+      {
+        headers: {
+          'x-token': token,
         },
-        {
-          headers: {
-            'x-token': token,
-          },
-        },
-      )
-      .then((response) => {
-        return response;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    return response;
-  } catch (error) {}
+      },
+    )
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      return error;
+    });
+  return response;
+  // } catch (error) {}
 };
 
 export const putImageAxios = async (url, data, token = '') => {
@@ -161,7 +175,7 @@ export const deleteDataAxios = async (url, token = '') => {
         return response;
       })
       .catch((error) => {
-        console.log(error);
+        return error;
       });
     return response;
   } catch (error) {}

@@ -1,4 +1,4 @@
-import {Container, Row} from 'react-bootstrap';
+import {Container} from 'react-bootstrap';
 import {InfoCol} from './InfoCol';
 import etaps from '../../public/assets/info/etaps.webp';
 import tips from '../../public/assets/info/tips.webp';
@@ -6,11 +6,14 @@ import normativa from '../../public/assets/info/normativa.webp';
 
 export const Info = () => {
   return (
-    <div id="info" className="container-fluid mt-3 mb-5 infoContainer">
-      <h1 className="text-center title">Informáte</h1>
-      <hr />
+    <div id="info" className="container-fluid mt-5 mb-5 infoContainer">
+      <h1 className="heading-1">Informáte</h1>
+      <div className="divider-1">
+        {' '}
+        <span></span>
+      </div>
       <Container>
-        <Row>
+        <div className="col-container">
           <InfoCol
             title="Etaps"
             text="Estándares Tecnológicos de la Administración Pública"
@@ -29,7 +32,7 @@ export const Info = () => {
             src={tips}
             link="/tips"
           />
-        </Row>
+        </div>
       </Container>
     </div>
   );

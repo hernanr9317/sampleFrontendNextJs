@@ -14,9 +14,12 @@
     "bootstrap": "^5.2.0",
     "dayjs": "^1.11.7",
     "dompurify": "^3.0.1",
+    "image-extensions": "^1.1.0",
+    "is-url": "^1.2.4",
     "js-cookie": "^3.0.1",
     "material-icons": "^1.13.2",
     "next": "12.2.5",
+    "next-secure-headers": "^2.2.0",
     "pigeon-maps": "^0.21.3",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
@@ -27,7 +30,8 @@
     "slate": "^0.91.4",
     "slate-history": "^0.86.0",
     "slate-react": "^0.91.4",
-    "sweetalert2": "^11.7.1"
+    "sweetalert2": "^11.7.1",
+    "webpack-subresource-integrity": "^5.2.0-rc.1"
   },
   "devDependencies": {
     "eslint": "^8.35.0"

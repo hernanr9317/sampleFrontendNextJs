@@ -5,10 +5,19 @@ import {useForm} from 'react-hook-form';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Link from 'next/link';
+import showEye from '../../public/show.png';
+import hideEye from '../../public/hide.png';
 
 const LoginPage = () => {
   const {loginUser} = useContext(AuthContext);
   const [showError, setShowError] = useState(false);
+  const [hideToggle, setHideToggle] = useState(true);
+
+  const eyeImg = hideToggle ? hideEye : showEye;
+
+  const changeEye = () => {
+    setHideToggle(!hideToggle);
+  };
 
   const {
     register,
@@ -54,12 +63,13 @@ const LoginPage = () => {
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Control
             className={!!errors.password ? 'is-invalid' : ''}
-            type="password"
+            type={hideToggle ? 'password' : 'text'}
             placeholder="Contraseña"
             {...register('password', {
               required: 'Este campo es requerido',
             })}
           />
+          <img className="eye" src={eyeImg?.src} onClick={changeEye}></img>
           <div className="invalid-feedback">{errors.password?.message}</div>
         </Form.Group>
         <Button variant="primary" type="submit">

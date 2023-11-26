@@ -5,6 +5,7 @@ import {getDataAxios} from '../../utils/axiosConfig';
 const ChangeData_INITIAL_STATE = {
   needUpload: false,
   categories: [],
+  deletedCategories: [],
   products: [],
   users: [],
 };
@@ -14,6 +15,34 @@ export const ChangeDataProvider = ({children}) => {
     changeDataReducer,
     ChangeData_INITIAL_STATE,
   );
+
+  useEffect(() => {
+    try {
+      const getCategories = async () => {
+        const {data} = (await getDataAxios('/categorias/')) || {data: []};
+        dispatch({
+          type: '[dataChange] - Categories',
+          payload: data,
+        });
+      };
+      getCategories();
+    } catch (error) {}
+  }, [state.needUpload]);
+
+  useEffect(() => {
+    try {
+      const getDeletedCategories = async () => {
+        const {data} = (await getDataAxios(
+          '/categorias/deleted-categories',
+        )) || {data: []};
+        dispatch({
+          type: '[dataChange] - Deleted categories',
+          payload: data,
+        });
+      };
+      getDeletedCategories();
+    } catch (error) {}
+  }, [state.needUpload]);
 
   useEffect(() => {
     try {

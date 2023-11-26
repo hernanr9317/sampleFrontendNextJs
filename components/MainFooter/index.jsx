@@ -8,10 +8,8 @@ import secondtLogo from '../../public/assets/footer/logoFooter2.webp';
 
 export const MainFooter = () => {
   return (
-    <div  className="bg-dark">
-      <div
-        className="main-footer"
-      >
+    <div className="bg-dark">
+      <div className="main-footer">
         <Container>
           <div
             style={{
@@ -47,12 +45,12 @@ export const MainFooter = () => {
         </Container>
       </div>
       <div className="subfooter">
-      <hr></hr>
-      <p className='text-center'>
-        <a href="https://www.linkedin.com/in/hernanrascon/" target="_blank">
-          Creado por <strong>Hernan Rascon</strong>
-        </a>
-      </p>
+        <hr></hr>
+        <p className="text-center">
+          <a href="https://www.linkedin.com/in/hernanrascon/" target="_blank">
+            Powered by <strong>Hernan Rascon</strong>
+          </a>
+        </p>
       </div>
     </div>
   );

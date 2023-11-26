@@ -17,13 +17,13 @@
     .downloadButton{
         border: 1px solid rgba(8,54,77,1);
         color: rgba(8,54,77,1);
+        transition: all 0.350s ease-out;
 
         &:hover {
-            box-shadow: 0 0 0 3px white;
             background: linear-gradient(90deg, rgba(2,68,102,1) 0%, rgba(8,54,77,1) 100%);
             color: white;
+            transition: all 0.350s ease-out;
         }
-
     }
    
  

@@ -16,29 +16,72 @@ export const saveItemModal = async (
   setAlertMessage,
   setEdit,
   setDisplay,
+  setType,
 ) => {
   try {
     const tokenCookie = Cookies.get('token');
+    const newId = Cookies.get('newId') || undefined;
     if (type === 'editElement') {
-      await putDataAxios(`/productos/${element._id}`, data, tokenCookie);
+      await putDataAxios(
+        `/productos/${element._id || newId}`,
+        data,
+        tokenCookie,
+      ).then((resp) => {
+        if (resp.status === 200) {
+          setAlertMessage({
+            msg: 'Cambios guardados',
+            variant: 'success',
+          });
+        } else {
+          const formatMsg = resp.response.data.msg.replace(
+            /\bproducto\b/g,
+            'elemento',
+          );
+          setAlertMessage({
+            msg: formatMsg || 'Error al crear la nueva categoría',
+            variant: 'danger',
+          });
+        }
+      });
     }
 
     if (type === 'addElement') {
-      await postDataAxiosElement('/productos/', data, tokenCookie);
+      await postDataAxiosElement('/productos/', data, tokenCookie).then(
+        (resp) => {
+          if (resp.status === 201) {
+            Cookies.set('newId', resp.data._id);
+            setAlertMessage({
+              msg: 'Cambios guardados',
+              variant: 'success',
+            });
+            setType('editElement');
+          } else {
+            const formatMsg = resp.response.data.msg.replace(
+              /\bproducto\b/g,
+              'elemento',
+            );
+            setAlertMessage({
+              msg: formatMsg || 'Error al crear la nueva categoría',
+              variant: 'danger',
+            });
+          }
+        },
+      );
     }
 
     if (data.img && data.img.length > 0) {
       await putImageAxios(
-        `/uploads/productos/${element._id}`,
+        `/uploads/productos/${element._id || newId}`,
         data.img[0],
         tokenCookie,
       );
     }
     isNewData();
-    setAlertMessage('Cambios guardados');
     setEdit(true);
     setDisplay('');
-  } catch (error) {}
+  } catch (error) {
+    return error;
+  }
 };
 
 export const deleteItemModal = (
@@ -52,7 +95,20 @@ export const deleteItemModal = (
     if (result.isConfirmed) {
       try {
         const tokenCookie = Cookies.get('token');
-        await deleteDataAxios(`/productos/${element._id}`, tokenCookie);
+        const newId = Cookies.get('newId') || undefined;
+
+        if (element?.img?.length > 0) {
+          await deleteDataAxios(
+            `/uploads/productos/${element._id || newId}`,
+            tokenCookie,
+          );
+        }
+
+        await deleteDataAxios(
+          `/productos/${element._id || newId}`,
+          tokenCookie,
+        );
+
         isNewData();
         setAlertMessage('Eliminado exitosamente');
         setEdit(true);

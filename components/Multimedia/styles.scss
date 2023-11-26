@@ -13,16 +13,28 @@
         flex-direction: row;
     }
 
+    .card-body {
+        padding: 8px 14px 14px 14px;
+
+        @include desktop() {
+            padding: 16px;
+        }
+    }
 
     .imgTip {
         margin: auto;
 
+        @include desktop() {
+            height: 200px;
+        }
+
         img {
-            max-width: 280px !important;
+            padding: 5px !important;
+            border-radius: 50%;
+            box-shadow: 0 10px 50px rgb(205, 205, 205);
             
             @include desktop() {
-                max-width: 350px !important;
-                height: 250px !important;
+                max-width: 200px !important;
             }
         }
     }
@@ -45,8 +57,13 @@
             border-radius:5px;
             text-decoration: none;
             display: inline-block;
+
+            &:hover {
+                background: linear-gradient(90deg, rgba(44,80,99,1) 0%, rgb(63, 62, 62) 100%);
+            }
         }
     }
+    
 }
 
 .info-txt {

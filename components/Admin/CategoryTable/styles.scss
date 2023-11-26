@@ -16,7 +16,7 @@
 
     .addElementButton{
         float: left;
-        margin-bottom: 2px;
+        margin-bottom: 8px;
 
         @include desktop(){
             float: right;
@@ -37,4 +37,5 @@
 
 .activeDiv {
     padding: 16px 20px;
+    border-bottom: 1px solid #e9ecef;
 }

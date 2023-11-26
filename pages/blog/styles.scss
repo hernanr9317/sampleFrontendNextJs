@@ -1,0 +1,33 @@
+
+
+.articleContainer {
+    max-width: 1200px;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .textContainer {
+        max-width: 930px;
+        word-wrap: break-word;
+    }
+    
+    .title {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        margin-bottom: 30px;
+        font-size: 30px;
+        font-weight: bolder;
+
+        @include desktop(){
+            font-size: 42px;
+        }
+    }
+
+    .link {
+        color: #2c5b8b;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

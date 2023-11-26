@@ -7,10 +7,11 @@ import MapLocation from './MapLocation';
 export const Contacto = () => {
   return (
     <div id="contacto" className="p-5">
-      <center>
-        <h1>Contáctese con nosotros</h1>
-      </center>
-      <hr />
+      <h1 className="heading-1">Contáctese con nosotros</h1>
+      <div className="divider-1">
+        {' '}
+        <span></span>
+      </div>
       <Container className="contacto-contianer">
         <ContactoCol icon={mapa} text="Marcelo T. de Alvear 154" />
         <ContactoCol icon={telefono} text="362-4448000 | Int. 8211" />

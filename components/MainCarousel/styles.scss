@@ -2,17 +2,24 @@
 .mainCarousel{
 
     margin-top: 80px !important;
+    
+    // margin-left: calc(50% - var(--vw, 1vw) * 50);
+    // left: 0;
+    // width: calc(var(--vw, 1vw) * 100);
 
-    margin-left: calc(50% - var(--vw, 1vw) * 50);
-    left: 0;
-    width: calc(var(--vw, 1vw) * 100);
-
+    // img {
+    //     min-height: 500px !important;
+    // }
     span {
         display: none
     }
 
     @include desktop(){
-        margin-top: 84px !important;
+        // margin-top: 84px !important;
+
+        // img {
+        //     min-height: 500px !important;
+        // }
         
         span {
             display: flex
