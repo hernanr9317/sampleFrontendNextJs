@@ -58,11 +58,13 @@
     &.modal-fullscreen {
         max-width: none !important;
 
-        
+   //TODO: TERMINAR DE DAR ESTILO, TIENE QUE APARECER UN SCROLL LATERAL     
         div[role=textbox] {
             margin: auto;
             min-height: 300px !important;
             height: 100% !important;
+            max-height: 700px !important;
+            overflow-y: scroll !important;
         }
 
         .modal-body {

@@ -4,10 +4,19 @@ import {Form, Button} from 'react-bootstrap';
 import {useForm} from 'react-hook-form';
 import {AuthLayout} from '../../components/layouts';
 import {changePasswordWithCode} from '../../utils/axiosConfig';
+import showEye from '../../public/show.png';
+import hideEye from '../../public/hide.png';
 
 const ConfirmPassword = () => {
   const [showStatus, setShowStatus] = useState({visible: false, text: ''});
+  const [hideToggle, setHideToggle] = useState(true);
   const router = useRouter();
+
+  const eyeImg = hideToggle ? hideEye : showEye;
+
+  const changeEye = () => {
+    setHideToggle(!hideToggle);
+  };
 
   const {
     register,
@@ -79,13 +88,14 @@ const ConfirmPassword = () => {
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Control
             className={!!errors.password ? 'is-invalid' : ''}
-            type="password"
+            type={hideToggle ? 'password' : 'text'}
             placeholder="Nueva contraseña"
             {...register('password', {
               required: 'Este campo es requerido',
               minLength: {value: 6, message: 'Mínimo 6 caracteres'},
             })}
           />
+          <img className="eye" src={eyeImg?.src} onClick={changeEye}></img>
           <div className="invalid-feedback">{errors.password?.message}</div>
         </Form.Group>
         <Button variant="primary" type="submit">
