@@ -17,7 +17,7 @@
     }
 
     .form-control, .form-select {
-        padding: 4px 16px
+        padding: 1px 16px
     }
 
     .colorHeaderTh {
@@ -64,7 +64,7 @@
             min-height: 300px !important;
             height: 100% !important;
             max-height: 700px !important;
-            overflow-y: scroll !important;
+            overflow-y: auto !important;
         }
 
         .modal-body {
