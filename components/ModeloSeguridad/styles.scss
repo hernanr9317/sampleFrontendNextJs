@@ -75,6 +75,10 @@ $viewport-thereshold: $hexagon-width + $hexagon-margin;
     text-align: center;
     z-index: 1;
 
+    // @include tablet() {
+    //   max-width: $hexagon-width;
+    // }
+
     &__title {
       height: 100%;
       display: flex;
