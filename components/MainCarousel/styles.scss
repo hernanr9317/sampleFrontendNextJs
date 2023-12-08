@@ -1,28 +1,15 @@
-
 .mainCarousel{
 
-    margin-top: 80px !important;
-    // margin: auto;
-    // max-width: 1720px;
-    display: grid;
-    justify-content: center;
-    // align-items: center;
+    margin-top: 81px !important;
+    filter: brightness(0.7);
     // background: radial-gradient(circle, rgba(60,88,102,1) 0%, rgba(0,0,0,1) 100%);
-    
-    // margin-left: calc(50% - var(--vw, 1vw) * 50);
-    // left: 0;
-    // width: calc(var(--vw, 1vw) * 100);
-
-    //TODO: TERMINAR DE DAR ESTILOS
-    // img {
-    //     min-height: 90% !important;
-    // }
 
     span {
         display: none
     }
 
     @include desktop(){
+        margin-top: 91px !important;
         
         span {
             display: flex
