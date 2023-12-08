@@ -1,4 +1,5 @@
 import {css} from '@emotion/css';
+import {extractURLFromText} from '../../helpers/helpers';
 
 const Image = ({attributes, children, element}) => {
   return (
@@ -27,8 +28,10 @@ const Image = ({attributes, children, element}) => {
 
 const VideoElement = ({attributes, children, element}) => {
   let {url} = element;
-  const regex = /\/watch\?v=/;
-  url = url?.replace(regex, '/embed/');
+  url = extractURLFromText(url);
+
+  // const regex = /\/watch\?v=/;
+  // url = url?.replace(regex, '/embed/');
 
   if (!url) return null;
 

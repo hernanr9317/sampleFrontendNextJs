@@ -22,3 +22,21 @@ export const generatePath = (str) => {
 
   return path;
 };
+
+export const extractURLFromText = (texto) => {
+  // Expresión regular para buscar el patrón src="https..."
+  const patron = /src="([^"]+)"/;
+
+  // Buscar el patrón en el texto
+  const coincidencias = texto.match(patron);
+
+  // Verificar si se encontraron coincidencias
+  if (coincidencias && coincidencias.length > 1) {
+    // El valor deseado estará en la segunda posición del array de coincidencias
+    const url = coincidencias[1];
+    return url;
+  } else {
+    // Si no se encuentra ninguna coincidencia, devolver null
+    return null;
+  }
+};
