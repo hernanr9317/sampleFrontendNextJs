@@ -30,8 +30,8 @@ const VideoElement = ({attributes, children, element}) => {
   let {url} = element;
   url = extractURLFromText(url);
 
-  // const regex = /\/watch\?v=/;
-  // url = url?.replace(regex, '/embed/');
+  //TODO: HACER FUNCIONAR PARA POSTS DE TWITTER E INSTAGRAM
+  //TAMBIEN HAY QUE HACER QUE FUNCIONE CON POSTS COMPLETOS
 
   if (!url) return null;
 
@@ -49,7 +49,7 @@ const VideoElement = ({attributes, children, element}) => {
         >
           <iframe
             src={url}
-            title="YouTube video player"
+            title="Video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen

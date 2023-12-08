@@ -21,6 +21,7 @@ const nextConfig = {
               defaultSrc: [
                 "'self'",
                 'https://www.youtube.com/',
+                'https://www.facebook.com/',
                 'https://e-seguridad.chaco.gob.ar/',
               ],
               connectSrc: ["'self'", `${baseUrl}`],
