@@ -38,7 +38,8 @@ export const ModeloSeguridad = () => {
           <ModelCol title={'Confidencialidad'} src={confidencialidad} />
           <ModelCol title={'Disponibilidad'} src={disponibilidad} />
         </ul>
-        <div className="col text-center mt-3 mb-5">
+        {/* <div className="col text-center mt-3 mb-5"> */}
+        <div className="button-container">
           <button
             className="card__button btn-lg"
             onClick={() =>

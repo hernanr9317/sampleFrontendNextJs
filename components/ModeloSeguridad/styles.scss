@@ -10,6 +10,20 @@ $hexagon-image-color: linear-gradient(90deg, rgb(95, 95, 95) 0%, rgb(255, 255, 2
 $honeycomb-max-width: 1200px;
 $viewport-thereshold: $hexagon-width + $hexagon-margin;
 
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
+
+  @include tablet() {
+    margin-top: 54px;
+  }
+
+  @include desktop() {
+    margin-top: 58px;
+  }
+}
+
 .card__button {
   padding: 0.75em 1.6em;
   width: fit-content;
@@ -34,10 +48,6 @@ $viewport-thereshold: $hexagon-width + $hexagon-margin;
 
   &:focus {
     text-decoration: underline;
-  }
-
-    @include desktop() {
-      margin-top: 50px;
   }
 }
 
