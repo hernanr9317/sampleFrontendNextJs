@@ -32,6 +32,7 @@ export const CategoryFilter = () => {
           className="category-dropdown-button"
           title="Categorías"
           id="bg-nested-dropdown"
+          disabled={categories?.categorias?.length > 0 ? false : true}
         >
           {categories?.categorias?.map((element, index) => {
             return (
@@ -51,6 +52,7 @@ export const CategoryFilter = () => {
           className="category-dropdown-button"
           title="Restaurar categoría"
           id="bg-nested2-dropdown"
+          disabled={deletedCategories?.categorias?.length > 0 ? false : true}
         >
           {deletedCategories?.categorias?.map((element, index) => {
             return (
