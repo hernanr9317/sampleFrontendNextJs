@@ -48,7 +48,7 @@ export const MainFooter = () => {
         <hr></hr>
         <p className="text-center">
           <a href="https://www.linkedin.com/in/hernanrascon/" target="_blank">
-            Powered by <strong>Hernan Rascon</strong>
+            Powered by <strong>Hernan Rascon ⚡</strong>
           </a>
         </p>
       </div>
