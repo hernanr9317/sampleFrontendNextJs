@@ -6,6 +6,7 @@ import {PublicLayout} from '../components/layouts';
 import slider1 from '../public/assets/carousel/img3.webp';
 import slider2 from '../public/assets/carousel/img1.webp';
 import slider3 from '../public/assets/carousel/img2.webp';
+import {BlogIndex} from './../components/Blog/index';
 
 const HomeScreen = () => {
   return (
@@ -15,12 +16,17 @@ const HomeScreen = () => {
         'Encuentra los estandares de equipamiento informático y seguridad'
       }
     >
-      <div className="bg-gradient container-fluid p-0">
+      <div className="bg-gradient container-fluid p-0 main-page">
         <MainCarousel img={slider1} img2={slider2} img3={slider3} />
-        <div className="container">
-          <Info />
-          <ModeloSeguridad />
-          <Contacto />
+        <div className="font-page-containner">
+          <div className="container left-font-page">
+            <Info />
+            <ModeloSeguridad />
+            <Contacto />
+          </div>
+          <aside className="right-aside">
+            <BlogIndex numberItems={4} />
+          </aside>
         </div>
       </div>
     </PublicLayout>

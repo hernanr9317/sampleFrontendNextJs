@@ -1,0 +1,69 @@
+.main-page {
+    display: grid;
+    width: 100%;
+
+    @include desktop() {
+        display: table;
+    }
+
+    .font-page-containner {
+        margin: auto;
+        max-width: 1250px;
+    }
+}
+  
+.left-font-page {
+    float: left;
+    width: 100%;
+
+    @include desktop() {
+        width: 80%;
+    }
+}
+  
+.right-aside {
+
+    display: none;
+
+    @include desktop() {
+        border: none;
+        display: block;
+        margin-top: 3rem;
+        float: right;
+        width: 20%;
+    
+        .blog {
+            margin-top: 0;
+    
+            .articleList {
+                padding: 0;
+
+                header {
+                    margin-left: 0;
+                }
+    
+                h1 {
+                    text-align: left;
+                    font-size: 30px;
+                }
+    
+                .band {
+                    display: contents;
+
+                    .card {
+                        margin-bottom: 20px;
+
+                        article {
+                            padding: 14px;
+                        }
+
+                        h1 {
+                            font-size: 24px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+  

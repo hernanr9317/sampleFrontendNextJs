@@ -1,4 +1,11 @@
 .blog {
+
+  margin-top: 81px;
+
+  @include desktop() {
+    margin-top: 91px;
+  }
+
   .articleList {
 
     padding: 20px 0;

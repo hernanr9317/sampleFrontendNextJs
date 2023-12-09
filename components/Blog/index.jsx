@@ -1,10 +1,9 @@
 import {ArticleList} from './ArticleList';
 
-export const BlogIndex = () => {
+export const BlogIndex = ({numberItems}) => {
   return (
     <div className="blog">
-      <h1 style={{textAlign: 'center', marginBottom: '25px'}}>Blog</h1>
-      <ArticleList />
+      <ArticleList numberItems={numberItems} />
     </div>
   );
 };

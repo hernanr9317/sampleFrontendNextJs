@@ -61,6 +61,7 @@ export const ChangeDataProvider = ({children}) => {
     try {
       const getProducts = async () => {
         const {data} = (await getDataAxios('/productos/')) || {data: []};
+        data?.productos.reverse();
         dispatch({
           type: '[dataChange] - Products',
           payload: data,
