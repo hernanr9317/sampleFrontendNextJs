@@ -4,12 +4,30 @@
     filter: brightness(0.7);
     // background: radial-gradient(circle, rgba(60,88,102,1) 0%, rgba(0,0,0,1) 100%);
 
+    .carousel-indicators {
+        margin-bottom: 0 !important;
+    }
+
     span {
         display: none
     }
 
     @include desktop(){
         margin-top: 91px !important;
+        height: 91svh !important;
+
+        .carousel-indicators {
+            margin-bottom: 5px !important;
+        }
+
+        .carousel-control-prev, .carousel-control-next {
+            width: 5% !important;
+        }
+
+        img {
+            height: 91svh !important;
+            width: 100vw !important;
+        }
         
         span {
             display: flex
