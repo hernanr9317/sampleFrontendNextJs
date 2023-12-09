@@ -1,10 +1,26 @@
+
+.containerFooter {
+    position: absolute;
+    width: 100%;
+    margin-top: 90px;
+
+    @include tablet() {
+        //TODO: HAY ALGUNAS TABLETS QUE NO QUEDA BIEN EL MARGEN
+        //VER POSIBILIDADES
+        margin-top: 130px;
+    }
+
+    @include desktop() {
+        margin-top: 100px;
+    }
+}
+
 .main-footer {
         padding: 200px 0;
 
     .footerImg {
         filter: opacity(0.3) drop-shadow(0 0 0 white); 
       }
-
 }
 
 .subfooter {

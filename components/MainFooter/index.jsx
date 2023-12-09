@@ -8,7 +8,7 @@ import secondtLogo from '../../public/assets/footer/logoFooter2.webp';
 
 export const MainFooter = () => {
   return (
-    <div className="bg-dark">
+    <div className="bg-dark containerFooter">
       <div className="main-footer">
         <Container>
           <div

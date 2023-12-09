@@ -15,7 +15,7 @@ const HomeScreen = () => {
         'Encuentra los estandares de equipamiento informático y seguridad'
       }
     >
-      <div className="bg-light bg-gradient container-fluid p-0">
+      <div className="bg-gradient container-fluid p-0">
         <MainCarousel img={slider1} img2={slider2} img3={slider3} />
         <div className="container">
           <Info />
