@@ -7,7 +7,7 @@ export const InfoCol = ({title, text, src, link}) => {
         <img
           className="card__background"
           src={src.src}
-          alt="Photo of Cartagena's cathedral at the background and some colonial style houses"
+          alt={title}
           width={1920}
           height={2193}
         />
