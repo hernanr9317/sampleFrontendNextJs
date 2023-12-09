@@ -2,24 +2,48 @@
 
 .articleContainer {
     max-width: 1200px;
-    margin-top: 100px;
+    margin-top: 81px;
     margin-left: auto;
     margin-right: auto;
 
+    @include desktop() {
+        margin-top: 91px;
+    }
+
     .textContainer {
+        padding-top: 0;
         max-width: 930px;
         word-wrap: break-word;
+        margin-left: auto;
+        margin-right: auto;
     }
-    
-    .title {
-        font-family: Georgia, 'Times New Roman', Times, serif;
-        margin-bottom: 30px;
-        font-size: 30px;
-        font-weight: bolder;
 
-        @include desktop(){
-            font-size: 42px;
+    .title {
+        margin-left: calc(50% - var(--vw, 1vw) * 50);
+        left: 0;
+        width: calc(var(--vw, 1vw) * 100);
+        // position: absolute;
+
+        padding: 35px 20px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        // rgb(199, 199, 199)
+        background-image: linear-gradient(rgb(200, 200, 200) 99%, rgb(234, 234, 234));
+
+        h2 {
+            text-decoration: underline;
+            font-size: 30px;
+            font-weight: bolder;
+            margin-bottom: 0;
+            text-align: center;
+
+            @include desktop(){
+                font-size: 42px;  
+            }
         }
+    }
+
+    .body {
+        padding-top: 30px;
     }
 
     .link {

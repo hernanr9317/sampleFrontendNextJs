@@ -20,11 +20,15 @@ const Article = () => {
 
   const showArticle = findArticle ? (
     <>
-      <div className="title">{findArticle?.nombre}</div>
-      {bodyDescription &&
-        bodyDescription.map((element, index) => (
-          <ReadOnlyText {...element} key={index} />
-        ))}
+      <div className="title">
+        <h2>{findArticle?.nombre}</h2>
+      </div>
+      <div className="body">
+        {bodyDescription &&
+          bodyDescription.map((element, index) => (
+            <ReadOnlyText {...element} key={index} />
+          ))}
+      </div>
     </>
   ) : (
     <>
