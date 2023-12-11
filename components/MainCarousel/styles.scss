@@ -1,21 +1,50 @@
 .mainCarousel{
 
-    margin-top: 81px !important;
+    background: radial-gradient(circle, rgba(60,88,102,1) 0%, rgba(0,0,0,1) 100%);
     filter: brightness(0.7);
-    // background: radial-gradient(circle, rgba(60,88,102,1) 0%, rgba(0,0,0,1) 100%);
+    height: calc(30svh - 58px) !important;
+    margin-top: 58px !important;
+
+    img {
+        height: calc(30svh - 58px) !important;
+    }
 
     .carousel-indicators {
         margin-bottom: 0 !important;
+        justify-content: right !important;
+        margin-right: 18% !important;
+
+        button {
+            width: 8px;
+        }
+
+        @include tablet() {
+            justify-content: center !important;
+            margin-right: 15% !important;
+            display: flex;
+
+            button {
+                width: 30px;
+            }
+        }
     }
 
     span {
-        display: none
+        display: none;
+    }
+
+    @include tablet() {
+        margin-top: 70px !important;
+        height: calc(42svh - 70px) !important;
+
+        img {
+            height: calc(42svh - 70px) !important;
+            width: 100vw !important;
+        }
     }
 
     @include desktop(){
-        margin-top: 91px !important;
-        height: 90svh !important;
-        // width: 90dvh !important;
+        height: calc(100svh - 70px) !important;
 
         .carousel-indicators {
             margin-bottom: 5px !important;
@@ -26,12 +55,11 @@
         }
 
         img {
-            height: 90svh !important;
-            width: 100vw !important;
+            height: calc(100svh - 70px) !important;
         }
         
         span {
-            display: flex
+            display: flex;
         }
     }
 }
