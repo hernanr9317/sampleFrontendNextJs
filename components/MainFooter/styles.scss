@@ -1,12 +1,13 @@
 
 .containerFooter {
-    position: absolute;
+    // position: absolute;
     width: 100%;
     margin-top: 90px;
 
     @include tablet() {
         //TODO: HAY ALGUNAS TABLETS QUE NO QUEDA BIEN EL MARGEN
         //VER POSIBILIDADES
+        // width: 107svw;
         margin-top: 130px;
     }
 

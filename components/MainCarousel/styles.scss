@@ -14,7 +14,8 @@
 
     @include desktop(){
         margin-top: 91px !important;
-        height: 91svh !important;
+        height: 90svh !important;
+        // width: 90dvh !important;
 
         .carousel-indicators {
             margin-bottom: 5px !important;
@@ -25,7 +26,7 @@
         }
 
         img {
-            height: 91svh !important;
+            height: 90svh !important;
             width: 100vw !important;
         }
         

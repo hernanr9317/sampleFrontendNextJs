@@ -2,19 +2,30 @@
 .navbar { 
 
     margin: 0;
-    padding-top: 5px;
-      
+    padding: 2px 0;
+        
     .container {
-        max-width: 100%;
-        margin: 0 20px;
+        max-width: 1240px;
   }
 
   .navbar-brand {
-    @include desktop(){
-        margin: auto;
-        padding-right: 20px;
-        padding-top: 15px;
+
+    padding: 2px 0;
+    margin: auto;
+    margin-right: (calc(50% - 97px));
+
+    a {
+      display: flex;
+    }
+
+    @include tablet(){
+        margin-right: (calc(50% - 107px));
+        padding: 8px;
       }
+
+    @include desktop(){
+      margin: auto;
+    }
   }
 
   @include desktop(){
