@@ -70,7 +70,7 @@
       }
 
       article {
-        padding: 20px;
+        padding: 14px;
         flex: 1;
 
         display: flex;
@@ -88,6 +88,10 @@
       p {
         flex: 1;
         line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 5; /* Número de líneas que deseas mostrar */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
       }
 
       span {

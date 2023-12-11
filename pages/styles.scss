@@ -8,12 +8,13 @@
 
     .font-page-containner {
         margin: auto;
-        max-width: 1250px;
+        max-width: 1240px;
     }
 }
   
 .left-font-page {
     float: left;
+    padding: 0;
     width: 100%;
 
     @include desktop() {
@@ -24,6 +25,7 @@
 .right-aside {
 
     display: none;
+    padding-right: 12px;
 
     @include desktop() {
         border: none;
@@ -40,6 +42,8 @@
 
                 header {
                     margin-left: 0;
+                    margin-right: 0;
+                    width: 100%;
                 }
     
                 h1 {
@@ -54,7 +58,7 @@
                         margin-bottom: 20px;
 
                         article {
-                            padding: 14px;
+                            padding: 12px;
                         }
 
                         h1 {
