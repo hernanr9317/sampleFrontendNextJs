@@ -7,6 +7,7 @@
 
     img {
         height: calc(30svh - 58px) !important;
+        width: 100vw !important;
     }
 
     .carousel-indicators {
@@ -39,7 +40,6 @@
 
         img {
             height: calc(42svh - 70px) !important;
-            width: 100vw !important;
         }
     }
 
