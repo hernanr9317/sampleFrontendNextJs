@@ -2,12 +2,12 @@
 
 .articleContainer {
     max-width: 1200px;
-    margin-top: 81px;
+    margin-top: 58px;
     margin-left: auto;
     margin-right: auto;
 
     @include desktop() {
-        margin-top: 91px;
+        margin-top: 70px;
     }
 
     .textContainer {
@@ -22,12 +22,9 @@
         margin-left: calc(50% - var(--vw, 1vw) * 50);
         left: 0;
         width: calc(var(--vw, 1vw) * 100);
-        // position: absolute;
-
         padding: 35px 20px;
         font-family: Georgia, 'Times New Roman', Times, serif;
-        // rgb(199, 199, 199)
-        background-image: linear-gradient(rgb(200, 200, 200) 99%, rgb(234, 234, 234));
+        background-image: linear-gradient(rgb(218, 218, 218) 99%, rgb(205, 205, 205));
 
         h2 {
             text-decoration: underline;
