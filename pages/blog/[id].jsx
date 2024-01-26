@@ -3,7 +3,6 @@ import {useRouter} from 'next/router';
 import {PublicLayout} from './../../components/layouts/PublicLayout';
 import {ChangeDataContext} from './../../context/changeData/ChangeDataContext';
 import ReadOnlyText from '../../components/Slate/TextRead';
-import Link from 'next/link';
 
 const Article = () => {
   const router = useRouter();
@@ -18,7 +17,7 @@ const Article = () => {
     ? JSON.parse(findArticle?.description)
     : false;
 
-  const showArticle = findArticle ? (
+  const showArticle = findArticle && (
     <>
       <div className="title">
         <h2>{findArticle?.nombre}</h2>
@@ -29,13 +28,6 @@ const Article = () => {
             <ReadOnlyText {...element} key={index} />
           ))}
       </div>
-    </>
-  ) : (
-    <>
-      <h1>No encontramos esta nota...</h1>
-      <Link href="/blog" className="link">
-        <a className="link">⇒ Ir a las últimas publiaciones</a>
-      </Link>
     </>
   );
 
