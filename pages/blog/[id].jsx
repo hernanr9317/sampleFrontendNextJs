@@ -22,10 +22,12 @@ const Article = () => {
   const bodyDescription = findArticle?.description
     ? JSON.parse(findArticle?.description)
     : false;
-  
+
   const date = dayjs(findArticle?.updatedAt)
     .format('dddd D [de] MMMM [de] YYYY')
     .replace(/^\w/, (c) => c.toUpperCase());
+
+  const ogImage = findArticle?.otherImgs?.[0];
 
   const showArticle = findArticle && (
     <>
@@ -45,7 +47,9 @@ const Article = () => {
   return (
     <PublicLayout
       title={findArticle?.nombre || ''}
-      pageDescription={'Artículos de interés sobre seguridad informática'}
+      pageDescription={findArticle?.subtitle}
+      imageFullUrl={ogImage}
+      type="article"
     >
       <div className="articleContainer">
         <div className="textContainer">{showArticle}</div>

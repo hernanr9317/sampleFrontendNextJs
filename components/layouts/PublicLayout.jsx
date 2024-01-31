@@ -7,18 +7,27 @@ export const PublicLayout = ({
   title,
   pageDescription,
   imageFullUrl,
+  type,
 }) => {
   return (
     <>
       <Head>
         <title>{title}</title>
 
-        <meta name="description" content={pageDescription} />
+        <meta property="og:title" content={title} />
+        <meta name="twitter:title" content={title} />
 
-        <meta name="og:title" content={title} />
-        <meta name="og:description" content={pageDescription} />
+        <meta property="og:description" content={pageDescription} />
+        <meta name="twitter:description" content={pageDescription} />
 
-        {imageFullUrl && <meta name="og:image" content={imageFullUrl} />}
+        {imageFullUrl && (
+          <>
+            <meta property="og:image" content={imageFullUrl} />
+            <meta name="twitter:image" content={imageFullUrl} />
+          </>
+        )}
+
+        {type && <meta property="og:type" content={type} />}
       </Head>
 
       <nav>
