@@ -15,6 +15,8 @@ const Article = () => {
   const {products} = useContext(ChangeDataContext);
   const articleId = router.query.id;
 
+  const clickButton = () => router.push('/blog');
+
   const findArticle = products?.productos?.find(
     (e) => e.pathname === articleId,
   );
@@ -30,7 +32,7 @@ const Article = () => {
   const ogImage = findArticle?.otherImgs?.[0];
   const url = `${process.env.NEXT_PUBLIC_HOST}${router.asPath}`;
 
-  const showArticle = findArticle && (
+  const showArticle = router.isReady && findArticle && (
     <>
       <div className="title">
         <h2>{findArticle?.nombre}</h2>
@@ -45,6 +47,18 @@ const Article = () => {
     </>
   );
 
+  let load = true;
+
+  if (router.isReady && products !== []) load = false;
+
+  const notResults = (
+    <div className="not-results">
+      <p>No se encontraron resultados...</p>
+      <p>Mirá otras notas en el blog</p>
+      <button onClick={clickButton}>Ir al blog</button>
+    </div>
+  );
+
   return (
     <PublicLayout
       title={findArticle?.nombre || ''}
@@ -54,7 +68,9 @@ const Article = () => {
       type="article"
     >
       <div className="articleContainer">
-        <div className="textContainer">{showArticle}</div>
+        <div className="textContainer">
+          {showArticle || (!load && !showArticle && notResults)}
+        </div>
       </div>
     </PublicLayout>
   );
