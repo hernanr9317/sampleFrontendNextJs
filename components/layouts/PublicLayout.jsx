@@ -8,6 +8,7 @@ export const PublicLayout = ({
   pageDescription,
   imageFullUrl,
   type,
+  url,
 }) => {
   return (
     <>
@@ -19,6 +20,8 @@ export const PublicLayout = ({
 
         <meta property="og:description" content={pageDescription} />
         <meta name="twitter:description" content={pageDescription} />
+
+        <meta property="og:url" content={url} />
 
         {imageFullUrl && (
           <>

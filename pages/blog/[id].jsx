@@ -28,6 +28,7 @@ const Article = () => {
     .replace(/^\w/, (c) => c.toUpperCase());
 
   const ogImage = findArticle?.otherImgs?.[0];
+  const url = `${process.env.NEXT_PUBLIC_HOST}${router.asPath}`;
 
   const showArticle = findArticle && (
     <>
@@ -49,6 +50,7 @@ const Article = () => {
       title={findArticle?.nombre || ''}
       pageDescription={findArticle?.subtitle}
       imageFullUrl={ogImage}
+      url={url}
       type="article"
     >
       <div className="articleContainer">
