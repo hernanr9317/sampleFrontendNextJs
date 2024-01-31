@@ -9,12 +9,17 @@ import slider3 from '../public/assets/carousel/img2.webp';
 import {BlogIndex} from './../components/Blog/index';
 
 const HomeScreen = () => {
+  const url = process.env.NEXT_PUBLIC_HOST;
+
   return (
     <PublicLayout
       title={'e-seguridad - Home'}
       pageDescription={
         'Encuentra los estandares de equipamiento informático y seguridad'
       }
+      url={url}
+      imageFullUrl="https://i.postimg.cc/K8jtb5HT/img3-47a48d0c.webp"
+      type="technology"
     >
       <div className="bg-gradient container-fluid p-0 main-page">
         <MainCarousel img={slider1} img2={slider2} img3={slider3} />
