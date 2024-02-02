@@ -1,0 +1,41 @@
+.pageHeader{
+
+    background-image: url('../../public/assets/header/mainImg.png');
+    background-position: top right 100%;
+    background-repeat: no-repeat;
+    background-color: #000000;
+    background-attachment: fixed;
+    color: #fff;
+    min-height: 700px;
+    filter: brightness(90%);
+
+    @include tablet() {
+        background-position: top right 70%;
+    }
+
+    @include desktop() {
+        background-position: top right 10%;
+    }
+
+    .wrapper{
+        text-align: center;
+        margin: auto;
+        padding-top: 200px;
+        color: white;
+
+        @include tablet() {
+            flex-direction: column;
+            display: flex;
+            max-width: 700px;
+            text-align: justify;
+        }
+
+        @include desktop() {
+            max-width: 1240px;
+        }
+
+        h4 {
+            max-width: 600px;
+        }
+    }
+}

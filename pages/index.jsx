@@ -7,6 +7,7 @@ import slider1 from '../public/assets/carousel/img3.webp';
 import slider2 from '../public/assets/carousel/img1.webp';
 import slider3 from '../public/assets/carousel/img2.webp';
 import {BlogIndex} from './../components/Blog/index';
+import {PageHeader} from '../components/Header/PageHeader';
 
 const HomeScreen = () => {
   const url = process.env.NEXT_PUBLIC_HOST;
@@ -22,7 +23,8 @@ const HomeScreen = () => {
       type="technology"
     >
       <div className="bg-gradient container-fluid p-0 main-page">
-        <MainCarousel img={slider1} img2={slider2} img3={slider3} />
+        {/* <MainCarousel img={slider1} img2={slider2} img3={slider3} /> */}
+        <PageHeader />
         <div className="font-page-containner">
           <div className="container left-font-page">
             <Info />
