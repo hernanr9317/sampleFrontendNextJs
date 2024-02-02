@@ -11,7 +11,7 @@
     }
 
     .textContainer {
-        padding-top: 0;
+        padding: 0;
         max-width: 930px;
         word-wrap: break-word;
         margin-left: auto;
@@ -39,6 +39,7 @@
 
         @include desktop(){
             padding: 35px 150px;
+            padding-bottom: 100px;
         };
     };
 
@@ -62,7 +63,13 @@
     }
 
     .body {
-        padding-top: 30px;
+        background-color: rgb(234, 234, 234);
+        padding: 30px;
+
+        @include desktop(){
+            margin-top: -80px;
+            padding: 10px;
+        };
     }
 
     .link {
