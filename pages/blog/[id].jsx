@@ -6,6 +6,7 @@ import ReadOnlyText from '../../components/Slate/TextRead';
 import dayjs from 'dayjs';
 import {es} from 'dayjs/locale/es';
 import localeData from 'dayjs/plugin/localeData';
+import {SocialLinks} from './../../components/SocialLinks/index';
 
 dayjs.locale('es');
 dayjs.extend(localeData);
@@ -37,6 +38,7 @@ const Article = () => {
       <div className="title">
         <h2>{findArticle?.nombre}</h2>
         <div className="date">{date}</div>
+        <SocialLinks url={url} />
       </div>
       <div className="body">
         {bodyDescription &&
