@@ -1,6 +1,6 @@
 .modeloContainer {
   
-$hexagon-width: 250px;
+$hexagon-width: 180px;
 $hexagon-height: $hexagon-width*.55;
 $hexagon-margin: 25px;
 $hexagon-title-color: #fff;
@@ -16,11 +16,7 @@ $viewport-thereshold: $hexagon-width + $hexagon-margin;
   margin-top: 14px;
 
   @include tablet() {
-    margin-top: 54px;
-  }
-
-  @include desktop() {
-    margin-top: 58px;
+    margin-top: 84px;
   }
 }
 
@@ -58,18 +54,14 @@ $viewport-thereshold: $hexagon-width + $hexagon-margin;
   justify-content: center;
   align-items: center;
   max-width: $honeycomb-max-width;
-  margin: 0 auto;
-  padding: 10px 0 0 0;
-
-  @include desktop() {
-    padding: 20px 0 0 0;
-  }
+  margin: 0 auto 80px;
+  padding: 0;
 
   &-cell {
     flex: 0 1 $hexagon-width;
     max-width: $hexagon-width;
     height: $hexagon-height;
-    margin: $hexagon-height/2.1 $hexagon-margin/2 $hexagon-margin;
+    margin: $hexagon-height/1.1 $hexagon-margin/1 $hexagon-margin+36px;
     position: relative;
     padding: 0.5em;
     text-align: center;
@@ -83,12 +75,9 @@ $viewport-thereshold: $hexagon-width + $hexagon-margin;
       hyphens: auto;
       word-break: break-word;
       text-transform: uppercase;
-      color: #fff;
+      color: #212529;
       font-weight: 700;
-      font-size: 1.4em;
       transition: opacity 350ms, margin-top 0.500s ease-out, font-size 0.300s ease-out, left 0.300s ease-out;
-      text-shadow: rgb(15, 15, 15) 1px 0 10px;
-      -webkit-text-stroke: 0.5px black;
       
       > small {
         font-weight: 300;
@@ -133,14 +122,12 @@ $viewport-thereshold: $hexagon-width + $hexagon-margin;
       transition: opacity 350ms;
     }
     
-    /* Estilos de hover en el estado normal */
     &__title {
-      font-size: 25px;
+      font-size: 16px;
       left: 0;
-      margin-top: 100px;
+      margin-top: 115px;
       position: absolute;
       width: 100%;
-      -webkit-text-stroke: 1.5px black;
     }
 
     &::before {
@@ -163,6 +150,7 @@ $viewport-thereshold: $hexagon-width + $hexagon-margin;
 @media (max-width:#{2*$viewport-thereshold}){
   .honeycomb-cell {
     margin: #{$hexagon-margin/2 + $hexagon-height/2} $hexagon-margin;
+    margin-bottom: 94px;
   }
 }
 
