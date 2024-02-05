@@ -1,4 +1,4 @@
-import mainImg from '../../public/assets/header/mainImg.png';
+// import mainImg from '../../public/assets/header/mainImg.png';
 
 export const PageHeader = () => {
   return (
