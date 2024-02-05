@@ -22,11 +22,11 @@ export const ModalElement = ({element, interaction, type, setType}) => {
     defaultValues: {
       nombre: element?.nombre,
       subtitulo: element?.subtitle,
-      preview: element?.otherImgs,
+      preview: element?.otherImgs?.[0],
       categoria: element?.categoria?._id,
       precio: element?.precio,
       descripcion: element?.description,
-      img: element?.img,
+      mainMedia: element?.otherImgs?.[1],
     },
   });
 
@@ -44,11 +44,11 @@ export const ModalElement = ({element, interaction, type, setType}) => {
     reset({
       nombre: element?.nombre,
       subtitulo: element?.subtitle,
-      preview: element?.otherImgs,
+      preview: element?.otherImgs?.[0],
       categoria: element?.categoria?._id,
       precio: element?.precio,
       descripcion: element?.description,
-      img: element?.img,
+      mainMedia: element?.otherImgs?.[1],
     });
   }, [reset, element]);
 

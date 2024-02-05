@@ -62,14 +62,22 @@
         margin: 14px auto auto;
     }
 
-    .body {
+    .main-media {
         background-color: rgb(234, 234, 234);
-        padding: 30px;
+
+        img {
+            max-width: 100%;
+        }
 
         @include desktop(){
             margin-top: -80px;
             padding: 5px;
         };
+    }
+
+    .body {
+        background-color: rgb(234, 234, 234);
+        padding: 30px;
     }
 
     .link {

@@ -40,6 +40,11 @@ const Article = () => {
         <div className="date">{date}</div>
         <SocialLinks url={url} />
       </div>
+      {findArticle?.otherImgs?.[1] && (
+        <div className="main-media">
+          <img src={findArticle?.otherImgs?.[1]} />
+        </div>
+      )}
       <div className="body">
         {bodyDescription &&
           bodyDescription.map((element, index) => (

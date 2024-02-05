@@ -130,14 +130,24 @@ export const ModalBody = ({
             <Form.Label>Vista previa</Form.Label>
             <Form.Control
               type="preview"
-              defaultValue={element?.otherImgs ? element?.otherImgs[0] : ''}
+              defaultValue={element?.otherImgs ? element?.otherImgs?.[0] : ''}
               autoFocus
               disabled={edit}
               {...register('preview')}
             />
           </Form.Group>
+          <Form.Group className="mb-3" controlId="preview">
+            <Form.Label>Media principal</Form.Label>
+            <Form.Control
+              type="mainMedia"
+              defaultValue={element?.otherImgs ? element?.otherImgs?.[1] : ''}
+              autoFocus
+              disabled={edit}
+              {...register('mainMedia')}
+            />
+          </Form.Group>
           <div className="mb-3">
-            <label>Redactar</label>
+            <label>Cuerpo de la nota</label>
             <div className={edit ? 'disableDiv' : 'activeDiv'}>
               <RichText newData={element?.description} isNota={isNota} />
             </div>
