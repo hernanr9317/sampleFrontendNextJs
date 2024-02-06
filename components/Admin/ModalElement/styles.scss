@@ -68,7 +68,41 @@
         }
 
         .modal-body {
+            display: grid;
             background-color: white;
+
+            .modal-navigation {
+                    padding: 0;
+                    overflow: hidden;
+                    background-color: #d1d1d1;
+                  
+                  li {
+                    float: left;
+                    list-style-type: none;
+                  }
+                  
+                  li a {
+                    display: block;
+                    color: black;
+                    text-align: center;
+                    padding: 14px 16px;
+                    text-decoration: none;
+                  }
+                  
+                  li a:hover {
+                    background-color: #111;
+                    color: white;
+                  }
+            };
+
+            .main-img {
+                display: flex;
+                justify-content: center;
+
+                img {
+                    width: 50%;
+                }
+            }
         }
 
         .modal-footer {

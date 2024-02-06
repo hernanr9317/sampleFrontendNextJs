@@ -2,7 +2,7 @@ import React, {useState, useEffect, useContext} from 'react';
 import Cookies from 'js-cookie';
 import {useForm} from 'react-hook-form';
 import {Alert, Form, Modal} from 'react-bootstrap';
-import {ChangeDataContext} from './../../../context/changeData/ChangeDataContext';
+import {ChangeDataContext} from '../../../context/changeData/ChangeDataContext';
 import {ModalFooter} from './ModalFooter';
 import {ModalBody} from './ModalBody';
 import {deleteItemModal, saveItemModal} from './modalHelpers';
