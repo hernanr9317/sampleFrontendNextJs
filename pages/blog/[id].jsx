@@ -30,7 +30,7 @@ const Article = () => {
     .format('dddd D [de] MMMM [de] YYYY')
     .replace(/^\w/, (c) => c.toUpperCase());
 
-  const ogImage = findArticle?.otherImgs?.[0];
+  const ogImage = findArticle?.otherImgs?.[1] || findArticle?.otherImgs?.[0];
   const url = `${process.env.NEXT_PUBLIC_HOST}${router.asPath}`;
 
   const showArticle = router.isReady && findArticle && (

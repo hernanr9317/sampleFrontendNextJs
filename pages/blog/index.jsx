@@ -6,7 +6,9 @@ import {ChangeDataContext} from '../../context/changeData/ChangeDataContext';
 const Blog = () => {
   const {products} = useContext(ChangeDataContext);
 
-  const img = products?.productos?.[0]?.otherImgs?.[0];
+  const img =
+    products?.productos?.[0]?.otherImgs?.[1] ||
+    products?.productos?.[0]?.otherImgs?.[0];
   const url = `${process.env.NEXT_PUBLIC_HOST}/blog`;
 
   return (
