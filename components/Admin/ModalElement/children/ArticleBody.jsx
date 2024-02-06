@@ -5,10 +5,15 @@ import {ModalNav} from '../modalNav';
 import {useRouter} from 'next/router';
 import dayjs from 'dayjs';
 
-export const ArticleBody = ({element, edit, register, errors, isNota}) => {
+export const ArticleBody = ({
+  element,
+  edit,
+  register,
+  errors,
+  isNota,
+  getValues,
+}) => {
   const router = useRouter();
-
-  //FALTA ARREGLAR QUE REFRESQUE CUANDO SE GUARDA UN MEDIA PRINCIPAL NUEVO
 
   return (
     <>
@@ -64,7 +69,7 @@ export const ArticleBody = ({element, edit, register, errors, isNota}) => {
             />
           </Form.Group>
           <div className="main-img">
-            <img src={element?.otherImgs ? element?.otherImgs?.[1] : ''} />
+            <img src={getValues().mainMedia} />
           </div>
         </div>
       )}

@@ -2,7 +2,6 @@ import {useEffect} from 'react';
 import {Modal} from 'react-bootstrap';
 import Cookies from 'js-cookie';
 import {getFile} from '../../../utils/axiosConfig';
-import {useRouter} from 'next/router';
 import {DefaultBody} from './children/DefaultBody';
 import {ArticleBody} from './children/ArticleBody';
 
@@ -28,12 +27,6 @@ export const ModalBody = ({
 
   const isNota = element.categoria.nombre === 'NOTA' ? true : false;
 
-  // const router = useRouter();
-
-  // useEffect(() => {
-  //   console.log(router.query.modal);
-  // }, [router]);
-
   const props = {
     errors: errors,
     categorias: categorias,
@@ -43,6 +36,7 @@ export const ModalBody = ({
     element: element,
     viewFile: viewFile,
     isNota: isNota,
+    getValues: getValues,
   };
 
   return (
