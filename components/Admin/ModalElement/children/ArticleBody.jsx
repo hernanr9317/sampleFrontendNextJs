@@ -1,4 +1,3 @@
-import {useEffect, useContext} from 'react';
 import {Form} from 'react-bootstrap';
 import RichText from '../../../Slate/RichText';
 import {ModalNav} from '../modalNav';
@@ -25,7 +24,7 @@ export const ArticleBody = ({
             <Form.Label>Título</Form.Label>
             <Form.Control
               type="nombre"
-              defaultValue={element?.nombre}
+              defaultValue={getValues().nombre}
               autoFocus
               disabled={edit}
               {...register('nombre', {
@@ -41,8 +40,10 @@ export const ArticleBody = ({
           <Form.Group className="mb-3" controlId="subtitulo">
             <Form.Label>Bajada</Form.Label>
             <Form.Control
+              as="textarea"
+              rows={4}
               type="subtitulo"
-              defaultValue={element?.subtitulo}
+              defaultValue={getValues().subtitulo}
               autoFocus
               disabled={edit}
               {...register('subtitulo')}
@@ -52,7 +53,7 @@ export const ArticleBody = ({
             <Form.Label>Vista previa</Form.Label>
             <Form.Control
               type="preview"
-              defaultValue={element?.otherImgs ? element?.otherImgs?.[0] : ''}
+              defaultValue={getValues().preview ? getValues().mainMedia : ''}
               autoFocus
               disabled={edit}
               {...register('preview')}
@@ -62,7 +63,7 @@ export const ArticleBody = ({
             <Form.Label>Media principal</Form.Label>
             <Form.Control
               type="mainMedia"
-              defaultValue={element?.otherImgs ? element?.otherImgs?.[1] : ''}
+              defaultValue={getValues().mainMedia ? getValues().mainMedia : ''}
               autoFocus
               disabled={edit}
               {...register('mainMedia')}
@@ -79,7 +80,7 @@ export const ArticleBody = ({
           <div className="mb-3">
             <label>Cuerpo de la nota</label>
             <div className={edit ? 'disableDiv' : 'activeDiv'}>
-              <RichText newData={element?.description} isNota={isNota} />
+              <RichText isNota={isNota} />
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import {useContext, useState} from 'react';
+import {useRouter} from 'next/router';
 import {ChangeDataContext} from './../../context/changeData/ChangeDataContext';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import DropdownButton from 'react-bootstrap/DropdownButton';
@@ -13,12 +14,22 @@ export const CategoryFilter = () => {
 
   const [elementSelected, setElementSelected] = useState([]);
 
+  const router = useRouter();
+
   const categoriesFilter = products?.productos?.filter(
     (element) => element?.categoria?.nombre === elementSelected?.nombre,
   );
 
   const onClick = (element) => {
     setElementSelected(element);
+    router.push(
+      {
+        pathname: router.pathname,
+        query: {...router.query, id: element._id},
+      },
+      undefined,
+      {scroll: false},
+    );
   };
 
   return (

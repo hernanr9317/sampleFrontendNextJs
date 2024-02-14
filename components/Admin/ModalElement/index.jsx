@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
+import {useRouter} from 'next/router';
 import Cookies from 'js-cookie';
 import {useForm} from 'react-hook-form';
 import {Alert, Form, Modal} from 'react-bootstrap';
@@ -11,6 +12,8 @@ export const ModalElement = ({element, interaction, type, setType}) => {
   const {isNewData, categories} = useContext(ChangeDataContext);
   const [display, setDisplay] = useState('none');
   const [alertMessage, setAlertMessage] = useState({msg: '', variant: ''});
+
+  const router = useRouter();
 
   const {
     register,
@@ -32,12 +35,22 @@ export const ModalElement = ({element, interaction, type, setType}) => {
 
   const [show, setShow] = useState(false);
   const [edit, setEdit] = useState(true);
+
   const handleClose = () => {
     Cookies.remove('newId', {path: '/'});
     setShow(false);
     setEdit(true);
     setDisplay('none');
+    router.push(
+      {
+        pathname: router.pathname,
+        query: {},
+      },
+      undefined,
+      {scroll: false},
+    );
   };
+
   const handleShow = () => setShow(true);
 
   useEffect(() => {
@@ -67,6 +80,7 @@ export const ModalElement = ({element, interaction, type, setType}) => {
       ? localStorage.getItem('content') || data
       : data.descripcion;
     data = {...data, descripcion: textBody};
+
     saveItemModal(
       data,
       type,

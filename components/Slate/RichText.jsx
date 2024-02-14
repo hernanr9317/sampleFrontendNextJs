@@ -1,4 +1,11 @@
-import React, {useCallback, useEffect, useMemo} from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useContext,
+  useState,
+} from 'react';
+import {useRouter} from 'next/router';
 import isHotkey from 'is-hotkey';
 import {Editable, withReact, Slate} from 'slate-react';
 import {Editor, Transforms, createEditor} from 'slate';
@@ -8,6 +15,7 @@ import {Element, Leaf} from './_children/Element';
 import {BlockButton, MarkButton} from './_children/Buttons';
 import {InsertImageButton, withImages} from './_children/WithImages';
 import {InsertEmbedButton, withEmbeds} from './_children/WithEmbeds';
+import {ChangeDataContext} from './../../context/changeData/ChangeDataContext';
 
 const HOTKEYS = {
   'mod+b': 'bold',
@@ -17,6 +25,8 @@ const HOTKEYS = {
 };
 
 const RichText = ({newData, isNota}) => {
+  if (!isNota) return null;
+
   let initialValue = [
     {
       type: 'paragraph',
@@ -24,7 +34,25 @@ const RichText = ({newData, isNota}) => {
     },
   ];
 
-  const jsonText = newData;
+  const router = useRouter();
+  const [description, setDescription] = useState(undefined);
+
+  const {products, categories} = useContext(ChangeDataContext);
+
+  useEffect(() => {
+    if (router.isReady) {
+      if (isNota === 'category') {
+        setDescription(newData);
+      } else {
+        const product = products?.productos?.find(
+          (product) => product._id === router.query.id,
+        );
+        setDescription(product?.description);
+      }
+    }
+  }, [router]);
+
+  const jsonText = description;
 
   const objConvert = jsonText ? JSON.parse(jsonText) : undefined;
 
@@ -43,12 +71,12 @@ const RichText = ({newData, isNota}) => {
         at: [0],
       });
 
-      initialValue = newData ? objConvert : initialValue;
+      initialValue = description ? objConvert : initialValue;
 
       // Insert array of children nodes
       Transforms.insertNodes(editor, initialValue);
     }
-  }, [newData]);
+  }, [description]);
 
   const renderElement = useCallback((props) => <Element {...props} />, []);
   const renderLeaf = useCallback((props) => <Leaf {...props} />, []);
@@ -106,7 +134,7 @@ const RichText = ({newData, isNota}) => {
             }
           }}
           style={
-            isNota && {
+            isNota === true && {
               height: '410px',
               maxWidth: '930px',
               overflow: 'auto',

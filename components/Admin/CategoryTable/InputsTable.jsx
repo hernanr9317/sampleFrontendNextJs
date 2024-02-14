@@ -26,7 +26,7 @@ export const InputsTable = ({
       <div className="mb-3">
         <label>Descripción</label>
         <div className={editForm ? 'disableDiv' : 'activeDiv'}>
-          <RichText newData={description} />
+          <RichText newData={description} isNota={'category'} />
         </div>
 
         <div className="invalid-feedback d-block">

@@ -4,10 +4,14 @@ export const ModalNav = () => {
   const router = useRouter();
 
   const onClick = (type) => {
-    router.push({
-      pathname: router.pathname,
-      query: {modal: type},
-    });
+    router.push(
+      {
+        pathname: router.pathname,
+        query: {...router.query, modal: type},
+      },
+      undefined,
+      {scroll: false},
+    );
   };
 
   return (

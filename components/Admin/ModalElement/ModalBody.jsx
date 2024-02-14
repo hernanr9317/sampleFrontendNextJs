@@ -1,4 +1,3 @@
-import {useEffect} from 'react';
 import {Modal} from 'react-bootstrap';
 import Cookies from 'js-cookie';
 import {getFile} from '../../../utils/axiosConfig';

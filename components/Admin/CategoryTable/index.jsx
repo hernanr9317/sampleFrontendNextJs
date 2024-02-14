@@ -1,4 +1,5 @@
 import {useState, useEffect, useContext} from 'react';
+import {useRouter} from 'next/router';
 import {useForm} from 'react-hook-form';
 import {Alert, Card, Form} from 'react-bootstrap';
 import {ModalElement} from './../ModalElement/index';
@@ -28,6 +29,8 @@ export const CategoryTable = ({
   const [editButton, setEditButton] = useState(true);
   const [editForm, setEditForm] = useState(true);
 
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -55,6 +58,14 @@ export const CategoryTable = ({
     setType('editElement');
     setElement(element);
     setInteraction(!interaction);
+    router.push(
+      {
+        pathname: router.pathname,
+        query: {...router.query, id: element._id},
+      },
+      undefined,
+      {scroll: false},
+    );
   };
 
   const addElement = () => {
@@ -69,10 +80,7 @@ export const CategoryTable = ({
   };
 
   const handleSave = (data) => {
-    // const textBody = deserialize(localStorage.getItem('content')) || '';
     const textBody = localStorage.getItem('content') || '';
-
-    // data = {...data, descripcion: textBody[0]?.children[0]?.text};
     data = {...data, descripcion: textBody};
 
     saveItem(
