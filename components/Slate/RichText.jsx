@@ -39,11 +39,16 @@ const RichText = ({newData, isNota}) => {
 
   const {products, categories} = useContext(ChangeDataContext);
 
+  const checkIsValidJson = (str) => {
+    return str?.startsWith('[{');
+  };
+
   useEffect(() => {
     if (router.isReady) {
       if (isNota === 'category') {
         setDescription(newData);
-      } else {
+      }
+      if (isNota !== 'category' && router.query.id) {
         const product = products?.productos?.find(
           (product) => product._id === router.query.id,
         );
@@ -54,7 +59,10 @@ const RichText = ({newData, isNota}) => {
 
   const jsonText = description;
 
-  const objConvert = jsonText ? JSON.parse(jsonText) : undefined;
+  const objConvert =
+    checkIsValidJson(description) && jsonText
+      ? JSON.parse(jsonText)
+      : undefined;
 
   useEffect(() => {
     if (editor?.children?.length > 0) {

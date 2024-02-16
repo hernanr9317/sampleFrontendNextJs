@@ -30,6 +30,7 @@ export const ModalElement = ({element, interaction, type, setType}) => {
       precio: element?.precio,
       descripcion: element?.description,
       mainMedia: element?.otherImgs?.[1],
+      pathname: element?.pathname,
     },
   });
 
@@ -62,6 +63,7 @@ export const ModalElement = ({element, interaction, type, setType}) => {
       precio: element?.precio,
       descripcion: element?.description,
       mainMedia: element?.otherImgs?.[1],
+      pathname: element?.pathname,
     });
   }, [reset, element]);
 
@@ -94,7 +96,14 @@ export const ModalElement = ({element, interaction, type, setType}) => {
   };
 
   const handleDelete = () => {
-    deleteItemModal(setShow, element, isNewData, setAlertMessage, setEdit);
+    deleteItemModal(
+      setShow,
+      element,
+      isNewData,
+      setAlertMessage,
+      setEdit,
+      router,
+    );
   };
 
   const isFullScreen = element?.categoria?.nombre === 'NOTA' ? true : false;

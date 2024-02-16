@@ -90,6 +90,7 @@ export const deleteItemModal = (
   isNewData,
   setAlertMessage,
   setEdit,
+  router,
 ) => {
   Swal.fire(sweetDelete).then(async (result) => {
     if (result.isConfirmed) {
@@ -118,6 +119,15 @@ export const deleteItemModal = (
           'Elemento eliminado',
           'El elemento ah sido eliminada correctamente.',
           'success',
+        );
+
+        router.push(
+          {
+            pathname: router.pathname,
+            query: {},
+          },
+          undefined,
+          {scroll: false},
         );
       } catch (error) {
         Swal.fire(sweetError);
