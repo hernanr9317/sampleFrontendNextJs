@@ -1,0 +1,35 @@
+.paginator {
+    text-align: center;
+  }
+  
+  .paginator ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .paginator li {
+    display: inline-block;
+    margin: 0 5px;
+  }
+  
+  .paginator button {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  .paginator button:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .paginator button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  
+  .paginator li.active button {
+    background-color: #007bff;
+    color: #fff;
+  }
+  

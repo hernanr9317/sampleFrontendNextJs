@@ -4,7 +4,7 @@ import Image from 'next/image';
 import CardPlaceholder from '../../public/assets/CardPlaceholder.webp';
 import CardBlur from '../../public/assets/CardPlaceholder.webp';
 
-export const CardBlog = ({filterCategory, numberItems = 99}) => {
+export const CardBlog = ({filterCategory, currentPage, numberItems}) => {
   const defaultImg = CardPlaceholder.src;
 
   const blurImg = CardBlur.src;
@@ -20,9 +20,14 @@ export const CardBlog = ({filterCategory, numberItems = 99}) => {
     return url;
   };
 
+  const sliceArray = filterCategory?.slice(
+    (currentPage - 1) * numberItems,
+    filterCategory.lenght,
+  );
+
   return (
     <div className="band">
-      {filterCategory?.map(
+      {sliceArray?.map(
         (article, index) =>
           index < numberItems && (
             <div className={`item-${index + 1}`} key={index}>
