@@ -5,6 +5,7 @@ import confidencialidad from '../../public/assets/modelo/confiden.webp';
 import disponibilidad from '../../public/assets/modelo/dispo.webp';
 import {ModelCol} from './ModelCol';
 import {useIsmobile} from './../../hooks/useIsMobile';
+import {CustomButton} from './../CustomButton/index';
 
 export const ModeloSeguridad = () => {
   const isMobile = useIsmobile();
@@ -39,7 +40,7 @@ export const ModeloSeguridad = () => {
           <ModelCol title={'Disponibilidad'} src={disponibilidad} />
         </ul>
         <div className="button-container">
-          <button
+          {/* <button
             className="card__button btn-lg"
             onClick={() =>
               getModelo(
@@ -51,7 +52,18 @@ export const ModeloSeguridad = () => {
             role="button"
           >
             Descargar Modelo
-          </button>
+          </button> */}
+          <CustomButton
+            type="slide_right"
+            text="Descargar Modelo"
+            onClick={() =>
+              getModelo(
+                '../assets/images/ModeloSeguridad.pdf',
+                isMobile,
+                'Modelo',
+              )
+            }
+          />
         </div>
       </Container>
     </div>
