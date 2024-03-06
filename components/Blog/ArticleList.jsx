@@ -4,7 +4,7 @@ import {ChangeDataContext} from './../../context/changeData/ChangeDataContext';
 import {CardBlog} from './CardBlog';
 import {Paginator} from './../Paginator/index';
 
-export const ArticleList = () => {
+export const ArticleList = ({limitItems, paginator = true}) => {
   const router = useRouter();
   const {products} = useContext(ChangeDataContext);
 
@@ -13,7 +13,7 @@ export const ArticleList = () => {
   );
 
   const [currentPage, setCurrentPage] = useState(1);
-  const numberItems = 7;
+  const numberItems = limitItems || 7;
   const totalPages = Math.ceil(filterCategory?.length / numberItems);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export const ArticleList = () => {
           currentPage={currentPage}
         />
       </Suspense>
-      {totalPages > 1 && (
+      {totalPages > 1 && paginator && (
         <Paginator
           currentPage={currentPage}
           totalPages={totalPages}

@@ -1,9 +1,9 @@
 import {ArticleList} from './ArticleList';
 
-export const BlogIndex = () => {
+export const BlogIndex = ({limitItems, paginator}) => {
   return (
     <div className="blog">
-      <ArticleList />
+      <ArticleList limitItems={limitItems} paginator={paginator} />
     </div>
   );
 };

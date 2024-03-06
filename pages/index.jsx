@@ -1,16 +1,15 @@
-import {MainCarousel} from '../components/MainCarousel';
+import {useRouter} from 'next/router';
 import {ModeloSeguridad} from '../components/ModeloSeguridad';
 import {Info} from '../components/Info';
 import {Contacto} from '../components/Contacto';
 import {PublicLayout} from '../components/layouts';
-import slider1 from '../public/assets/carousel/img3.webp';
-import slider2 from '../public/assets/carousel/img1.webp';
-import slider3 from '../public/assets/carousel/img2.webp';
 import {BlogIndex} from './../components/Blog/index';
 import {PageHeader} from '../components/Header/PageHeader';
+import {CustomButton} from '../components/CustomButton';
 
 const HomeScreen = () => {
   const url = process.env.NEXT_PUBLIC_HOST;
+  const router = useRouter();
 
   return (
     <PublicLayout
@@ -23,7 +22,6 @@ const HomeScreen = () => {
       type="technology"
     >
       <div className="bg-gradient container-fluid p-0 main-page">
-        {/* <MainCarousel img={slider1} img2={slider2} img3={slider3} /> */}
         <PageHeader />
         <div className="font-page-containner">
           <div className="container left-font-page">
@@ -32,7 +30,12 @@ const HomeScreen = () => {
             <Contacto />
           </div>
           <aside className="right-aside">
-            <BlogIndex numberItems={4} />
+            <BlogIndex limitItems={4} paginator={false} />
+            <CustomButton
+              text="Ver más"
+              type="slide_right"
+              onClick={() => router.push('/blog')}
+            />
           </aside>
         </div>
       </div>
