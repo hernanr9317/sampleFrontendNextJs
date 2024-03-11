@@ -1,13 +1,12 @@
 import {useContext} from 'react';
 import Table from 'react-bootstrap/Table';
 import {ChangeDataContext} from './../../context/changeData/ChangeDataContext';
-import Button from 'react-bootstrap/Button';
 import {getFile} from '../../utils/axiosConfig';
 import {FcDocument} from 'react-icons/fc';
-import {ImArrowDown} from 'react-icons/im';
 import {ascendingOrder} from './../helpers/helpers';
 import ReadOnlyText from './../Slate/TextRead';
 import {useIsmobile} from './../../hooks/useIsMobile';
+import {CustomButton} from './../CustomButton/index';
 
 export const NormsTable = () => {
   const {categories, products} = useContext(ChangeDataContext);
@@ -57,16 +56,13 @@ export const NormsTable = () => {
               <td>{element.nombre}</td>
               <td className="NormTr description">{element.description}</td>
               <td className="NormTr download">
-                <Button
-                  className="downloadButton"
-                  variant="light"
-                  size="sm"
+                <CustomButton
+                  type="slide_down"
+                  iconType="download"
                   onClick={() =>
                     viewFile(element._id, isMoblie, element.nombre)
                   }
-                >
-                  <ImArrowDown className="downloadIcon" size={'15px'} />
-                </Button>
+                />
               </td>
             </tr>
           ))}

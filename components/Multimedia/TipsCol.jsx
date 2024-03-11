@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import {CustomButton} from '../CustomButton';
 
 export const TipsCol = ({data}) => {
   const {title, src, description, links} = data;
@@ -13,13 +14,8 @@ export const TipsCol = ({data}) => {
         <p className="card-text">{description}</p>
         <div className="linksContainer">
           {links.map((link, index) => (
-            <a
-              href={link?.href}
-              key={index}
-              className="card-link"
-              target="_blank"
-            >
-              {link?.name}
+            <a href={link?.href} target="_blank" key={index}>
+              <CustomButton text={link?.name} />
             </a>
           ))}
         </div>

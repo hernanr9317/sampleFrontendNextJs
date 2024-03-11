@@ -5,7 +5,7 @@ import {FcIdea} from 'react-icons/fc';
 
 export const Multimedia = () => {
   return (
-    <Container className="mt-5 mb-5">
+    <Container className="multimedia mt-5 mb-5">
       <h1 className="text-center title">
         Tips de seguridad <FcIdea style={{verticalAlign: 'baseline'}} />
       </h1>
@@ -25,9 +25,11 @@ export const Multimedia = () => {
           ataques cibernéticos.
         </p>
       </div>
-      {data.map((element, key) => (
-        <TipsCol key={key} data={element} />
-      ))}
+      <div className="card-list">
+        {data.map((element, key) => (
+          <TipsCol key={key} data={element} />
+        ))}
+      </div>
     </Container>
   );
 };

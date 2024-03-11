@@ -14,8 +14,17 @@
     -moz-transition: ease-out 0.4s;
     transition: ease-out 0.4s;
 
+    a {
+      color: #212529;
+      text-decoration: none;
+    }
+
     &:hover {
       color: #FFF;
+
+      a {
+        color: #FFF;
+      }
     }
   }
   

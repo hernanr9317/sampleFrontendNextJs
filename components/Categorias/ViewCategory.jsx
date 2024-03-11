@@ -1,13 +1,12 @@
 import React, {useContext, useEffect, useState} from 'react';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import {getFile} from '../../utils/axiosConfig';
-import {FaFileDownload} from 'react-icons/fa';
 import {ascendingOrder} from './../helpers/helpers';
 import dayjs from 'dayjs';
 import ReadOnlyText from '../Slate/TextRead';
 import {useIsmobile} from './../../hooks/useIsMobile';
 import {ChangeDataContext} from '../../context/changeData/ChangeDataContext';
+import {CustomButton} from './../CustomButton/index';
 
 export const ViewCategory = ({category, description}) => {
   const {products} = useContext(ChangeDataContext) || {products: []};
@@ -63,15 +62,12 @@ export const ViewCategory = ({category, description}) => {
                 Última actualización{' '}
                 {dayjs(element?.updatedAt).format('DD/MM/YYYY')}
               </p>
-              <Button
-                className="card__button"
-                variant="primary"
-                size="sm"
+              <CustomButton
+                text="Descargar"
+                type="slide_down"
+                iconType="download"
                 onClick={() => viewFile(element._id, isMoblie, element.nombre)}
-                style={{float: 'right'}}
-              >
-                Descargar <FaFileDownload size={'22px'} />
-              </Button>
+              />
             </Card.Footer>
           </Card.Body>
         </Card>
