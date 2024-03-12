@@ -7,13 +7,7 @@ export const InfoCol = ({title, text, src, link}) => {
   return (
     <>
       <article className="card">
-        <img
-          className="card__background"
-          src={src.src}
-          alt={title}
-          width={1920}
-          height={2193}
-        />
+        <img className="card__background" src={src.src} alt={title} />
         <div className="card__content | flow">
           <div className="card__content--container | flow">
             <h2 className="card__title">{title}</h2>
