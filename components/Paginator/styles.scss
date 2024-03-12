@@ -1,4 +1,6 @@
 .paginator {
+    // font-family: "Lucida Console", Monaco, monospace;
+    font-size: 14px;
     text-align: center;
   }
   
@@ -18,9 +20,11 @@
     background-color: #fff;
     cursor: pointer;
   }
-  
+  //TODO: APLICAR ESTILOS DEL CUSTOMBUTTON
   .paginator button:hover {
-    background-color: #f0f0f0;
+    // background-color: #f0f0f0;
+    background-color: #D80286;
+    color: #fff;
   }
   
   .paginator button:disabled {
@@ -29,7 +33,8 @@
   }
   
   .paginator li.active button {
-    background-color: #007bff;
+    // background-color: #007bff;
+    background-color: #D80286;
     color: #fff;
   }
   

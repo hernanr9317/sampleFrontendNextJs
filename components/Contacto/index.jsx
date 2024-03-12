@@ -6,7 +6,7 @@ import MapLocation from './MapLocation';
 
 export const Contacto = () => {
   return (
-    <div id="contacto" className="p-5">
+    <div id="contacto" className="contacto">
       <h1 className="heading-1">Contáctese con nosotros</h1>
       <div className="divider-1">
         {' '}

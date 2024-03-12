@@ -23,14 +23,23 @@
 @import '../pages/blog/styles.scss';
 @import '../pages/styles.scss';
 
-
+//TODO:ARREGLAR TODOS LOS FONTZISES 
 body {
   background-color: rgb(234, 234, 234);
-  font-family: 'Poppins', sans-serif;
+  font-family: "Lucida Console", Monaco, monospace;
+
   overflow-x: hidden;
 
   h1, h6 {
     font-weight: bold;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  h3 {
+    font-size: 24px;
   }
 
   .h5, .h4{
@@ -46,6 +55,7 @@ body {
  }
 
  .btn {
+  font-size: 14px;
   -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
   box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
@@ -58,14 +68,9 @@ body {
   }
 
   .heading-1 {
-		font-size: 30px;
-		letter-spacing: 0.08em;
+		font-size: 24px;
 		font-weight: 600;
 		text-shadow: 0 1px 1px #FFFFFF;
-
-    @include desktop(){
-      font-size: 36px;
-    }
   }
 
   .divider-1 {

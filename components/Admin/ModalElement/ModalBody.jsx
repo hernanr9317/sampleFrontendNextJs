@@ -14,14 +14,14 @@ export const ModalBody = ({
   type,
 }) => {
   const viewFile = async () => {
-    if (getValues().img) {
+    try {
       const newId = Cookies.get('newId') || undefined;
       await getFile(
         `/uploads/productos/${element._id || newId}`,
         false,
         element.nombre,
       );
-    }
+    } catch (error) {}
   };
 
   const isNota = element.categoria.nombre === 'NOTA' ? true : false;
