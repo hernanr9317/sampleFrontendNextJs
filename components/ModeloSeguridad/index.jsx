@@ -34,17 +34,9 @@ export const ModeloSeguridad = () => {
           <span></span>
         </div>
         <ul className="honeycomb">
-          <ModelCol title={'Integridad'} src={integridad} alt="Integridad" />
-          <ModelCol
-            title={'Confidencialidad'}
-            src={confidencialidad}
-            alt="Confidencialidad"
-          />
-          <ModelCol
-            title={'Disponibilidad'}
-            src={disponibilidad}
-            alt="Disponibilidad"
-          />
+          <ModelCol title={'Integridad'} src={integridad} />
+          <ModelCol title={'Confidencialidad'} src={confidencialidad} />
+          <ModelCol title={'Disponibilidad'} src={disponibilidad} />
         </ul>
         <div className="button-container">
           <CustomButton

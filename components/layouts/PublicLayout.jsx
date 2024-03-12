@@ -15,6 +15,11 @@ export const PublicLayout = ({
       <Head>
         <title>{title}</title>
 
+        <meta
+          name="description"
+          content="Busca estándares para la adquisición de equipamiento informático y obtén información sobre ciberseguridad."
+        />
+
         <meta property="og:title" content={title} />
         <meta name="twitter:title" content={title} />
 
