@@ -13,7 +13,7 @@ const Tips = () => {
       title={'e-seguridad - Tips'}
       pageDescription={'Tips de seguridad informática'}
       url={url}
-      imageFullUrl="https://i.postimg.cc/K8jtb5HT/img3-47a48d0c.webp"
+      imageFullUrl="https://i.postimg.cc/J01v450c/mainImg.webp"
       type="technology tips"
     >
       <MainCarousel img={slider1} img2={slider2} img3={slider3} />

@@ -9,7 +9,7 @@ const Normativas = () => {
       title={'e-seguridad - Normativas'}
       pageDescription={'Normativas de seguridad informática'}
       url={url}
-      imageFullUrl="https://i.postimg.cc/K8jtb5HT/img3-47a48d0c.webp"
+      imageFullUrl="https://i.postimg.cc/J01v450c/mainImg.webp"
       type="technology regulations"
     >
       <Normativa />

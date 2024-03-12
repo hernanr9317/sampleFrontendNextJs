@@ -9,7 +9,7 @@ const Etaps = () => {
       title={'e-seguridad - Etaps'}
       pageDescription={'Normativas de seguridad informática'}
       url={url}
-      imageFullUrl="https://i.postimg.cc/K8jtb5HT/img3-47a48d0c.webp"
+      imageFullUrl="https://i.postimg.cc/J01v450c/mainImg.webp"
       type="technology standards"
     >
       <div style={{maxWidth: '1400px', margin: 'auto'}}>

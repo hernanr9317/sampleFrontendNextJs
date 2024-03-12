@@ -18,7 +18,7 @@ const HomeScreen = () => {
         'Encuentra los estandares de equipamiento informático y seguridad'
       }
       url={url}
-      imageFullUrl="https://i.postimg.cc/K8jtb5HT/img3-47a48d0c.webp"
+      imageFullUrl="https://i.postimg.cc/J01v450c/mainImg.webp"
       type="technology"
     >
       <div className="bg-gradient container-fluid p-0 main-page">

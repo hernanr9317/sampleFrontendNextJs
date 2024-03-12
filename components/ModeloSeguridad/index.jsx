@@ -1,5 +1,4 @@
 import {Container} from 'react-bootstrap';
-import {Row} from 'react-bootstrap';
 import integridad from '../../public/assets/modelo/integridad.webp';
 import confidencialidad from '../../public/assets/modelo/confiden.webp';
 import disponibilidad from '../../public/assets/modelo/dispo.webp';
@@ -35,24 +34,19 @@ export const ModeloSeguridad = () => {
           <span></span>
         </div>
         <ul className="honeycomb">
-          <ModelCol title={'Integridad'} src={integridad} />
-          <ModelCol title={'Confidencialidad'} src={confidencialidad} />
-          <ModelCol title={'Disponibilidad'} src={disponibilidad} />
+          <ModelCol title={'Integridad'} src={integridad} alt="Integridad" />
+          <ModelCol
+            title={'Confidencialidad'}
+            src={confidencialidad}
+            alt="Confidencialidad"
+          />
+          <ModelCol
+            title={'Disponibilidad'}
+            src={disponibilidad}
+            alt="Disponibilidad"
+          />
         </ul>
         <div className="button-container">
-          {/* <button
-            className="card__button btn-lg"
-            onClick={() =>
-              getModelo(
-                '../assets/images/ModeloSeguridad.pdf',
-                isMobile,
-                'Modelo',
-              )
-            }
-            role="button"
-          >
-            Descargar Modelo
-          </button> */}
           <CustomButton
             type="slide_right"
             text="Descargar Modelo"
