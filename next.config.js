@@ -23,6 +23,7 @@ const nextConfig = {
                 'https://www.youtube.com/',
                 'https://www.facebook.com/',
                 'https://e-seguridad.chaco.gob.ar/',
+                'http://localhost:3080/',
               ],
               connectSrc: ["'self'", `${baseUrl}`],
               styleSrc: ["'self'", "'unsafe-inline'"],
