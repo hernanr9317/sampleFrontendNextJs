@@ -1,6 +1,7 @@
 import {PublicLayout} from '../components/layouts';
+import { MainCarousel } from '../components/MainCarousel';
 import {Multimedia} from '../components/Multimedia';
-import {MainCarousel} from '../components/MainCarousel/index';
+// import {MainCarousel} from '../components/MainCarousel/index';
 import slider1 from '../public/assets/carousel/contraseña.webp';
 import slider2 from '../public/assets/carousel/escritorio.webp';
 import slider3 from '../public/assets/carousel/navegacion.webp';

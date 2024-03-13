@@ -1,6 +1,7 @@
 import {Form} from 'react-bootstrap';
 import RichText from '../../../Slate/RichText';
-import {ModalNav} from '../modalNav';
+// import {ModalNav} from '../modalNav';
+import { ModalNav } from './../ModalNav';
 import {useRouter} from 'next/router';
 import dayjs from 'dayjs';
 
