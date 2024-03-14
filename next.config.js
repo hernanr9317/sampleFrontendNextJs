@@ -31,7 +31,7 @@ const nextConfig = {
                 "'self'", `${baseUrl}`, 
                 "https://172.18.0.1", 
                 "https://172.18.0.1:3080/api/categorias/", 
-                "https://172.18.0.1:3080/api/categorias/"
+                "https://172.18.0.1:3080/api/productos/"
               ],
               styleSrc: ["'self'", "'unsafe-inline'"],
               scriptSrc: ["'self'", "'unsafe-eval'"],
