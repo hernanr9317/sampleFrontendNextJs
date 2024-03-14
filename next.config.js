@@ -24,7 +24,7 @@ const nextConfig = {
                 'https://www.facebook.com/',
                 'https://e-seguridad.chaco.gob.ar/',
                 'http://172.18.0.1/',
-                'http://172.18.0.1:3080/',
+                // 'http://172.18.0.1:3080/',
               ],
               connectSrc: ["'self'", `${baseUrl}`],
               styleSrc: ["'self'", "'unsafe-inline'"],
