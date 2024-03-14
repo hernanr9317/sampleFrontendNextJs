@@ -18,15 +18,15 @@ const nextConfig = {
         headers: createSecureHeaders({
           contentSecurityPolicy: {
             directives: {
-              defaultSrc: [
-                "'self'",
-                'https://www.youtube.com/',
-                'https://www.facebook.com/',
-                'https://e-seguridad.chaco.gob.ar/',
-                'http://172.18.0.1/',
-                'https://172.18.0.1/',
-                'https://172.18.0.1/',
-              ],
+              // defaultSrc: [
+              //   "'self'",
+              //   'https://www.youtube.com/',
+              //   'https://www.facebook.com/',
+              //   'https://e-seguridad.chaco.gob.ar/',
+              //   'http://172.18.0.1/',
+              //   'https://172.18.0.1/',
+              //   'https://172.18.0.1/',
+              // ],
               // connectSrc: [
               //   "'self'", `${baseUrl}`, 
               //   "https://172.18.0.1", 
