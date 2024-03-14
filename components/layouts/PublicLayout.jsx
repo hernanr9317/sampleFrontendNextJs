@@ -36,7 +36,7 @@ export const PublicLayout = ({
         )}
 
         {type && <meta property="og:type" content={type} />}
-        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+        {/* <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" /> */}
       </Head>
 
       <nav>

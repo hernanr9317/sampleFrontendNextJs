@@ -25,13 +25,12 @@ const nextConfig = {
                 'https://e-seguridad.chaco.gob.ar/',
                 'http://172.18.0.1/',
                 'https://172.18.0.1/',
-                // 'http://172.18.0.1:3080/',
+                'https://172.18.0.1/',
               ],
               connectSrc: [
                 "'self'", `${baseUrl}`, 
                 "https://172.18.0.1", 
-                "https://172.18.0.1:3080/api/categorias/", 
-                "https://172.18.0.1:3080/api/productos/"
+                "https://172.18.0.1", 
               ],
               styleSrc: ["'self'", "'unsafe-inline'"],
               scriptSrc: ["'self'", "'unsafe-eval'"],
@@ -46,10 +45,10 @@ const nextConfig = {
           nosniff: 'nosniff',
           xssProtection: 'sanitize',
           //TODO:HAY QUE VOLVERLO A AGREGAR CUANDO SE SOLUCIONE EL HTTPS DEL LADO DEL BACKEND
-          forceHTTPSRedirect: [
-            true,
-            {maxAge: 60 * 60 * 24 * 360, includeSubDomains: true},
-          ],
+          // forceHTTPSRedirect: [
+          //   true,
+          //   {maxAge: 60 * 60 * 24 * 360, includeSubDomains: true},
+          // ],
           referrerPolicy: 'same-origin',
         }),
       },
