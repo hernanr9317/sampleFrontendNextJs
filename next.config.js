@@ -40,10 +40,10 @@ const nextConfig = {
           nosniff: 'nosniff',
           xssProtection: 'sanitize',
           //TODO:HAY QUE VOLVERLO A AGREGAR CUANDO SE SOLUCIONE EL HTTPS DEL LADO DEL BACKEND
-          // forceHTTPSRedirect: [
-          //   true,
-          //   {maxAge: 60 * 60 * 24 * 360, includeSubDomains: true},
-          // ],
+          forceHTTPSRedirect: [
+            true,
+            {maxAge: 60 * 60 * 24 * 360, includeSubDomains: true},
+          ],
           referrerPolicy: 'same-origin',
         }),
       },

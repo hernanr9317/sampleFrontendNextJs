@@ -19,6 +19,7 @@ export const AdminLayout = ({
         <meta name="og:description" content={pageDescription} />
 
         {imageFullUrl && <meta name="og:image" content={imageFullUrl} />}
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
       </Head>
 
       <nav>
