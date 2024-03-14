@@ -27,7 +27,12 @@ const nextConfig = {
                 'https://172.18.0.1/',
                 // 'http://172.18.0.1:3080/',
               ],
-              connectSrc: ["'self'", `${baseUrl}`, "https://172.18.0.1", "https://172.18.0.1:3080/api/categorias/"],
+              connectSrc: [
+                "'self'", `${baseUrl}`, 
+                "https://172.18.0.1", 
+                "https://172.18.0.1:3080/api/categorias/", 
+                "https://172.18.0.1:3080/api/categorias/"
+              ],
               styleSrc: ["'self'", "'unsafe-inline'"],
               scriptSrc: ["'self'", "'unsafe-eval'"],
               imgSrc: ["'self'", 'https: data:'],
