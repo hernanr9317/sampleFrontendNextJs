@@ -39,10 +39,11 @@ const nextConfig = {
           noopen: 'noopen',
           nosniff: 'nosniff',
           xssProtection: 'sanitize',
-          forceHTTPSRedirect: [
-            true,
-            {maxAge: 60 * 60 * 24 * 360, includeSubDomains: true},
-          ],
+          //TODO:HAY QUE VOLVERLO A AGREGAR CUANDO SE SOLUCIONE EL HTTPS DEL LADO DEL BACKEND
+          // forceHTTPSRedirect: [
+          //   true,
+          //   {maxAge: 60 * 60 * 24 * 360, includeSubDomains: true},
+          // ],
           referrerPolicy: 'same-origin',
         }),
       },
