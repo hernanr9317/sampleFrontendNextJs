@@ -7,13 +7,7 @@ export const MainFooter = () => {
   return (
     <div className="bg-dark containerFooter">
       <div className="main-footer">
-        <Container>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-            }}
-          >
+        <Container className="footer-container">
             <Image 
               className="mainLogo"
               src={mainLogo}
@@ -23,7 +17,6 @@ export const MainFooter = () => {
               quality={100}
               fixed="true"
             />
-          </div>
         </Container>
       </div>
       <div className="subfooter">
