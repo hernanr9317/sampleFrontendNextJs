@@ -1,10 +1,7 @@
 import Image from 'next/image';
 import {Container} from 'react-bootstrap';
-import {Row} from 'react-bootstrap';
-import {Col} from 'react-bootstrap';
 
-import firstLogo from '../../public/assets/footer/logoFooter1.webp';
-import secondtLogo from '../../public/assets/footer/logoFooter2.webp';
+import mainLogo from '../../public/assets/footer/footerLogo.webp';
 
 export const MainFooter = () => {
   return (
@@ -17,30 +14,15 @@ export const MainFooter = () => {
               justifyContent: 'center',
             }}
           >
-            <Row xs={'auto'} sm={'auto'}>
-              <Col style={{marginBottom: '16px'}}>
-                <Image
-                  className="footerImg"
-                  src={firstLogo}
-                  alt="image-alt-footer"
-                  width={368}
-                  height={65}
-                  quality={100}
-                  fixed="true"
-                />
-              </Col>
-              <Col style={{marginBottom: '16px'}}>
-                <Image
-                  className="footerImg"
-                  src={secondtLogo}
-                  alt="image-alt-text"
-                  width={190}
-                  height={65}
-                  quality={100}
-                  fixed="true"
-                />
-              </Col>
-            </Row>
+            <Image 
+              className="mainLogo"
+              src={mainLogo}
+              alt="Subsecretaría de Modernización del Estado"
+              width={1600}
+              height={437}
+              quality={100}
+              fixed="true"
+            />
           </div>
         </Container>
       </div>
