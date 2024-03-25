@@ -8,11 +8,24 @@ import React, {
 import {useRouter} from 'next/router';
 import isHotkey from 'is-hotkey';
 import {Editable, withReact, Slate} from 'slate-react';
-import {Editor, Transforms, createEditor} from 'slate';
+import {
+  Editor,
+  Transforms,
+  createEditor,
+  Element as ElementSlate,
+  Range,
+  Node,
+} from 'slate';
 import {withHistory} from 'slate-history';
 import {Toolbar} from './components';
 import {Element, Leaf} from './_children/Element';
-import {BlockButton, MarkButton} from './_children/Buttons';
+import Hotkeys from './utils/hotkeys';
+import {
+  AddLinkButton,
+  BlockButton,
+  MarkButton,
+  RemoveLinkButton,
+} from './_children/Buttons';
 import {InsertImageButton, withImages} from './_children/WithImages';
 import {InsertEmbedButton, withEmbeds} from './_children/WithEmbeds';
 import {ChangeDataContext} from './../../context/changeData/ChangeDataContext';
@@ -89,10 +102,26 @@ const RichText = ({newData, isNota}) => {
   const renderElement = useCallback((props) => <Element {...props} />, []);
   const renderLeaf = useCallback((props) => <Leaf {...props} />, []);
 
-  const editor = useMemo(
-    () => withEmbeds(withImages(withHistory(withReact(createEditor())))),
-    [],
-  );
+  const inlineTypes = ['link'];
+
+  const useEditor = () => {
+    const editor = useMemo(
+      () => withEmbeds(withImages(withHistory(withReact(createEditor())))),
+      [],
+    );
+    const {isInline} = editor;
+    editor.isInline = (el) => {
+      return (
+        (ElementSlate.isElement(el) && inlineTypes.includes(el.type)) ||
+        isInline(el)
+      );
+    };
+    return editor;
+  };
+
+  const editor = useEditor();
+
+  function getDirection(text) {}
 
   return (
     <div className="RichText">
@@ -110,6 +139,9 @@ const RichText = ({newData, isNota}) => {
           }
         }}
       >
+        {/* TODO: IMPLEMENTAR BOTON PARA AGREGAR LINKS , a partir de la linea 99
+        https://github.com/ianstormtaylor/slate/blob/main/site/examples/inlines.tsx
+        */}
         <Toolbar>
           <MarkButton format="bold" icon="format_bold" />
           <MarkButton format="italic" icon="format_italic" />
@@ -126,6 +158,8 @@ const RichText = ({newData, isNota}) => {
           <BlockButton format="justify" icon="format_align_justify" />
           <InsertImageButton />
           <InsertEmbedButton />
+          <AddLinkButton />
+          <RemoveLinkButton />
         </Toolbar>
         <Editable
           renderElement={renderElement}
@@ -133,11 +167,37 @@ const RichText = ({newData, isNota}) => {
           placeholder="Ingrese algún texto"
           spellCheck
           onKeyDown={(event) => {
+            const {nativeEvent} = event;
+            const {selection} = editor;
+            const element =
+              editor.children[selection !== null ? selection.focus.path[0] : 0];
+            const isRTL = getDirection(Node.string(element)) === 'rtl';
+
             for (const hotkey in HOTKEYS) {
               if (isHotkey(hotkey, event)) {
                 event.preventDefault();
                 const mark = HOTKEYS[hotkey];
                 toggleMark(editor, mark);
+              }
+
+              if (Hotkeys.isMoveBackward(nativeEvent)) {
+                event.preventDefault();
+                if (selection && Range.isCollapsed(selection)) {
+                  Transforms.move(editor, {reverse: !isRTL});
+                } else {
+                  Transforms.collapse(editor, {edge: 'start'});
+                }
+                return;
+              }
+
+              if (Hotkeys.isMoveForward(nativeEvent)) {
+                event.preventDefault();
+                if (selection && Range.isCollapsed(selection)) {
+                  Transforms.move(editor, {reverse: isRTL});
+                } else {
+                  Transforms.collapse(editor, {edge: 'end'});
+                }
+                return;
               }
             }
           }}

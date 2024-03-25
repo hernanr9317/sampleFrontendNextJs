@@ -17,7 +17,7 @@ const Tips = () => {
       imageFullUrl="https://i.postimg.cc/J01v450c/mainImg.webp"
       type="technology tips"
     >
-      <MainCarousel img={slider1} img2={slider2} img3={slider3} />
+      {/* <MainCarousel img={slider1} img2={slider2} img3={slider3} /> */}
       <Multimedia />
     </PublicLayout>
   );

@@ -1,33 +1,29 @@
 .mainCarousel{
 
+    display: none;
+
     background: radial-gradient(circle, rgba(60,88,102,1) 0%, rgba(0,0,0,1) 100%);
     filter: brightness(0.7);
-    height: calc(30svh - 58px) !important;
+    height: calc(55svh - 58px) !important;
     margin-top: 58px !important;
 
+
+    @include tablet() {
+        display: flex;
+        height: auto !important;
+    }
+
     img {
-        height: calc(30svh - 58px) !important;
+        height: calc(55vh - 58px) !important;
         width: 100vw !important;
+
+        @include tablet() {
+            height: auto !important;
+        }
     }
 
     .carousel-indicators {
-        margin-bottom: 0 !important;
-        justify-content: right !important;
-        margin-right: 18% !important;
-
-        button {
-            width: 8px;
-        }
-
-        @include tablet() {
-            justify-content: center !important;
-            margin-right: 15% !important;
-            display: flex;
-
-            button {
-                width: 30px;
-            }
-        }
+        display: none;
     }
 
     span {

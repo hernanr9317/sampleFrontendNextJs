@@ -2,6 +2,7 @@ import {Container} from 'react-bootstrap';
 import {TipsCol} from './TipsCol';
 import {data} from './data';
 import {FcIdea} from 'react-icons/fc';
+import {TipsCards} from '../TipsCards';
 
 export const Multimedia = () => {
   return (
@@ -25,11 +26,15 @@ export const Multimedia = () => {
           ataques cibernéticos.
         </p>
       </div>
-      <div className="card-list">
+
+      <TipsCards />
+
+      {/* TODO: NO BORRAR HASTA AGREGARLO EN LA SECCION NUEVA DE "FAMILIA" */}
+      {/* <div className="card-list">
         {data.map((element, key) => (
           <TipsCol key={key} data={element} />
         ))}
-      </div>
+      </div> */}
     </Container>
   );
 };

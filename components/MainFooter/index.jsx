@@ -8,15 +8,15 @@ export const MainFooter = () => {
     <div className="bg-dark containerFooter">
       <div className="main-footer">
         <Container className="footer-container">
-            <Image 
-              className="mainLogo"
-              src={mainLogo}
-              alt="Subsecretaría de Modernización del Estado"
-              width={1600}
-              height={437}
-              quality={100}
-              fixed="true"
-            />
+          <Image
+            className="mainLogo"
+            src={mainLogo}
+            alt="Subsecretaría de Modernización del Estado"
+            width={622}
+            height={170}
+            quality={100}
+            fixed="true"
+          />
         </Container>
       </div>
       <div className="subfooter">

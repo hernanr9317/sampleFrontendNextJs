@@ -1,4 +1,4 @@
-import {Editor, Transforms, Element as SlateElement} from 'slate';
+import {Editor, Transforms, Range, Element as SlateElement} from 'slate';
 import {useSlate} from 'slate-react';
 import {Button, Icon} from '../components';
 
@@ -103,4 +103,79 @@ export const MarkButton = ({format, icon}) => {
       <Icon>{icon}</Icon>
     </Button>
   );
+};
+
+export const AddLinkButton = () => {
+  const editor = useSlate();
+  return (
+    <Button
+      active={isLinkActive(editor)}
+      onMouseDown={(event) => {
+        event.preventDefault();
+        const url = window.prompt('Enter the URL of the link:');
+        if (!url) return;
+        insertLink(editor, url);
+      }}
+    >
+      <Icon>link</Icon>
+    </Button>
+  );
+};
+
+export const RemoveLinkButton = () => {
+  const editor = useSlate();
+  return (
+    <Button
+      active={isLinkActive(editor)}
+      onMouseDown={(event) => {
+        if (isLinkActive(editor)) {
+          unwrapLink(editor);
+        }
+      }}
+    >
+      <Icon>link_off</Icon>
+    </Button>
+  );
+};
+
+const insertLink = (editor, url) => {
+  if (editor.selection) {
+    wrapLink(editor, url);
+  }
+};
+
+const isLinkActive = (editor) => {
+  const [link] = Editor.nodes(editor, {
+    match: (n) =>
+      !Editor.isEditor(n) && SlateElement.isElement(n) && n.type === 'link',
+  });
+  return !!link;
+};
+
+const unwrapLink = (editor) => {
+  Transforms.unwrapNodes(editor, {
+    match: (n) =>
+      !Editor.isEditor(n) && SlateElement.isElement(n) && n.type === 'link',
+  });
+};
+
+const wrapLink = (editor, url) => {
+  if (isLinkActive(editor)) {
+    unwrapLink(editor);
+  }
+
+  const {selection} = editor;
+  const isCollapsed = selection && Range.isCollapsed(selection);
+  const link = {
+    type: 'link',
+    url,
+    children: isCollapsed ? [{text: url}] : [],
+  };
+
+  if (isCollapsed) {
+    Transforms.insertNodes(editor, link);
+  } else {
+    Transforms.wrapNodes(editor, link, {split: true});
+    Transforms.collapse(editor, {edge: 'end'});
+  }
 };

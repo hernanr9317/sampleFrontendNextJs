@@ -36,7 +36,7 @@ export const InsertEmbedButton = () => {
         insertEmbed(editor, url);
       }}
     >
-      <Icon>videocamera</Icon>
+      <Icon style={{width: '18px'}}>videocamera</Icon>
     </Button>
   );
 };

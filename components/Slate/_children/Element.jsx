@@ -1,5 +1,6 @@
 import {css} from '@emotion/css';
 import {extractURLFromText} from '../../helpers/helpers';
+import {useSelected} from 'slate-react';
 
 const Image = ({attributes, children, element}) => {
   return (
@@ -30,9 +31,6 @@ const VideoElement = ({attributes, children, element}) => {
   let {url} = element;
   url = extractURLFromText(url);
 
-  //TODO: HACER FUNCIONAR PARA POSTS DE TWITTER E INSTAGRAM
-  //TAMBIEN HAY QUE HACER QUE FUNCIONE CON POSTS COMPLETOS
-
   if (!url) return null;
 
   return (
@@ -58,6 +56,43 @@ const VideoElement = ({attributes, children, element}) => {
       </div>
       {children}
     </div>
+  );
+};
+
+const InlineChromiumBugfix = () => (
+  <span
+    contentEditable={false}
+    className={css`
+      font-size: 0;
+    `}
+  >
+    {String.fromCodePoint(160) /* Non-breaking space */}
+  </span>
+);
+
+const LinkComponent = ({attributes, children, element}) => {
+  const selected = useSelected();
+  const url = element?.url?.startsWith('https://')
+    ? element?.url
+    : `https://${element?.url}`;
+  return (
+    <a
+      {...attributes}
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={
+        selected
+          ? css`
+              box-shadow: 0 0 0 1px #ddd;
+            `
+          : ''
+      }
+    >
+      <InlineChromiumBugfix />
+      {children}
+      <InlineChromiumBugfix />
+    </a>
   );
 };
 
@@ -105,6 +140,8 @@ export const Element = ({attributes, children, element}) => {
           {children}
         </ol>
       );
+    case 'link':
+      return <LinkComponent {...props} />;
     default:
       return (
         <p style={style} {...attributes}>
@@ -131,5 +168,9 @@ export const Leaf = ({attributes, children, leaf}) => {
     children = <u>{children}</u>;
   }
 
-  return <span {...attributes}>{children}</span>;
+  return (
+    <span {...attributes} style={{paddingRight: '0.001em'}}>
+      {children}
+    </span>
+  );
 };
