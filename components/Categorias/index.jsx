@@ -66,11 +66,16 @@ export const Categorias = () => {
 
       {categorySelected === '' && (
         <div className="initialImgContainer">
-          <Image
-            src={initialImg}
-            className="img-fluid"
-            alt="Responsive image"
-          />
+          <div className="cater3-movingBG">
+            <div className="flyinTxtCont">
+              <div className="flyIn lineOne">Busca</div>
+              <div className="flyIn lineTwo">Estándares </div>
+              <div className="flyIn lineThree">tecnológicos</div>
+              <div className="flyIn lineFour">
+                Explorá y encontrá el adecuado.
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>
