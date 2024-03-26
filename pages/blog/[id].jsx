@@ -7,6 +7,8 @@ import dayjs from 'dayjs';
 import {es} from 'dayjs/locale/es';
 import localeData from 'dayjs/plugin/localeData';
 import {SocialLinks} from './../../components/SocialLinks/index';
+import {Loading} from '../../components/Loading';
+import {CustomButton} from '../../components/CustomButton';
 
 dayjs.locale('es');
 dayjs.extend(localeData);
@@ -56,13 +58,21 @@ const Article = () => {
 
   let load = true;
 
-  if (router.isReady && products !== []) load = false;
+  if (router.isReady && products?.length !== 0) load = false;
 
   const notResults = (
     <div className="not-results">
-      <p>No se encontraron resultados...</p>
-      <p>Mirá otras notas en el blog</p>
-      <button onClick={clickButton}>Ir al blog</button>
+      <h4>
+        <strong>No se encontraron resultados...</strong>
+      </h4>
+      <p>
+        <strong>Mirá otras notas en el blog</strong>
+      </p>
+      <CustomButton
+        text="Ir al blog"
+        type="slide_right"
+        onClick={clickButton}
+      />
     </div>
   );
 
@@ -76,7 +86,9 @@ const Article = () => {
     >
       <div className="articleContainer">
         <div className="textContainer">
-          {showArticle || (!load && !showArticle && notResults)}
+          {load && <Loading />}
+          {!load && showArticle}
+          {!load && !showArticle && notResults}
         </div>
       </div>
     </PublicLayout>
