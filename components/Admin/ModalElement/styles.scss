@@ -11,6 +11,10 @@
       &::-webkit-scrollbar-thumb {
         background: #888;    /* color of the scroll thumb */
       }
+    
+    label {
+        font-weight: bold;
+    }
 
     .form-label {
         margin-bottom: 4px;
@@ -101,6 +105,21 @@
 
                 img {
                     width: 50%;
+                }
+            }
+
+            .tag {
+                background-color: darkgoldenrod;
+                border-radius: 5px;
+                color: #f1f1f1;
+                padding: 2px 6px;
+                margin-right: 5px;
+                display: inline-block;
+              }
+            
+            .body-write {
+                label {
+                    margin-bottom: 20px;
                 }
             }
         }

@@ -1,7 +1,7 @@
 import {Form} from 'react-bootstrap';
 import RichText from '../../../Slate/RichText';
 // import {ModalNav} from '../modalNav';
-import { ModalNav } from './../ModalNav';
+import {ModalNav} from './../ModalNav';
 import {useRouter} from 'next/router';
 import dayjs from 'dayjs';
 
@@ -14,6 +14,19 @@ export const ArticleBody = ({
   getValues,
 }) => {
   const router = useRouter();
+  // console.log(getValues().tags);
+
+  // Dividir el string en tags individuales
+  const tagsArray = getValues()
+    .tags.split('#')
+    .filter((tag) => tag.trim() !== '');
+
+  // Mapear cada tag a un elemento <span>
+  const tagSpans = tagsArray.map((tag, index) => (
+    <span key={index} className="tag">
+      {tag}
+    </span>
+  ));
 
   return (
     <>
@@ -52,6 +65,18 @@ export const ArticleBody = ({
             autoFocus
             disabled={edit}
             {...register('subtitulo')}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="tags">
+          <Form.Label>
+            Tags <div className="tags-container">{tagSpans}</div>
+          </Form.Label>
+          <Form.Control
+            type="tags"
+            defaultValue={getValues().tags}
+            autoFocus
+            disabled={edit}
+            {...register('tags')}
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="preview">

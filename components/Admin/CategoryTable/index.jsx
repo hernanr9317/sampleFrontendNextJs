@@ -109,7 +109,7 @@ export const CategoryTable = ({
   };
 
   return (
-    <div className="mb-5">
+    <div className="mb-5 category-table">
       <Card className="mt-1">
         <Form onSubmit={handleSubmit(handleSave)} autoComplete="off">
           <Card.Header className="colorHeaderTh">

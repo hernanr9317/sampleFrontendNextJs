@@ -1,44 +1,51 @@
-.table {
-    th, td {
-        padding: 6px;
-    }
-}
+.category-table {
 
-.colorHeaderTh {
-    background: linear-gradient(90deg, rgba(44,80,99,1) 0%, rgba(1,1,1,1) 100%);
-    color: white,
-}
-
-.headerTable {
-
-    margin-top: 50px;
-
-    .title{
-        float: left;
+    label {
+        font-weight: bold;
     }
 
-    .addElementButton{
-        float: left;
-        margin-bottom: 8px;
-
-        @include desktop(){
-            float: right;
+    .table {
+        th, td {
+            padding: 6px;
         }
     }
-}
-
-.orderItemTable{
-    text-align: center;
-}
-
-.disableDiv {
-    border-radius: 3px;
-    padding: 16px 20px;
-    background-color: #e9ecef;
-    pointer-events: none;
-}
-
-.activeDiv {
-    padding: 16px 20px;
-    border-bottom: 1px solid #e9ecef;
+    
+    .colorHeaderTh {
+        background: linear-gradient(90deg, rgba(44,80,99,1) 0%, rgba(1,1,1,1) 100%);
+        color: white,
+    }
+    
+    .headerTable {
+    
+        margin-top: 50px;
+    
+        .title{
+            float: left;
+        }
+    
+        .addElementButton{
+            float: left;
+            margin-bottom: 8px;
+    
+            @include desktop(){
+                float: right;
+            }
+        }
+    }
+    
+    .orderItemTable{
+        text-align: center;
+    }
+    
+    .disableDiv {
+        border-radius: 3px;
+        padding: 16px 20px;
+        background-color: #e9ecef;
+        pointer-events: none;
+    }
+    
+    .activeDiv {
+        padding: 16px 20px;
+        border-bottom: 1px solid #e9ecef;
+    }
 }

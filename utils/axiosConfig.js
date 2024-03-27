@@ -63,6 +63,7 @@ export const postDataAxiosElement = async (url, data, token = '') => {
           precio: data?.precio,
           description: data?.descripcion,
           pathname: pathname,
+          tags: data?.tags,
         },
         {
           headers: {
@@ -131,6 +132,7 @@ export const putDataAxios = async (url, data, token = '') => {
         precio: data?.precio,
         description: data?.descripcion,
         pathname: pathname,
+        tags: data?.tags,
       },
       {
         headers: {

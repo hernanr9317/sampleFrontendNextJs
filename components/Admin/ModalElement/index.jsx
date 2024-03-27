@@ -7,6 +7,7 @@ import {ChangeDataContext} from '../../../context/changeData/ChangeDataContext';
 import {ModalFooter} from './ModalFooter';
 import {ModalBody} from './ModalBody';
 import {deleteItemModal, saveItemModal} from './modalHelpers';
+import {extractTags} from '../../helpers/helpers';
 
 export const ModalElement = ({element, interaction, type, setType}) => {
   const {isNewData, categories} = useContext(ChangeDataContext);
@@ -31,6 +32,7 @@ export const ModalElement = ({element, interaction, type, setType}) => {
       descripcion: element?.description,
       mainMedia: element?.otherImgs?.[1],
       pathname: element?.pathname,
+      tags: element?.tags?.join(' '),
     },
   });
 
@@ -64,6 +66,7 @@ export const ModalElement = ({element, interaction, type, setType}) => {
       descripcion: element?.description,
       mainMedia: element?.otherImgs?.[1],
       pathname: element?.pathname,
+      tags: element?.tags?.join(' '),
     });
   }, [reset, element]);
 
@@ -81,7 +84,7 @@ export const ModalElement = ({element, interaction, type, setType}) => {
     const textBody = isNota
       ? localStorage.getItem('content') || data
       : data.descripcion;
-    data = {...data, descripcion: textBody};
+    data = {...data, descripcion: textBody, tags: extractTags(data.tags)};
 
     saveItemModal(
       data,
