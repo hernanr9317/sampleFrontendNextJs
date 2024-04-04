@@ -47,5 +47,15 @@
             -2px -2px 0 #000, 2px -2px 0 #000, 
             -2px 2px 0 #000, 2px 2px 0 #000;
         }
+
+        .logo-container {
+            margin-top: 20px;
+            display: inline-block;
+            max-width: 100px;
+
+            .logo {
+                width: 100px;
+            }
+        }
     }
 }
