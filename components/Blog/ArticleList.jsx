@@ -1,20 +1,20 @@
-import {useContext, Suspense, useState, useEffect} from 'react';
+import {Suspense, useState, useEffect} from 'react';
 import {useRouter} from 'next/router';
-import {ChangeDataContext} from './../../context/changeData/ChangeDataContext';
 import {CardBlog} from './CardBlog';
 import {Paginator} from './../Paginator/index';
 
-export const ArticleList = ({limitItems, paginator = true}) => {
+export const ArticleList = ({
+  list,
+  limitItems,
+  paginator = true,
+  title,
+  // title = 'Últimas publicaciones',
+}) => {
   const router = useRouter();
-  const {products} = useContext(ChangeDataContext);
-
-  const filterCategory = products?.productos?.filter(
-    (element) => element?.categoria?.nombre === 'NOTA',
-  );
 
   const [currentPage, setCurrentPage] = useState(1);
   const numberItems = limitItems || 7;
-  const totalPages = Math.ceil(filterCategory?.length / numberItems);
+  const totalPages = Math.ceil(list?.length / numberItems);
 
   useEffect(() => {
     if (router.isReady && router.query.page) {
@@ -34,7 +34,12 @@ export const ArticleList = ({limitItems, paginator = true}) => {
   return (
     <div className="articleList">
       <header>
-        <h1>Últimas publicaciones</h1>
+        {!title && <h1>Últimas publicaciones</h1>}
+        {title && (
+          <h1>
+            Notas sobre <span className="title-tag">{title}</span>
+          </h1>
+        )}
         <div className="divider-1">
           {' '}
           <span></span>
@@ -42,7 +47,7 @@ export const ArticleList = ({limitItems, paginator = true}) => {
       </header>
       <Suspense fallback={<div style={{margin: 'auto'}}>Cargando...</div>}>
         <CardBlog
-          filterCategory={filterCategory}
+          filterCategory={list}
           numberItems={numberItems}
           currentPage={currentPage}
         />

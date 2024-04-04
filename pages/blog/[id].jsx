@@ -9,6 +9,7 @@ import localeData from 'dayjs/plugin/localeData';
 import {SocialLinks} from './../../components/SocialLinks/index';
 import {Loading} from '../../components/Loading';
 import {CustomButton} from '../../components/CustomButton';
+import Link from 'next/link';
 
 dayjs.locale('es');
 dayjs.extend(localeData);
@@ -35,6 +36,29 @@ const Article = () => {
   const ogImage = findArticle?.otherImgs?.[1] || findArticle?.otherImgs?.[0];
   const url = `${process.env.NEXT_PUBLIC_HOST}${router.asPath}`;
 
+  //TODO: REFACTORIZAR EN OTRO COMPONENTE TODO LO QUE TENGA QUE VER CON TAGS
+  const quitarSimbolo = (arr) => {
+    return arr?.map((cadena) => cadena.replace('#', ''));
+  };
+
+  const tags = quitarSimbolo(findArticle?.tags);
+
+  //arma el path del tag
+  const tagPath = (cadena) => {
+    return cadena.toLowerCase().replace(/\s+/g, '-');
+  };
+
+  // Mapear cada tag a un elemento <span>
+  const tagSpans = tags?.map((tag, index) => (
+    <Link href={`/blog/tags/${tagPath(tag)}`} key={index}>
+      <a>
+        <span key={index} className="tag">
+          {tag}
+        </span>
+      </a>
+    </Link>
+  ));
+
   const showArticle = router.isReady && findArticle && (
     <>
       <div className="title">
@@ -52,6 +76,16 @@ const Article = () => {
           bodyDescription.map((element, index) => (
             <ReadOnlyText {...element} key={index} />
           ))}
+        {tags?.length > 0 && (
+          <>
+            <h6 className="tags-title">Temas de la nota</h6>
+            <div className="divider-1">
+              {' '}
+              <span></span>
+            </div>
+            <div className="tags-container">{tagSpans}</div>
+          </>
+        )}
       </div>
     </>
   );

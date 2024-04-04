@@ -1,6 +1,5 @@
 import {Form} from 'react-bootstrap';
 import RichText from '../../../Slate/RichText';
-// import {ModalNav} from '../modalNav';
 import {ModalNav} from './../ModalNav';
 import {useRouter} from 'next/router';
 import dayjs from 'dayjs';
@@ -14,7 +13,6 @@ export const ArticleBody = ({
   getValues,
 }) => {
   const router = useRouter();
-  // console.log(getValues().tags);
 
   // Dividir el string en tags individuales
   const tagsArray = getValues()
