@@ -16,11 +16,11 @@ export const ArticleBody = ({
 
   // Dividir el string en tags individuales
   const tagsArray = getValues()
-    .tags.split('#')
-    .filter((tag) => tag.trim() !== '');
+    .tags?.split('#')
+    .filter((tag) => tag?.trim() !== '');
 
   // Mapear cada tag a un elemento <span>
-  const tagSpans = tagsArray.map((tag, index) => (
+  const tagSpans = tagsArray?.map((tag, index) => (
     <span key={index} className="tag">
       {tag}
     </span>
