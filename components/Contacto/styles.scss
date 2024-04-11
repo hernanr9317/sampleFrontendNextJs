@@ -10,12 +10,14 @@
     @include tablet(){
         margin-bottom: 16px;
         flex-direction: row;
+        justify-content: left;
     }
 
     .contact-element {
         padding: 10px;
 
         @include desktop(){
+            display: flex;
             padding: 15px;
         }
     }
@@ -38,6 +40,11 @@
     .contacto-text{
         text-align: center;
         margin-top: 8px;
+
+        @include desktop() {
+            margin: auto;
+            padding: 4px;
+        }
     }
 
 }

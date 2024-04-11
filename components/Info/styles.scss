@@ -39,6 +39,7 @@ p {
 
     @include tablet() {
         flex-direction: row;
+        justify-content: left;
     }
 }
 
@@ -65,12 +66,12 @@ p {
   }
 
   @include tablet() {
-    margin: 5px;
+    margin: 10px;
   }
 
-  @include desktop() {
-    margin: 20px;
-  }
+  // @include desktop() {
+  //   margin: 20px;
+  // }
 }
 
 .card > * {
