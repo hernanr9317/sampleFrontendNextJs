@@ -13,7 +13,7 @@ const HomeScreen = () => {
 
   return (
     <PublicLayout
-      title={'e-seguridad - Home'}
+      title={'e-seguridad - Chaco'}
       pageDescription={
         'Encuentra los estandares de equipamiento informático y seguridad'
       }
