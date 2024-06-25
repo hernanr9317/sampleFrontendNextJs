@@ -17,8 +17,7 @@ $viewport-thereshold: $hexagon-width + $hexagon-margin;
 
   @include tablet() {
     margin-top: 84px;
-    width: 690px;
-    justify-content: left;
+    
     button {
       margin: auto;
     }
@@ -149,10 +148,6 @@ $viewport-thereshold: $hexagon-width + $hexagon-margin;
     opacity: 0;
     width: $hexagon-width;
     margin: 0 $hexagon-margin/2;
-  }
-
-  @include tablet() {
-    justify-content: left;
   }
 }
 

@@ -33,6 +33,10 @@ export const ModeloSeguridad = () => {
           {' '}
           <span></span>
         </div>
+        <p>
+          La seguridad de la información se entiende como la preservación de las
+          siguientes características:
+        </p>
         <ul className="honeycomb">
           <ModelCol title={'Integridad'} src={integridad} />
           <ModelCol title={'Confidencialidad'} src={confidencialidad} />

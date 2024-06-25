@@ -12,6 +12,10 @@ export const Info = () => {
         {' '}
         <span></span>
       </div>
+      <p>
+        Mantenete al día con las mejores prácticas y regulaciones de seguridad
+        informática
+      </p>
       <Container>
         <div className="col-container">
           <InfoCol
