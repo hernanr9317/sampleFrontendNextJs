@@ -27,16 +27,38 @@ export const ModeloSeguridad = () => {
     <div id="modelo" className="container-fluid modeloContainer">
       <Container>
         <h1 className="heading-1">
-          Modelo de Políticas de Seguridad de la Información
+          ► Modelo de Políticas de Seguridad de la Información
         </h1>
         <div className="divider-1">
           {' '}
           <span></span>
         </div>
+        <p>
+          La seguridad de la información se entiende como la preservación de las
+          siguientes características:
+        </p>
         <ul className="honeycomb">
-          <ModelCol title={'Integridad'} src={integridad} />
-          <ModelCol title={'Confidencialidad'} src={confidencialidad} />
-          <ModelCol title={'Disponibilidad'} src={disponibilidad} />
+          <ModelCol
+            title={'Integridad'}
+            src={integridad}
+            description={
+              'salvaguarda la exactitud y totalidad de la información, como así también, los métodos de procesamiento'
+            }
+          />
+          <ModelCol
+            title={'Confidencialidad'}
+            src={confidencialidad}
+            description={
+              'garantiza que la información sea accesible sólo a aquellas personas autorizadas a tener acceso a la misma'
+            }
+          />
+          <ModelCol
+            title={'Disponibilidad'}
+            src={disponibilidad}
+            description={
+              'garantiza que los usuarios autorizados tengan acceso a la información y a los recursos relacionados con la misma, toda vez que lo requieran'
+            }
+          />
         </ul>
         <div className="button-container">
           <CustomButton

@@ -7,11 +7,15 @@ import normativa from '../../public/assets/info/normativa.webp';
 export const Info = () => {
   return (
     <div id="info" className="container-fluid mt-5 mb-5 infoContainer">
-      <h1 className="heading-1">Informáte</h1>
+      <h1 className="heading-1">► Informáte</h1>
       <div className="divider-1">
         {' '}
         <span></span>
       </div>
+      <p>
+        Mantenete al día con las mejores prácticas y regulaciones de seguridad
+        informática
+      </p>
       <Container>
         <div className="col-container">
           <InfoCol

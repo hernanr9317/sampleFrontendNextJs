@@ -7,29 +7,35 @@
 }
 
 /* Remove default margin */
-h2,
+// h2,
 p {
-  margin: 0;
+  font-size: 18px;
 }
 
 h2 {
-  font-size: 26px;
+  font-size: 24px;
   font-family: var(--font-title);
   color: white;
+  margin: 0;
   line-height: 1.1;
 }
 
-p {
+p.card__description {
   font-family: var(--font-text);
   font-size: 1rem;
   line-height: 1.5;
   color: white;
+  margin: 20px 0 0 0;
   text-shadow: rgb(15, 15, 15) 1px 0 10px;
 }
 
 .container {
   padding-left: 0;
   padding-right: 0;
+
+  @include tablet {
+    margin-top: 32px;
+  }
 }
 
 .col-container{
@@ -39,7 +45,6 @@ p {
 
     @include tablet() {
         flex-direction: row;
-        justify-content: left;
     }
 }
 
@@ -54,7 +59,7 @@ p {
   margin: 20px auto;
   place-items: center;
   width: 80vw;
-  max-width: 220px;
+  max-width: 255px;
   overflow: hidden;
   border-radius: 0.625rem;
   box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
@@ -63,15 +68,13 @@ p {
     background: #162944;
     color: #FFF;
     padding: 18px 10px;
+    width: 100%;
   }
 
   @include tablet() {
     margin: 10px;
   }
 
-  // @include desktop() {
-  //   margin: 20px;
-  // }
 }
 
 .card > * {
@@ -105,8 +108,12 @@ p {
 }
 
 .card__title {
+  display: table-caption;
+  background-color: rgb(216, 2, 134);
+  padding: 2px;
   position: relative;
-  bottom: 20px;
+  bottom: 10px;
+  left: -12px;
   width: fit-content;
   width: -moz-fit-content; /* Prefijo necesario para Firefox  */
   text-shadow: rgb(15, 15, 15) 1px 0 10px;
@@ -141,68 +148,34 @@ p {
   outline-offset: -3px;
 }
 
-@media (any-hover: hover) and (any-pointer: fine) {
-  .card__content {
-    transform: translateY(62%);
-    transition: transform 500ms ease-out;
-    transition-delay: 500ms;
-  }
+.card__content {
+  transform: translateY(0);  /* Cambiado a 0 para aplicar siempre */
+  transition: transform 350ms ease-in;  /* uno */
+}
 
-  .card__title::after {
-    opacity: 0;
-    transform: scaleX(0);
-    transition-delay: 500ms;
-    transform-origin: right;
-  }
+.card__title::after {
+  opacity: 1;  /* Cambiado a 1 para aplicar siempre */
+  transform: scaleX(1);  /* Cambiado a 1 para aplicar siempre */
+  transform-origin: left;
+  transition: opacity 500ms ease-in, transform 500ms ease-in;
+  transition-delay: 500ms;
+}
 
-  .card__background {
-    transition: transform 500ms ease-in;
-  }
+.card__background {
+  transform: scale(1.3);  /* Cambiado a 1.3 para aplicar siempre */
+  transition: transform 500ms ease-in;
+}
 
-  .card__content--container > :not(.card__title),
-  .card__button {
-    opacity: 0;
-    transition: transform 500ms ease-out, opacity 500ms ease-out;
-  }
+.card__content--container > :not(.card__title),
+.card__button {
+  opacity: 1;  /* Cambiado a 1 para aplicar siempre */
+  transition: opacity 500ms ease-in;
+  transition-delay: 350ms;
+}
 
-  .card:hover,
-  .card:focus-within {
-    transform: scale(1.05);
-    transition: transform 500ms ease-in;
-  }
-
-  .card:hover .card__content,
-  .card:focus-within .card__content {
-    transform: translateY(0);
-    transition: transform 350ms ease-in;  //uno
-  }
-
-  .card:focus-within .card__content {
-    transition-duration: 0ms;
-  }
-
-  .card:hover .card__background,
-  .card:focus-within .card__background {
-    transform: scale(1.3);
-  }
-
-  .card:hover .card__content--container > :not(.card__title),
-  .card:hover .card__button,
-  .card:focus-within .card__content--container > :not(.card__title),
-  .card:focus-within .card__button {
-    opacity: 1;
-    transition: opacity 500ms ease-in;
-    transition-delay: 350ms;
-  }
-
-  .card:hover .card__title::after,
-  .card:focus-within .card__title::after {
-    opacity: 1;
-    transform: scaleX(1);
-    transform-origin: left;
-    transition: opacity 500ms ease-in, transform 500ms ease-in;
-    transition-delay: 500ms;
-  }
+.card {
+  transform: scale(1.05);  /* Cambiado a 1.05 para aplicar siempre */
+  transition: transform 500ms ease-in;
 }
 
 }
