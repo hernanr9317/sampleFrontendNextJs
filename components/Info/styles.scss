@@ -8,9 +8,9 @@
 
 /* Remove default margin */
 // h2,
-// p {
-//   margin: 0;
-// }
+p {
+  font-size: 18px;
+}
 
 h2 {
   font-size: 24px;
@@ -32,6 +32,10 @@ p.card__description {
 .container {
   padding-left: 0;
   padding-right: 0;
+
+  @include tablet {
+    margin-top: 32px;
+  }
 }
 
 .col-container{

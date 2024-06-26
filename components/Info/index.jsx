@@ -7,7 +7,7 @@ import normativa from '../../public/assets/info/normativa.webp';
 export const Info = () => {
   return (
     <div id="info" className="container-fluid mt-5 mb-5 infoContainer">
-      <h1 className="heading-1">Informáte</h1>
+      <h1 className="heading-1">► Informáte</h1>
       <div className="divider-1">
         {' '}
         <span></span>

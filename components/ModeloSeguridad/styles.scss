@@ -1,4 +1,8 @@
 .modeloContainer {
+
+p {
+  font-size: 18px;
+}
   
 $hexagon-width: 180px;
 $hexagon-height: $hexagon-width*.55;
@@ -16,7 +20,7 @@ $viewport-thereshold: $hexagon-width + $hexagon-margin;
   margin-top: 14px;
 
   @include tablet() {
-    margin-top: 84px;
+    margin-top: 218px;
     
     button {
       margin: auto;
@@ -52,24 +56,39 @@ $viewport-thereshold: $hexagon-width + $hexagon-margin;
 }
 
 .honeycomb {
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
-  list-style: none;
   justify-content: center;
-  align-items: center;
   max-width: $honeycomb-max-width;
   margin: 0 auto 48px;
+  list-style: none;
   padding: 0;
+
+  @include tablet() {
+    margin-top: 32px;
+  }
 
   &-cell {
     flex: 0 1 $hexagon-width;
     max-width: $hexagon-width;
     height: $hexagon-height;
     margin: $hexagon-height/1.1 $hexagon-margin/1 $hexagon-margin+36px;
+    margin-bottom: 180px;
+    margin-top: 64px;
     position: relative;
     padding: 0.5em;
     text-align: center;
     z-index: 1;
+
+    //Este media query es para solucionar un bug en esta medida
+    @media (min-width: 524px) and (max-width: 767px) {
+      margin-bottom: 228px;
+    }
+
+    @include tablet() {
+      margin: 56px auto;
+    }
 
     &__title {
       height: 100%;
@@ -127,11 +146,33 @@ $viewport-thereshold: $hexagon-width + $hexagon-margin;
     }
     
     &__title {
-      font-size: 16px;
-      left: 0;
+      display: flex;
       margin-top: 115px;
+      font-size: 16px;
       position: absolute;
+      left: 0;
       width: 100%;
+    }
+
+    &__description {
+      display: flex;
+      font-size: 16px;
+      margin-top: 180px;
+      position: absolute;
+      right: -72px;
+      width: 324px;
+
+      //Este media query es para solucionar un bug en esta medida
+      @media (min-width: 524px) and (max-width: 767px) {
+        right: -30px;
+        width: 240px;
+      }
+
+      @include tablet() {
+        padding: 0 10px;
+        right: -30px;
+        width: 240px;
+      }
     }
 
     &::before {
@@ -154,20 +195,22 @@ $viewport-thereshold: $hexagon-width + $hexagon-margin;
 @media (max-width:#{2*$viewport-thereshold}){
   .honeycomb-cell {
     margin: #{$hexagon-margin/2 + $hexagon-height/2} $hexagon-margin;
-    margin-bottom: 94px;
+    // margin-left: 0;
+    margin-bottom: 186px;
   }
 }
 
-@media (min-width: #{2*$viewport-thereshold}) and (max-width:#{3*$viewport-thereshold}){
-  .honeycomb-cell:nth-child(3n) {
-    margin-right: calc(50% - #{$hexagon-width/2});
-    margin-left: calc(50% - #{$hexagon-width/2});
-  }
+//TODO: VER ESTE CODIGO Y MEJORARLO ES PARA QUE SE CENTRE EL ULTIMO ITEM EN ALGUNAS PANTALLAS TIPO TABLET
+// @media (min-width: #{2*$viewport-thereshold}) and (max-width:#{3*$viewport-thereshold}){
+//   .honeycomb-cell:nth-child(3n) {
+//     margin-right: calc(50% - #{$hexagon-width/2});
+//     margin-left: calc(50% - #{$hexagon-width/2});
+//   }
 
-  .honeycomb__placeholder:nth-child(3n + 5) {
-    display:block;
-  }
-}
+//   .honeycomb__placeholder:nth-child(3n + 5) {
+//     display:block;
+//   }
+// }
 
 @media (min-width: #{3*$viewport-thereshold}) and (max-width:#{4*$viewport-thereshold}) {
   .honeycomb-cell:nth-child(5n + 4) {
