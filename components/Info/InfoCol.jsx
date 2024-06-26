@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import {useRouter} from 'next/router';
 import {CustomButton} from './../CustomButton/index';
 
@@ -13,11 +14,15 @@ export const InfoCol = ({title, text, src, link}) => {
             <h2 className="card__title">{title}</h2>
             <p className="card__description">{text}</p>
           </div>
-          <CustomButton
-            text="Más información"
-            type="slide_down"
-            onClick={() => router.push(link)}
-          />
+          <Link href={link}>
+            <a>
+              <CustomButton
+                text="Más información"
+                type="slide_down"
+                // onClick={() => router.push(link)}
+              />
+            </a>
+          </Link>
         </div>
       </article>
     </>
