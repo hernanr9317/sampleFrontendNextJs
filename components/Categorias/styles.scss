@@ -118,11 +118,15 @@
 }
 
 .initialImgContainer {
-    margin-top: -16px;
     margin-left: calc(50% - var(--vw, 1vw) * 50);
     height: 100%;
+    display: none;
     left: 0;
     width: calc(var(--vw, 1vw) * 100);
+
+    @include tablet() {
+        display: block;
+    }
 
     .cater3-movingBG {
         height: 100%;
@@ -155,6 +159,18 @@
         justify-content: flex-end;
         padding-bottom: 10%;
         margin-left: 2em;
+
+        @include tablet() {
+            padding-top: 2%;
+        }
+
+        @include desktop() {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 1240px;
+            padding-top: 5%;
+        }
+
     }
     .flyIn {
         color:#fff;
@@ -186,7 +202,8 @@
         letter-spacing: 3px;
 
         @include desktop() {
-            font-size:110px;
+            margin-left: 20px;
+            font-size:70px;
         }
     }
     .lineFour {
@@ -203,6 +220,11 @@
         font-size: 32px;
         padding: .2em .5em;
         margin-top: 30px;
+
+        @include desktop() {
+            margin-left: 20px;
+        }
+
     }
     @keyframes fadeIn{
         0% { opacity:0;}
