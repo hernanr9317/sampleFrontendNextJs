@@ -49,17 +49,17 @@
                     font-size: 24px;
                 }
 
-                header {
-                    h1 {
-                        display: flex;
+                // header {
+                //     h1 {
+                //         display: flex;
 
-                        &::before {
-                            content: '►';
-                            display: block;
-                            margin-right: 5px;
-                        }
-                    }
-                }
+                //         &::before {
+                //             content: '►';
+                //             display: block;
+                //             margin-right: 5px;
+                //         }
+                //     }
+                // }
     
                 .band {
                     margin-bottom: 10px;
