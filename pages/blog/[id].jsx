@@ -36,19 +36,16 @@ const Article = () => {
   const ogImage = findArticle?.otherImgs?.[1] || findArticle?.otherImgs?.[0];
   const url = `${process.env.NEXT_PUBLIC_HOST}${router.asPath}`;
 
-  //TODO: REFACTORIZAR EN OTRO COMPONENTE TODO LO QUE TENGA QUE VER CON TAGS
   const quitarSimbolo = (arr) => {
     return arr?.map((cadena) => cadena.replace('#', ''));
   };
 
   const tags = quitarSimbolo(findArticle?.tags);
 
-  //arma el path del tag
   const tagPath = (cadena) => {
     return cadena.toLowerCase().replace(/\s+/g, '-');
   };
 
-  // Mapear cada tag a un elemento <span>
   const tagSpans = tags?.map((tag, index) => (
     <Link href={`/blog/tags/${tagPath(tag)}`} key={index}>
       <a>

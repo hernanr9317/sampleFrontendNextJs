@@ -9,7 +9,6 @@ const withAuth = (Component) => {
     const {isLoggedIn} = useContext(AuthContext);
     const router = useRouter();
 
-    // If user is not logged in, return login component
     if (isLoggedIn === false) {
       router.replace('/auth/login');
       return <LoginPage />;
@@ -19,13 +18,11 @@ const withAuth = (Component) => {
       return <Loading />;
     }
 
-    // If user is logged in, return original component
     if (isLoggedIn === true) {
       return <Component {...props} />;
     }
   };
 
-  // Copy getInitial props so it will run as well
   if (Component.getInitialProps) {
     Auth.getInitialProps = Component.getInitialProps;
   }

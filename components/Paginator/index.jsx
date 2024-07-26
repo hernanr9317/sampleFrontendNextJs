@@ -1,7 +1,6 @@
 export const Paginator = ({currentPage, totalPages, onPageChange}) => {
   const pages = [];
 
-  // Generar los números de página
   for (let i = 1; i <= totalPages; i++) {
     pages.push(
       <li key={i} className={i === currentPage ? 'active' : ''}>

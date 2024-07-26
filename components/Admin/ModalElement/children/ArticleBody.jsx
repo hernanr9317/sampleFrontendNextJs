@@ -14,12 +14,10 @@ export const ArticleBody = ({
 }) => {
   const router = useRouter();
 
-  // Dividir el string en tags individuales
   const tagsArray = getValues()
     .tags?.split('#')
     .filter((tag) => tag?.trim() !== '');
 
-  // Mapear cada tag a un elemento <span>
   const tagSpans = tagsArray?.map((tag, index) => (
     <span key={index} className="tag">
       {tag}
@@ -107,7 +105,6 @@ export const ArticleBody = ({
             defaultValue={
               getValues().pathname ? `/blog/${getValues().pathname}` : ''
             }
-            //TODO: FALTA HACER QUE SE ACTUALICE LA URL SIN TENER QUE CERRAR Y VOLVER A ABRIR
             autoFocus
             disabled={true}
           />

@@ -10,20 +10,14 @@ const TagList = () => {
 
   let tag = router.query.tag;
 
-  //TODO: PASAR TODO ESTO A UTILS
-  //remplaza guiones por espacios
   tag = tag?.replace(/-/g, ' ');
 
-  //busca un string sin distincion de mayusculas o minuscualas
   const findArticlesWithTag = products?.productos?.filter((element) =>
     element.tags.find(
       (elemento) => elemento.toLowerCase() === `#${tag}`.toLowerCase(),
     ),
   );
 
-  //TODO: FALTA TERMINAR ESTA PARTE
-  // Función para buscar un elemento en el array y devolver su valor
-  //Estoy haciendo esto para buscar el tag original y ponerlo como titulo
   const buscarElemento = (array, elementoBuscado) => {
     return array?.find(
       (elemento) =>

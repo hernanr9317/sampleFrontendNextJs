@@ -195,22 +195,9 @@ $viewport-thereshold: $hexagon-width + $hexagon-margin;
 @media (max-width:#{2*$viewport-thereshold}){
   .honeycomb-cell {
     margin: #{$hexagon-margin/2 + $hexagon-height/2} $hexagon-margin;
-    // margin-left: 0;
     margin-bottom: 186px;
   }
 }
-
-//TODO: VER ESTE CODIGO Y MEJORARLO ES PARA QUE SE CENTRE EL ULTIMO ITEM EN ALGUNAS PANTALLAS TIPO TABLET
-// @media (min-width: #{2*$viewport-thereshold}) and (max-width:#{3*$viewport-thereshold}){
-//   .honeycomb-cell:nth-child(3n) {
-//     margin-right: calc(50% - #{$hexagon-width/2});
-//     margin-left: calc(50% - #{$hexagon-width/2});
-//   }
-
-//   .honeycomb__placeholder:nth-child(3n + 5) {
-//     display:block;
-//   }
-// }
 
 @media (min-width: #{3*$viewport-thereshold}) and (max-width:#{4*$viewport-thereshold}) {
   .honeycomb-cell:nth-child(5n + 4) {

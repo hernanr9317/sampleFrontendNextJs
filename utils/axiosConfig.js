@@ -116,7 +116,6 @@ export const changePasswordWithCode = async (data) => {
 };
 
 export const putDataAxios = async (url, data, token = '') => {
-  // try {
   const pathname = generatePath(data?.nombre);
   const response = await axios
     .put(
@@ -147,7 +146,6 @@ export const putDataAxios = async (url, data, token = '') => {
       return error;
     });
   return response;
-  // } catch (error) {}
 };
 
 export const putImageAxios = async (url, data, token = '') => {

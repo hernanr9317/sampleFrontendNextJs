@@ -79,7 +79,6 @@ const RichText = ({newData, isNota}) => {
 
   useEffect(() => {
     if (editor?.children?.length > 0) {
-      // Delete all entries leaving 1 empty node
       Transforms.delete(editor, {
         at: {
           anchor: Editor.start(editor, []),
@@ -87,14 +86,12 @@ const RichText = ({newData, isNota}) => {
         },
       });
 
-      // Removes empty node
       Transforms.removeNodes(editor, {
         at: [0],
       });
 
       initialValue = description ? objConvert : initialValue;
 
-      // Insert array of children nodes
       Transforms.insertNodes(editor, initialValue);
     }
   }, [description]);
@@ -133,15 +130,11 @@ const RichText = ({newData, isNota}) => {
             (op) => 'set_selection' !== op.type,
           );
           if (isAstChange) {
-            // Save the value to Local Storage.
             const content = JSON.stringify(value);
             localStorage.setItem('content', content);
           }
         }}
       >
-        {/* TODO: IMPLEMENTAR BOTON PARA AGREGAR LINKS , a partir de la linea 99
-        https://github.com/ianstormtaylor/slate/blob/main/site/examples/inlines.tsx
-        */}
         <Toolbar>
           <MarkButton format="bold" icon="format_bold" />
           <MarkButton format="italic" icon="format_italic" />

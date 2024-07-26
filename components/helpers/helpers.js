@@ -12,31 +12,25 @@ export const ascendingOrder = (array) => {
 
 export const generatePath = (str) => {
   const path = str
-    .replace(/ñ/g, 'n') // Reemplazar ñ por n
-    .normalize('NFD') // Convertir caracteres acentuados en su forma de base + marca diacrítica
-    .replace(/[\u0300-\u036f]/g, '') // Eliminar las marcas diacríticas
-    .toLowerCase() // Convertir todo a minúsculas
-    .replace(/ /g, '-') // Cambiar los espacios por guiones
+    .replace(/ñ/g, 'n')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/ /g, '-')
     .replace(/[^a-zA-Z0-9\-]/g, '')
-    .replace(/--+/g, '-'); // Eliminar guiones repetidos
+    .replace(/--+/g, '-');
 
   return path;
 };
 
 export const extractURLFromText = (texto) => {
-  // Expresión regular para buscar el patrón src="https..."
   const patron = /src="([^"]+)"/;
-
-  // Buscar el patrón en el texto
   const coincidencias = texto.match(patron);
 
-  // Verificar si se encontraron coincidencias
   if (coincidencias && coincidencias.length > 1) {
-    // El valor deseado estará en la segunda posición del array de coincidencias
     const url = coincidencias[1];
     return url;
   } else {
-    // Si no se encuentra ninguna coincidencia, devolver null
     return null;
   }
 };
@@ -45,7 +39,7 @@ export const extractURLFromText = (texto) => {
 const convertirAString = (tags) => {
   if (!Array.isArray(tags)) return '';
   const texto = tags.join(' ');
-  return texto.replace(/,/g, ''); // Elimina todas las comas
+  return texto.replace(/,/g, '');
 };
 
 //Separa los tags de un string ejemplo , "#tag1 #tag2" para colocarlos en un array, [#tag1, #tag2]

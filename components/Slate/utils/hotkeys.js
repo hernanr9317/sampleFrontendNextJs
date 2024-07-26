@@ -1,11 +1,7 @@
 import {isKeyHotkey} from 'is-hotkey';
-// import {IS_APPLE} from './environment';
+
 export const IS_APPLE =
   typeof navigator !== 'undefined' && /Mac OS X/.test(navigator.userAgent);
-
-/**
- * Hotkey mappings for each platform.
- */
 
 const HOTKEYS = {
   bold: 'mod+b',

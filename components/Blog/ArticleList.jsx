@@ -3,13 +3,7 @@ import {useRouter} from 'next/router';
 import {CardBlog} from './CardBlog';
 import {Paginator} from './../Paginator/index';
 
-export const ArticleList = ({
-  list,
-  limitItems,
-  paginator = true,
-  title,
-  // title = 'Últimas publicaciones',
-}) => {
+export const ArticleList = ({list, limitItems, paginator = true, title}) => {
   const router = useRouter();
 
   const [currentPage, setCurrentPage] = useState(1);

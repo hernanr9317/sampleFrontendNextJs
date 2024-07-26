@@ -9,7 +9,6 @@ export const CardBlog = ({filterCategory, currentPage, numberItems}) => {
 
   const blurImg = CardBlur.src;
 
-  //ESTA ES LA SOLUCION PARA QUE CARGUEN URLS DE IMAGENES EN NEXTJS
   const Loader = (fetchUrl) => {
     let url = fetchUrl;
 

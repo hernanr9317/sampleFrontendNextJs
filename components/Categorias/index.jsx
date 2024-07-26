@@ -24,7 +24,6 @@ export const Categorias = () => {
     (e) => e.pathname === queryString,
   );
 
-  //Codigo que trabaja con queryStrings de la url
   useEffect(() => {
     if (router.isReady && queryString) {
       if (queryElementFilter) setCategorySelected(queryElementFilter.nombre);

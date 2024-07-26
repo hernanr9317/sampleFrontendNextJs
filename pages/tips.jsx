@@ -1,10 +1,5 @@
 import {PublicLayout} from '../components/layouts';
-// import { MainCarousel } from '../components/MainCarousel';
 import {Multimedia} from '../components/Multimedia';
-import {MainCarousel} from '../components/MainCarousel/Index';
-import slider1 from '../public/assets/carousel/contraseña.webp';
-import slider2 from '../public/assets/carousel/escritorio.webp';
-import slider3 from '../public/assets/carousel/navegacion.webp';
 
 const Tips = () => {
   const url = `${process.env.NEXT_PUBLIC_HOST}/tips`;
@@ -17,7 +12,6 @@ const Tips = () => {
       imageFullUrl="https://i.postimg.cc/J01v450c/mainImg.webp"
       type="technology tips"
     >
-      {/* <MainCarousel img={slider1} img2={slider2} img3={slider3} /> */}
       <Multimedia />
     </PublicLayout>
   );
